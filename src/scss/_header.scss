@@ -1,0 +1,47 @@
+.page-header {
+    padding: 9px 40px;
+}
+
+.header-content {
+    position: relative;
+
+    .logo {
+        width: 69px;
+        height: 39px;
+        opacity: 1;
+    }
+
+    .quick-links-wrapper {
+        display: grid;
+        height: 100%;
+        align-content: center;
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+
+            .quick-link-items{
+                display: flex;
+                justify-content: flex-end;
+            }
+
+            li {
+                display: inline-block;
+                padding: 0 10px;
+                font-family: Lato;
+                font-size: 12px;
+                letter-spacing: 1px;
+                color: #525252;
+                text-transform: uppercase;
+
+                a {
+                    opacity: 1;
+                    text-decoration: none;
+                    color: #525252;
+                }
+            }
+
+        }
+    }
+}
