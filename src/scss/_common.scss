@@ -9,6 +9,11 @@ button {
     color: #000000;
     font-size: 12px;
 }
+button:hover{
+    background-color: #916F25;
+    color: #FFFFFF;
+    border: 1px solid #916F25;
+}
 
 input {
     background: transparent;
