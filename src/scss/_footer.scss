@@ -57,6 +57,24 @@ footer {
             }
         }
 
+        .social-media-wrapper {
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            width: 180px;
+
+            h6 {
+                font-size: 16px;
+                color: #333333;
+            }
+
+            .social-media-icon {
+                width: 19px;
+                height: 19px;
+                opacity: 1;
+            }
+        }
+
         .copyright {
             letter-spacing: 0px;
             color: #969696;
@@ -65,7 +83,7 @@ footer {
             position: absolute;
             bottom: 18px;
 
-            p{
+            p {
                 margin: 0;
             }
         }
