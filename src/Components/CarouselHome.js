@@ -1,42 +1,44 @@
 import React from 'react';
 import Carousel from 'react-material-ui-carousel';
 import { Paper } from '@mui/material';
+import rightArrowIcon from '../images/icons/right-arrow.svg';
+import image from '../images/Group265.png';
 
 const items = [
   {
     name: 'Elegance Redefined:',
     description: 'Discover exquisite jewellery that reflects your inner radiance',
-    imagepath: 'https://blog.ipleaders.in/wp-content/uploads/2021/02/web-research-services-1024x649.jpg',
+    imagepath: image,
   },
   {
     name: 'Elegance Redefined:',
     description: 'Discover exquisite jewellery that reflects your inner radiance',
-    imagepath: 'https://f.hubspotusercontent10.net/hubfs/6448316/web-programming-languages.jpg',
+    imagepath: '../images/Group 265.png',
   },
   {
     name: 'Elegance Redefined:',
     description: 'Discover exquisite jewellery that reflects your inner radiance',
-    imagepath: 'https://f.hubspotusercontent10.net/hubfs/6448316/web-programming-languages.jpg',
+    imagepath: '../images/Group 265.png',
   },
   {
     name: 'Elegance Redefined:',
     description: 'Discover exquisite jewellery that reflects your inner radiance',
-    imagepath: 'https://appinventiv.com/wp-content/uploads/sites/1/2021/08/chatbot-development-with-deep-nlp.png',
+    imagepath: '../images/Group 265.png',
   },
   {
     name: 'Elegance Redefined:',
     description: 'Discover exquisite jewellery that reflects your inner radiance',
-    imagepath: 'https://www.technewsworld.com/wp-content/uploads/sites/3/2021/08/robotic-process-automation.jpg',
+    imagepath: '../images/Group 265.png',
   },
   {
     name: 'Elegance Redefined:',
     description: 'Discover exquisite jewellery that reflects your inner radiance',
-    imagepath: 'https://www.technewsworld.com/wp-content/uploads/sites/3/2021/08/robotic-process-automation.jpg',
+    imagepath: '../images/Group 265.png',
   },
   {
     name: 'Elegance Redefined:',
     description: 'Discover exquisite jewellery that reflects your inner radianc',
-    imagepath: 'https://www.technewsworld.com/wp-content/uploads/sites/3/2021/08/robotic-process-automation.jpg',
+    imagepath: '../images/Group 265.png',
   },
 ];
 
@@ -66,11 +68,15 @@ function CarouselHome() {
         >
           {
             items.map((item) => (
-              <Paper key={item.name} className="carouselPaper" style={{ backgroundImage: `URL(${item.imagepath})` }}>
+              <Paper key={item.name} className="carouselPaper" style={{ backgroundImage: `url(${image})` }}>
                 <div className="service-slide-text-wrapper">
                   <h2 className="service-slide-text">{item.name}</h2>
                   <p className="service-slide-description">{item.description}</p>
-                  <button type="button" className="see-more-button">See More</button>
+                  <button type="button" className="carousel-explore-now-btn">
+                    EXPORE NOW
+                    {' '}
+                    <img src={rightArrowIcon} alt="rightArrowIcon" />
+                  </button>
                 </div>
               </Paper>
             ))

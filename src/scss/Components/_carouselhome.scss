@@ -3,6 +3,7 @@
     flex-direction: column;
     height: 100vh;
     overflow: hidden;
+    padding-bottom: 100px;
   }
   
   .service-slider {
@@ -52,7 +53,8 @@
         font: normal normal normal 36px/48px Playfair Display;
         letter-spacing: 0.54px;
         color: #FFFFFF;
-        width: 40%;
+        width: 55%;
+        margin-bottom: 0;
     }
     
     .see-more-button {
@@ -86,7 +88,9 @@
     margin-right: 20px;
     animation: slide 7s linear infinite;
   }
-  
+  .carousel-explore-now-btn{
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+  }
   @keyframes slide {
     0% {
       transform: translateX(-100%);
