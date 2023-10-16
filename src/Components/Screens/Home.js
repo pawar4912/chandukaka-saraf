@@ -1,11 +1,9 @@
-import React from 'react'
-import CarouselHome from '../CarouselHome'
+import React from 'react';
+import CarouselHome from '../CarouselHome';
 
 function Home() {
   return (
-    <>
-      <CarouselHome/>
-    </>
+    <CarouselHome />
   );
 }
 

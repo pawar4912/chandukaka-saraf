@@ -1,9 +1,9 @@
 import React from 'react';
 import logo from '../images/icons/logo.svg';
 import rightArrowIcon from '../images/icons/right-arrow.svg';
-import facebookIcon from '../images/icons/social-media/facebook.svg'
-import instagramIcon from '../images/icons/social-media/instagram.svg'
-import twitterIcon from '../images/icons/social-media/twitter.svg'
+import facebookIcon from '../images/icons/social-media/facebook.svg';
+import instagramIcon from '../images/icons/social-media/instagram.svg';
+import twitterIcon from '../images/icons/social-media/twitter.svg';
 
 function Footer() {
   return (
@@ -70,7 +70,7 @@ function Footer() {
                   <img src={rightArrowIcon} alt="rightArrowIcon" />
                 </button>
               </div>
-              <div className='social-media-wrapper'>
+              <div className="social-media-wrapper">
                 <h6>Follow us on</h6>
                 <img src={facebookIcon} alt="facebookIcon" className="social-media-icon" />
                 <img src={instagramIcon} alt="instagramIcon" className="social-media-icon" />
