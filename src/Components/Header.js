@@ -32,10 +32,10 @@ function Header() {
                         <text>SILVER - ₹5,767</text>
                       </li>
                       <li>
-                        <a href="#">FIND A STORE</a>
+                        <a href="/">FIND A STORE</a>
                       </li>
                       <li>
-                        <a href="#">SUPPORT</a>
+                        <a href="/">SUPPORT</a>
                       </li>
                     </div>
                   </ul>
