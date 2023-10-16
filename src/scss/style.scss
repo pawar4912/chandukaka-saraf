@@ -1,5 +1,14 @@
 @import '../../node_modules/bootstrap/scss/bootstrap';
 
+//pages
+@import 'common';
 @import 'header';
+@import 'footer';
+
+//component
 @import "./Components/Screens/home";
 @import "./Components/carouselhome";
+
+.main-container{
+    background-color: #F8F6F0 ;
+}

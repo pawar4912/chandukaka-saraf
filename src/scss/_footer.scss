@@ -1,0 +1,97 @@
+footer {
+    position: relative;
+    height: 508px;
+    color: #333333;
+    font-family: Lato;
+
+    .footer-container {
+        padding: 48px 120px 0 120px;
+
+        .logo {
+            img {
+                width: 98px;
+                height: 55px;
+            }
+        }
+
+        .footer-containt {
+            padding-top: 40px;
+            letter-spacing: 0px;
+
+            span {
+                font-weight: bold;
+            }
+        }
+
+        .btn.btn-link {
+            display: block;
+            margin-bottom: 3px;
+            padding: 0;
+            text-align: left;
+            text-decoration: none;
+            color: #333333;
+        }
+
+        .footer-heading {
+            font-weight: bold;
+            font-size: 26px;
+        }
+
+        .footer-text {
+            color: #666666;
+        }
+
+        .sbscribe-wrapper {
+            width: 371px;
+            position: relative;
+
+            .subscribe-btn {
+                position: absolute;
+                right: 0;
+
+                img {
+                    width: 16px;
+                    height: 10px;
+                    opacity: 1;
+                }
+            }
+        }
+
+        .social-media-wrapper {
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            width: 180px;
+
+            h6 {
+                font-size: 16px;
+                color: #333333;
+            }
+
+            .social-media-icon {
+                width: 19px;
+                height: 19px;
+                opacity: 1;
+            }
+        }
+
+        .copyright {
+            letter-spacing: 0px;
+            color: #969696;
+            opacity: 1;
+            font-size: 12px;
+            position: absolute;
+            bottom: 18px;
+
+            p {
+                margin: 0;
+            }
+        }
+    }
+
+    .footer-hr {
+        position: absolute;
+        bottom: 52px;
+        margin: 0;
+    }
+}

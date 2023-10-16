@@ -1,12 +1,12 @@
 import React from 'react'
 import CarouselHome from '../CarouselHome'
 
-const Home = () => {
+function Home() {
   return (
     <>
       <CarouselHome/>
     </>
-  )
+  );
 }
 
-export default Home
+export default Home;
