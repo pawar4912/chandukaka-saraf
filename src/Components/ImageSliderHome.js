@@ -1,16 +1,18 @@
 import * as React from 'react';
 import { useSnapCarousel } from 'react-snap-carousel';
+import PropTypes from 'prop-types';
 import ImageSliderCardHome from './ImageSliderCardHome';
 import LeftIcon from '../images/icons/sliderLeftIcon.svg';
 import RightIcon from '../images/icons/sliderRightIcon.svg';
 
-export default function ImageSliderHome() {
+function ImageSliderHome({ height, width, CardImage,padding }) {
   const {
     scrollRef, next, prev,
   } = useSnapCarousel();
+
   return (
     <>
-      <div>
+      <div className={(padding ==0 ? ('image-slider-navigation-icon image-slider-navigation-icon-no-width'): 'image-slider-navigation-icon' )}>
         <button className="arrow-icon-generic" type="button" onClick={() => prev()}>
           <img src={LeftIcon} alt="React Logo" />
         </button>
@@ -27,10 +29,11 @@ export default function ImageSliderHome() {
           scrollSnapType: 'x mandatory',
         }}
       >
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((item) => (
-          <ImageSliderCardHome key={item} />
+        {[1, 2, 3, 4, 5, 6, 7].map((item) => (
+          <ImageSliderCardHome height={height} width={width} key={item} CardImage={CardImage} padding={padding}/>
         ))}
       </ul>
     </>
   );
 }
+export default ImageSliderHome;

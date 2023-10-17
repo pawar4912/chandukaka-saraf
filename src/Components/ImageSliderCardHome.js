@@ -1,12 +1,18 @@
 import * as React from 'react';
 import { Divider } from '@mui/material';
-import CardImage from '../images/MaskGroup8.png';
 
-export default function ImageSliderCardHome() {
+export default function ImageSliderCardHome({height, width, CardImage, padding}) {
   return (
-    <div className="image-slide-card-container" style={{ backgroundImage: `url(${CardImage})` }}>
-      <Divider variant="middle" />
-      <p className="image-slider-card-text">
+    <div className="image-slide-card-container" 
+      style={{ backgroundImage: `url(${CardImage})`, 
+      minHeight: height,
+      maxHeight: height, 
+      maxWidth: width,
+      minWidth: width, 
+      marginRight: padding,
+    }}>
+      { padding ==0 && <Divider variant="middle" />}
+      <p className={ padding ==0  ? "image-slider-card-text no-border": "image-slider-card-text"}>
         skjnddsjnc
       </p>
     </div>

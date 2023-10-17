@@ -9,7 +9,8 @@ button {
     color: #000000;
     font-size: 12px;
 }
-button:hover{
+
+button:hover {
     background-color: #916F25;
     color: #FFFFFF;
     border: 1px solid #916F25;
@@ -23,15 +24,40 @@ input {
     letter-spacing: 0px;
     padding-inline: 12px;
 }
-input::placeholder{
+
+input::placeholder {
     color: #B7B7B7;
 }
-hr{
+
+hr {
     width: 100%;
     border: 0.5px solid #D6D6D6;
 }
-.arrow-icon-generic{
+
+.arrow-icon-generic {
     background: none;
     border: none;
     padding: 0
+}
+
+.image-slider-navigation-icon {
+    position: relative;
+    width: 100%;
+    text-align: right;
+    padding-right: 39px;
+}
+
+.image-slider-navigation-icon button:hover {
+    background: transparent;
+    border: none;
+}
+
+.carousel-locate-store-btn {
+    top: 3307px;
+    left: 620px;
+    width: 200px;
+    height: 45px;
+    background: #916F25 0% 0% no-repeat padding-box;
+    opacity: 1;
+    color: #FFFFFF;
 }
