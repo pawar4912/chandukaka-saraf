@@ -1,0 +1,37 @@
+.review-slider-main-div {
+    height: auto;
+    width: auto;
+    display: flex;
+    align-items: flex-end;
+    margin-right: 30%;
+}
+
+.review-slider-image {
+    width: 700px;
+    height: 550px;
+}
+
+.review-details-card {
+    width: 416px;
+    height: 390px;
+    position: absolute;
+    right: 16%;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 3px solid #EFEFEF;
+    opacity: 1;
+    font: normal normal normal 18px/30px Lato;
+    letter-spacing: 0px;
+    color: #666666;
+    opacity: 1;
+}
+.review-message{
+    text-align: -webkit-left;
+}
+
+.review-slider-header{
+    text-align: left;
+font: italic normal bold 21px/30px Playfair Display;
+letter-spacing: 0px;
+color: #333333;
+opacity: 1;
+}

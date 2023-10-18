@@ -11,6 +11,9 @@ import imageSliderHeaderIconLeft from '../../images/icons/Group45.svg';
 import CardImageNormal from '../../images/MaskGroup8.png';
 import CardImageLarge from '../../images/MaskGroup24.png';
 import CardImageNoPadding from '../../images/MaskGroup18.png';
+import TreasuredStoriesBackground from '../../images/TreasuredStoriesBackground.png';
+import youngIndianWomanWearingSari from '../../images/young-indian-woman-wearing-sari.png';
+import ReviewSlider from '../ReviewSlider';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -120,6 +123,25 @@ function Home() {
           </Grid>
           <Grid item xs>
             <Item className="empty-container-section">xs=6 md=4</Item>
+          </Grid>
+        </Grid>
+      </Box>
+      <Box className="large-image-slider-container treasured-stories-background" sx={{ flexGrow: 1 }} style={{ backgroundImage: `url(${TreasuredStoriesBackground})` }}>
+        <Grid container spacing={3}>
+          <Grid className="large-image-slider-test-area treasured-stories-header" item xs={12}>
+            <div className="image-slider-header text-only-grid-header">
+              <img src={imageSliderHeaderIconLeft} alt="React Logo" />
+              {'  '}
+              Treasured Stories
+              {' '}
+              <img src={imageSliderHeaderIconRight} alt="React Logo" />
+            </div>
+            <div className="image-slider-description treasured-stories-description text-only-grid">
+              In their own words, our customers share their personal experiences
+            </div>
+          </Grid>
+          <Grid className="large-image-slider-test-area treasured-stories-header" item xs={10}>
+            <ReviewSlider Item={Item} CardImage={youngIndianWomanWearingSari} />
           </Grid>
         </Grid>
       </Box>
