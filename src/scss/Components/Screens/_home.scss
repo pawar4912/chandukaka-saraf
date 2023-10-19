@@ -50,7 +50,7 @@
     margin-right: 9px;
 }
 .extra-empty-container{
-    display: none;
+    display: block;
 }
 @media (max-width: 767px) {
     .image-slider-description {
@@ -74,11 +74,5 @@
         color: #672A2F;
         opacity: 1;
         height: 35px;
-    }
-}
-@media (max-width: 820px) {
-
-    .extra-empty-container{
-        display: block !important;
     }
 }

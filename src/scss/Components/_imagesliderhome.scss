@@ -40,4 +40,13 @@
     .image-scroll-navigation:hover {
         border: none;
     }
+    .item-section {
+        display: grid;
+        grid-gap: 9px;
+        grid-template-columns: repeat(2, 1fr);
+        min-width: 100%;
+    }
+    .item-section:not(:last-child){
+        margin-right: 9px;
+    }
 }

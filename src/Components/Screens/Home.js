@@ -50,7 +50,7 @@ function Home() {
               the essence of modern allure.
             </div>
           </Grid>
-          {/* <Grid item xs={1} md={2}>
+          {/* <Grid item xs={1} md={1}>
             <Item className="empty-container-section">xs=6 md=4</Item>
           </Grid> */}
           <Grid item xs={1} md={1}>
