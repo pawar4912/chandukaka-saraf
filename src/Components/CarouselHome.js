@@ -45,7 +45,7 @@ const items = [
 ];
 
 function CarouselHome() {
-  const windoDimensions = useWindowWidthAndHeight()
+  const windoDimensions = useWindowWidthAndHeight();
   return (
     <div className="slider-container">
       <div className="service-slider">
