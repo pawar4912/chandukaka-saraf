@@ -10,13 +10,13 @@ function App() {
     <div className="main-container">
       <BrowserRouter>
         <Header />
-        <div>
+        <div className="main-body-container">
           <Suspense>
             <Routes>
               {routes.map(
-                (route, idx) => route.element && (
+                (route) => route.element && (
                   <Route
-                    key={`${idx}`}
+                    key={route.name}
                     path={route.path}
                     element={route.element}
                     exact={route.exact}
