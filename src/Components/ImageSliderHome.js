@@ -31,11 +31,11 @@ function ImageSliderHome({ height, width, CardImage,padding, CardImageType }) {
         { CardImageType== "Favourites" && windoDimensions[0] <768 ?_.chunk(imagesArray, 4).map((item)=> (
               <div className="item-section">
                 {item.map((inneritem) => (
-                <ImageSliderCardHome key={inneritem} CardImage={CardImage} />
+                <ImageSliderCardHome CardImageType={CardImageType} key={inneritem} CardImage={CardImage} />
               ))}
               </div>
         )) : imagesArray.map((item) => (
-              <ImageSliderCardHome height={height} width={width} key={item} CardImage={CardImage} padding={padding}/>
+              <ImageSliderCardHome CardImageType={CardImageType} height={height} width={width} key={item} CardImage={CardImage} padding={padding}/>
           ))}
       </ul>
       { CardImageType== "Favourites" && windoDimensions[0] <768  && <ol style={{ display: 'flex', justifyContent: "center", paddingLeft: "0" }}>
