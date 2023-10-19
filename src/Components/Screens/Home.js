@@ -22,8 +22,10 @@ const Item = styled(Paper)(({ theme }) => ({
 
 function Home() {
   return (
-    <>
-      <CarouselHome />
+    <div className='col-12'>
+      <div>
+        <CarouselHome />
+      </div>
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={1}>
           <Grid item xs={6} md={1}>
@@ -123,7 +125,7 @@ function Home() {
           </Grid>
         </Grid>
       </Box>
-    </>
+    </div>
   );
 }
 

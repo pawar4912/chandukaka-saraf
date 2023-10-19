@@ -2,13 +2,15 @@ import React from 'react';
 import Carousel from 'react-material-ui-carousel';
 import { Paper } from '@mui/material';
 import rightArrowIcon from '../images/icons/right-arrow.svg';
-import image from '../images/Group265.png';
+import imageDesktopView from '../images/Group265.png';
+import imageMobileView from '../images/mobile-view-corousel.png';
+import useWindowWidthAndHeight from '../utilities/CustomHooks';
 
 const items = [
   {
     name: 'Elegance Redefined:',
     description: 'Discover exquisite jewellery that reflects your inner radiance',
-    imagepath: image,
+    imagepath: "../images/Group 265.png",
   },
   {
     name: 'Elegance Redefined:',
@@ -43,6 +45,7 @@ const items = [
 ];
 
 function CarouselHome() {
+  const windoDimensions = useWindowWidthAndHeight()
   return (
     <div className="slider-container">
       <div className="service-slider">
@@ -54,7 +57,7 @@ function CarouselHome() {
           indicatorIconButtonProps={{
             style: {
               padding: '5px',
-              marginTop: '-250px',
+              marginTop: '-150px',
               zIndex: '1',
               color: '#FFFFFF',
               opacity: '0.3',
@@ -68,7 +71,7 @@ function CarouselHome() {
         >
           {
             items.map((item) => (
-              <Paper key={item.name} className="carouselPaper" style={{ backgroundImage: `url(${image})` }}>
+              <Paper key={item.name} className="carouselPaper" style={{ backgroundImage: (windoDimensions[0] <= 767 ? `url(${imageMobileView})`:  `url(${imageDesktopView})` )}}>
                 <div className="service-slide-text-wrapper">
                   <h2 className="service-slide-text">{item.name}</h2>
                   <p className="service-slide-description">{item.description}</p>

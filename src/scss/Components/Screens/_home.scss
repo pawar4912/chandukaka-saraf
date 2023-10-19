@@ -14,7 +14,7 @@
 .image-slider-description {
     top: 964px;
     left: 120px;
-    width: 1046px;
+    width: 100%;
     height: 19px;
     text-align: left;
     font: normal normal normal 16px/22px Lato;
@@ -23,7 +23,7 @@
     opacity: 1;
 }
 .big-image-slider-description {
-    width: auto !important;
+    width: 75% !important;
     padding-top: 16px;
 }
 
@@ -36,7 +36,7 @@
 }
 .text-only-grid{
     text-align-last: center;
-    width: 431px;
+    width: 60%;
     text-align: -webkit-center;
     margin-left: 10%;
     min-height: 80px;
@@ -44,4 +44,10 @@
 }
 .text-only-grid-header img{
     margin-right: 9px;
+}
+
+@media (max-width: 767px) {
+    .image-slider-description {
+        width: auto;
+    }
 }
