@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Divider } from '@mui/material';
 
-export default function ImageSliderCardHome({height, width, CardImage, padding}) {
+export default function ImageSliderCardHome({height, width, CardImage, padding, CardImageType}) {
   return (
-    <div className="image-slide-card-container" 
+    <div className={ "" +CardImageType + "-item-section image-slide-card-container"}
       style={{ backgroundImage: `url(${CardImage})`, 
       minHeight: height,
       maxHeight: height, 
