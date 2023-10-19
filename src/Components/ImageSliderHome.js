@@ -16,7 +16,7 @@ function ImageSliderHome({ height, width, CardImage,padding, CardImageType }) {
   const windoDimensions = useWindowWidthAndHeight();
   return (
     <>
-      { windoDimensions[0]  >= 767 && <div className={(padding ==0 ? ('image-slider-navigation-icon image-slider-navigation-icon-no-width'): 'image-slider-navigation-icon' )}>
+      { windoDimensions[0]  >= 768 && <div className={(padding ==0 ? ('image-slider-navigation-icon image-slider-navigation-icon-no-width'): 'image-slider-navigation-icon' )}>
         <button className="arrow-icon-generic" type="button" onClick={() => prev()}>
           <img src={LeftIcon} alt="React Logo" />
         </button>
@@ -28,7 +28,7 @@ function ImageSliderHome({ height, width, CardImage,padding, CardImageType }) {
         className="image-slider-component"
         ref={scrollRef}
       >
-        { CardImageType== "Favourites" && windoDimensions[0] <=767 ?_.chunk(imagesArray, 4).map((item)=> (
+        { CardImageType== "Favourites" && windoDimensions[0] <768 ?_.chunk(imagesArray, 4).map((item)=> (
             <>{_.chunk(item, 2).map( element => (
               <div>
                 {element.map((inneritem) => (
@@ -40,7 +40,7 @@ function ImageSliderHome({ height, width, CardImage,padding, CardImageType }) {
               <ImageSliderCardHome height={height} width={width} key={item} CardImage={CardImage} padding={padding}/>
           ))}
       </ul>
-      { CardImageType== "Favourites" && windoDimensions[0] <=767  && <ol style={{ display: 'flex', justifyContent: "center", paddingLeft: "0" }}>
+      { CardImageType== "Favourites" && windoDimensions[0] <768  && <ol style={{ display: 'flex', justifyContent: "center", paddingLeft: "0" }}>
         {pages.map((_, i) => (
             <button key={i} className='image-scroll-navigation'
               style={i === activePageIndex ? { opacity: 0.5 } : {}}
