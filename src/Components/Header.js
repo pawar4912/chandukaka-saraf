@@ -24,7 +24,7 @@ function Header() {
     <>
       <div>
         <header className="page-header">
-        <hr className="header-hr d-none d-md-block " />
+          <hr className="header-hr d-none d-md-block " />
           <div className="header-content">
             <div className="col-12 col-md-12 col-lg-12 order-2 order-md-2">
               <div className="row">
@@ -106,10 +106,54 @@ function Header() {
                     </div>
                     <nav className="navbar">
                       <ul className="w-100">
+                        <div className="header-searchbar-wrapper w-100">
+                          <div className="col-10 search-wrapper">
+                            <input
+                              type="text"
+                              className="search-input col-9 col-md-9"
+                              placeholder="Search for a product"
+                            />
+                            <img
+                              src={searchLogo}
+                              alt="Logo"
+                              className="search-logo"
+                            />
+                          </div>
+                          <div className="col-2">
+                            <a href="/" className="shopping-logo">
+                              <img
+                                src={shoppingBagLogo}
+                                alt="Logo"
+                                className="image"
+                              />
+                            </a>
+                          </div>
+                        </div>
+                        <h3 className="drawer-header">POPULAR SEARCHES</h3>
                         <div className="d-lg-none">
-                          <li>
+                          <li className="w-100">
                             <a href="/" className="menu-link">
-                              Home
+                              Fancy Earrings
+                            </a>
+                          </li>
+                          <li className="w-100">
+                            <a href="/" className="menu-link">
+                              Gift under 10k
+                            </a>
+                          </li>
+                          <li className="w-100">
+                            <a href="/" className="menu-link">
+                              Every day Necklaces
+                            </a>
+                          </li>
+                          <li className="w-100">
+                            <a href="/" className="menu-link">
+                              Diamonds Mangalsutra
+                            </a>
+                          </li>
+                          <li className="w-100">
+                            <a href="/" className="menu-link">
+                              Office wear earrings
                             </a>
                           </li>
                         </div>
