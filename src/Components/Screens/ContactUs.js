@@ -5,6 +5,7 @@ import React from 'react'
 import SectionTitleWithArrows from '../SectionTitleWithArrows';
 import rightArrowIcon from '../../images/icons/right-arrow.svg';
 import useWindowWidthAndHeight from '../../utilities/CustomHooks';
+import FAQs from '../FAQs';
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -17,7 +18,7 @@ const Item = styled(Paper)(({ theme }) => ({
 export default function ContactUs() {
     const windoDimensions = useWindowWidthAndHeight();
     return (
-        <div>
+        <div className='about-us'>
             <Box className="contact-us-container" sx={{ flexGrow: 1 }}>
                 <Grid container spacing={1}>
                     {windoDimensions[0] > 768 &&
@@ -95,6 +96,15 @@ export default function ContactUs() {
                         <SectionTitleWithArrows textMessage={"FAQs"} arrowSides={"Both"} />
                     </Grid>
                     <Grid item xs={1} md={3}>
+                        <Item className="empty-container-section">xs=6 md=4</Item>
+                    </Grid>
+                    <Grid item xs={1} md={1}>
+                        <Item className="empty-container-section">xs=6 md=4</Item>
+                    </Grid>
+                    <Grid item xs={10} md={10}>
+                        <FAQs />
+                    </Grid>
+                    <Grid item xs={1} md={1}>
                         <Item className="empty-container-section">xs=6 md=4</Item>
                     </Grid>
                 </Grid>
