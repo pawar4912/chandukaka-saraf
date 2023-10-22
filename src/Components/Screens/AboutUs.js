@@ -102,7 +102,7 @@ export default function AboutUs() {
             <Box className="large-image-slider-container treasured-stories-background" sx={{ flexGrow: 1 }} style={{ backgroundImage: `url(${TreasuredStoriesBackground})` }}>
                 <AwardsAndRecognition Item={Item} />
             </Box>
-            <Box className="box-about-us" sx={{ flexGrow: 1 }}>
+            <Box className="box-about-us about-us-last-element" sx={{ flexGrow: 1 }}>
                 <BlogSectionWithSideImage
                     headerText={"Contributing to Society"}
                     descriptionText={"We are making remarkable social contributions through our philanthropic arm, the ‘Sou. Kusum & Shri. Jindatta Shah Welfare Foundation.’ This foundation is dedicated to promoting education, with a special focus on empowering girls with access to quality schooling. Moreover, we actively engage in initiatives that enhance social hygiene and cleanliness, thereby creating a healthier environment for the entire community. Additionally, we generously support various needy organizations as part of our corporate social responsibility (CSR) activities, demonstrating our commitment to the betterment of society and leaving a lasting impact on the lives of many.."}

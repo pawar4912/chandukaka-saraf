@@ -18,7 +18,7 @@ const routes = [
     strict: false,
   },
   {
-    path: '/contactus',
+    path: '/contact-us',
     name: 'Home',
     element: <ContactUs />,
     exact: true,
