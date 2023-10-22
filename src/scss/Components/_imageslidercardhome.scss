@@ -27,10 +27,14 @@
     padding-left: 25px;
     padding-right: 25px;
 }
+ul.image-slider-component::-webkit-scrollbar {
+    display: none;
+}
 
 .image-slider-component {
     padding: 0;
     margin-bottom: 0;
+    -ms-overflow-style: none;
 }
 
 .no-border {
