@@ -17,6 +17,9 @@
 .favorite-slider{
     grid-gap: 30px;
 }
+.offer-slider{
+    grid-gap: 40px;
+}
 
 @media (max-width: 769px) {
     .image-slider-component {
@@ -52,5 +55,8 @@
     }
     .item-section:not(:last-child){
         margin-right: 9px;
+    }
+    .offer-slider{
+        grid-gap: 20px;
     }
 }
