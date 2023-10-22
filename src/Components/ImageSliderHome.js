@@ -8,7 +8,7 @@ import useWindowWidthAndHeight from '../utilities/CustomHooks';
 import { Grid } from '@mui/material';
 import _ from 'lodash';
 
-function ImageSliderHome({ height, width, CardImage,padding, CardImageType }) {
+function ImageSliderHome({ height, width, CardImage,padding, CardImageType, className }) {
   const {
     scrollRef, pages,activePageIndex, next, prev, goTo
   } = useSnapCarousel();
@@ -25,10 +25,10 @@ function ImageSliderHome({ height, width, CardImage,padding, CardImageType }) {
         </button>
       </div>}
       <ul
-        className="image-slider-component"
+        className={`image-slider-component ${className}`}
         ref={scrollRef}
       >
-        { CardImageType== "Favourites" && windoDimensions[0] <768 ?_.chunk(imagesArray, 4).map((item)=> (
+        { CardImageType== "Favourites" && windoDimensions[0] <=768 ?_.chunk(imagesArray, 4).map((item)=> (
               <div className="item-section">
                 {item.map((inneritem) => (
                 <ImageSliderCardHome CardImageType={CardImageType} key={inneritem} CardImage={CardImage} />
@@ -38,7 +38,7 @@ function ImageSliderHome({ height, width, CardImage,padding, CardImageType }) {
               <ImageSliderCardHome CardImageType={CardImageType} height={height} width={width} key={item} CardImage={CardImage} padding={padding}/>
           ))}
       </ul>
-      { CardImageType== "Favourites" && windoDimensions[0] <768  && <ol style={{ display: 'flex', justifyContent: "center", paddingLeft: "0" }}>
+      { CardImageType== "Favourites" && windoDimensions[0] <768  && <ol style={{ display: 'flex', justifyContent: "center", paddingLeft: "0", marginTop: 24, marginBottom: 0 }}>
         {pages.map((_, i) => (
             <button key={i} className='image-scroll-navigation'
               style={i === activePageIndex ? { opacity: 0.5 } : {}}
