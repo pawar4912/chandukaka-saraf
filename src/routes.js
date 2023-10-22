@@ -1,3 +1,4 @@
+import AboutUs from './Components/Screens/AboutUs';
 import ContactUs from './Components/Screens/ContactUs';
 import Home from './Components/Screens/Home';
 
@@ -20,6 +21,13 @@ const routes = [
     path: '/contactus',
     name: 'Home',
     element: <ContactUs />,
+    exact: true,
+    strict: false,
+  },
+  {
+    path: '/aboutus',
+    name: 'Home',
+    element: <AboutUs />,
     exact: true,
     strict: false,
   },
