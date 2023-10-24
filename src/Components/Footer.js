@@ -55,7 +55,7 @@ function Footer() {
                       </a>
                     </div>
                     <div className="col-lg-6">
-                      <a href="/" className="btn btn-link">
+                      <a href="/privacy-policy" className="btn btn-link">
                         Privacy Policy
                       </a>
                       <a href="/" className="btn btn-link">
