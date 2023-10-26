@@ -50,6 +50,7 @@ function CarouselHome() {
     <div className="slider-container">
       <div className="service-slider">
         <Carousel
+          autoPlay={false}
           animation="slide"
           duration={2300}
           swipe="true"
@@ -71,7 +72,8 @@ function CarouselHome() {
         >
           {
             items.map((item) => (
-              <Paper key={item.name} className="carouselPaper" style={{ backgroundImage: (windoDimensions[0] <= 768 ? `url(${imageMobileView})`:  `url(${imageDesktopView})` )}}>
+              <Paper key={item.name} className="carouselPaper" >
+                <img className="carousel-img" src={windoDimensions[0] <= 768 ? `${imageMobileView}`:  `${imageDesktopView}` } />
                 <div className="service-slide-text-wrapper">
                   <h2 className="service-slide-text">{item.name}</h2>
                   <p className="service-slide-description">{item.description}</p>

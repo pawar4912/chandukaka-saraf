@@ -60,7 +60,7 @@
     margin-left: 0;
     width: 60% !important;
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .image-slider-description {
         width: 98% !important;
         text-align: left;
@@ -70,7 +70,6 @@
         opacity: 1;
         padding-top: 0;
         height: 65px;
-        margin-bottom: 30px;
     }
     .favourite-image-slider{
         padding-left: 0;
@@ -97,6 +96,9 @@
     }
     .image-slider-header-explore{
         text-align: center;
+    }
+    .large-image-slider-container {
+        padding-top: 50px;
     }
     .large-image-slider-container .MuiGrid-root {
         margin: 0 !important;

@@ -1,6 +1,6 @@
 .image-slider-card-text {
     z-index: 1;
-    position: relative;
+    position: absolute;
     height: 17px;
     text-align: left;
     font: normal normal bold 14px/17px Lato;
@@ -9,6 +9,11 @@
     text-transform: uppercase;
     opacity: 1;
     border-top-style: outset;
+    bottom: 36px;
+    display: flex;
+    width: 84%;
+    margin: 0 8%;
+    padding-top: 10px;
 }
 
 .image-slide-card-container:hover {
@@ -18,14 +23,7 @@
 }
 
 .image-slide-card-container {
-    max-width: 295px;
-    max-height: 355px;
-    min-width: 295px;
-    min-height: 355px;
-    display: flex;
-    flex-direction: column-reverse;
-    padding-left: 25px;
-    padding-right: 25px;
+    position: relative;
 }
 ul.image-slider-component::-webkit-scrollbar {
     display: none;
@@ -44,23 +42,29 @@ ul.image-slider-component::-webkit-scrollbar {
 
 @media (max-width: 768px) {
     .image-slide-card-container {
-        min-width: 150px !important;
-        min-height: 192px !important;
+        height: 100%;
+        width: 100%;
+
+        img{
+            max-width: 100%;
+        }
     }
 
     .image-slider-card-text {
+        bottom: 26px;
         text-align: left;
         font: normal normal bold 10px/12px Lato;
         letter-spacing: 1.5px;
         color: #FFFFFF;
         text-transform: uppercase;
         opacity: 1;
+        width: 84%;
+        margin: 0 8%;
     }
     .Offers-item-section {
         min-width: 80% !important;
-        margin-right: 20px !important;
     }
     .Discover-item-section{
-        min-width: 65% !important;
+        min-width: 75% !important;
     }
 }

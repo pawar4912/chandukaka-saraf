@@ -58,16 +58,16 @@ function Home() {
             <Item className="empty-container-section">xs=6 md=4</Item>
           </Grid>
           <Grid className='favourite-image-slider' item xs={10} md={11}>
-            <ImageSliderHome width={295} height={355} CardImage={CardImageNormal} padding={30} CardImageType={"Favourites"} />
+            <ImageSliderHome width={295} height={355} CardImage={CardImageNormal} padding={30} CardImageType={"Favourites"} className="favorite-slider" />
           </Grid>
         </Grid>
       </Box>
       <Box className="large-image-slider-container" sx={{ flexGrow: 1 }}>
-        <Grid container spacing={1}>
+        <Grid container spacing={1} className="w-100">
           <Grid item xs={1} md={1}>
             <Item className="empty-container-section">xs=6 md=4</Item>
           </Grid>
-          <Grid item xs={11} md={4} className="large-image-slider-test-area exclusive-offer-test-section" >
+          <Grid item xs={11} md={4} className="large-image-slider-test-area exclusive-offer-test-section p-0" >
             <div className="image-slider-header">
               Shine bright with our exclusive offers
               {' '}
@@ -87,10 +87,10 @@ function Home() {
           <Grid className='extra-empty-container-exclusive-offers' item xs={1} md={1}>
             <Item className="empty-container-section">xs=6 md=4</Item>
           </Grid>
-          <Grid item xs={11} md={7}>
-            <ImageSliderHome width={550} height={550} CardImage={CardImageLarge} padding={40} CardImageType={"Offers"} />
+          <Grid item xs={11} md={7} className="p-0 w-100">
+            <ImageSliderHome width={550} height={550} CardImage={CardImageLarge} padding={40} CardImageType={"Offers"} className="offer-slider"/>
           </Grid>
-          <Grid className='extra-empty-container-exclusive-offers' item xs={1} md={1}>
+          <Grid className='extra-empty-container-exclusive-offers w-100' item xs={1} md={1}>
             <Item className="empty-container-section">xs=6 md=4</Item>
           </Grid>
           {windoDimensions[0] <= 768 && <Grid item xs={11} md={7}>
@@ -105,7 +105,7 @@ function Home() {
         </Grid>
       </Box>
       <Box className="large-image-slider-container discover-image-slider-container" sx={{ flexGrow: 1 }}>
-        <Grid container spacing={1}>
+        <Grid container spacing={1} className="w-100">
           <Grid item xs={1} md={1}>
             <Item className="empty-container-section">xs=6 md=4</Item>
           </Grid>
@@ -119,7 +119,7 @@ function Home() {
               From timeless classics to modern marvels, find your style in our curated categories.
             </div>
           </Grid>
-          <Grid item xs={12} md={12}>
+          <Grid item xs={12} md={12} className="p-0">
             <ImageSliderHome width={450} height={600} CardImage={CardImageNoPadding} padding={0} CardImageType={"Discover"} />
           </Grid>
         </Grid>
@@ -158,7 +158,7 @@ function Home() {
               <button type="button" className="carousel-locate-store-btn">
                 LOCATE STORES
                 {' '}
-                <img src={rightArrowIconWhite} alt="rightArrowIcon" />
+                <img src={rightArrowIcon} alt="rightArrowIcon" />
               </button>
             </div>
           </Grid>

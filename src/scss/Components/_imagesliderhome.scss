@@ -14,6 +14,13 @@
     scroll-snap-type: x mandatory;
 }
 
+.favorite-slider{
+    grid-gap: 30px;
+}
+.offer-slider{
+    grid-gap: 40px;
+}
+
 @media (max-width: 769px) {
     .image-slider-component {
         // flex-direction: row;
@@ -42,11 +49,14 @@
     }
     .item-section {
         display: grid;
-        grid-gap: 9px;
+        grid-gap: 4%;
         grid-template-columns: repeat(2, 1fr);
         min-width: 100%;
     }
     .item-section:not(:last-child){
         margin-right: 9px;
+    }
+    .offer-slider{
+        grid-gap: 20px;
     }
 }
