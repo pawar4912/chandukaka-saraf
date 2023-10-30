@@ -63,7 +63,7 @@ function Home() {
         </Grid>
       </Box>
       <Box className="large-image-slider-container" sx={{ flexGrow: 1 }}>
-        <Grid container spacing={1}>
+        <Grid container spacing={1} className="w-100">
           <Grid item xs={1} md={1}>
             <Item className="empty-container-section">xs=6 md=4</Item>
           </Grid>
@@ -87,10 +87,10 @@ function Home() {
           <Grid className='extra-empty-container-exclusive-offers' item xs={1} md={1}>
             <Item className="empty-container-section">xs=6 md=4</Item>
           </Grid>
-          <Grid item xs={11} md={7} className="p-0">
-            <ImageSliderHome width={550} height={550} CardImage={CardImageLarge} padding={40} CardImageType={"Offers"} />
+          <Grid item xs={11} md={7} className="p-0 w-100">
+            <ImageSliderHome width={550} height={550} CardImage={CardImageLarge} padding={40} CardImageType={"Offers"} className="offer-slider"/>
           </Grid>
-          <Grid className='extra-empty-container-exclusive-offers' item xs={1} md={1}>
+          <Grid className='extra-empty-container-exclusive-offers w-100' item xs={1} md={1}>
             <Item className="empty-container-section">xs=6 md=4</Item>
           </Grid>
           {windoDimensions[0] <= 768 && <Grid item xs={11} md={7}>
@@ -105,7 +105,7 @@ function Home() {
         </Grid>
       </Box>
       <Box className="large-image-slider-container discover-image-slider-container" sx={{ flexGrow: 1 }}>
-        <Grid container spacing={1}>
+        <Grid container spacing={1} className="w-100">
           <Grid item xs={1} md={1}>
             <Item className="empty-container-section">xs=6 md=4</Item>
           </Grid>

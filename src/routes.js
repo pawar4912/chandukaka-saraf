@@ -1,5 +1,7 @@
+import AboutUs from './Components/Screens/AboutUs';
 import ContactUs from './Components/Screens/ContactUs';
 import Home from './Components/Screens/Home';
+import PrivacyPolicy from './Components/Screens/PrivacyPolicy';
 
 const routes = [
   {
@@ -17,9 +19,23 @@ const routes = [
     strict: false,
   },
   {
-    path: '/contactus',
+    path: '/contact-us',
     name: 'Home',
     element: <ContactUs />,
+    exact: true,
+    strict: false,
+  },
+  {
+    path: '/privacy-policy',
+    name: 'Home',
+    element: <PrivacyPolicy />,
+    exact: true,
+    strict: false,
+  },
+  {
+    path: '/aboutus',
+    name: 'Home',
+    element: <AboutUs />,
     exact: true,
     strict: false,
   },
