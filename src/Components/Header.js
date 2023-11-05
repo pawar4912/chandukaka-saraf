@@ -166,7 +166,7 @@ function Header() {
             <div className="col-12 col-md-12 col-lg-12 order-1 order-md-1 d-none d-md-block ps-0">
               <div className="col-12 col-md-12 col-lg-12">
                 <div className="row">
-                  <div className="col-12 col-sm-9 col-md-9 col-lg-9">
+                  <div className="col-12 col-sm-10 col-md-10 col-lg-10">
                     <nav className="navbar">
                       <ul className="w-100">
                         <div className="menu-link-items">
@@ -189,7 +189,7 @@ function Header() {
                       </ul>
                     </nav>
                   </div>
-                  <div className="col-12 col-sm-3 col-md-3 col-lg-3 p-0">
+                  <div className="col-12 col-sm-2 col-md-2 col-lg-2 p-0">
                     <div className="header-icon-list">
                       <ul className="w-100">
                         <li>
