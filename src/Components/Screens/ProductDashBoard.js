@@ -1,12 +1,14 @@
 import React from 'react'
 import productDashBoardImage from "../../images/productDashBoardImage.png";
-import { Box, Button, Checkbox, Chip, Divider, Grid, ListItemText, MenuItem, OutlinedInput, Select, Stack } from '@mui/material';
+import { Box, Button, Checkbox, Chip, Divider, Grid, ListItemText, MenuItem, OutlinedInput, Pagination, Select, Stack } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import fillWhiteLeftIcon from '../../images/icons/fillWhiteLeftIcon.svg';
 import fillWhiteRightIcon from '../../images/icons/fillWhiteRightIcon.svg';
 import ProductBreadcrumb from '../ProductBreadcrumb';
 import ClearFilterIcon from "../../images/icons/ClearFilterIcon.svg";
+import productImage from "../../images/productImage.png";
+import ProductCard from '../ProductCard';
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -15,16 +17,16 @@ const Item = styled(Paper)(({ theme }) => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
 }));
-var removeByAttr = function(arr, attr, value){
+var removeByAttr = function (arr, attr, value) {
     var i = arr.length;
-    while(i--){
-       if( arr[i] 
-           && arr[i].hasOwnProperty(attr) 
-           && (arguments.length > 2 && arr[i][attr] === value ) ){ 
+    while (i--) {
+        if (arr[i]
+            && arr[i].hasOwnProperty(attr)
+            && (arguments.length > 2 && arr[i][attr] === value)) {
 
-           arr.splice(i,1);
+            arr.splice(i, 1);
 
-       }
+        }
     }
     return arr;
 }
@@ -43,6 +45,121 @@ const typeValues = [
         name: "Vedhani"
     },
 ]
+
+const allProduct = [
+    {
+        productImage: productImage,
+        productNmae: "Laxmi Silver Coin - 1 Gm",
+        isFavourite: true,
+        newArrival: "New",
+        productPrice: "94"
+    },
+    {
+        productImage: productImage,
+        productNmae: "Laxmi Silver Coin - 1 Gm",
+        isFavourite: true,
+        newArrival: "OUT OF STOCK",
+        productPrice: "94"
+    },
+    {
+        productImage: productImage,
+        productNmae: "Laxmi Silver Coin - 1 Gm",
+        isFavourite: true,
+        newArrival: "New",
+        productPrice: "94"
+    },
+    {
+        productImage: productImage,
+        productNmae: "Laxmi Silver Coin - 1 Gm",
+        isFavourite: true,
+        newArrival: "OUT OF STOCK",
+        productPrice: "94"
+    },
+    {
+        productImage: productImage,
+        productNmae: "Laxmi Silver Coin - 1 Gm",
+        isFavourite: true,
+        newArrival: "New",
+        productPrice: "94"
+    },
+    {
+        productImage: productImage,
+        productNmae: "Laxmi Silver Coin - 1 Gm",
+        isFavourite: true,
+        newArrival: "OUT OF STOCK",
+        productPrice: "94"
+    },
+    {
+        productImage: productImage,
+        productNmae: "Laxmi Silver Coin - 1 Gm",
+        isFavourite: true,
+        newArrival: "New",
+        productPrice: "94"
+    },
+    {
+        productImage: productImage,
+        productNmae: "Laxmi Silver Coin - 1 Gm",
+        isFavourite: true,
+        newArrival: "OUT OF STOCK",
+        productPrice: "94"
+    },
+    {
+        productImage: productImage,
+        productNmae: "Laxmi Silver Coin - 1 Gm",
+        isFavourite: true,
+        newArrival: "New",
+        productPrice: "94"
+    },
+    {
+        productImage: productImage,
+        productNmae: "Laxmi Silver Coin - 1 Gm",
+        isFavourite: true,
+        newArrival: "OUT OF STOCK",
+        productPrice: "94"
+    },
+    {
+        productImage: productImage,
+        productNmae: "Laxmi Silver Coin - 1 Gm",
+        isFavourite: true,
+        newArrival: "New",
+        productPrice: "94"
+    },
+    {
+        productImage: productImage,
+        productNmae: "Laxmi Silver Coin - 1 Gm",
+        isFavourite: true,
+        newArrival: "OUT OF STOCK",
+        productPrice: "94"
+    },
+    {
+        productImage: productImage,
+        productNmae: "Laxmi Silver Coin - 1 Gm",
+        isFavourite: true,
+        newArrival: "New",
+        productPrice: "94"
+    },
+    {
+        productImage: productImage,
+        productNmae: "Laxmi Silver Coin - 1 Gm",
+        isFavourite: true,
+        newArrival: "OUT OF STOCK",
+        productPrice: "94"
+    },
+    {
+        productImage: productImage,
+        productNmae: "Laxmi Silver Coin - 1 Gm",
+        isFavourite: true,
+        newArrival: "New",
+        productPrice: "94"
+    },
+    {
+        productImage: productImage,
+        productNmae: "Laxmi Silver Coin - 1 Gm",
+        isFavourite: true,
+        newArrival: "OUT OF STOCK",
+        productPrice: "94"
+    },
+]
 export default function ProductDashBoard() {
     const navigationData = [
         {
@@ -59,10 +176,10 @@ export default function ProductDashBoard() {
         },
     ]
     const [typeNameSelected, setTypeName] = React.useState([
-        // {
-        //     "id": 1,
-        //     name: "Coins"
-        // },
+        {
+            "id": 1,
+            name: "Coins"
+        },
     ]);
     const handleChange = (event) => {
         const {
@@ -77,10 +194,10 @@ export default function ProductDashBoard() {
     };
     const handleDeleteFilterData = (event) => {
         var tempArray = typeNameSelected;
-        tempArray = removeByAttr(tempArray, 'id', event) 
+        tempArray = removeByAttr(tempArray, 'id', event)
         setTypeName(tempArray)
         console.info(tempArray);
-      };
+    };
     return (
         <div className='about-us'>
             <div className='col-12'>
@@ -210,20 +327,42 @@ export default function ProductDashBoard() {
                     </Grid>
                     <Grid item xs={1} md={10}>
                         {typeNameSelected.map(element =>
-                            (<Chip 
-                                className='product-page-chip'
-                                key={element.id} 
-                                onDelete={() => handleDeleteFilterData(element.id)} 
-                                label={element.name} 
-                                deleteIcon={<img src={ClearFilterIcon} />}
-                            />)
+                        (<Chip
+                            className='product-page-chip'
+                            key={element.id}
+                            onDelete={() => handleDeleteFilterData(element.id)}
+                            label={element.name}
+                            deleteIcon={<img src={ClearFilterIcon} />}
+                        />)
                         )}
                         <Button className='product-page-clear-all-button' >CLEAR ALL</Button>
                     </Grid>
                     <Grid item xs={1} md={1}>
                         <Item className="empty-container-section">xs=6 md=4</Item>
                     </Grid>
-                    
+
+                </Grid>
+            </Box>
+            <Box sx={{ flexGrow: 1 }}>
+                <Grid container spacing={1} className="product-grid-container">
+                    <Grid className="product-list-grid-section" item xs={12} md={10}>
+                        {allProduct.map(element => (
+                            <ProductCard
+                                productImage={element.productImage}
+                                productNmae={element.productNmae}
+                                isFavourite={element.isFavourite}
+                                newArrival={element.newArrival}
+                                productPrice={element.productPrice}
+                            />
+                        ))}
+                    </Grid>
+                </Grid>
+            </Box>
+            <Box sx={{ flexGrow: 1 }}>
+                <Grid container spacing={1} className="product-grid-container">
+                    <Grid className='product-list-page-pagination-container' item xs={12} md={10}>
+                        <Pagination count={8} />
+                    </Grid>
                 </Grid>
             </Box>
         </div>
