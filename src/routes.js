@@ -1,6 +1,8 @@
 import AboutUs from './Components/Screens/AboutUs';
 import ContactUs from './Components/Screens/ContactUs';
 import Home from './Components/Screens/Home';
+import LoginRegister from './Components/Screens/LoginRegister';
+import MyOrder from './Components/Screens/MyOrder';
 import PrivacyPolicy from './Components/Screens/PrivacyPolicy';
 
 const routes = [
@@ -36,6 +38,20 @@ const routes = [
     path: '/aboutus',
     name: 'Home',
     element: <AboutUs />,
+    exact: true,
+    strict: false,
+  },
+  {
+    path: '/loginregister',
+    name: 'Home',
+    element: <LoginRegister/>,
+    exact: true,
+    strict: false,
+  },
+  {
+    path: '/myorder',
+    name: 'Home',
+    element: <MyOrder/>,
     exact: true,
     strict: false,
   },

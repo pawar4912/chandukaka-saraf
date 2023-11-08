@@ -185,6 +185,9 @@ function Header() {
                           <li>
                             <Link to="gifting">Gifting</Link>
                           </li>
+                          <li>
+                          <Link to="/loginregister">Login/Register</Link>
+                        </li>
                         </div>
                       </ul>
                     </nav>

@@ -1,0 +1,220 @@
+import { styled } from "@mui/material/styles";
+import {Drawer,List,ListItem,ListItemIcon,ListItemText,Divider} from "@mui/material";
+import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
+import ContactsOutlinedIcon from '@mui/icons-material/ContactsOutlined';
+import BungalowOutlinedIcon from '@mui/icons-material/BungalowOutlined';
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
+import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
+import CallMadeOutlinedIcon from '@mui/icons-material/CallMadeOutlined';
+
+{
+  /* table  */
+}
+import {Table,TableBody,TableCell,TableContainer,TableRow,Paper} from "@mui/material";
+import web from "../../images/Group265.png";
+
+const drawerWidth = 240;
+
+const StyledDrawer = styled(Drawer)(({ theme }) => ({
+  width: drawerWidth,
+  flexShrink: 0,
+  "& .MuiDrawer-paper": {
+    width: drawerWidth,
+    boxSizing: "border-box",
+  },
+}));
+
+{
+  /* table  */
+}
+function createData(name, names, data, quantity, Rs) {
+  return { name, names, data, quantity, Rs };
+}
+const rows = [
+  createData(web, "Ganesh Siliver Coin", "24KT | 1GM", "2", "70"),
+  createData(web, "Ganesh Siliver Coin", "24KT | 1GM", "2", "70"),
+];
+function createData1(name, names, data, quantity, Rs) {
+  return { name, names, data, quantity, Rs };
+}
+const rows1 = [
+  createData1(web, "Ganesh Siliver Coin", "24KT | 1GM", "2", "70"),
+];
+
+export default function MyOrder() {
+  return (
+    <div className="d-flex">
+    {/* sidebar*/}
+      <div style={{backgroundColor:'white'}}>
+        <StyledDrawer variant="permanent" anchor="left" >
+          <List >
+          <ListItem className="p-4">
+          <ListItemIcon>
+          <img style={{'borderRadius':'50%'}} width={50} height={50} src={web} />
+          </ListItemIcon>
+         <p><b>Hi Smita</b><br></br>
+         <small>+91 9480000032</small>
+         </p>
+        </ListItem>
+        <Divider className='mt-2' />
+            <ListItem>
+              <ListItemIcon>
+                <LocalMallOutlinedIcon />
+              </ListItemIcon>
+              <ListItemText primary="MY ORDERS" />
+            </ListItem>
+            <Divider className='mt-2' />
+            <ListItem>
+              <ListItemIcon>
+                <ContactsOutlinedIcon />
+              </ListItemIcon>
+              <ListItemText primary="PERSONAL DETAILS" />
+            </ListItem>
+            <Divider className='mt-2' />
+            <ListItem>
+              <ListItemIcon>
+                <BungalowOutlinedIcon />
+              </ListItemIcon>
+              <ListItemText primary="ADDREAS BOOK" />
+            </ListItem>
+            <Divider className='mt-2' />
+            <ListItem>
+              <ListItemIcon>
+                <FavoriteBorderOutlinedIcon />
+              </ListItemIcon>
+              <ListItemText primary="WISHLIST" />
+              <ListItemIcon>
+              <CallMadeOutlinedIcon  className="ms-4"  />
+            </ListItemIcon>
+            </ListItem>
+            <Divider className='mt-2' />
+            <ListItem>
+              <ListItemIcon>
+                <HelpOutlineOutlinedIcon />
+              </ListItemIcon>
+              <ListItemText primary="SUPPORT" />
+              <ListItemIcon>
+              <CallMadeOutlinedIcon className="ms-4" />
+            </ListItemIcon>
+            </ListItem>
+            <Divider className='mt-2' />
+            <ListItem>
+              <ListItemIcon>
+              </ListItemIcon>
+              </ListItem>
+            <Divider className='mt-5' />
+            <ListItem>
+            <ListItemIcon>
+              <ExitToAppOutlinedIcon />
+            </ListItemIcon>
+            <ListItemText primary="SUPPORT" />
+          </ListItem>
+          <Divider className='mt-2' />
+          </List>
+        </StyledDrawer>
+      </div>
+      {/* order page*/}
+      <div className="container p-3">
+        <h5>MY ORDERS</h5>
+        <div className="container p-4">
+          <div className="d-flex p-3" style={{ backgroundColor: "rgb(254 251 255)" }}>
+            <div className="col-lg-6">
+              <p>
+                <b>Order Id :#352268 </b>
+                <br></br>
+                <small>
+                  Place on 27 oct 2023 <b>Total cost ₹ :140 </b>
+                </small>
+              </p>
+            </div>
+            <div className="col-lg-6 text-end">
+              <div>
+                <button className="btn btm-sm btn-light">SHIPEED</button>
+                <br></br>
+                <small>Expected delivered on 30th oct 2023</small>
+              </div>
+            </div>
+          </div>
+
+          <TableContainer component={Paper}>
+            <Table sx={{ minWidth: 650 }} aria-label="caption table">
+              <TableBody>
+                {rows.map((row) => (
+                  <TableRow key={row.name}>
+                    <TableCell component="th" scope="row">
+                      <div className="d-flex">
+                        <div>
+                          <img width={60} height={60} src={web} />
+                        </div>
+                        <div className="ms-3">
+                          <div>
+                            <b> {row.names}</b>
+                          </div>
+                          <div>{row.data}</div>
+                          <div>Quantity: {row.quantity}</div>
+                        </div>
+                      </div>
+                    </TableCell>
+                    <TableCell component="th" scope="row">
+                      ₹ {row.Rs}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </div>
+
+        <div className="container p-4">
+          <div className="d-flex p-3" style={{ backgroundColor: "rgb(254 251 255)" }}>
+            <div className="col-lg-6">
+              <p>
+                <b>Order Id :#352268 </b>
+                <br></br>
+                <small>
+                  Place on 27 oct 2023 <b>Total cost ₹ :140 </b>
+                </small>
+              </p>
+            </div>
+            <div className="col-lg-6 text-end">
+              <div>
+                <button className="btn btm-sm btn-light">DELIVERD</button>
+                <br></br>
+                <small>Deliverd on 5th Aug 2023</small>
+              </div>
+            </div>
+          </div>
+
+          <TableContainer component={Paper}>
+            <Table sx={{ minWidth: 650 }} aria-label="caption table">
+              <TableBody>
+                {rows1.map((row) => (
+                  <TableRow key={row.name}>
+                    <TableCell component="th" scope="row">
+                      <div className="d-flex">
+                        <div>
+                          <img width={60} height={60} src={web} />
+                        </div>
+                        <div className="ms-3">
+                          <div>
+                            <b> {row.names}</b>
+                          </div>
+                          <div>{row.data}</div>
+                          <div>Quantity: {row.quantity}</div>
+                        </div>
+                      </div>
+                    </TableCell>
+                    <TableCell component="th" scope="row">
+                      ₹ {row.Rs}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </div>
+      </div>
+    </div>
+  );
+}
