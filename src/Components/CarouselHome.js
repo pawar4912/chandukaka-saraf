@@ -33,10 +33,10 @@ function CarouselHome() {
     <div className="slider-container">
       <div className="service-slider">
         <Carousel
-          autoPlay={false}
+          autoPlay={true}
           animation="slide"
           duration={2300}
-          swipe="true"
+          swipe={true}
           className="service-slide active"
           indicatorIconButtonProps={{
             style: {
