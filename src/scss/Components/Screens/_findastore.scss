@@ -67,3 +67,17 @@
 .find-store-google-map-container{
     padding-right: 10px;
 }
+@media (max-width: 767px) {
+    .all-store-container{
+        padding: 25px !important;
+    }
+    .find-store-google-map-container{
+        padding: 25px !important;
+        img{
+            height: auto !important;
+        }
+    }
+    .store-locations-acordion{
+        height: 100% !important;
+    }
+}
