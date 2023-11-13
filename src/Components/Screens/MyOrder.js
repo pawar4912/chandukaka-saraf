@@ -1,26 +1,14 @@
 import { styled } from "@mui/material/styles";
-import {Drawer,List,ListItem,ListItemIcon,ListItemText,Divider} from "@mui/material";
-import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
-import ContactsOutlinedIcon from '@mui/icons-material/ContactsOutlined';
-import BungalowOutlinedIcon from '@mui/icons-material/BungalowOutlined';
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
-import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
-import CallMadeOutlinedIcon from '@mui/icons-material/CallMadeOutlined';
-
-{
-  /* table  */
-}
-import {Table,TableBody,TableCell,TableContainer,TableRow,Paper} from "@mui/material";
+import { Drawer } from "@mui/material";
+import { Table, TableBody, TableCell, TableContainer, TableRow, Paper } from "@mui/material";
 import web from "../../images/Group265.png";
-
-const drawerWidth = 240;
+import Sidebar from "../Common/Sidebar";
 
 const StyledDrawer = styled(Drawer)(({ theme }) => ({
-  width: drawerWidth,
+  width: '100%',
   flexShrink: 0,
   "& .MuiDrawer-paper": {
-    width: drawerWidth,
+    width: '100%',
     boxSizing: "border-box",
   },
 }));
@@ -45,75 +33,7 @@ const rows1 = [
 export default function MyOrder() {
   return (
     <div className="d-flex">
-    {/* sidebar*/}
-      <div style={{backgroundColor:'white'}}>
-        <StyledDrawer variant="permanent" anchor="left" >
-          <List >
-          <ListItem className="p-4">
-          <ListItemIcon>
-          <img style={{'borderRadius':'50%'}} width={50} height={50} src={web} />
-          </ListItemIcon>
-         <p><b>Hi Smita</b><br></br>
-         <small>+91 9480000032</small>
-         </p>
-        </ListItem>
-        <Divider className='mt-2' />
-            <ListItem>
-              <ListItemIcon>
-                <LocalMallOutlinedIcon />
-              </ListItemIcon>
-              <ListItemText primary="MY ORDERS" />
-            </ListItem>
-            <Divider className='mt-2' />
-            <ListItem>
-              <ListItemIcon>
-                <ContactsOutlinedIcon />
-              </ListItemIcon>
-              <ListItemText primary="PERSONAL DETAILS" />
-            </ListItem>
-            <Divider className='mt-2' />
-            <ListItem>
-              <ListItemIcon>
-                <BungalowOutlinedIcon />
-              </ListItemIcon>
-              <ListItemText primary="ADDREAS BOOK" />
-            </ListItem>
-            <Divider className='mt-2' />
-            <ListItem>
-              <ListItemIcon>
-                <FavoriteBorderOutlinedIcon />
-              </ListItemIcon>
-              <ListItemText primary="WISHLIST" />
-              <ListItemIcon>
-              <CallMadeOutlinedIcon  className="ms-4"  />
-            </ListItemIcon>
-            </ListItem>
-            <Divider className='mt-2' />
-            <ListItem>
-              <ListItemIcon>
-                <HelpOutlineOutlinedIcon />
-              </ListItemIcon>
-              <ListItemText primary="SUPPORT" />
-              <ListItemIcon>
-              <CallMadeOutlinedIcon className="ms-4" />
-            </ListItemIcon>
-            </ListItem>
-            <Divider className='mt-2' />
-            <ListItem>
-              <ListItemIcon>
-              </ListItemIcon>
-              </ListItem>
-            <Divider className='mt-5' />
-            <ListItem>
-            <ListItemIcon>
-              <ExitToAppOutlinedIcon />
-            </ListItemIcon>
-            <ListItemText primary="SUPPORT" />
-          </ListItem>
-          <Divider className='mt-2' />
-          </List>
-        </StyledDrawer>
-      </div>
+      <Sidebar />
       {/* order page*/}
       <div className="container p-3">
         <h5>MY ORDERS</h5>
