@@ -11,6 +11,11 @@
 @import "./Components/imagesliderhome";
 @import "./Components//imageslidercardhome";
 @import "./Components//Screens/contactus";
+@import "./Components//faqs.scss";
+@import "./Components/Screens/_aboutus";
+@import "./Components/Screens/productdashboard";
+@import "./Components/productbreadcrumb";
+
 @import "./Components/faqs.scss";
 @import "./Components/Screens/privacypolicy";
 @import "./Components/Screens/aboutus";
@@ -19,6 +24,7 @@
 //common component
 
 @import "./Components/common/sidebar";
+@import "./Components//productcard";
 
 .main-container{
     background-color: #F8F6F0 ;

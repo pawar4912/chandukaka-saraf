@@ -3,6 +3,7 @@ import ContactUs from './Components/Screens/ContactUs';
 import Home from './Components/Screens/Home';
 import LoginRegister from './Components/Screens/LoginRegister';
 import MyOrder from './Components/Screens/MyOrder';
+import ProductDashBoard from './Components/Screens/ProductDashBoard';
 import PrivacyPolicy from './Components/Screens/PrivacyPolicy';
 
 const routes = [
@@ -52,6 +53,13 @@ const routes = [
     path: '/myorder',
     name: 'Home',
     element: <MyOrder/>,
+    exact: true,
+    strict: false,
+  },
+  {
+    path: '/product-dashboard',
+    name: 'Home',
+    element: <ProductDashBoard />,
     exact: true,
     strict: false,
   },
