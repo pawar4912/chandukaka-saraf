@@ -3,6 +3,7 @@ import ContactUs from './Components/Screens/ContactUs';
 import Home from './Components/Screens/Home';
 import ProductDashBoard from './Components/Screens/ProductDashBoard';
 import PrivacyPolicy from './Components/Screens/PrivacyPolicy';
+import ProductDetails from './Components/Screens/ProductDetails';
 
 const routes = [
   {
@@ -44,6 +45,13 @@ const routes = [
     path: '/product-dashboard',
     name: 'Home',
     element: <ProductDashBoard />,
+    exact: true,
+    strict: false,
+  },
+  {
+    path: '/product-details',
+    name: 'Home',
+    element: <ProductDetails />,
     exact: true,
     strict: false,
   },

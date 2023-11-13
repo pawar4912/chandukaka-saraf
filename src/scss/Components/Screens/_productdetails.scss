@@ -1,0 +1,135 @@
+.breadcrumb-container-product-details {
+    .breadcrumb-element {
+        color: #666666 !important;
+    }
+
+    .MuiBreadcrumbs-separator {
+        color: #666666 !important;
+    }
+}
+
+.image-container-product-details {
+    width: 95%;
+    overflow-y: scroll;
+    height: 25%;
+    overflow-x: hidden;
+}
+
+.image-container-product-details::-webkit-scrollbar {
+    display: none;
+}
+
+.desktop-product-details-image {
+    width: 100%;
+    padding-bottom: 5px;
+    height: 80%;
+}
+
+.product-details-header {
+    text-align: left;
+    font: normal normal 600 32px/43px Playfair Display;
+    letter-spacing: 0.48px;
+    color: #333333;
+    opacity: 1;
+}
+
+.product-details-text-header {
+    display: flex;
+    align-items: center;
+    padding-right: 30px;
+}
+
+.product-details-header {
+    .product-list-page-heart-icon-button {
+        margin: 0;
+        min-width: 40px;
+    }
+}
+
+.product-description-details-rating {
+    .MuiRating-label {
+        color: #000000;
+    }
+}
+
+.divider-product-details-reviews {
+    padding-bottom: 10px;
+    padding-top: 10px;
+    width: auto !important;
+    border-color: black !important;
+    // border-left: 1px solid !important;
+    margin-left: 5px !important;
+    margin-right: 5px !important;
+}
+
+.product-details-write-review-button {
+    text-align: left;
+    text-decoration: underline !important;
+    font: normal normal bold 10px/12px Lato;
+    letter-spacing: 1.5px;
+    color: #916F25 !important;
+    text-transform: uppercase;
+    opacity: 1;
+}
+
+.product-details-write-review-button:hover {
+    border: none !important;
+    background: transparent !important;
+}
+
+.product-details-product-quality-details {
+    padding-top: 20px !important;
+}
+
+.product-details-price {
+    text-align: left;
+    font: normal normal 900 26px/32px Lato;
+    letter-spacing: 0px;
+    color: #333333;
+    text-transform: uppercase;
+    opacity: 1;
+}
+
+.divider-product-details-description {
+    margin: 0;
+    border: 1px solid #D6D6D6;
+    opacity: 1;
+    padding-top: 25px;
+}
+
+.product-details-check-availability-title {
+    text-align: left;
+    font: normal normal 600 14px/17px Lato;
+    letter-spacing: 0px;
+    color: #333333;
+    opacity: 1;
+    padding-bottom: 10px;
+}
+
+.product-details-pincode-text-field {
+    border-radius: 0 !important;
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        margin: 0;
+    }
+    div{
+        border-radius: 0 !important;
+
+    }
+}
+
+.product-details-check-princode-button {
+    text-align: left;
+    font: normal normal medium 12px/15px Lato !important;
+    letter-spacing: 1.8px;
+    color: #000000 !important;
+    text-transform: uppercase !important;
+    opacity: 1;
+    border: 1px solid #916F25 !important;
+    height: 57px;
+    border-radius: 0 !important;
+    padding: 20px !important;
+}
