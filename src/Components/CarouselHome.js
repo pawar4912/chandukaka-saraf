@@ -36,6 +36,7 @@ function CarouselHome() {
           autoPlay={false}
           animation="slide"
           duration={2300}
+          interval={null}
           swipe={true}
           className="service-slide active"
           indicatorIconButtonProps={{
