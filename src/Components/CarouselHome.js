@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Carousel from 'react-material-ui-carousel';
 import { Paper } from '@mui/material';
 import rightArrowIcon from '../images/icons/right-arrow.svg';
@@ -28,16 +28,21 @@ const items = [
 ];
 
 function CarouselHome() {
+	const [firstImgLoaded, setFirstImgLoaded] = useState(false);
   const windoDimensions = useWindowWidthAndHeight();
   return (
     <div className="slider-container">
       <div className="service-slider">
+      <img
+		    src={img1}
+		    onLoad={() => setFirstImgLoaded(true)}
+		    style={{ display: "none" }}
+		  />
+      {firstImgLoaded && (
         <Carousel
-          autoPlay={false}
           animation="slide"
           duration={2300}
           interval={null}
-          swipe={true}
           className="service-slide active"
           indicatorIconButtonProps={{
             style: {
@@ -71,6 +76,7 @@ function CarouselHome() {
             ))
           }
         </Carousel>
+		  )}
       </div>
     </div>
   );
