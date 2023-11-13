@@ -35,11 +35,11 @@ export default function MyOrder() {
     <div className="d-flex">
       <Sidebar />
       {/* order page*/}
-      <div className="container p-3">
+      <div className="p-3 myorder-container">
         <h5>MY ORDERS</h5>
-        <div className="container p-4">
+        <div className="p-4">
           <div className="d-flex p-3" style={{ backgroundColor: "rgb(254 251 255)" }}>
-            <div className="col-lg-6">
+            <div className="col-6">
               <p>
                 <b>Order Id :#352268 </b>
                 <br></br>
@@ -48,17 +48,17 @@ export default function MyOrder() {
                 </small>
               </p>
             </div>
-            <div className="col-lg-6 text-end">
+            <div className="col-6 text-end">
               <div>
-                <button className="btn btm-sm btn-light">SHIPEED</button>
+                <button className="status-btn">SHIPEED</button>
                 <br></br>
-                <small>Expected delivered on 30th oct 2023</small>
+                <small className="delivery-desc">Expected delivered on 30th oct 2023</small>
               </div>
             </div>
           </div>
 
           <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 650 }} aria-label="caption table">
+            <Table className="table-wrapper" aria-label="caption table">
               <TableBody>
                 {rows.map((row) => (
                   <TableRow key={row.name}>
@@ -86,9 +86,9 @@ export default function MyOrder() {
           </TableContainer>
         </div>
 
-        <div className="container p-4">
+        <div className="p-4">
           <div className="d-flex p-3" style={{ backgroundColor: "rgb(254 251 255)" }}>
-            <div className="col-lg-6">
+            <div className="col-6">
               <p>
                 <b>Order Id :#352268 </b>
                 <br></br>
@@ -97,17 +97,17 @@ export default function MyOrder() {
                 </small>
               </p>
             </div>
-            <div className="col-lg-6 text-end">
+            <div className="col-6 text-end">
               <div>
-                <button className="btn btm-sm btn-light">DELIVERD</button>
+                <button className="status-btn">DELIVERD</button>
                 <br></br>
-                <small>Deliverd on 5th Aug 2023</small>
+                <small  className="delivery-desc">Deliverd on 5th Aug 2023</small>
               </div>
             </div>
           </div>
 
           <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 650 }} aria-label="caption table">
+            <Table  className="table-wrapper" aria-label="caption table">
               <TableBody>
                 {rows1.map((row) => (
                   <TableRow key={row.name}>

@@ -21,7 +21,7 @@ export default function Sidebar() {
   return (
     <>
       <div className="sidebar">
-        <div className=" d-none d-md-block">
+        <div className="d-none d-md-block">
           <ul className="menu-wrapper">
             <li className="w-100 d-flex profile-wrapper">
               <img className="profile-img" src={web} />
@@ -94,81 +94,83 @@ export default function Sidebar() {
             </li>
           </ul>
         </div>
-        <SwipeableDrawer className="mobile-drawer" open={isOpen} onOpen={openDrawer} onClose={closeDrawer} swipeAreaWidth={100}>
-          <ul className="menu-wrapper">
-            <li className="w-100 d-flex profile-wrapper">
-              <div className="profile-section w-100 d-flex">
-                <img className="profile-img" src={web} />
-                <div className="profile-info">
-                  <b className="name">Hi Smita</b>
-                  <small>+91 9480000032</small>
+        <div className=" d-md-none d-lg-none">
+          <SwipeableDrawer className="mobile-drawer" open={isOpen} onOpen={openDrawer} onClose={closeDrawer} swipeAreaWidth={100}>
+            <ul className="menu-wrapper">
+              <li className="w-100 d-flex profile-wrapper">
+                <div className="profile-section w-100 d-flex">
+                  <img className="profile-img" src={web} />
+                  <div className="profile-info">
+                    <b className="name">Hi Smita</b>
+                    <small>+91 9480000032</small>
+                  </div>
                 </div>
+              </li>
+              <div className="sidebar-menu">
+                <li className="w-100">
+                  <a href="#" className="menu-link">
+                    <img
+                      src={orderIcon}
+                      alt="Logo"
+                      className="image"
+                    />
+                    MY ORDERS
+                  </a>
+                </li>
+                <li className="w-100">
+                  <a href="#" className="menu-link">
+                    <img
+                      src={personalDetailsIcon}
+                      alt="Logo"
+                      className="image"
+                    />
+                    PERSONAL DETAILS
+                  </a>
+                </li>
+                <li className="w-100">
+                  <a href="#" className="menu-link">
+                    <img
+                      src={addressBookIcon}
+                      alt="Logo"
+                      className="image"
+                    />
+                    ADDRESS BOOK
+                  </a>
+                </li>
+                <li className="w-100">
+                  <a href="#" className="menu-link">
+                    <img
+                      src={heartIcon}
+                      alt="Logo"
+                      className="image"
+                    />
+                    WISHLIST
+                  </a>
+                </li>
+                <li className="w-100">
+                  <a href="#" className="menu-link">
+                    <img
+                      src={helpIcon}
+                      alt="Logo"
+                      className="image"
+                    />
+                    SUPPORT
+                  </a>
+                </li>
               </div>
-            </li>
-            <div className="sidebar-menu">
-              <li className="w-100">
+              <li className="w-100 sign-out">
                 <a href="#" className="menu-link">
                   <img
-                    src={orderIcon}
+                    src={logoutIcon}
                     alt="Logo"
                     className="image"
                   />
-                  MY ORDERS
+                  SIGN OUT
                 </a>
               </li>
-              <li className="w-100">
-                <a href="#" className="menu-link">
-                  <img
-                    src={personalDetailsIcon}
-                    alt="Logo"
-                    className="image"
-                  />
-                  PERSONAL DETAILS
-                </a>
-              </li>
-              <li className="w-100">
-                <a href="#" className="menu-link">
-                  <img
-                    src={addressBookIcon}
-                    alt="Logo"
-                    className="image"
-                  />
-                  ADDRESS BOOK
-                </a>
-              </li>
-              <li className="w-100">
-                <a href="#" className="menu-link">
-                  <img
-                    src={heartIcon}
-                    alt="Logo"
-                    className="image"
-                  />
-                  WISHLIST
-                </a>
-              </li>
-              <li className="w-100">
-                <a href="#" className="menu-link">
-                  <img
-                    src={helpIcon}
-                    alt="Logo"
-                    className="image"
-                  />
-                  SUPPORT
-                </a>
-              </li>
-            </div>
-            <li className="w-100 sign-out">
-              <a href="#" className="menu-link">
-                <img
-                  src={logoutIcon}
-                  alt="Logo"
-                  className="image"
-                />
-                SIGN OUT
-              </a>
-            </li>
-          </ul>
-        </SwipeableDrawer>
+            </ul>
+          </SwipeableDrawer>
+        </div>
       </div>
     </>
   )
