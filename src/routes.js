@@ -1,4 +1,5 @@
 import AboutUs from './Components/Screens/AboutUs';
+import BlogNews from './Components/Screens/BlogNews';
 import ContactUs from './Components/Screens/ContactUs';
 import Home from './Components/Screens/Home';
 import PrivacyPolicy from './Components/Screens/PrivacyPolicy';
@@ -36,6 +37,13 @@ const routes = [
     path: '/aboutus',
     name: 'Home',
     element: <AboutUs />,
+    exact: true,
+    strict: false,
+  },
+  {
+    path: '/blognews',
+    name: 'Home',
+    element: <BlogNews />,
     exact: true,
     strict: false,
   },
