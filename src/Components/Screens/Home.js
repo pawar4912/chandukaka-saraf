@@ -13,6 +13,7 @@ import CardImageLarge from '../../images/MaskGroup24.png';
 import CardImageNoPadding from '../../images/MaskGroup18.png';
 import useWindowWidthAndHeight from '../../utilities/CustomHooks';
 import rightArrowIcon from '../../images/icons/right-arrow.svg';
+import Testimonial from '../Testimonial';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -167,6 +168,7 @@ function Home() {
           </Grid>
         </Grid>
       </Box>
+      <Testimonial />
     </div>
   );
 }

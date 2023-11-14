@@ -76,10 +76,10 @@ function Header() {
                             <ul className="w-100">
                               <div className="quick-link-items">
                                 <li>
-                                  <text>GOLD - ₹5,767</text>
+                                  <small>GOLD - ₹5,767</small>
                                 </li>
                                 <li>
-                                  <text>SILVER - ₹5,767</text>
+                                  <small>SILVER - ₹5,767</small>
                                 </li>
                                 <li>
                                   <a href="/">FIND A STORE</a>
