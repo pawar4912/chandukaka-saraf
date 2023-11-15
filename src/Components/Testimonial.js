@@ -24,7 +24,7 @@ const TestimonialComponent = ({ item }) => {
         </div>
         <div className="name-wrapper">
           <hr />
-          <small className="client-name">Smita Jain {item}</small>
+          <small className="client-name">Smita Jain </small>
         </div>
       </div>
     </div>
@@ -33,9 +33,8 @@ const TestimonialComponent = ({ item }) => {
 
 export default function Testimonial() {
   const {
-    scrollRef, next, prev,
+    scrollRef, next, prev, pages, activePageIndex, goTo
   } = useSnapCarousel();
-  const array = [1, 2, 3, 4, 5, 6, 7];
   const windoDimensions = useWindowWidthAndHeight();
 
   return (
@@ -76,10 +75,19 @@ export default function Testimonial() {
         className={`testimonial-slider-component`}
         ref={scrollRef}
       >
-        {Array.from({ length: 18 }).map((_, i) => (
+        {Array.from({ length: 4 }).map((_, i) => (
           <TestimonialComponent key={i} item={i} />
         ))}
       </ul>
+      {windoDimensions[0] <768  && <ol style={{ display: 'flex', justifyContent: "center", paddingLeft: "0", marginTop: 24, marginBottom: 0 }}>
+        {pages.map((_, i) => (
+            <button key={i} className='image-scroll-navigation'
+              style={i === activePageIndex ? { opacity: 0.5 } : {}}
+              onClick={() => goTo(i)}
+            >
+            </button>
+        ))}
+      </ol>}
     </div>
   )
 }
