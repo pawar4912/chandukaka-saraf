@@ -27,17 +27,23 @@ const items = [
 ];
 
 function CarouselHome() {
-	const [firstImgLoaded, setFirstImgLoaded] = useState(false);
+	const [firstDesktopLoaded, setDesktopImgLoaded] = useState(false);
+  const [firstMobileLoaded, setMobileImgLoaded] = useState(false);
   const windoDimensions = useWindowWidthAndHeight();
   return (
     <div className="slider-container">
       <div className="service-slider">
       <img
 		    src={img1}
-		    onLoad={() => setFirstImgLoaded(true)}
+		    onLoad={() => setDesktopImgLoaded(true)}
 		    style={{ display: "none" }}
 		  />
-      {firstImgLoaded && (
+      <img
+		    src={imageMobileView}
+		    onLoad={() => setMobileImgLoaded(true)}
+		    style={{ display: "none" }}
+		  />
+      {firstDesktopLoaded && firstMobileLoaded && (
         <Carousel
           animation="slide"
           duration={2300}
