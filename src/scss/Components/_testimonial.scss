@@ -24,10 +24,10 @@
         position: relative;
         min-width: 100%;
         height: 75vh;
+        padding-left: 16%;
 
         .client-img {
             width: 700px;
-            margin-left: 16%;
         }
 
         .feedback-wrapper {
@@ -36,7 +36,7 @@
             background: #FFFFFF 0% 0% no-repeat padding-box;
             border: 3px solid #EFEFEF;
             position: absolute;
-            right: 20%;
+            left: 704px;
             top: 182px;
 
             .name-wrapper {
