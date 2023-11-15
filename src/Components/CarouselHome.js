@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import Carousel from 'react-material-ui-carousel';
 import { Paper } from '@mui/material';
 import rightArrowIcon from '../images/icons/right-arrow.svg';
-import imageDesktopView from '../images/Group265.png';
 import imageMobileView from '../images/mobile-view-corousel.png';
 import useWindowWidthAndHeight from '../utilities/CustomHooks';
 import img1 from '../images/banners/desktop/1.jpg';
