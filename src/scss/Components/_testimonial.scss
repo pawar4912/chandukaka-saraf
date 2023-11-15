@@ -77,11 +77,12 @@
 @media (max-width: 768px) {
     .testimonial-section {
         background-image: url('../../images/testimonial1.png');
+        padding-bottom: 44px;
 
         .testimonial-wrapper {
             position: relative;
             min-width: 100%;
-            height: 100vh;
+            height: auto;
             margin: 0 20px;
 
             .client-img {
@@ -94,7 +95,7 @@
                 padding: 37px;
                 background: #FFFFFF 0% 0% no-repeat padding-box;
                 border: 3px solid #EFEFEF;
-                position: absolute;
+                position: unset;
                 right: 0;
 
                 p {
