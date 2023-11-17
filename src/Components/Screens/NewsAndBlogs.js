@@ -54,7 +54,7 @@ const data = [
   },
   // Add more data as needed
 ];
-const BlogNews = () => {
+const NewsAndBlogs = () => {
   const [page1, setPage1] = React.useState(1);
   const handleChange1 = (event, value) => {
     setPage1(value);
@@ -230,4 +230,4 @@ const BlogNews = () => {
   );
 };
 
-export default BlogNews;
+export default NewsAndBlogs;
