@@ -44,7 +44,7 @@ function Footer() {
                       <a href="/aboutus" className="btn btn-link">
                         About us
                       </a>
-                      <a href="/" className="btn btn-link">
+                      <a href="/news-&-blog" className="btn btn-link">
                         News & Blogs
                       </a>
                       <a href="/contact-us" className="btn btn-link">
@@ -55,15 +55,15 @@ function Footer() {
                       </a>
                     </div>
                     <div className="col-lg-6">
-                      <a href="/" className="btn btn-link">
+                      <a href="/privacy-policy" className="btn btn-link">
                         Privacy Policy
                       </a>
                       <a href="/terms-&-conditions" className="btn btn-link">
                         Terms & Condition
                       </a>
-                      <a href="/" className="btn btn-link">
+                      {/* <a href="/" className="btn btn-link">
                         Shipping Policy
-                      </a>
+                      </a> */}
                       <a href="/CSR-Policy" className="btn btn-link">
                         CSR Policy
                       </a>

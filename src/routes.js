@@ -1,10 +1,11 @@
 import AboutUs from './Components/Screens/AboutUs';
-import BlogNews from './Components/Screens/BlogNews';
+import NewsAndBlogs from './Components/Screens/NewsAndBlogs';
 import ContactUs from './Components/Screens/ContactUs';
 import Home from './Components/Screens/Home';
 import ProductDashBoard from './Components/Screens/ProductDashBoard';
 import TermsAndCondition from './Components/Screens/TermsAndCondition';
 import CRSPolicy from './Components/Screens/CRSPolicy';
+import PrivacyPolicy from './Components/Screens/PrivacyPolicy';
 
 const routes = [
   {
@@ -23,36 +24,43 @@ const routes = [
   },
   {
     path: '/contact-us',
-    name: 'Home',
+    name: 'ContactUs',
     element: <ContactUs />,
     exact: true,
     strict: false,
   },
   {
     path: '/terms-&-conditions',
-    name: 'Home',
+    name: 'TermsAndCondition',
     element: <TermsAndCondition />,
     exact: true,
     strict: false,
   },
   {
     path: '/CSR-Policy',
-    name: 'Home',
+    name: 'CRSPolicy',
     element: <CRSPolicy />,
     exact: true,
     strict: false,
   },
   {
+    path: '/privacy-policy',
+    name: 'PrivacyPolicy',
+    element: <PrivacyPolicy />,
+    exact: true,
+    strict: false,
+  },
+  {
     path: '/aboutus',
-    name: 'Home',
+    name: 'AboutUs',
     element: <AboutUs />,
     exact: true,
     strict: false,
   },
   {
-    path: '/blognews',
-    name: 'Home',
-    element: <BlogNews />,
+    path: '/news-&-blog',
+    name: 'NewsAndBlogs',
+    element: <NewsAndBlogs />,
     exact: true,
     strict: false,
   },
