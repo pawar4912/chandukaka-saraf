@@ -174,7 +174,7 @@ function Header() {
                             <Link to="jwellery">Jwellery</Link>
                           </li>
                           <li>
-                            <Link to="about-us">About us</Link>
+                            <Link to="aboutus">About us</Link>
                           </li>
                           <li>
                             <Link to="bullion">Bullion</Link>

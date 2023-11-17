@@ -18,6 +18,12 @@ import prod1 from '../../images/products/1.jpg';
 import prod2 from '../../images/products/2.jpg';
 import prod3 from '../../images/products/3.jpg';
 import prod4 from '../../images/products/4.jpg';
+import catImg1 from '../../images/categories/bangles.jpg'
+import catImg2 from '../../images/categories/dimoand_neckless.jpg'
+import catImg3 from '../../images/categories/earrings.jpg'
+import catImg4 from '../../images/categories/earrings_2.jpg'
+import catImg5 from '../../images/categories/neckless_1.jpg'
+import catImg6 from '../../images/categories/neckless_2.jpg'
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -29,6 +35,7 @@ const Item = styled(Paper)(({ theme }) => ({
 const prodImages = [prod1, prod2, prod3, prod4]; 
 const offerImages = [CardImageLarge, CardImageLarge, CardImageLarge, CardImageLarge];
 const shineImages = [CardImageNoPadding, CardImageNoPadding, CardImageNoPadding, CardImageNoPadding];
+const catImgs = [catImg1, catImg2, catImg3, catImg4, catImg5, catImg6];
 
 function Home() {
   const windoDimensions = useWindowWidthAndHeight();
@@ -128,7 +135,7 @@ function Home() {
             </div>
           </Grid>
           <Grid item xs={12} md={12} className="p-0">
-            <ImageSliderHome width={450} height={600} CardImage={CardImageNoPadding} padding={0} CardImageType={"Discover"} imagesArray={shineImages} />
+            <ImageSliderHome width={450} height={600} CardImage={CardImageNoPadding} padding={0} CardImageType={"Discover"} imagesArray={catImgs} />
           </Grid>
         </Grid>
       </Box>
