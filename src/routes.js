@@ -3,7 +3,8 @@ import BlogNews from './Components/Screens/BlogNews';
 import ContactUs from './Components/Screens/ContactUs';
 import Home from './Components/Screens/Home';
 import ProductDashBoard from './Components/Screens/ProductDashBoard';
-import PrivacyPolicy from './Components/Screens/PrivacyPolicy';
+import TermsAndCondition from './Components/Screens/TermsAndCondition';
+import CRSPolicy from './Components/Screens/CRSPolicy';
 
 const routes = [
   {
@@ -28,9 +29,16 @@ const routes = [
     strict: false,
   },
   {
-    path: '/privacy-policy',
+    path: '/terms-&-conditions',
     name: 'Home',
-    element: <PrivacyPolicy />,
+    element: <TermsAndCondition />,
+    exact: true,
+    strict: false,
+  },
+  {
+    path: '/CSR-Policy',
+    name: 'Home',
+    element: <CRSPolicy />,
     exact: true,
     strict: false,
   },

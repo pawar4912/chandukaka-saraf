@@ -1,7 +1,7 @@
 import { Box, Divider, Grid, List, ListItem } from '@mui/material'
 import React from 'react'
 
-export default function PrivacyPolicy() {
+export default function TermsAndCondition() {
     return (
         <div className='about-us'>
             <Box className="privacy-policy-container" sx={{ flexGrow: 1 }}>
