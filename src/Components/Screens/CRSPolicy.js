@@ -429,7 +429,7 @@ annual report on CSR containing the particulars prescribed
 by the Act or the Rules and disclose contents of the Policy
 in its report.</p>
 <p>iii. Ensure that the Policy shall be displayed on the Company’s
-website www.csjewellers.com.
+website www.csjewellerys.com.
 </p>
 <p>iv. Ensure that the CSR activities are undertaken and executed
 by the Company as per this Policy and the applicable laws.</p>
