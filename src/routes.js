@@ -2,10 +2,11 @@ import AboutUs from './Components/Screens/AboutUs';
 import NewsAndBlogs from './Components/Screens/NewsAndBlogs';
 import ContactUs from './Components/Screens/ContactUs';
 import Home from './Components/Screens/Home';
-import ProductDashBoard from './Components/Screens/ProductDashBoard';
 import TermsAndCondition from './Components/Screens/TermsAndCondition';
 import CRSPolicy from './Components/Screens/CRSPolicy';
 import PrivacyPolicy from './Components/Screens/PrivacyPolicy';
+import Bullions from './Components/Screens/Bullions';
+import Jewellerys from './Components/Screens/Jewellerys';
 
 const routes = [
   {
@@ -67,7 +68,14 @@ const routes = [
   {
     path: '/bullions',
     name: 'Home',
-    element: <ProductDashBoard />,
+    element: <Bullions />,
+    exact: true,
+    strict: false,
+  },
+  {
+    path: '/jewellerys',
+    name: 'Home',
+    element: <Jewellerys />,
     exact: true,
     strict: false,
   },

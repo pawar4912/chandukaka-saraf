@@ -160,7 +160,7 @@ const allProduct = [
         productPrice: "94"
     },
 ]
-export default function ProductDashBoard() {
+export default function Bullions() {
     const navigationData = [
         {
             text: "Home",
