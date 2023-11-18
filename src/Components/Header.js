@@ -177,11 +177,11 @@ function Header() {
                             <Link to="aboutus">About us</Link>
                           </li>
                           <li>
-                            <Link to="bullion">Bullion</Link>
+                            <Link to="bullions">Bullion</Link>
                           </li>
-                          <li>
+                          {/* <li>
                             <Link to="e-gold">E-gold</Link>
-                          </li>
+                          </li> */}
                           <li>
                             <Link to="gifting">Gifting</Link>
                           </li>

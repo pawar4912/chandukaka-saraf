@@ -65,7 +65,7 @@ const routes = [
     strict: false,
   },
   {
-    path: '/product-dashboard',
+    path: '/bullions',
     name: 'Home',
     element: <ProductDashBoard />,
     exact: true,
