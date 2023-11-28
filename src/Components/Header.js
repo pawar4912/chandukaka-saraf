@@ -185,7 +185,7 @@ function Header() {
                       <ul className="w-100">
                         <div className="menu-link-items">
                           <li>
-                            <Link to="jewelry">Jewelry</Link>
+                            <Link to="jewellerys">Jewellery</Link>
                           </li>
                           <li>
                             <Link to="aboutus">About us</Link>
@@ -196,9 +196,9 @@ function Header() {
                           {/* <li>
                             <Link to="e-gold">E-gold</Link>
                           </li> */}
-                          <li>
+                         { /* <li>
                             <Link to="gifting">Gifting</Link>
-                          </li>
+                        </li> */}
                         </div>
                       </ul>
                     </nav>
