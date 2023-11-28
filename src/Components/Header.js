@@ -7,9 +7,23 @@ import searchLogo from "../images/icons/search.svg";
 import shoppingBagLogo from "../images/icons/shopping-bag.svg";
 import menuOpen from "../images/icons/open-menu.svg";
 import closeMenu from "../images/icons/close.svg";
+import { getLiveRateForCSPL } from "../common/services/FrontApp/index.service";
 
 function Header() {
   const $ = window.jQuery;
+
+  const getData = async () => {
+    try {
+      const result = await getLiveRateForCSPL();
+      console.log(result);
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    getData();
+  }, [])
 
   useEffect(() => {
     $(".header-content .open-nav-btn").click(function (e) {
