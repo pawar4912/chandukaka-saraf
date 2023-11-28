@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../images/icons/logo.svg";
 import heartLogo from "../images/icons/heart.svg";
@@ -11,11 +11,13 @@ import { getLiveRateForCSPL } from "../common/services/FrontApp/index.service";
 
 function Header() {
   const $ = window.jQuery;
+  const [rates, setRates] = useState({Platinum: 0, Silver1: 0, Silver2: 0, gold: []})
 
   const getData = async () => {
     try {
       const result = await getLiveRateForCSPL();
-      console.log(result);
+      const {Platinum, Silver1, Silver2, ...gold} = result.data.data;
+      setRates({Platinum, Silver1, Silver2, gold });
     } catch (error) {
       console.log(error)
     }
@@ -90,10 +92,10 @@ function Header() {
                             <ul className="w-100">
                               <div className="quick-link-items">
                                 <li>
-                                  <small>GOLD - ₹5,767</small>
+                                  <small>GOLD - ₹{ rates.gold['24.00'] ? rates.gold['24.00'] : 0 }</small>
                                 </li>
                                 <li>
-                                  <small>SILVER - ₹5,767</small>
+                                  <small>SILVER - ₹{rates.Silver1}</small>
                                 </li>
                                 <li>
                                   <a href="/">FIND A STORE</a>
