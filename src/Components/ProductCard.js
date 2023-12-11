@@ -25,11 +25,6 @@ export default function ProductCard({ productImage, productNmae, isFavourite, ne
             {productPrice}
           </div>
         </CardContent>
-        <div className='product-list-page-heart-icon-container'>
-          <Button className='product-list-page-heart-icon-button' size="small" color="primary">
-            <img src={heartIcon} />
-          </Button>
-        </div>
       </CardActionArea>
     </Card>
   );

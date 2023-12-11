@@ -1,9 +1,13 @@
 import AboutUs from './Components/Screens/AboutUs';
+import NewsAndBlogs from './Components/Screens/NewsAndBlogs';
 import ContactUs from './Components/Screens/ContactUs';
 import FindAStore from './Components/Screens/FindAStore';
 import Home from './Components/Screens/Home';
-import ProductDashBoard from './Components/Screens/ProductDashBoard';
+import TermsAndCondition from './Components/Screens/TermsAndCondition';
+import CRSPolicy from './Components/Screens/CRSPolicy';
 import PrivacyPolicy from './Components/Screens/PrivacyPolicy';
+import Bullions from './Components/Screens/Bullions';
+import Jewellerys from './Components/Screens/Jewellerys';
 
 const routes = [
   {
@@ -22,29 +26,57 @@ const routes = [
   },
   {
     path: '/contact-us',
-    name: 'Home',
+    name: 'ContactUs',
     element: <ContactUs />,
     exact: true,
     strict: false,
   },
   {
+    path: '/terms-&-conditions',
+    name: 'TermsAndCondition',
+    element: <TermsAndCondition />,
+    exact: true,
+    strict: false,
+  },
+  {
+    path: '/CSR-Policy',
+    name: 'CRSPolicy',
+    element: <CRSPolicy />,
+    exact: true,
+    strict: false,
+  },
+  {
     path: '/privacy-policy',
-    name: 'Home',
+    name: 'PrivacyPolicy',
     element: <PrivacyPolicy />,
     exact: true,
     strict: false,
   },
   {
     path: '/aboutus',
-    name: 'Home',
+    name: 'AboutUs',
     element: <AboutUs />,
     exact: true,
     strict: false,
   },
   {
-    path: '/product-dashboard',
+    path: '/news-&-blog',
+    name: 'NewsAndBlogs',
+    element: <NewsAndBlogs />,
+    exact: true,
+    strict: false,
+  },
+  {
+    path: '/bullions',
     name: 'Home',
-    element: <ProductDashBoard />,
+    element: <Bullions />,
+    exact: true,
+    strict: false,
+  },
+  {
+    path: '/jewellerys',
+    name: 'Home',
+    element: <Jewellerys />,
     exact: true,
     strict: false,
   },
