@@ -9,6 +9,7 @@ import MyOrder from './Components/Screens/MyOrder';
 import TermsAndCondition from './Components/Screens/TermsAndCondition';
 import CRSPolicy from './Components/Screens/CRSPolicy';
 import PrivacyPolicy from './Components/Screens/PrivacyPolicy';
+import ProductDetails from './Components/Screens/ProductDetails';
 import Bullions from './Components/Screens/Bullions';
 import Jewellerys from './Components/Screens/Jewellerys';
 
@@ -108,6 +109,13 @@ const routes = [
     path: '/find-a-store',
     name: 'Home',
     element: <FindAStore />,
+    exact: true,
+    strict: false,
+  },
+  {
+    path: '/product-details',
+    name: 'Home',
+    element: <ProductDetails />,
     exact: true,
     strict: false,
   },
