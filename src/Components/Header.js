@@ -98,7 +98,7 @@ function Header() {
                                   <small>SILVER - ₹{rates.Silver1}</small>
                                 </li>
                                 <li>
-                                  <a href="/">FIND A STORE</a>
+                                  <a href="/find-a-store">FIND A STORE</a>
                                 </li>
                                 <li>
                                   <a href="/">SUPPORT</a>
