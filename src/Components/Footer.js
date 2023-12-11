@@ -4,8 +4,15 @@ import rightArrowIcon from '../images/icons/right-arrow.svg';
 import facebookIcon from '../images/icons/social-media/facebook.svg';
 import instagramIcon from '../images/icons/social-media/instagram.svg';
 import twitterIcon from '../images/icons/social-media/twitter.svg';
+import { useNavigate } from "react-router-dom";
+
 
 function Footer() {
+  let navigate = useNavigate(); 
+  const navigateToFindStore = () =>{ 
+    let path = `/find-a-store`; 
+    navigate(path);
+  }
   return (
     <footer>
       <div className="footer-container">
@@ -71,7 +78,7 @@ function Footer() {
                   </div>
                 </div>
                 <div className="col-xl-3 col-lg-3 col-md-4 col-sm-4 col-7 ">
-                  <button type="button" className="mt-3">
+                  <button onClick={navigateToFindStore} type="button" className="mt-3">
                     Find A Store
                   </button>
                 </div>

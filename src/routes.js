@@ -1,6 +1,7 @@
 import AboutUs from './Components/Screens/AboutUs';
 import NewsAndBlogs from './Components/Screens/NewsAndBlogs';
 import ContactUs from './Components/Screens/ContactUs';
+import FindAStore from './Components/Screens/FindAStore';
 import Home from './Components/Screens/Home';
 import LoginRegister from './Components/Screens/LoginRegister';
 import MyOrder from './Components/Screens/MyOrder';
@@ -100,6 +101,13 @@ const routes = [
     path: '/jewellerys',
     name: 'Jewellerys',
     element: <Jewellerys />,
+    exact: true,
+    strict: false,
+  },
+  {
+    path: '/find-a-store',
+    name: 'Home',
+    element: <FindAStore />,
     exact: true,
     strict: false,
   },
