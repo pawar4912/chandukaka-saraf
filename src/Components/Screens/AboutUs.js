@@ -38,7 +38,7 @@ export default function AboutUs() {
                     </Grid>
                     <Grid item xs={10} md={8}>
                         <ReadMoreText useReadMore={true} limit={350} >
-                            Chandukaka Saraf & Sons Pvt. Ltd. is one of the leading jewellers in western India, carrying the fervour of crafting jewellery for more than 196 years. As an organization, we have been imparting trust among customers with a legacy of ethical business since 1827. Our foundation was laid by Honourable Shri Chandulal Shah in the prestigious city of Baramati in the 19th century, whose unsullied dedication was instrumental in attaining the initial reputation
+                            Chandukaka Saraf & Sons Pvt. Ltd. is one of the leading jewellerys in western India, carrying the fervour of crafting jewellery for more than 196 years. As an organization, we have been imparting trust among customers with a legacy of ethical business since 1827. Our foundation was laid by Honourable Shri Chandulal Shah in the prestigious city of Baramati in the 19th century, whose unsullied dedication was instrumental in attaining the initial reputation
                         </ReadMoreText>
                     </Grid>
                     <Grid item xs={1} md={2}>
@@ -49,7 +49,7 @@ export default function AboutUs() {
             <Box className="box-about-us" sx={{ flexGrow: 1 }}>
                 <BlogSectionWithSideImage
                     headerText={"Our Specialities"}
-                    descriptionText={"Chanduakaka Saraf has truly set itself apart with a range of specialities that cater to the discerning tastes of their customers. Renowned for our jewellery designs in pure gold, we exemplify craftsmanship and excellence. We also hold the distinction of being the first jewellers in India to introduce the use of a carat meter, ensuring utmost transparency and purity in our offerings. Our unique approach blends modern aesthetics seamlessly with traditional gold designs, resulting in an exquisite fusion of styles that appeal to a wide audience. Our distinctive touch can be seen in the incorporation of abstract motifs alongside traditional ones, creating pieces that are both classic and contemporary."}
+                    descriptionText={"Chanduakaka Saraf has truly set itself apart with a range of specialities that cater to the discerning tastes of their customers. Renowned for our jewellery designs in pure gold, we exemplify craftsmanship and excellence. We also hold the distinction of being the first jewellerys in India to introduce the use of a carat meter, ensuring utmost transparency and purity in our offerings. Our unique approach blends modern aesthetics seamlessly with traditional gold designs, resulting in an exquisite fusion of styles that appeal to a wide audience. Our distinctive touch can be seen in the incorporation of abstract motifs alongside traditional ones, creating pieces that are both classic and contemporary."}
                     Item={Item}
                     imageSrc={ourSpecality}
                     isImageFirst={true}
@@ -59,7 +59,7 @@ export default function AboutUs() {
             <Box className="box-about-us" sx={{ flexGrow: 1 }}>
                 <BlogSectionWithSideImage
                     headerText={"Sprawling Wings on Digital Space"}
-                    descriptionText={" We strongly believe in progressing as per customer penchant & preference and always try to breach the walls of limitations, so at this pace, we have spread our wings through eCommerce towards a new sky of the online shopping world to reach out to people with a vision of focusing on resolution of purity, where we have a vast range of jewellery products offering reliable quality through providing free, secure, and insured home delivery in all over India, while the expertise of serving offline has already brought us an award of ‘Most Trusted Jeweller of Maharashtra’."}
+                    descriptionText={" We strongly believe in progressing as per customer penchant & preference and always try to breach the walls of limitations, so at this pace, we have spread our wings through eCommerce towards a new sky of the online shopping world to reach out to people with a vision of focusing on resolution of purity, where we have a vast range of jewellery products offering reliable quality through providing free, secure, and insured home delivery in all over India, while the expertise of serving offline has already brought us an award of ‘Most Trusted Jewellery of Maharashtra’."}
                     Item={Item}
                     imageSrc={digitalSpace}
                     isImageFirst={false}

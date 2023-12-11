@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import Carousel from 'react-material-ui-carousel';
 import { Paper } from '@mui/material';
 import rightArrowIcon from '../images/icons/right-arrow.svg';
-import imageDesktopView from '../images/Group265.png';
 import imageMobileView from '../images/mobile-view-corousel.png';
 import useWindowWidthAndHeight from '../utilities/CustomHooks';
 import img1 from '../images/banners/desktop/1.jpg';
@@ -28,17 +27,23 @@ const items = [
 ];
 
 function CarouselHome() {
-	const [firstImgLoaded, setFirstImgLoaded] = useState(false);
+	const [firstDesktopLoaded, setDesktopImgLoaded] = useState(false);
+  const [firstMobileLoaded, setMobileImgLoaded] = useState(false);
   const windoDimensions = useWindowWidthAndHeight();
   return (
     <div className="slider-container">
       <div className="service-slider">
       <img
 		    src={img1}
-		    onLoad={() => setFirstImgLoaded(true)}
+		    onLoad={() => setDesktopImgLoaded(true)}
 		    style={{ display: "none" }}
 		  />
-      {firstImgLoaded && (
+      <img
+		    src={imageMobileView}
+		    onLoad={() => setMobileImgLoaded(true)}
+		    style={{ display: "none" }}
+		  />
+      {firstDesktopLoaded && firstMobileLoaded && (
         <Carousel
           animation="slide"
           duration={2300}

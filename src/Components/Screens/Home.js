@@ -13,6 +13,17 @@ import CardImageLarge from '../../images/MaskGroup24.png';
 import CardImageNoPadding from '../../images/MaskGroup18.png';
 import useWindowWidthAndHeight from '../../utilities/CustomHooks';
 import rightArrowIcon from '../../images/icons/right-arrow.svg';
+import Testimonial from '../Testimonial';
+import prod1 from '../../images/products/1.jpg';
+import prod2 from '../../images/products/2.jpg';
+import prod3 from '../../images/products/3.jpg';
+import prod4 from '../../images/products/4.jpg';
+import catImg1 from '../../images/categories/bangles.jpg'
+import catImg2 from '../../images/categories/dimoand_neckless.jpg'
+import catImg3 from '../../images/categories/earrings.jpg'
+import catImg4 from '../../images/categories/earrings_2.jpg'
+import catImg5 from '../../images/categories/neckless_1.jpg'
+import catImg6 from '../../images/categories/neckless_2.jpg'
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -21,6 +32,10 @@ const Item = styled(Paper)(({ theme }) => ({
   textAlign: 'center',
   color: theme.palette.text.secondary,
 }));
+const prodImages = [prod1, prod2, prod3, prod4]; 
+const offerImages = [CardImageLarge, CardImageLarge, CardImageLarge, CardImageLarge];
+const shineImages = [CardImageNoPadding, CardImageNoPadding, CardImageNoPadding, CardImageNoPadding];
+const catImgs = [catImg1, catImg2, catImg3, catImg4, catImg5, catImg6];
 
 function Home() {
   const windoDimensions = useWindowWidthAndHeight();
@@ -58,7 +73,7 @@ function Home() {
             <Item className="empty-container-section">xs=6 md=4</Item>
           </Grid>
           <Grid className='favourite-image-slider' item xs={10} md={11}>
-            <ImageSliderHome width={295} height={355} CardImage={CardImageNormal} padding={30} CardImageType={"Favourites"} className="favorite-slider" />
+            <ImageSliderHome width={295} height={355} CardImage={CardImageNormal} padding={30} CardImageType={"Favourites"} className="favorite-slider" imagesArray={prodImages} />
           </Grid>
         </Grid>
       </Box>
@@ -88,7 +103,7 @@ function Home() {
             <Item className="empty-container-section">xs=6 md=4</Item>
           </Grid>
           <Grid item xs={11} md={7} className="p-0 w-100">
-            <ImageSliderHome width={550} height={550} CardImage={CardImageLarge} padding={40} CardImageType={"Offers"} className="offer-slider"/>
+            <ImageSliderHome width={550} height={550} CardImage={CardImageLarge} padding={40} CardImageType={"Offers"} className="offer-slider" imagesArray={offerImages}/>
           </Grid>
           <Grid className='extra-empty-container-exclusive-offers w-100' item xs={1} md={1}>
             <Item className="empty-container-section">xs=6 md=4</Item>
@@ -120,7 +135,7 @@ function Home() {
             </div>
           </Grid>
           <Grid item xs={12} md={12} className="p-0">
-            <ImageSliderHome width={450} height={600} CardImage={CardImageNoPadding} padding={0} CardImageType={"Discover"} />
+            <ImageSliderHome width={450} height={600} CardImage={CardImageNoPadding} padding={0} CardImageType={"Discover"} imagesArray={catImgs} />
           </Grid>
         </Grid>
       </Box>
@@ -167,6 +182,7 @@ function Home() {
           </Grid>
         </Grid>
       </Box>
+      <Testimonial />
     </div>
   );
 }

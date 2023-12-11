@@ -14,6 +14,44 @@ const Item = styled(Paper)(({ theme }) => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
 }));
+const dataList = [
+    {
+        title: "Do I need to sign up for an account to place an order?",
+        description: "We can guarantee that every gold item over 2 gram we sell with BIS Hall marked Jewel. The same way, Diamond and Platinum jewellery will be accompanied by a certificate which establishes the genuineness of the product."
+    },
+    {
+        title: "How do I know that the products you sell are BIS Hallmarked?",
+        description: "We can guarantee that every gold item over 2 gram we sell with BIS Hall marked Jewel. The same way, Diamond and Platinum jewellery will be accompanied by a certificate which establishes the genuineness of the product."
+    },
+    {
+        title: "Are the colors of products shown on the website accurate?",
+        description: "We can guarantee that every gold item over 2 gram we sell with BIS Hall marked Jewel. The same way, Diamond and Platinum jewellery will be accompanied by a certificate which establishes the genuineness of the product."
+    },
+    {
+        title: "How do I know if an item is in stock?",
+        description: "We can guarantee that every gold item over 2 gram we sell with BIS Hall marked Jewel. The same way, Diamond and Platinum jewellery will be accompanied by a certificate which establishes the genuineness of the product."
+    },
+    {
+        title: "Is it safe to use my credit card online at CS Jewellers?",
+        description: "We can guarantee that every gold item over 2 gram we sell with BIS Hall marked Jewel. The same way, Diamond and Platinum jewellery will be accompanied by a certificate which establishes the genuineness of the product."
+    },
+    {
+        title: "Does CS Jewellers ship to multiple addresses?",
+        description: "We can guarantee that every gold item over 2 gram we sell with BIS Hall marked Jewel. The same way, Diamond and Platinum jewellery will be accompanied by a certificate which establishes the genuineness of the product."
+    },
+    {
+        title: "Do I need to sign for my order?",
+        description: "We can guarantee that every gold item over 2 gram we sell with BIS Hall marked Jewel. The same way, Diamond and Platinum jewellery will be accompanied by a certificate which establishes the genuineness of the product."
+    },
+    {
+        title: "Can I change my shipping address after my order has been dispatched?",
+        description: "We can guarantee that every gold item over 2 gram we sell with BIS Hall marked Jewel. The same way, Diamond and Platinum jewellery will be accompanied by a certificate which establishes the genuineness of the product."
+    },
+    {
+        title: "Can I add items to an existing order?",
+        description: "We can guarantee that every gold item over 2 gram we sell with BIS Hall marked Jewel. The same way, Diamond and Platinum jewellery will be accompanied by a certificate which establishes the genuineness of the product."
+    }
+  ]
 
 export default function ContactUs() {
     const windoDimensions = useWindowWidthAndHeight();
@@ -102,7 +140,7 @@ export default function ContactUs() {
                         <Item className="empty-container-section">xs=6 md=4</Item>
                     </Grid>
                     <Grid item xs={10} md={10}>
-                        <FAQs />
+                        <FAQs dataList={dataList} />
                     </Grid>
                     <Grid item xs={1} md={1}>
                         <Item className="empty-container-section">xs=6 md=4</Item>

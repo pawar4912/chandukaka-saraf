@@ -4,8 +4,15 @@ import rightArrowIcon from '../images/icons/right-arrow.svg';
 import facebookIcon from '../images/icons/social-media/facebook.svg';
 import instagramIcon from '../images/icons/social-media/instagram.svg';
 import twitterIcon from '../images/icons/social-media/twitter.svg';
+import { useNavigate } from "react-router-dom";
+
 
 function Footer() {
+  let navigate = useNavigate(); 
+  const navigateToFindStore = () =>{ 
+    let path = `/find-a-store`; 
+    navigate(path);
+  }
   return (
     <footer>
       <div className="footer-container">
@@ -44,7 +51,7 @@ function Footer() {
                       <a href="/aboutus" className="btn btn-link">
                         About us
                       </a>
-                      <a href="/" className="btn btn-link">
+                      <a href="/news-&-blog" className="btn btn-link">
                         News & Blogs
                       </a>
                       <a href="/contact-us" className="btn btn-link">
@@ -58,17 +65,20 @@ function Footer() {
                       <a href="/privacy-policy" className="btn btn-link">
                         Privacy Policy
                       </a>
-                      <a href="/" className="btn btn-link">
+                      <a href="/terms-&-conditions" className="btn btn-link">
                         Terms & Condition
                       </a>
-                      <a href="/" className="btn btn-link">
+                      {/* <a href="/" className="btn btn-link">
                         Shipping Policy
+                      </a> */}
+                      <a href="/CSR-Policy" className="btn btn-link">
+                        CSR Policy
                       </a>
                     </div>
                   </div>
                 </div>
                 <div className="col-xl-3 col-lg-3 col-md-4 col-sm-4 col-7 ">
-                  <button type="button" className="mt-3">
+                  <button onClick={navigateToFindStore} type="button" className="mt-3">
                     Find A Store
                   </button>
                 </div>
