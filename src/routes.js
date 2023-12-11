@@ -2,6 +2,9 @@ import AboutUs from './Components/Screens/AboutUs';
 import NewsAndBlogs from './Components/Screens/NewsAndBlogs';
 import ContactUs from './Components/Screens/ContactUs';
 import Home from './Components/Screens/Home';
+import LoginRegister from './Components/Screens/LoginRegister';
+import MyOrder from './Components/Screens/MyOrder';
+// import Dashboard from './Components/Screens/Dashboard';
 import TermsAndCondition from './Components/Screens/TermsAndCondition';
 import CRSPolicy from './Components/Screens/CRSPolicy';
 import PrivacyPolicy from './Components/Screens/PrivacyPolicy';
@@ -59,6 +62,13 @@ const routes = [
     strict: false,
   },
   {
+    path: '/loginregister',
+    name: 'Home',
+    element: <LoginRegister/>,
+    exact: true,
+    strict: false,
+  },
+  {
     path: '/news-&-blog',
     name: 'NewsAndBlogs',
     element: <NewsAndBlogs />,
@@ -66,15 +76,29 @@ const routes = [
     strict: false,
   },
   {
-    path: '/bullions',
+    path: '/myorder',
     name: 'Home',
+    element: <MyOrder/>,
+    exact: true,
+    strict: false,
+  },
+  // {
+  //   path: '/dashboard',
+  //   name: 'Home',
+  //   element: <Bullions />,
+  //   exact: true,
+  //   strict: false,
+  // },
+  {
+    path: '/bullions',
+    name: 'Bullions',
     element: <Bullions />,
     exact: true,
     strict: false,
   },
   {
     path: '/jewellerys',
-    name: 'Home',
+    name: 'Jewellerys',
     element: <Jewellerys />,
     exact: true,
     strict: false,
