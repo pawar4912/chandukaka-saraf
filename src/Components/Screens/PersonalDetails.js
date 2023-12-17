@@ -75,7 +75,7 @@ export const PersonalDetails = () => {
           <div className="personal-details-form p-3">
             <form>
               <Grid container spacing={2}>
-                <Grid item xs={6}>
+                <Grid item xs={12} md={6}>
                   <FormControl fullWidth>
                     <InputLabel id="select-title">Title</InputLabel>
                     <Select
@@ -90,7 +90,7 @@ export const PersonalDetails = () => {
                     </Select>
                   </FormControl>
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={12} md={6}>
                   <FormControl
                     fullWidth
                     sx={{
@@ -115,7 +115,7 @@ export const PersonalDetails = () => {
                     </Select>
                   </FormControl>
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={12} md={6}>
                   <TextField
                     id="outlined-basic"
                     label="First Name"
@@ -124,7 +124,7 @@ export const PersonalDetails = () => {
                     fullWidth
                   />
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={12} md={6}>
                   <TextField
                     id="outlined-basic"
                     label="Last Name"
@@ -152,6 +152,7 @@ export const PersonalDetails = () => {
                       value={date}
                       onChange={handleDateChange}
                       variant="outlined"
+                      required
                     >
                       {[...Array(31).keys()].map((day) => (
                         <MenuItem key={day + 1} value={day + 1}>
@@ -165,7 +166,7 @@ export const PersonalDetails = () => {
                 <Grid item xs={4}>
                   <FormControl fullWidth>
                     <InputLabel>Month</InputLabel>
-                    <Select value={month} onChange={handleMonthChange}>
+                    <Select value={month} required onChange={handleMonthChange}>
                       {[
                         "January",
                         "February",
