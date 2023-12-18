@@ -8,6 +8,7 @@ import helpIcon from '../../images/icons/sidebar/help-icon.svg';
 import logoutIcon from '../../images/icons/sidebar/logout-icon.svg';
 import web from "../../images/Group265.png";
 import { SwipeableDrawer } from "@mui/material";
+import { Link } from "react-router-dom";
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -32,14 +33,14 @@ export default function Sidebar() {
             </li>
             <div className="sidebar-menu">
               <li className="w-100">
-                <a href="#" className="menu-link">
+                <Link to="/myorder" className="menu-link">
                   <img
                     src={orderIcon}
                     alt="Logo"
                     className="image"
                   />
                   MY ORDERS
-                </a>
+                </Link>
               </li>
               <li className="w-100">
                 <a href="#" className="menu-link">
@@ -52,14 +53,14 @@ export default function Sidebar() {
                 </a>
               </li>
               <li className="w-100">
-                <a href="#" className="menu-link">
+                <Link to="/address-book" className="menu-link">
                   <img
                     src={addressBookIcon}
                     alt="Logo"
                     className="image"
                   />
                   ADDRESS BOOK
-                </a>
+                </Link>
               </li>
               <li className="w-100">
                 <a href="#" className="menu-link">

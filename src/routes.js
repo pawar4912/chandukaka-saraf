@@ -12,6 +12,7 @@ import PrivacyPolicy from './Components/Screens/PrivacyPolicy';
 import ProductDetails from './Components/Screens/ProductDetails';
 import Bullions from './Components/Screens/Bullions';
 import Jewellerys from './Components/Screens/Jewellerys';
+import { AddressBook } from './Components/Screens/AddressBook';
 
 const routes = [
   {
@@ -116,6 +117,13 @@ const routes = [
     path: '/product-details',
     name: 'Home',
     element: <ProductDetails />,
+    exact: true,
+    strict: false,
+  },
+  {
+    path: '/address-book',
+    name: 'addressBook',
+    element: <AddressBook />,
     exact: true,
     strict: false,
   },
