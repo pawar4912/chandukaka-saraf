@@ -3,9 +3,8 @@ import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import plusIcon from "../images/icons/plusicon.svg"
-import minusIcon from "../images/icons/minusicon.svg"
+import plusIcon from "../../images/icons/plusicon.svg"
+import minusIcon from "../../images/icons/minusicon.svg"
 
 export default function FAQs({ dataList, isContactusPage = true }) {
     const [expanded, setExpanded] = React.useState(false);

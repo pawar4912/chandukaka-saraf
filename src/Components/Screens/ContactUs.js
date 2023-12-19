@@ -2,10 +2,10 @@ import { Box, Checkbox, FormControl, FormControlLabel, Grid, TextField, Typograp
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import React from 'react'
-import SectionTitleWithArrows from '../SectionTitleWithArrows';
+import SectionTitleWithArrows from '../Common/SectionTitleWithArrows';
 import rightArrowIcon from '../../images/icons/right-arrow.svg';
 import useWindowWidthAndHeight from '../../utilities/CustomHooks';
-import FAQs from '../FAQs';
+import FAQs from '../Common/FAQs';
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',

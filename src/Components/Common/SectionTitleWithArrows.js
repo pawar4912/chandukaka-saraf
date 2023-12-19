@@ -1,6 +1,6 @@
 import React from 'react'
-import imageSliderHeaderIconRight from '../images/icons/Group40.svg';
-import imageSliderHeaderIconLeft from '../images/icons/Group45.svg';
+import imageSliderHeaderIconRight from '../../images/icons/Group40.svg';
+import imageSliderHeaderIconLeft from '../../images/icons/Group45.svg';
 
 export default function SectionTitleWithArrows({arrowSides, textMessage}) {
     return (<>

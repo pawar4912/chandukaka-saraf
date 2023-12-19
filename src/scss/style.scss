@@ -2,8 +2,8 @@
 
 //pages
 @import 'common';
-@import 'header';
-@import 'footer';
+@import './Components/common/header';
+@import './Components/common/footer';
 
 //component
 @import "./Components/Screens/home";
@@ -11,12 +11,12 @@
 @import "./Components/imagesliderhome";
 @import "./Components//imageslidercardhome";
 @import "./Components//Screens/contactus";
-@import "./Components//faqs.scss";
+@import "./Components/common/faqs";
 @import "./Components/Screens/_aboutus";
 @import "./Components/Screens/productdashboard";
 @import "./Components/productbreadcrumb";
 
-@import "./Components/faqs.scss";
+@import "./Components/common/faqs.scss";
 @import "./Components/Screens/privacypolicy";
 @import "./Components/Screens/aboutus";
 @import "./Components/Screens//productdetails";

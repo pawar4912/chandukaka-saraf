@@ -5,7 +5,7 @@ import fillWhiteLeftIcon from '../../images/icons/fillWhiteLeftIcon.svg';
 import fillWhiteRightIcon from '../../images/icons/fillWhiteRightIcon.svg';
 import googleMapAPI from "../../images/googleMapAPI.png";
 import { Item } from '../Item';
-import FAQs from '../FAQs';
+import FAQs from '../Common/FAQs';
 
 const dataList = [
     {

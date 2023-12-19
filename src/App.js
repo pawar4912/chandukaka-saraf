@@ -1,8 +1,8 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import routes from './routes';
-import Header from './Components/Header';
-import Footer from './Components/Footer';
+import Header from './Components/Common/Header';
+import Footer from './Components/Common/Footer';
 import './scss/style.scss';
 
 function App() {

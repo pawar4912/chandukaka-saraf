@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../images/icons/logo.svg";
-import heartLogo from "../images/icons/heart.svg";
-import userLogo from "../images/icons/user.svg";
-import searchLogo from "../images/icons/search.svg";
-import shoppingBagLogo from "../images/icons/shopping-bag.svg";
-import menuOpen from "../images/icons/open-menu.svg";
-import closeMenu from "../images/icons/close.svg";
-import { getLiveRateForCSPL } from "../services/FrontApp/index.service";
+import logo from "../../images/icons/logo.svg";
+import heartLogo from "../../images/icons/heart.svg";
+import userLogo from "../../images/icons/user.svg";
+import searchLogo from "../../images/icons/search.svg";
+import shoppingBagLogo from "../../images/icons/shopping-bag.svg";
+import menuOpen from "../../images/icons/open-menu.svg";
+import closeMenu from "../../images/icons/close.svg";
+import { getLiveRateForCSPL } from "../../services/FrontApp/index.service";
 
 function Header() {
   const $ = window.jQuery;

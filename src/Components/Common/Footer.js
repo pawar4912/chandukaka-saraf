@@ -1,9 +1,9 @@
 import React from 'react';
-import logo from '../images/icons/logo.svg';
-import rightArrowIcon from '../images/icons/right-arrow.svg';
-import facebookIcon from '../images/icons/social-media/facebook.svg';
-import instagramIcon from '../images/icons/social-media/instagram.svg';
-import twitterIcon from '../images/icons/social-media/twitter.svg';
+import logo from '../../images/icons/logo.svg';
+import rightArrowIcon from '../../images/icons/right-arrow.svg';
+import facebookIcon from '../../images/icons/social-media/facebook.svg';
+import instagramIcon from '../../images/icons/social-media/instagram.svg';
+import twitterIcon from '../../images/icons/social-media/twitter.svg';
 import { useNavigate } from "react-router-dom";
 
 
