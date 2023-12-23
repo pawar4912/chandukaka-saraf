@@ -1,0 +1,19 @@
+.radio-group {
+    display: flex;
+    flex-direction: row !important;
+    width: 100%;
+    border: 1px solid green;
+
+    justify-content: space-between;
+ label {
+    margin: 0;
+    background: #F5F5F5;
+    border: 1px solid black
+ }
+}
+
+@media only screen and (min-width: 870px) {
+    .address-form-container {
+      width: 30vw;
+    }
+  }

@@ -12,7 +12,8 @@ import PrivacyPolicy from './Components/Screens/PrivacyPolicy';
 import ProductDetails from './Components/Screens/ProductDetails';
 import Bullions from './Components/Screens/Bullions';
 import Jewellerys from './Components/Screens/Jewellerys';
-import { AddressBook } from './Components/Screens/AddressBook';
+import { AddressBook } from './Components/Screens/Address-book/AddressBook';
+
 
 const routes = [
   {
