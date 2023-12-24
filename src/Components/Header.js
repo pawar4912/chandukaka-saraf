@@ -8,16 +8,29 @@ import shoppingBagLogo from "../images/icons/shopping-bag.svg";
 import menuOpen from "../images/icons/open-menu.svg";
 import closeMenu from "../images/icons/close.svg";
 import { getLiveRateForCSPL } from "../services/FrontApp/index.service";
+import LoginRegister from "./Screens/LoginRegister";
 
 function Header() {
   const $ = window.jQuery;
-  const [rates, setRates] = useState({Platinum: 0, Silver1: 0, Silver2: 0, gold: []})
+  const [rates, setRates] = useState({ Platinum: 0, Silver1: 0, Silver2: 0, gold: [] })
+
+  const [isLoginDialogOpen, setLoginDialogOpen] = useState(false);
+
+  const handleOpenDialog = () => {
+    console.log("Dialog opened");
+    setLoginDialogOpen(true);
+  };
+
+  const handleCloseDialog = () => {
+    setLoginDialogOpen(false);
+    console.log("login dialog is closed.");
+  };
 
   const getData = async () => {
     try {
       const result = await getLiveRateForCSPL();
-      const {Platinum, Silver1, Silver2, ...gold} = result.data.data;
-      setRates({Platinum, Silver1, Silver2, gold });
+      const { Platinum, Silver1, Silver2, ...gold } = result.data.data;
+      setRates({ Platinum, Silver1, Silver2, gold });
     } catch (error) {
       console.log(error)
     }
@@ -92,7 +105,7 @@ function Header() {
                             <ul className="w-100">
                               <div className="quick-link-items">
                                 <li>
-                                  <small>GOLD - ₹{ rates.gold['24.00'] ? rates.gold['24.00'] : 0 }</small>
+                                  <small>GOLD - ₹{rates.gold['24.00'] ? rates.gold['24.00'] : 0}</small>
                                 </li>
                                 <li>
                                   <small>SILVER - ₹{rates.Silver1}</small>
@@ -198,7 +211,7 @@ function Header() {
                           {/* <li>
                             <Link to="e-gold">E-gold</Link>
                           </li> */}
-                         { /* <li>
+                          { /* <li>
                             <Link to="gifting">Gifting</Link>
                         </li> */}
                         </div>
@@ -232,8 +245,9 @@ function Header() {
                           </a>
                         </li>
                         <li>
-                          <a href="/">
+                          <a href="#" onClick={handleOpenDialog}>
                             <img src={userLogo} alt="Logo" className="image" />
+                            <LoginRegister open={isLoginDialogOpen} handleClose={handleCloseDialog} />
                           </a>
                         </li>
                       </ul>

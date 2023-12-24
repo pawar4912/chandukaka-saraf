@@ -1,4 +1,5 @@
 import * as React from "react";
+import successCheckIcon from "../../images/icons/successful-checkbox.svg";
 import {
   Backdrop,
   Box,
@@ -11,9 +12,16 @@ import {
   FormGroup,
   FormControlLabel,
   Checkbox,
+  IconButton,
+  Dialog,
+  DialogActions,
+  Container,
 } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 import rightArrowIcon from "../../images/icons/right-arrow-white.svg";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { useState } from "react";
 
 const Boxstyle = {
   position: "absolute",
@@ -27,10 +35,59 @@ const Boxstyle = {
   p: 4,
 };
 
-const LoginRegister = () => {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+const LoginRegister = ({ open, handleClose }) => {
+  // const [open, setOpen] = React.useState(false);
+  // const handleOpen = () => setOpen(true);
+  // const handleClose = () => setOpen(false);
+
+  useEffect(() => {
+    console.log("Props", open, handleClose);
+  }, []);
+
+  const [showPhoneNumberScreen, setshowPhoneNumberScreen] = useState(false);
+  const [showOtpScreen, setShowOtpScreen] = useState(false);
+  const [showThankYou, setShowThankYou] = useState(false);
+  const [otpValues, setOtpValues] = useState({
+    otp1: "",
+    otp2: "",
+    otp3: "",
+    otp4: "",
+  });
+
+  const handleChange = (value, event) => {
+    setOtpValues({ ...otpValues, [value]: event.target.value });
+  };
+
+  const handleOtpSubmit = (event) => {
+    const data = new FormData(event.target);
+    console.log(otpValues);
+    setShowThankYou(true);
+    event.preventDefault();
+  };
+
+  const inputFocus = (elmnt) => {
+    if (elmnt.key === "Delete" || elmnt.key === "Backspace") {
+      const next = elmnt.target.tabIndex - 2;
+      if (next > -1) {
+        elmnt.target.form.elements[next].focus();
+      }
+    } else {
+      const next = elmnt.target.tabIndex;
+      if (next < 4) {
+        elmnt.target.form.elements[next].focus();
+      }
+    }
+  };
+  ////////////////
+  const handlePhoneNumberSubmit = () => {
+    // Add your logic to validate and submit the phone number
+    // For simplicity, let's assume the phone number is valid
+    setShowOtpScreen(true);
+  };
+
+  const handleThankYouClose = () => {
+    setOpen(false);
+  };
 
   const countrycode = [
     {
@@ -45,8 +102,8 @@ const LoginRegister = () => {
 
   return (
     <div>
-      <Button onClick={handleOpen}>Login Register</Button>
-      <Button><Link to="/myorder"> My Order </Link></Button>
+      {/* <Button onClick={open}>Login Register</Button>
+      <Button><Link to="/myorder"> My Order </Link></Button> */}
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -65,7 +122,15 @@ const LoginRegister = () => {
             sx={Boxstyle}
             style={{ border: "12px solid #ede5e5", width: "30em" }}
           >
-            <Typography
+            <DialogActions>
+              <IconButton aria-label="close" onClick={handleClose}>
+                <CloseIcon />
+              </IconButton>
+            </DialogActions>
+
+
+           {/* login form for accepting the phone no starts */}
+           <Typography
               className="text-center text-bold"
               id="transition-modal-title"
               variant="h6"
@@ -137,6 +202,7 @@ const LoginRegister = () => {
                 variant="contained"
                 fullWidth={true}
                 type="submit"
+                onClick={handlePhoneNumberSubmit}
               >
                 CONTINUE{" "}
                 <img
@@ -146,11 +212,96 @@ const LoginRegister = () => {
                 />
               </Button>
             </div>
+            {/* login form for accepting the phone no Ends */}
+
+            {/* verify otp section begins */}
+
+            <Typography
+              className="text-center text-bold"
+              id="transition-modal-title"
+              variant="h6"
+              component="h2"
+            >
+              VERIFY MOBILE OTP
+            </Typography>
+            <small>
+              Enter 4 digit verification code received on your mobile number.
+            </small>
+            {/* Country Code and Mobile Number Start  */}
+            <Container maxWidth="sm">
+              <form onSubmit={handleOtpSubmit}>
+                <div className="mt-2 otpContainer">
+                  {[1, 2, 3, 4].map((index) => (
+                    <input
+                      key={index}
+                      name={`otp${index}`}
+                      type="text"
+                      autoComplete="off"
+                      className="otpInput"
+                      value={otpValues[`otp${index}`]}
+                      onChange={(e) => handleChange(`otp${index}`, e)}
+                      tabIndex={index}
+                      maxLength="1"
+                      onKeyUp={(e) => inputFocus(e)}
+                    />
+                  ))}
+                </div>
+                <Button
+                  className="primary mt-4 bg-black"
+                  style={{ background: "black" }}
+                  variant="contained"
+                  fullWidth={true}
+                  type="submit"
+                >
+                  VERIIFY
+                </Button>
+              </form>
+            </Container>
+
+            {/*checkbox start  */}
+            <FormGroup className="mt-2">
+              <div className="d-flex justify-content-end">
+                <a href="/">RESEND OTP</a>
+              </div>
+            </FormGroup>
+
+            {/* verify opt section ends ------------------------------------------*/}
+            
+            <div className="container">
+              <div className="d-flex justify-content-center">
+                <img src={successCheckIcon} alt="successful icon" />
+              </div>
+
+              <Typography
+                className="text-center text-bold mt-3"
+                id="transition-modal-title"
+                variant="h2"
+                component="h2"
+                sx={{
+                  fontSize: "36px",
+                  letterSpacing: "5.4px",
+                  fontWeight: "bolder",
+                  textTransform: "uppercase",
+                }}
+              >
+                THANK YOU!
+              </Typography>
+
+              {/*button  start */}
+              <Typography
+                className="text-center mt-1 mb-5"
+                sx={{
+                  fontSize: "14px",
+                }}
+              >
+                Code successfully verified
+              </Typography>
+            </div>
           </Box>
         </Fade>
       </Modal>
     </div>
-  );
+  );  
 };
 
 export default LoginRegister;
