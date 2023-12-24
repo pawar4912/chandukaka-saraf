@@ -14,7 +14,7 @@ function Header() {
   const $ = window.jQuery;
   const [rates, setRates] = useState({ Platinum: 0, Silver1: 0, Silver2: 0, gold: [] })
 
-  const [isLoginDialogOpen, setLoginDialogOpen] = useState(false);
+  const [open, setLoginDialogOpen] = useState(false);
 
   const handleOpenDialog = () => {
     console.log("Dialog opened");
@@ -247,7 +247,7 @@ function Header() {
                         <li>
                           <a href="#" onClick={handleOpenDialog}>
                             <img src={userLogo} alt="Logo" className="image" />
-                            <LoginRegister open={isLoginDialogOpen} handleClose={handleCloseDialog} />
+                            <LoginRegister open={open} handleClose={handleCloseDialog} />
                           </a>
                         </li>
                       </ul>
