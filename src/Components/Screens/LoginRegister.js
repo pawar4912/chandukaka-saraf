@@ -174,6 +174,11 @@ const LoginRegister = ({ open, handleClose }) => {
                     id="outlined-number"
                     label="Mobile Number*"
                     type="number"
+                    inputProps={{
+                      inputMode: 'numeric',
+                      pattern: '[0-9]*',
+                      maxLength: 10
+                    }}
                     InputLabelProps={{
                       shrink: true,
                     }}
