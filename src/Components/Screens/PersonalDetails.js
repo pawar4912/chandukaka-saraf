@@ -12,9 +12,9 @@ import {
 import EastIcon from "@mui/icons-material/East";
 
 export const PersonalDetails = () => {
-  
+
   const days = Array.from({ length: 31 }, (_, i) => i + 1);
-  
+
   const months = [
     "January",
     "February",
@@ -29,7 +29,7 @@ export const PersonalDetails = () => {
     "November",
     "December",
   ];
-  
+
   const currentYear = new Date().getFullYear();
   const years = Array.from({ length: 100 }, (_, i) => currentYear - i);
 
@@ -39,12 +39,11 @@ export const PersonalDetails = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [date, setDate] = useState(1);
-  const [month, setMonth] = useState("");
-  const [year, setYear] = useState("");
+  const [month, setMonth] = useState(months[0]);
+  const [year, setYear] = useState(currentYear - 20);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-
     switch (name) {
       case "title":
         setTitle(value);
@@ -78,24 +77,20 @@ export const PersonalDetails = () => {
     setYear(event.target.value);
   };
 
-  () => {
-    setDate(days[0]);
-    setMonth(months[0]);
-    setYear(currentYear - 20);
-  };
-
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("form values", {
-      title: title,
-      gender: gender,
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      date: date,
-      month: month,
-      year: year,
-    });
+    let postData = {
+      title: title.trim(),
+      gender: gender.trim(),
+      firstName: firstName.trim(),
+      lastName: lastName.trim(),
+      email: email.trim(),
+      date: date.trim(),
+      month: month.trim(),
+      year: year.trim(),
+    };
+
+    console.log("form values", postData);
   };
 
   return (
@@ -154,10 +149,12 @@ export const PersonalDetails = () => {
                 <TextField
                   id="outlined-basic"
                   label="First Name"
+                  name="firstName"
                   variant="outlined"
                   sx={{ color: "#000" }}
                   required
                   fullWidth
+                  value={firstName}
                   onChange={handleChange}
                 />
               </Grid>
@@ -166,9 +163,11 @@ export const PersonalDetails = () => {
                 <TextField
                   id="outlined-basic"
                   label="Last Name"
+                  name="lastName"
                   variant="outlined"
                   required
                   fullWidth
+                  value={lastName}
                   onChange={handleChange}
                 />
               </Grid>
@@ -178,9 +177,11 @@ export const PersonalDetails = () => {
                   id="outlined-basic"
                   label="Email"
                   type="email"
+                  name="email"
                   variant="outlined"
                   required
                   fullWidth
+                  value={email}
                   onChange={handleChange}
                 />
               </Grid>
@@ -217,7 +218,7 @@ export const PersonalDetails = () => {
                     onChange={handleMonthChange}
                   >
                     {months.map((m, index) => (
-                      <MenuItem key={index} value={index + 1}>
+                      <MenuItem key={index} value={m}>
                         {m}
                       </MenuItem>
                     ))}
