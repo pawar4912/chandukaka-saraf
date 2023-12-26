@@ -40,10 +40,6 @@ const LoginRegister = ({ open, handleClose }) => {
   // const handleOpen = () => setOpen(true);
   // const handleClose = () => setOpen(false);
 
-  useEffect(() => {
-    console.log("Props", open, handleClose);
-  }, []);
-
   const [showPhoneNumberScreen, setshowPhoneNumberScreen] = useState(true);
   const [showOtpScreen, setShowOtpScreen] = useState(false);
   const [showThankYou, setShowThankYou] = useState(false);
@@ -199,11 +195,11 @@ const LoginRegister = ({ open, handleClose }) => {
                         {" "}
                         <small>
                           "I have read and accepted the{" "}
-                          <Link to="/" style={{ color: " #c07b7b" }}>
+                          <Link to="terms-and-conditions" style={{ color: " #c07b7b" }}>
                             terms and conditions
                           </Link>{" "}
                           and{" "}
-                          <Link style={{ color: " #c07b7b" }} to="/">
+                          <Link style={{ color: " #c07b7b" }} to="privacy-policy">
                             privacy and policy
                           </Link>{" "}
                         </small>

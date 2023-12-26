@@ -8,7 +8,8 @@ import shoppingBagLogo from "../images/icons/shopping-bag.svg";
 import menuOpen from "../images/icons/open-menu.svg";
 import closeMenu from "../images/icons/close.svg";
 import { getLiveRateForCSPL } from "../services/FrontApp/index.service";
-import LoginRegister from "./Screens/LoginRegister";
+import LoginRegister from "./Screens/AuthModal";
+import { Button } from "@mui/material";
 
 function Header() {
   const $ = window.jQuery;
@@ -245,10 +246,10 @@ function Header() {
                           </a>
                         </li>
                         <li>
-                          <a href="#" onClick={handleOpenDialog}>
+                          <Link onClick={handleOpenDialog}>
                             <img src={userLogo} alt="Logo" className="image" />
-                            <LoginRegister open={open} handleClose={handleCloseDialog} />
-                          </a>
+                          </Link>
+                          <LoginRegister open={open} handleClose={handleCloseDialog} />
                         </li>
                       </ul>
                     </div>
