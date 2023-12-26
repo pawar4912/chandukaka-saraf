@@ -8,8 +8,7 @@ import shoppingBagLogo from "../images/icons/shopping-bag.svg";
 import menuOpen from "../images/icons/open-menu.svg";
 import closeMenu from "../images/icons/close.svg";
 import { getLiveRateForCSPL } from "../services/FrontApp/index.service";
-import LoginRegister from "./Screens/AuthModal";
-import { Button } from "@mui/material";
+import AuthModal from "./Screens/AuthModal";
 
 function Header() {
   const $ = window.jQuery;
@@ -18,13 +17,11 @@ function Header() {
   const [open, setOpen] = useState(false);
 
   const handleOpenDialog = () => {
-    console.log("Dialog opened");
     setOpen(true);
   };
 
   const handleCloseDialog = () => {
     setOpen(false);
-    console.log("login dialog is closed.");
   };
 
   const getData = async () => {
@@ -249,7 +246,7 @@ function Header() {
                           <Link onClick={handleOpenDialog}>
                             <img src={userLogo} alt="Logo" className="image" />
                           </Link>
-                          <LoginRegister open={open} handleClose={handleCloseDialog} />
+                          <AuthModal open={open} handleClose={handleCloseDialog} />
                         </li>
                       </ul>
                     </div>

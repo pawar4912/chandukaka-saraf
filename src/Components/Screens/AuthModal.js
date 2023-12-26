@@ -1,7 +1,6 @@
 import * as React from "react";
 import successCheckIcon from "../../images/icons/successful-checkbox.svg";
 import {
-  Backdrop,
   Box,
   Modal,
   Fade,
@@ -13,14 +12,12 @@ import {
   FormControlLabel,
   Checkbox,
   IconButton,
-  Dialog,
   DialogActions,
   Container,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import rightArrowIcon from "../../images/icons/right-arrow-white.svg";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
 import { useState } from "react";
 
 const Boxstyle = {
@@ -35,14 +32,11 @@ const Boxstyle = {
   p: 4,
 };
 
-const LoginRegister = ({ open, handleClose }) => {
-  // const [open, setOpen] = React.useState(false);
-  // const handleOpen = () => setOpen(true);
-  // const handleClose = () => setOpen(false);
-
+const AuthModal = ({ open, handleClose }) => {
   const [showPhoneNumberScreen, setshowPhoneNumberScreen] = useState(true);
   const [showOtpScreen, setShowOtpScreen] = useState(false);
   const [showThankYou, setShowThankYou] = useState(false);
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [otpValues, setOtpValues] = useState({
     otp1: "",
     otp2: "",
@@ -54,19 +48,35 @@ const LoginRegister = ({ open, handleClose }) => {
     setOtpValues({ ...otpValues, [value]: event.target.value });
   };
 
+  const handleOnPhoneNumberChange = (event) => {
+    setPhoneNumber(event.target.value);
+  }
+
   const handleCloseButton = () => {
+    if (setShowThankYou) {
+      setPhoneNumber('');
+      setOtpValues({
+        otp1: "",
+        otp2: "",
+        otp3: "",
+        otp4: "",
+      });
+    }
     setShowOtpScreen(false);
     setShowThankYou(false);
+    setshowPhoneNumberScreen(true);
+
     handleClose();
   };
 
   const handleOtpSubmit = (event) => {
+    event.preventDefault();
     const data = new FormData(event.target);
-    console.log(otpValues);
     setshowPhoneNumberScreen(false);
     setShowOtpScreen(false);
     setShowThankYou(true);
-    event.preventDefault();
+
+    console.log("otp values", otpValues);
   };
 
   const inputFocus = (elmnt) => {
@@ -82,16 +92,13 @@ const LoginRegister = ({ open, handleClose }) => {
       }
     }
   };
-  ////////////////
+
   const handlePhoneNumberSubmit = () => {
-    // Add your logic to validate and submit the phone number
-    // For simplicity, let's assume the phone number is valid
+    // Todo: Add phone number submit logic
     setshowPhoneNumberScreen(false);
     setShowOtpScreen(true);
-  };
 
-  const handleThankYouClose = () => {
-    setOpen(false);
+    console.log(phoneNumber)
   };
 
   const countrycode = [
@@ -107,20 +114,12 @@ const LoginRegister = ({ open, handleClose }) => {
 
   return (
     <div>
-      {/* <Button onClick={open}>Login Register</Button>
-      <Button><Link to="/myorder"> My Order </Link></Button> */}
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
         open={open}
         onClose={handleClose}
         closeAfterTransition
-        // slots={{ backdrop: Backdrop }}
-        // slotProps={{
-        //   backdrop: {
-        //     timeout: 500,
-        //   },
-        // }}
       >
         <Fade in={open}>
           <Box
@@ -128,7 +127,7 @@ const LoginRegister = ({ open, handleClose }) => {
             style={{ border: "12px solid #ede5e5", width: "30em" }}
           >
             <DialogActions>
-              <IconButton aria-label="close" onClick={handleClose}>
+              <IconButton aria-label="close" onClick={handleCloseButton}>
                 <CloseIcon />
               </IconButton>
             </DialogActions>
@@ -179,6 +178,8 @@ const LoginRegister = ({ open, handleClose }) => {
                     InputLabelProps={{
                       shrink: true,
                     }}
+                    value={phoneNumber}
+                    onChange={handleOnPhoneNumberChange}
                   />
                 </Box>
 
@@ -323,4 +324,4 @@ const LoginRegister = ({ open, handleClose }) => {
   );
 };
 
-export default LoginRegister;
+export default AuthModal;

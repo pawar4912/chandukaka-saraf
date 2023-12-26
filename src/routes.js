@@ -3,7 +3,7 @@ import NewsAndBlogs from './Components/Screens/NewsAndBlogs';
 import ContactUs from './Components/Screens/ContactUs';
 import FindAStore from './Components/Screens/FindAStore';
 import Home from './Components/Screens/Home';
-import LoginRegister from './Components/Screens/AuthModal';
+import AuthModal from './Components/Screens/AuthModal';
 import MyOrder from './Components/Screens/MyOrder';
 // import Dashboard from './Components/Screens/Dashboard';
 import TermsAndCondition from './Components/Screens/TermsAndCondition';
@@ -64,9 +64,9 @@ const routes = [
     strict: false,
   },
   {
-    path: '/loginregister',
+    path: '/auth',
     name: 'Home',
-    element: <LoginRegister/>,
+    element: <AuthModal/>,
     exact: true,
     strict: false,
   },
