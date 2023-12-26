@@ -62,7 +62,7 @@ const LoginRegister = ({ open, handleClose }) => {
     setShowOtpScreen(false);
     setShowThankYou(false);
     handleClose();
-  }
+  };
 
   const handleOtpSubmit = (event) => {
     const data = new FormData(event.target);
@@ -137,13 +137,14 @@ const LoginRegister = ({ open, handleClose }) => {
               </IconButton>
             </DialogActions>
 
-            {(showPhoneNumberScreen) && (
+            {showPhoneNumberScreen && (
               <div className="container phone-number">
                 <Typography
                   className="text-center text-bold"
                   id="transition-modal-title"
-                  variant="h6"
+                  variant="h5"
                   component="h2"
+                  style={{ fontWeight: "bolder" }}
                 >
                   LOGIN/REGISTER
                 </Typography>
@@ -175,9 +176,9 @@ const LoginRegister = ({ open, handleClose }) => {
                     label="Mobile Number*"
                     type="number"
                     inputProps={{
-                      inputMode: 'numeric',
-                      pattern: '[0-9]*',
-                      maxLength: 10
+                      inputMode: "numeric",
+                      pattern: "[0-9]*",
+                      maxLength: 10,
                     }}
                     InputLabelProps={{
                       shrink: true,
@@ -231,21 +232,22 @@ const LoginRegister = ({ open, handleClose }) => {
                 </div>
               </div>
             )}
-            
-            { showOtpScreen  &&  (
+
+            {showOtpScreen && (
               <div className="container otp-input-container">
                 <Typography
                   className="text-center text-bold"
                   id="transition-modal-title"
-                  variant="h6"
+                  variant="h5"
                   component="h2"
+                  style={{ fontWeight: "bolder" }}
                 >
                   VERIFY MOBILE OTP
                 </Typography>
-                <small>
+                <p className="small-text text-center">
                   Enter 4 digit verification code received on your mobile
                   number.
-                </small>
+                </p>
 
                 <Container maxWidth="sm">
                   <form onSubmit={handleOtpSubmit}>
@@ -265,6 +267,14 @@ const LoginRegister = ({ open, handleClose }) => {
                         />
                       ))}
                     </div>
+
+                    <FormGroup className="mt-2">
+                      <div className="d-flex justify-content-end">
+                        <Link style={{ color: "#c07b7b", marginRight: "3rem" }}>
+                          RESEND OTP
+                        </Link>
+                      </div>
+                    </FormGroup>
                     <Button
                       className="primary mt-4 bg-black"
                       style={{ background: "black" }}
@@ -276,12 +286,6 @@ const LoginRegister = ({ open, handleClose }) => {
                     </Button>
                   </form>
                 </Container>
-
-                <FormGroup className="mt-2">
-                  <div className="d-flex justify-content-end">
-                    <a href="/">RESEND OTP</a>
-                  </div>
-                </FormGroup>
               </div>
             )}
 

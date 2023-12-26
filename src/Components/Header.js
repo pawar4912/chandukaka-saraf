@@ -14,15 +14,15 @@ function Header() {
   const $ = window.jQuery;
   const [rates, setRates] = useState({ Platinum: 0, Silver1: 0, Silver2: 0, gold: [] })
 
-  const [open, setLoginDialogOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleOpenDialog = () => {
     console.log("Dialog opened");
-    setLoginDialogOpen(true);
+    setOpen(true);
   };
 
   const handleCloseDialog = () => {
-    setLoginDialogOpen(false);
+    setOpen(false);
     console.log("login dialog is closed.");
   };
 
