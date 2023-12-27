@@ -20,16 +20,21 @@ export const AddressBook = () => {
     city: "Baramati",
   };
 
-  const [addressFormTemplate, setAddressFormTemplate] = useState(false);
+  const [showAddressForm, setShowAddressForm] = useState(false);
 
-  const handleButtonClick = () => {
-    setAddressFormTemplate(!addressFormTemplate);
+  const handleOpenForm = () => {
+    setShowAddressForm(true);
   };
+
+
+  const handleCloseForm = () => {
+    setShowAddressForm(false)
+  }
 
   return (
     <div className="d-flex">
       <Sidebar></Sidebar>
-      {!addressFormTemplate ? (
+      {!showAddressForm ? (
         <div className="address-book-container p-3">
           <h5>ADDRESS BOOK</h5>
 
@@ -39,7 +44,7 @@ export const AddressBook = () => {
               fullWidth
               variant="contained"
               type="submit"
-              onClick={handleButtonClick}
+              onClick={handleOpenForm}
             >
               ADD NEW ADDRESS &nbsp;
               <EastIcon />
@@ -85,7 +90,7 @@ export const AddressBook = () => {
           </div>
         </div>
       ) : (
-        <AddressForm />
+        <AddressForm handleCloseForm={handleCloseForm} />
       )}
     </div>
   );

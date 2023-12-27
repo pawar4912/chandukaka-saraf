@@ -10,16 +10,69 @@ import {
   RadioGroup,
   FormControlLabel,
   Radio,
+  Button,
 } from "@mui/material";
-import { Button } from "bootstrap";
+import EastIcon from "@mui/icons-material/East";
 import React, { useState } from "react";
 
-export const AddressForm = ({ addressData }) => {
+export const AddressForm = ({ handleCloseForm, addressData = null }) => {
   const countries = ["India", "Indonasia", "Iran", "Irac"];
   const cities = ["Baramati", "Pune", "Nasik", "Nagpur"];
 
-  const [country, setCountry] = useState("");
-  const [city, setCity] = useState("");
+  const [country, setCountry] = useState(addressData?.country ?? countries[0]);
+  const [city, setCity] = useState(addressData?.city ?? cities[0]);
+  const [firstName, setFirstName] = useState(addressData?.firstName ?? "");
+  const [lastName, setLastName] = useState(addressData?.lastName ?? "");
+  const [address1, setAddress1] = useState(addressData?.address1 ?? "");
+  const [address2, setAddress2] = useState(addressData?.address2 ?? "");
+  const [pinCode, setPinCode] = useState(addressData?.pinCode ?? "");
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    switch (name) {
+      case "country":
+        setCountry(value);
+        break;
+      case "city":
+        setCity(value);
+        break;
+      case "firstName":
+        setFirstName(value);
+        break;
+      case "lastName":
+        setLastName(value);
+        break;
+      case "address1":
+        setAddress1(value);
+        break;
+      case "address2":
+        setAddress2(value);
+        break;
+      case "address1":
+        setAddress1(value);
+        break;
+      case "pinCode":
+        setPinCode(value);
+        break;
+      default:
+        break;
+    }
+  };
+
+  const handleCancel = () => {
+    setCountry(countries[0]);
+    setCity(cities[0]);
+    setFirstName("");
+    setLastName("");
+    setAddress1("");
+    setAddress2("");
+    setPinCode("");
+    handleCloseForm();
+  };
+
+  const handleSubmit = () => {
+    handleCloseForm();
+  };
 
   return (
     <div className="d-flex">
@@ -27,131 +80,152 @@ export const AddressForm = ({ addressData }) => {
         <h5>ADDRESS BOOK</h5>
 
         <Box className="address-form-wrapper p-3 my-4 bg-white">
-          <Grid container spacing={2}>
-            <Grid item xs={12} md={6}>
-              <TextField
-                id="input-first-name"
-                label="First Name"
-                variant="outlined"
-                required
-                fullWidth
-                // onChange={handleChange}
-              />
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <TextField
-                id="input-last-name"
-                label="Last Name"
-                variant="outlined"
-                required
-                fullWidth
-                // onChange={handleChange}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                id="input-address1"
-                label="Flat no, Building name"
-                variant="outlined"
-                required
-                fullWidth
-                // onChange={handleChange}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                id="input-address2"
-                label="Street name, Landmark"
-                variant="outlined"
-                required
-                fullWidth
-                // onChange={handleChange}
-              />
-            </Grid>
-            <Grid item xs={4}>
-              <FormControl fullWidth>
-                <InputLabel id="select-country">Country</InputLabel>
-                <Select
-                  value={country}
-                  labelId="select-country"
-                  id="country-dropdown"
-                  label="Country"
+          <form onSubmit={handleSubmit}>
+            <Grid container spacing={2}>
+              <Grid item xs={12} md={6}>
+                <TextField
+                  id="input-first-name"
+                  label="First Name"
+                  variant="outlined"
                   required
-                  // onChange={handleChange}
-                >
-                  {countries.map((d) => (
-                    <MenuItem key={d} value={d}>
-                      {d}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-            </Grid>
-
-            <Grid item xs={4}>
-              <FormControl fullWidth>
-                <InputLabel id="select-city">Country</InputLabel>
-                <Select
-                  value={city}
-                  labelId="select-city"
-                  id="city-dropdown"
-                  label="City"
+                  fullWidth
+                  name="firstName"
+                  value={firstName}
+                  onChange={handleChange}
+                />
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <TextField
+                  id="input-last-name"
+                  label="Last Name"
+                  variant="outlined"
                   required
-                  // onChange={handleChange}
-                >
-                  {cities.map((d) => (
-                    <MenuItem key={d} value={d}>
-                      {d}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-            </Grid>
+                  fullWidth
+                  name="lastName"
+                  value={lastName}
+                  onChange={handleChange}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  id="input-address1"
+                  label="Flat no, Building name"
+                  variant="outlined"
+                  required
+                  fullWidth
+                  name="address1"
+                  value={address1}
+                  onChange={handleChange}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  id="input-address2"
+                  label="Street name, Landmark"
+                  variant="outlined"
+                  required
+                  fullWidth
+                  name="address2"
+                  value={address2}
+                  onChange={handleChange}
+                />
+              </Grid>
+              <Grid item xs={4}>
+                <FormControl fullWidth>
+                  <InputLabel id="select-country">Country</InputLabel>
+                  <Select
+                    labelId="select-country"
+                    id="country-dropdown"
+                    label="Country"
+                    required
+                    name="country"
+                    value={country}
+                    onChange={handleChange}
+                  >
+                    {countries.map((d) => (
+                      <MenuItem key={d} value={d}>
+                        {d}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              </Grid>
 
-            <Grid item xs={4}>
-              <TextField
-                id="input-pincode"
-                label="Pincode"
-                variant="outlined"
-                required
-                fullWidth
-                // onChange={handleChange}
-              />
-            </Grid>
+              <Grid item xs={4}>
+                <FormControl fullWidth>
+                  <InputLabel id="select-city">City</InputLabel>
+                  <Select
+                    labelId="select-city"
+                    id="city-dropdown"
+                    label="City"
+                    required
+                    name="city"
+                    value={city}
+                    onChange={handleChange}
+                  >
+                    {cities.map((d) => (
+                      <MenuItem key={d} value={d}>
+                        {d}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              </Grid>
 
-            <Grid item xs={12} sx={{border: '1px solid red'}}>
-              <FormControl sx={{width: '100%'}}>
-                <FormLabel id="address-type-radio-buttons-group-label">
-                  Address Type
-                </FormLabel>
-                <RadioGroup
-                  aria-labelledby="address-type-radio-buttons-group-label"
-                  defaultValue="home"
-                  name="radio-buttons-group"
-                  className="radio-group"
-                >
-                  <FormControlLabel
-                    value="home"
-                    control={<Radio />}
-                    label="Home"
-                  />
+              <Grid item xs={4}>
+                <TextField
+                  id="input-pincode"
+                  label="Pincode"
+                  variant="outlined"
+                  required
+                  fullWidth
+                  name="pinCode"
+                  value={pinCode}
+                  onChange={handleChange}
+                />
+              </Grid>
 
-                  <FormControlLabel
-                    value="office"
-                    control={<Radio />}
-                    label="Office"
-                  />
-                </RadioGroup>
-              </FormControl>
-            </Grid>
+              <Grid item xs={12} sx={{ border: "1px solid red" }}>
+                <FormControl sx={{ width: "100%" }}>
+                  <FormLabel id="address-type-radio-buttons-group-label">
+                    Address Type
+                  </FormLabel>
+                  <RadioGroup
+                    aria-labelledby="address-type-radio-buttons-group-label"
+                    defaultValue="home"
+                    name="radio-buttons-group"
+                    className="radio-group"
+                  >
+                    <FormControlLabel
+                      value="home"
+                      control={<Radio />}
+                      label="Home"
+                    />
 
-            <Grid item xs={6}>
-<Button>
-  CANCEL &nbsp;
-  ICon
-</Button>
+                    <FormControlLabel
+                      value="office"
+                      control={<Radio />}
+                      label="Office"
+                    />
+                  </RadioGroup>
+                </FormControl>
+              </Grid>
+
+              <Grid item xs={6}>
+                <Button onClick={handleCancel}>
+                  CANCEL &nbsp;
+                  <EastIcon />
+                </Button>
+              </Grid>
+
+              <Grid item xs={6}>
+                <Button className="bg-black" type="submit">
+                  ADD ADDRESS &nbsp;
+                  <EastIcon />
+                </Button>
+              </Grid>
             </Grid>
-          </Grid>
+          </form>
         </Box>
       </div>
     </div>
