@@ -1,19 +1,29 @@
 .radio-group {
-    display: flex;
-    flex-direction: row !important;
-    width: 100%;
-    border: 1px solid green;
+  display: grid !important;
+  // flex-direction: row !important;
+  // justify-content: stretch;
+  // align-items: stretch;
+  width: 100%;
 
-    justify-content: space-between;
- label {
-    margin: 0;
-    background: #F5F5F5;
-    border: 1px solid black
- }
+  .radio-label {
+    border: 1px solid red !important;
+  } 
 }
 
 @media only screen and (min-width: 870px) {
-    .address-form-container {
-      width: 30vw;
-    }
+  .address-form-container {
+    width: 30vw;
   }
+}
+
+.bg-black {
+  color: #fff I !important;
+  border-radius: 0 !important;
+  white-space: nowrap;
+}
+
+.outlined-black {
+  border-color: #000 !important;
+  color: #000 !important;
+  border-radius: 0 !important;
+}

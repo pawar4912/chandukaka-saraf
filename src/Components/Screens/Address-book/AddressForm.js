@@ -13,11 +13,11 @@ import {
   Button,
 } from "@mui/material";
 import EastIcon from "@mui/icons-material/East";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export const AddressForm = ({ handleCloseForm, addressData = null }) => {
   const countries = ["India", "Indonasia", "Iran", "Irac"];
-  const cities = ["Baramati", "Pune", "Nasik", "Nagpur"];
+  const cities = ["Baramati", "Pune", "Nasik", "Nagpur", "Thane"];
 
   const [country, setCountry] = useState(addressData?.country ?? countries[0]);
   const [city, setCity] = useState(addressData?.city ?? cities[0]);
@@ -70,7 +70,8 @@ export const AddressForm = ({ handleCloseForm, addressData = null }) => {
     handleCloseForm();
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
     handleCloseForm();
   };
 
@@ -185,8 +186,8 @@ export const AddressForm = ({ handleCloseForm, addressData = null }) => {
                 />
               </Grid>
 
-              <Grid item xs={12} sx={{ border: "1px solid red" }}>
-                <FormControl sx={{ width: "100%" }}>
+              <Grid item xs={12}>
+                <FormControl sx={{ width: "100%" }} fullWidth>
                   <FormLabel id="address-type-radio-buttons-group-label">
                     Address Type
                   </FormLabel>
@@ -198,12 +199,14 @@ export const AddressForm = ({ handleCloseForm, addressData = null }) => {
                   >
                     <FormControlLabel
                       value="home"
+                      className="radio-label"
                       control={<Radio />}
                       label="Home"
                     />
 
                     <FormControlLabel
                       value="office"
+                      className="radio-label"
                       control={<Radio />}
                       label="Office"
                     />
@@ -211,15 +214,20 @@ export const AddressForm = ({ handleCloseForm, addressData = null }) => {
                 </FormControl>
               </Grid>
 
-              <Grid item xs={6}>
-                <Button onClick={handleCancel}>
+              <Grid item xs={6} md={6}>
+                <Button
+                  onClick={handleCancel}
+                  variant="outlined"
+                  className="outlined-black"
+                  fullWidth
+                >
                   CANCEL &nbsp;
                   <EastIcon />
                 </Button>
               </Grid>
 
-              <Grid item xs={6}>
-                <Button className="bg-black" type="submit">
+              <Grid item xs={6} md={6}>
+                <Button className="btn-block bg-black" fullWidth type="submit">
                   ADD ADDRESS &nbsp;
                   <EastIcon />
                 </Button>
