@@ -131,7 +131,7 @@ export const AddressForm = ({ handleCloseForm, addressData = null }) => {
                   onChange={handleChange}
                 />
               </Grid>
-              <Grid item xs={4}>
+              <Grid item xs={12} md={4}>
                 <FormControl fullWidth>
                   <InputLabel id="select-country">Country</InputLabel>
                   <Select
@@ -152,7 +152,7 @@ export const AddressForm = ({ handleCloseForm, addressData = null }) => {
                 </FormControl>
               </Grid>
 
-              <Grid item xs={4}>
+              <Grid item xs={12} md={4}>
                 <FormControl fullWidth>
                   <InputLabel id="select-city">City</InputLabel>
                   <Select
@@ -173,7 +173,7 @@ export const AddressForm = ({ handleCloseForm, addressData = null }) => {
                 </FormControl>
               </Grid>
 
-              <Grid item xs={4}>
+              <Grid item xs={12} md={4}>
                 <TextField
                   id="input-pincode"
                   label="Pincode"
@@ -187,7 +187,7 @@ export const AddressForm = ({ handleCloseForm, addressData = null }) => {
               </Grid>
 
               <Grid item xs={12}>
-                <FormControl sx={{ width: "100%" }} fullWidth>
+                <FormControl fullWidth>
                   <FormLabel id="address-type-radio-buttons-group-label">
                     Address Type
                   </FormLabel>
@@ -227,7 +227,7 @@ export const AddressForm = ({ handleCloseForm, addressData = null }) => {
               </Grid>
 
               <Grid item xs={6} md={6}>
-                <Button className="btn-block bg-black" fullWidth type="submit">
+                <Button className="btn btn-block bg-black p-3" fullWidth type="submit">
                   ADD ADDRESS &nbsp;
                   <EastIcon />
                 </Button>

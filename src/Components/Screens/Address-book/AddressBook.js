@@ -23,7 +23,7 @@ export const AddressBook = () => {
       pinCode: 411233,
     },
     {
-      id:2,
+      id: 2,
       firstName: "Swapnil",
       lastName: "Pawar",
       address1: "193 B wing, Mukund complex",
@@ -49,12 +49,12 @@ export const AddressBook = () => {
   const handleEditClick = (address) => {
     setAddressData({ ...address });
     handleOpenForm();
-  }
+  };
 
   const handleRemoveClick = (address) => {
-    let index = addresses.findIndex(a => a.id == address.id);
+    let index = addresses.findIndex((a) => a.id == address.id);
     address = addresses.splice(index, 1);
-  }
+  };
 
   return (
     <div className="d-flex">
@@ -78,75 +78,88 @@ export const AddressBook = () => {
           <div className="saved-address-cards-container p-3 bg-white">
             <h5>SAVED ADDRESS</h5>
 
-            {addresses.map((address) => (
-              <Card key={address.id} sx={{ minWidth: 100 }} variant="outlined" className="mt-3 p-2">
-                <CardContent>
-                  <Typography variant="h6" component="div">
-                    {address.firstName + " " + address.lastName}
-                  </Typography>
+            <div className="cards-container">
+              {addresses.map((address) => (
+                <Card
+                  key={address.id}
+                  sx={{ minWidth: 100 }}
+                  variant="outlined"
+                  className="mt-3 p-2"
+                >
+                  <CardContent>
+                    <Typography variant="h6" component="div">
+                      {address.firstName + " " + address.lastName}
+                    </Typography>
 
-                  <Typography
-                    sx={{ fontSize: 14 }}
-                    color="text.secondary"
-                    gutterBottom
-                  >
-                    {address.address1},
-                  </Typography>
+                    <Typography
+                      sx={{ fontSize: 14 }}
+                      color="text.secondary"
+                      gutterBottom
+                    >
+                      {address.address1},
+                    </Typography>
 
-                  <Typography
-                    sx={{ fontSize: 14 }}
-                    color="text.secondary"
-                    gutterBottom
-                  >
-                    {address.address2},
-                  </Typography>
+                    <Typography
+                      sx={{ fontSize: 14 }}
+                      color="text.secondary"
+                      gutterBottom
+                    >
+                      {address.address2},
+                    </Typography>
 
-                  <Typography
-                    sx={{ fontSize: 14 }}
-                    color="text.secondary"
-                    gutterBottom
-                  >
-                    {address.city},
-                  </Typography>
+                    <Typography
+                      sx={{ fontSize: 14 }}
+                      color="text.secondary"
+                      gutterBottom
+                    >
+                      {address.city},
+                    </Typography>
 
-                  <Typography
-                    sx={{ fontSize: 14 }}
-                    color="text.secondary"
-                    gutterBottom
-                  >
-                    {address.country},
-                  </Typography>
+                    <Typography
+                      sx={{ fontSize: 14 }}
+                      color="text.secondary"
+                      gutterBottom
+                    >
+                      {address.country},
+                    </Typography>
 
-                  <Typography
-                    sx={{ fontSize: 14 }}
-                    color="text.secondary"
-                    gutterBottom
-                  >
-                    {address.pinCode}.
-                  </Typography>
-                 
-                </CardContent>
-                <CardActions>
-                  <Button variant="outlined"
-                  className="outlined-black"
-                  onClick={() => handleEditClick(address)}>
-                    EDIT &nbsp;
-                    <EastIcon />
-                  </Button>
+                    <Typography
+                      sx={{ fontSize: 14 }}
+                      color="text.secondary"
+                      gutterBottom
+                    >
+                      {address.pinCode}.
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button
+                      variant="outlined"
+                      className="outlined-black"
+                      onClick={() => handleEditClick(address)}
+                    >
+                      EDIT &nbsp;
+                      <EastIcon />
+                    </Button>
 
-                  <Button variant="outlined"
-                  className="outlined-black"
-                  onClick={() => handleRemoveClick(address)}>
-                    REMOVE &nbsp;
-                    <EastIcon />
-                  </Button>
-                </CardActions>
-              </Card>
-            ))}
+                    <Button
+                      variant="outlined"
+                      className="outlined-black"
+                      onClick={() => handleRemoveClick(address)}
+                    >
+                      REMOVE &nbsp;
+                      <EastIcon />
+                    </Button>
+                  </CardActions>
+                </Card>
+              ))}
+            </div>
           </div>
         </div>
       ) : (
-        <AddressForm handleCloseForm={handleCloseForm} addressData={addressData} />
+        <AddressForm
+          handleCloseForm={handleCloseForm}
+          addressData={addressData}
+        />
       )}
     </div>
   );
