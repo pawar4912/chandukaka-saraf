@@ -11,7 +11,7 @@ import EastIcon from "@mui/icons-material/East";
 import { AddressForm } from "./AddressForm";
 
 export const AddressBook = () => {
-  const addresses = [
+  const [addresses, setAddresses] = useState([
     {
       id: 1,
       firstName: "Sharvari",
@@ -32,7 +32,7 @@ export const AddressBook = () => {
       country: "India",
       pinCode: 413102,
     },
-  ];
+  ]);
 
   const [showAddressForm, setShowAddressForm] = useState(false);
   const [addressData, setAddressData] = useState(null);
@@ -53,7 +53,7 @@ export const AddressBook = () => {
 
   const handleRemoveClick = (address) => {
     let index = addresses.findIndex((a) => a.id == address.id);
-    address = addresses.splice(index, 1);
+    setAddresses(addresses.splice(index, 1));
   };
 
   return (
