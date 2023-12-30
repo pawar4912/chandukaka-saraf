@@ -1,0 +1,22 @@
+.bg-black:hover,
+.bg-black:active {
+  color: #fff;
+}
+
+.personal-details-container {
+  .personal-details-form {
+    background: #fff;
+
+    .btn-submit {
+      letter-spacing: 1.8px;
+      color: #ffffff;
+      text-transform: uppercase;
+    }
+  }
+}
+
+@media only screen and (min-width: 870px) {
+  .personal-details-form {
+    width: 30vw;
+  }
+}
