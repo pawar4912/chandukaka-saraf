@@ -14,7 +14,6 @@ import EastIcon from "@mui/icons-material/East";
 export const PersonalDetails = () => {
 
   const days = Array.from({ length: 31 }, (_, i) => i + 1);
-
   const months = [
     "January",
     "February",
@@ -85,9 +84,9 @@ export const PersonalDetails = () => {
       firstName: firstName.trim(),
       lastName: lastName.trim(),
       email: email.trim(),
-      date: date.trim(),
-      month: month.trim(),
-      year: year.trim(),
+      date: date,
+      month: month,
+      year: year,
     };
 
     console.log("form values", postData);
