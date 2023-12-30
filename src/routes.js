@@ -3,7 +3,7 @@ import NewsAndBlogs from './Components/Screens/NewsAndBlogs';
 import ContactUs from './Components/Screens/ContactUs';
 import FindAStore from './Components/Screens/FindAStore';
 import Home from './Components/Screens/Home';
-import LoginRegister from './Components/Screens/LoginRegister';
+import AuthModal from './Components/Screens/AuthModal';
 import MyOrder from './Components/Screens/MyOrder';
 // import Dashboard from './Components/Screens/Dashboard';
 import TermsAndCondition from './Components/Screens/TermsAndCondition';
@@ -12,6 +12,7 @@ import PrivacyPolicy from './Components/Screens/PrivacyPolicy';
 import ProductDetails from './Components/Screens/ProductDetails';
 import Bullions from './Components/Screens/Bullions';
 import Jewellerys from './Components/Screens/Jewellerys';
+import { PersonalDetails } from './Components/Screens/PersonalDetails';
 import { AddressBook } from './Components/Screens/Address-book/AddressBook';
 
 
@@ -38,7 +39,7 @@ const routes = [
     strict: false,
   },
   {
-    path: '/terms-&-conditions',
+    path: '/terms-and-conditions',
     name: 'TermsAndCondition',
     element: <TermsAndCondition />,
     exact: true,
@@ -66,9 +67,9 @@ const routes = [
     strict: false,
   },
   {
-    path: '/loginregister',
+    path: '/auth',
     name: 'Home',
-    element: <LoginRegister/>,
+    element: <AuthModal/>,
     exact: true,
     strict: false,
   },
@@ -118,6 +119,13 @@ const routes = [
     path: '/product-details',
     name: 'Home',
     element: <ProductDetails />,
+    exact: true,
+    strict: false,
+  },
+  {
+    path: '/personal-details',
+    name: 'personalDetails',
+    element: <PersonalDetails />,
     exact: true,
     strict: false,
   },

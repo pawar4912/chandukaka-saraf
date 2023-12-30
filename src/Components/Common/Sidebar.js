@@ -43,14 +43,14 @@ export default function Sidebar() {
                 </Link>
               </li>
               <li className="w-100">
-                <a href="#" className="menu-link">
+                <Link to="/personal-details" className="menu-link">
                   <img
                     src={personalDetailsIcon}
                     alt="Logo"
                     className="image"
                   />
                   PERSONAL DETAILS
-                </a>
+                </Link>
               </li>
               <li className="w-100">
                 <Link to="/address-book" className="menu-link">

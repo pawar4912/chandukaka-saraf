@@ -65,7 +65,7 @@ function Footer() {
                       <a href="/privacy-policy" className="btn btn-link">
                         Privacy Policy
                       </a>
-                      <a href="/terms-&-conditions" className="btn btn-link">
+                      <a href="/terms-and-conditions" className="btn btn-link">
                         Terms & Condition
                       </a>
                       {/* <a href="/" className="btn btn-link">
