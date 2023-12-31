@@ -418,7 +418,7 @@ export default function Bullions() {
                     </Grid>
                     <Grid item xs={6} md={4}>
                         <Select
-                            defaultValue={1}
+                            defaultVa   lue={1}
                             sx={{ boxShadow: 'none', '.MuiOutlinedInput-notchedOutline': { border: 0 } }}
                             labelId="demo-multiple-checkbox-label"
                             id="demo-multiple-checkbox"
