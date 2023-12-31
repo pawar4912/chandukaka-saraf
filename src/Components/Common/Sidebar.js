@@ -9,6 +9,7 @@ import logoutIcon from '../../images/icons/sidebar/logout-icon.svg';
 import web from "../../images/Group265.png";
 import { SwipeableDrawer } from "@mui/material";
 import { Link } from "react-router-dom";
+import { Wishlist } from "../Screens/Wishlist";
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -63,14 +64,14 @@ export default function Sidebar() {
                 </a>
               </li>
               <li className="w-100">
-                <a href="#" className="menu-link">
+                <Link to="/wishlist" className="menu-link">
                   <img
                     src={heartIcon}
                     alt="Logo"
                     className="image"
                   />
                   WISHLIST
-                </a>
+                </Link>
               </li>
               <li className="w-100">
                 <a href="#" className="menu-link">

@@ -1,0 +1,28 @@
+.wishlist {
+  background-color: #ffffff;
+  margin-top: 10rem;
+}
+.section-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 0.5rem;
+
+  h2 {
+    letter-spacing: 0.45px;
+  }
+
+  small {
+    color: #666666;
+    font-size: 1rem;
+  }
+}
+
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+
+.favourite-button-container {
+  background-color: #ffffff;
+}

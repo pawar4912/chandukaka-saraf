@@ -238,9 +238,9 @@ function Header() {
                           </a>
                         </li>
                         <li>
-                          <a href="/">
+                          <Link to="/wishlist">
                             <img src={heartLogo} alt="Logo" className="image" />
-                          </a>
+                          </Link>
                         </li>
                         <li>
                           <Link onClick={handleOpenDialog}>
