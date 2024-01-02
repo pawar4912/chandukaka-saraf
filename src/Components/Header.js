@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../images/icons/logo.svg";
 import heartLogo from "../images/icons/heart.svg";
@@ -7,9 +7,36 @@ import searchLogo from "../images/icons/search.svg";
 import shoppingBagLogo from "../images/icons/shopping-bag.svg";
 import menuOpen from "../images/icons/open-menu.svg";
 import closeMenu from "../images/icons/close.svg";
+import { getLiveRateForCSPL } from "../services/FrontApp/index.service";
+import AuthModal from "./Screens/AuthModal";
 
 function Header() {
   const $ = window.jQuery;
+  const [rates, setRates] = useState({ Platinum: 0, Silver1: 0, Silver2: 0, gold: [] })
+
+  const [open, setOpen] = useState(false);
+
+  const handleOpenDialog = () => {
+    setOpen(true);
+  };
+
+  const handleCloseDialog = () => {
+    setOpen(false);
+  };
+
+  const getData = async () => {
+    try {
+      const result = await getLiveRateForCSPL();
+      const { Platinum, Silver1, Silver2, ...gold } = result.data.data;
+      setRates({ Platinum, Silver1, Silver2, gold });
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    getData();
+  }, [])
 
   useEffect(() => {
     $(".header-content .open-nav-btn").click(function (e) {
@@ -76,13 +103,13 @@ function Header() {
                             <ul className="w-100">
                               <div className="quick-link-items">
                                 <li>
-                                  <text>GOLD - ₹5,767</text>
+                                  <small>GOLD - ₹{rates.gold['24.00'] ? rates.gold['24.00'] : 0}</small>
                                 </li>
                                 <li>
-                                  <text>SILVER - ₹5,767</text>
+                                  <small>SILVER - ₹{rates.Silver1}</small>
                                 </li>
                                 <li>
-                                  <a href="/">FIND A STORE</a>
+                                  <a href="/find-a-store">FIND A STORE</a>
                                 </li>
                                 <li>
                                   <a href="/">SUPPORT</a>
@@ -171,20 +198,20 @@ function Header() {
                       <ul className="w-100">
                         <div className="menu-link-items">
                           <li>
-                            <Link to="jwellery">Jwellery</Link>
+                            <Link to="jewellerys">Jewellery</Link>
                           </li>
                           <li>
-                            <Link to="about-us">About us</Link>
+                            <Link to="aboutus">About us</Link>
                           </li>
                           <li>
-                            <Link to="bullion">Bullion</Link>
+                            <Link to="bullions">Bullion</Link>
                           </li>
-                          <li>
+                          {/* <li>
                             <Link to="e-gold">E-gold</Link>
-                          </li>
-                          <li>
+                          </li> */}
+                          { /* <li>
                             <Link to="gifting">Gifting</Link>
-                          </li>
+                        </li> */}
                         </div>
                       </ul>
                     </nav>
@@ -216,9 +243,10 @@ function Header() {
                           </a>
                         </li>
                         <li>
-                          <a href="/">
+                          <Link onClick={handleOpenDialog}>
                             <img src={userLogo} alt="Logo" className="image" />
-                          </a>
+                          </Link>
+                          <AuthModal open={open} handleClose={handleCloseDialog} />
                         </li>
                       </ul>
                     </div>

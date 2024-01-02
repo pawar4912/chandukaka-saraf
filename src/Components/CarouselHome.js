@@ -2,22 +2,45 @@ import React, {useState} from 'react';
 import Carousel from 'react-material-ui-carousel';
 import { Paper } from '@mui/material';
 import rightArrowIcon from '../images/icons/right-arrow.svg';
-import imageDesktopView from '../images/Group265.png';
 import imageMobileView from '../images/mobile-view-corousel.png';
 import useWindowWidthAndHeight from '../utilities/CustomHooks';
 
-function CarouselHome({itemsCarouse}) {
-	const [firstImgLoaded, setFirstImgLoaded] = useState(false);
+const items = [
+  {
+    name: 'Elegance Redefined:',
+    description: 'Discover exquisite jewellery that reflects your inner radiance',
+    imagepath: img1,
+  },
+  {
+    name: 'Elegance Redefined:',
+    description: 'Discover exquisite jewellery that reflects your inner radiance',
+    imagepath: img2,
+  },
+  {
+    name: 'Elegance Redefined:',
+    description: 'Discover exquisite jewellery that reflects your inner radiance',
+    imagepath: img3,
+  },
+];
+
+function CarouselHome() {
+	const [firstDesktopLoaded, setDesktopImgLoaded] = useState(false);
+  const [firstMobileLoaded, setMobileImgLoaded] = useState(false);
   const windoDimensions = useWindowWidthAndHeight();
   return (
     <div className="slider-container">
       <div className="service-slider">
       <img
-		    src={itemsCarouse[0].imagepath}
-		    onLoad={() => setFirstImgLoaded(true)}
+		    src={img1}
+		    onLoad={() => setDesktopImgLoaded(true)}
 		    style={{ display: "none" }}
 		  />
-      {firstImgLoaded && (
+      <img
+		    src={imageMobileView}
+		    onLoad={() => setMobileImgLoaded(true)}
+		    style={{ display: "none" }}
+		  />
+      {firstDesktopLoaded && firstMobileLoaded && (
         <Carousel
           animation="slide"
           duration={2300}

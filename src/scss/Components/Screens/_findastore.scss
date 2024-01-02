@@ -1,0 +1,83 @@
+.find-store-title-image {
+    height: 552px !important;
+    position: relative;
+    top: -191px;
+}
+.find-store-main-container{
+    padding-bottom: 90px;
+}
+.find-store-header-text-container {
+    padding-top: 160px !important;
+}
+
+.find-store-change-location {
+    margin-top: 25px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #999999;
+    opacity: 1;
+    height: 50px;
+}
+
+.location-change-text-field {
+    fieldSet {
+        border: none;
+    }
+    input{
+        height: 100%;
+    }
+
+}
+
+.location-change-button {
+    height: 100%;
+    text-align: left;
+    text-decoration: underline;
+    font: normal normal bold 12px/15px Lato;
+    letter-spacing: 1.8px;
+    color: #916F25;
+    text-transform: uppercase;
+    opacity: 1;
+}
+
+.location-change-button:hover {
+    border: none;
+    background: transparent;
+}
+
+.all-store-titles {
+    text-align: left;
+    font: normal normal 900 21px/36px Lato;
+    letter-spacing: 3.15px;
+    color: #333333;
+    text-transform: uppercase;
+    opacity: 1;
+    padding-bottom: 25px;
+}
+.google-map{
+    width: 100%;
+    height: 464px !important;
+}
+.store-locations-acordion{
+    height: 407px !important;
+    overflow-y: scroll;
+}
+.all-store-container{
+    padding-right: 10px;
+}
+.find-store-google-map-container{
+    padding-right: 10px;
+}
+@media (max-width: 767px) {
+    .all-store-container{
+        padding: 25px !important;
+    }
+    .find-store-google-map-container{
+        padding: 25px !important;
+        img{
+            height: auto !important;
+        }
+    }
+    .store-locations-acordion{
+        height: 100% !important;
+    }
+}

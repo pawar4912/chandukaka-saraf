@@ -19,10 +19,21 @@
 @import "./Components/faqs.scss";
 @import "./Components/Screens/privacypolicy";
 @import "./Components/Screens/aboutus";
-@import "./Components//productcard";
 @import "./Components/Screens//productdetails";
 @import "./Components/productdetailstab";
 @import "./Components/productreviewcard";
+@import "./Components/Screens/findastore";
+@import "./Components/Screens/myorder";
+@import "./Components/Screens/personaldetails";
+@import "./Components/Screens/authModal";
+@import "./Components/Screens/addressBook";
+@import "./Components/Screens/addressForm";
+
+//common component
+
+@import "./Components/common/sidebar";
+@import "./Components/productcard";
+@import "./Components/testimonial";
 
 .main-container{
     background-color: #F8F6F0 ;

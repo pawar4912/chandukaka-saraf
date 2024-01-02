@@ -1,0 +1,15 @@
+.outlined-black {
+    border-color: #000 !important;
+    color: #000 !important;
+}
+
+.cards-container {
+    max-height: 100vh;
+    overflow: auto;
+}
+
+@media only screen and (max-width: 869px) {
+    .address-book-container {
+      width: 100%;
+    }
+  }
