@@ -60,44 +60,33 @@ const StyledInputRoot = styled('div')(
     ({ theme }) => `
     font-family: IBM Plex Sans, sans-serif;
     font-weight: 400;
+    border: 1px solid #999999 !important;
     color: ${theme.palette.mode === 'dark' ? grey[300] : grey[500]};
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
+    height: 57px
 `,
 );
-
+//color: ${theme.palette.mode === 'dark' ? grey[300] : grey[900]};
+//background: ${theme.palette.mode === 'dark' ? grey[900] : '#fff'};
 const StyledInput = styled('input')(
     ({ theme }) => `
         font-size: 0.875rem;
         font-family: inherit;
         font-weight: 400;
         line-height: 1.375;
-        color: ${theme.palette.mode === 'dark' ? grey[300] : grey[900]};
-        background: ${theme.palette.mode === 'dark' ? grey[900] : '#fff'};
-        border: 1px solid ${theme.palette.mode === 'dark' ? grey[700] : grey[200]};
-        box-shadow: 0px 2px 4px ${theme.palette.mode === 'dark' ? 'rgba(0,0,0, 0.5)' : 'rgba(0,0,0, 0.05)'
-    };
-        border-radius: 8px;
+        border: none !important;
+        color: #000000;
         margin: 0 8px;
         padding: 10px 12px;
-        outline: 0;
         min-width: 0;
         width: 4rem;
         text-align: center;
-    
-        &:hover {
-        border-color: ${blue[400]};
-        }
-    
-        &:focus {
-        border-color: ${blue[400]};
-        box-shadow: 0 0 0 3px ${theme.palette.mode === 'dark' ? blue[700] : blue[200]};
-        }
-    
         &:focus-visible {
         outline: 0;
+        opacity: 1;
         }
     `,
 );
@@ -112,10 +101,9 @@ const StyledButton = styled('button')(
         font-size: 0.875rem;
         box-sizing: border-box;
         line-height: 1.5;
-        border: 1px solid;
-        border-color: ${theme.palette.mode === 'dark' ? grey[800] : grey[200]};
         background: transparent;
-        color: ${theme.palette.mode === 'dark' ? grey[200] : grey[900]};
+        border: none;
+        color: #000000;
         width: 32px;
         height: 32px;
         display: flex;
@@ -128,9 +116,9 @@ const StyledButton = styled('button')(
     
         &:hover {
         cursor: pointer;
-        background: ${theme.palette.mode === 'dark' ? blue[700] : blue[500]};
-        border-color: ${theme.palette.mode === 'dark' ? blue[500] : blue[400]};
-        color: ${grey[50]};
+        background: transparent !important;
+        color: #000000;
+        border: none !important
         }
     
         &:focus-visible {

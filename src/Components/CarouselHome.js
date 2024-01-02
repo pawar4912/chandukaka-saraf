@@ -5,36 +5,15 @@ import rightArrowIcon from '../images/icons/right-arrow.svg';
 import imageDesktopView from '../images/Group265.png';
 import imageMobileView from '../images/mobile-view-corousel.png';
 import useWindowWidthAndHeight from '../utilities/CustomHooks';
-import img1 from '../images/banners/desktop/1.jpg';
-import img2 from '../images/banners/desktop/2.jpg';
-import img3 from '../images/banners/desktop/3.jpg';
 
-const items = [
-  {
-    name: 'Elegance Redefined:',
-    description: 'Discover exquisite jewellery that reflects your inner radiance',
-    imagepath: img1,
-  },
-  {
-    name: 'Elegance Redefined:',
-    description: 'Discover exquisite jewellery that reflects your inner radiance',
-    imagepath: img2,
-  },
-  {
-    name: 'Elegance Redefined:',
-    description: 'Discover exquisite jewellery that reflects your inner radiance',
-    imagepath: img3,
-  },
-];
-
-function CarouselHome() {
+function CarouselHome({itemsCarouse}) {
 	const [firstImgLoaded, setFirstImgLoaded] = useState(false);
   const windoDimensions = useWindowWidthAndHeight();
   return (
     <div className="slider-container">
       <div className="service-slider">
       <img
-		    src={img1}
+		    src={itemsCarouse[0].imagepath}
 		    onLoad={() => setFirstImgLoaded(true)}
 		    style={{ display: "none" }}
 		  />
@@ -60,7 +39,7 @@ function CarouselHome() {
           }}
         >
           {
-            items.map((item) => (
+            itemsCarouse.map((item) => (
               <Paper key={item.name} className="carouselPaper" >
                 <img className="carousel-img" src={windoDimensions[0] <= 768 ? `${imageMobileView}`:  `${item.imagepath}` } />
                 <div className="service-slide-text-wrapper">

@@ -13,6 +13,9 @@ import CardImageLarge from '../../images/MaskGroup24.png';
 import CardImageNoPadding from '../../images/MaskGroup18.png';
 import useWindowWidthAndHeight from '../../utilities/CustomHooks';
 import rightArrowIcon from '../../images/icons/right-arrow.svg';
+import img1 from '../../images/banners/desktop/1.jpg';
+import img2 from '../../images/banners/desktop/2.jpg';
+import img3 from '../../images/banners/desktop/3.jpg';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -22,12 +25,30 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
+const itemsCarouse = [
+  {
+    name: 'Elegance Redefined:',
+    description: 'Discover exquisite jewellery that reflects your inner radiance',
+    imagepath: img1,
+  },
+  {
+    name: 'Elegance Redefined:',
+    description: 'Discover exquisite jewellery that reflects your inner radiance',
+    imagepath: img2,
+  },
+  {
+    name: 'Elegance Redefined:',
+    description: 'Discover exquisite jewellery that reflects your inner radiance',
+    imagepath: img3,
+  },
+];
+
 function Home() {
   const windoDimensions = useWindowWidthAndHeight();
   return (
     <div className='col-12'>
       <div>
-        <CarouselHome />
+        <CarouselHome itemsCarouse={itemsCarouse} />
       </div>
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={1}>

@@ -1,0 +1,43 @@
+.details-tab-container {
+    .css-1gsv261 {
+        border: none !important;
+    }
+}
+
+.product-desctiption-tabs-container {
+    .css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
+        text-align: left;
+        text-decoration: underline;
+        font: normal normal medium 12px/15px Lato;
+        letter-spacing: 1.8px;
+        color: #333333;
+        text-transform: uppercase;
+        opacity: 1;
+    }
+
+    .MuiButtonBase-root {
+        text-align: left;
+        font: normal normal medium 12px/15px Lato;
+        letter-spacing: 1.8px;
+        color: #666666;
+        text-transform: uppercase;
+        opacity: 1;
+    }
+
+    .css-1aquho2-MuiTabs-indicator {
+        display: none;
+    }
+
+    button:hover {
+        background: transparent !important;
+        border: none;
+    }
+}
+
+.product-details-description{
+    text-align: left;
+    font: normal normal normal 12px/30px Lato;
+    letter-spacing: 0px;
+    color: #666666;
+    opacity: 1;
+}
