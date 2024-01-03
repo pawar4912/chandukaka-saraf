@@ -24,6 +24,10 @@ export const ProductCard = ({ product = null }) => {
     setIsDialogOpen(false); // Close the dialog after handling the response
   };
 
+  const handleClose = () => {
+    setIsDialogOpen(false);
+  }
+
   const handleOpenDialog = () => {
     console.log("dialog opened")
     setIsDialogOpen(true);
@@ -44,7 +48,7 @@ export const ProductCard = ({ product = null }) => {
           </IconButton>
 
         </div>
-        <ConfirmationDialog onConfirm={handleConfirm} open={isDialogOpen} />
+        <ConfirmationDialog onConfirm={handleConfirm} open={isDialogOpen} handleClose={handleClose}/>
         <div
           style={{ position: "absolute", bottom: 0, right: 0 }}
           className="favourite-button-container"
