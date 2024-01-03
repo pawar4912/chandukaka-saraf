@@ -13,7 +13,7 @@ import ProductDetails from './Components/Screens/ProductDetails';
 import Bullions from './Components/Screens/Bullions';
 import Jewellerys from './Components/Screens/Jewellerys';
 import { PersonalDetails } from './Components/Screens/PersonalDetails';
-import { Wishlist } from './Components/Screens/Wishlist';
+import { Wishlist } from './Components/Screens/Wishlist/Wishlist';
 
 const routes = [
   {

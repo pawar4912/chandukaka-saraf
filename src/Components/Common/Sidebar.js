@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { ListItemIcon } from "@mui/material";
 import orderIcon from '../../images/icons/sidebar/orders-icon.svg';
 import personalDetailsIcon from '../../images/icons/sidebar/personal-details-icon.svg';
 import addressBookIcon from '../../images/icons/sidebar/address-book-icon.svg';
@@ -9,7 +8,6 @@ import logoutIcon from '../../images/icons/sidebar/logout-icon.svg';
 import web from "../../images/Group265.png";
 import { SwipeableDrawer } from "@mui/material";
 import { Link } from "react-router-dom";
-import { Wishlist } from "../Screens/Wishlist";
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false)
