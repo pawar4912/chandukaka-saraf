@@ -19,6 +19,8 @@ import CloseIcon from "@mui/icons-material/Close";
 import rightArrowIcon from "../../images/icons/right-arrow-white.svg";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { login, verifyOtp } from "../../services/FrontApp/index.service";
+import ErrorList from "../Common/ErrorList";
 
 const Boxstyle = {
   position: "absolute",
@@ -34,6 +36,7 @@ const Boxstyle = {
 
 const AuthModal = ({ open, handleClose }) => {
   const [showPhoneNumberScreen, setshowPhoneNumberScreen] = useState(true);
+  const [errors, setErrors] = useState([])
   const [showOtpScreen, setShowOtpScreen] = useState(false);
   const [showThankYou, setShowThankYou] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -44,8 +47,8 @@ const AuthModal = ({ open, handleClose }) => {
     otp4: "",
   });
 
-  const handleChange = (value, event) => {
-    setOtpValues({ ...otpValues, [value]: event.target.value });
+  const handleChange = (key, event) => {
+    setOtpValues({ ...otpValues, [key]: event.target.value });
   };
 
   const handleOnPhoneNumberChange = (event) => {
@@ -69,12 +72,23 @@ const AuthModal = ({ open, handleClose }) => {
     handleClose();
   };
 
-  const handleOtpSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.target);
-    setshowPhoneNumberScreen(false);
-    setShowOtpScreen(false);
-    setShowThankYou(true);
+  const handleOtpSubmit = async (event) => {
+    try {
+      event.preventDefault();
+      setErrors([])
+      const otp = `${otpValues.otp1}${otpValues.otp2}${otpValues.otp3}${otpValues.otp4}`;
+      const data = {
+        mobile: phoneNumber,
+        otp,
+        tenant_master_id: 1,
+      }
+      await verifyOtp(data)
+      setshowPhoneNumberScreen(false);
+      setShowOtpScreen(false);
+      setShowThankYou(true);
+    } catch (error) {
+      setErrors(error.response.data.message)
+    }
 
     console.log("otp values", otpValues);
   };
@@ -93,12 +107,20 @@ const AuthModal = ({ open, handleClose }) => {
     }
   };
 
-  const handlePhoneNumberSubmit = () => {
+  const handlePhoneNumberSubmit = async () => {
     // Todo: Add phone number submit logic
-    setshowPhoneNumberScreen(false);
-    setShowOtpScreen(true);
-
-    console.log(phoneNumber)
+    setErrors([]);
+    try {
+      const data = {
+        mobile: phoneNumber,
+        secret_key: process.env.REACT_APP_LOGIN_SECRET_KEY,
+      };
+      await login(data);
+      setshowPhoneNumberScreen(false);
+      setShowOtpScreen(true);
+    } catch (error) {
+      setErrors(error.response.data.message)
+    }
   };
 
   const countrycode = [
@@ -131,6 +153,7 @@ const AuthModal = ({ open, handleClose }) => {
                 <CloseIcon />
               </IconButton>
             </DialogActions>
+            <ErrorList errors={errors} />
 
             {showPhoneNumberScreen && (
               <div className="container phone-number">

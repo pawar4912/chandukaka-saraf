@@ -52,14 +52,14 @@ export default function Sidebar() {
                 </Link>
               </li>
               <li className="w-100">
-                <a href="#" className="menu-link">
+                <Link to="/address-book" className="menu-link">
                   <img
                     src={addressBookIcon}
                     alt="Logo"
                     className="image"
                   />
                   ADDRESS BOOK
-                </a>
+                </Link>
               </li>
               <li className="w-100">
                 <Link to="/wishlist" className="menu-link">
