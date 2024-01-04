@@ -1,19 +1,31 @@
 import React, { useState } from "react";
 import Button from "@mui/material/Button";
-import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
-import { Divider, Fade, Grid, Typography, IconButton } from "@mui/material";
+import {
+  Divider,
+  Fade,
+  Grid,
+  Typography,
+  IconButton,
+  Modal,
+  Box,
+} from "@mui/material";
 import productImage from "../../../images/productImage.png";
 import CloseIcon from "@mui/icons-material/Close";
+import EastIcon from "@mui/icons-material/East";
 
 const ConfirmationDialog = ({ onConfirm, open, handleClose }) => {
   const Boxstyle = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
     bgcolor: "background.paper",
     border: "2px solid #000",
     boxShadow: 24,
-    p: 4,
+    width: "40em",
   };
 
   const handleYesClick = () => {
@@ -29,74 +41,111 @@ const ConfirmationDialog = ({ onConfirm, open, handleClose }) => {
   };
 
   return (
-    <Dialog
-      open={open}
-      onClose={handleClose}
-      style={{ border: "12px solid #ede5e5" }}
-    >
-      <DialogActions>
-        <IconButton aria-label="close" onClick={handleClose}>
-          <CloseIcon />
-        </IconButton>
-      </DialogActions>
-      <DialogContent>
-        <DialogContentText
-          className="text-center p-3"
-          sx={{ fontSize: "18px", color: "#666666" }}
-        >
-          Are you sure you want to remove the following product from the
-          wishlist?
-        </DialogContentText>
-
-        <Divider variant="fullWidth" />
-        <Grid container className="container p-4" sx={{ width: "80%" }}>
-          <Grid item xs={3}>
-            <img src={productImage} style={{ height: "81px", width: "81px" }} />
-          </Grid>
-
-          <Grid
-            item
-            xs={9}
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-            }}
-          >
-            <Typography
-              sx={{
-                fontSize: "16px",
-                color: "#333333",
-                fontWeight: "900",
-                letterSpacing: "1.2px",
-              }}
+    <Modal open={open} onClose={handleClose}>
+      <Fade in={open}>
+        <Box sx={Boxstyle} style={{ border: "12px solid #ede5e5" }}>
+          <DialogActions>
+            <IconButton aria-label="close" onClick={handleClose}>
+              <CloseIcon />
+            </IconButton>
+          </DialogActions>
+          <DialogContent>
+            <DialogContentText
+              className="text-center"
+              sx={{ fontSize: "18px", color: "#666666" }}
             >
-              Product name
-            </Typography>
+              Are you sure you want to remove the following product from the
+              wishlist?
+            </DialogContentText>
 
-            <Typography
-              sx={{
-                fontSize: "16px",
-                color: "#333333",
-                fontWeight: "700",
-                letterSpacing: "1.2px",
-              }}
+            <div className="product-information p-3">
+              <Divider
+                variant="fullWidth"
+                style={{ backgroundColor: "#666666" }}
+              />
+              <Grid container className="container p-3" sx={{ width: "80%" }}>
+                <Grid item xs={3}>
+                  <img
+                    src={productImage}
+                    style={{ height: "81px", width: "81px" }}
+                  />
+                </Grid>
+                <Grid
+                  item
+                  xs={9}
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      fontSize: "16px",
+                      color: "#333333",
+                      fontWeight: "900",
+                      letterSpacing: "1.2px",
+                    }}
+                  >
+                    Product name
+                  </Typography>
+                  <Typography
+                    sx={{
+                      fontSize: "16px",
+                      color: "#333333",
+                      fontWeight: "700",
+                      letterSpacing: "1.2px",
+                    }}
+                  >
+                    &#8377; 1200.00
+                  </Typography>
+                </Grid>
+              </Grid>
+              <Divider
+                variant="fullWidth"
+                style={{ backgroundColor: "#666666" }}
+              />
+            </div>
+          </DialogContent>
+
+          <DialogActions>
+            <Grid
+              container
+              spacing={3}
+              sx={
+                {
+                  justifyContent: 'center',
+                  mb: 4
+                }
+              }
             >
-              &#8377; 1200.00
-            </Typography>
-          </Grid>
-        </Grid>
-        <Divider variant="fullWidth" />
-      </DialogContent>
-      <DialogActions>
-        <Button onClick={handleYesClick} color="primary">
-          Yes
-        </Button>
-        <Button onClick={handleNoClick} color="primary">
-          No
-        </Button>
-      </DialogActions>
-    </Dialog>
+              <Grid item xs={3} md={3}>
+                <Button
+                  onClick={handleNoClick}
+                  variant="outlined"
+                  className="outlined-black"
+                  fullWidth
+                >
+                  Cancel
+                  <EastIcon />
+                </Button>
+              </Grid>
+
+              <Grid item xs={3} md={3}>
+                <Button
+                  className="btn btn-block bg-black p-3"
+                  fullWidth
+                  onClick={handleYesClick}
+                >
+                  Yes &nbsp;
+                  <EastIcon />
+                </Button>
+              </Grid>
+            </Grid>
+          </DialogActions>
+        </Box>
+      </Fade>
+    </Modal>
   );
 };
 
