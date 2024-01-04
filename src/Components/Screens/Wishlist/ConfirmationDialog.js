@@ -4,11 +4,18 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
-import { Divider, Grid } from "@mui/material";
+import { Divider, Fade, Grid, Typography, IconButton } from "@mui/material";
 import productImage from "../../../images/productImage.png";
+import CloseIcon from "@mui/icons-material/Close";
 
 const ConfirmationDialog = ({ onConfirm, open, handleClose }) => {
+  const Boxstyle = {
+    bgcolor: "background.paper",
+    border: "2px solid #000",
+    boxShadow: 24,
+    p: 4,
+  };
+
   const handleYesClick = () => {
     // Todo: Handle remove from the wishlist logic here
     onConfirm(true);
@@ -22,41 +29,74 @@ const ConfirmationDialog = ({ onConfirm, open, handleClose }) => {
   };
 
   return (
-    <div>
-      <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Confirmation</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            Are you sure you want to remove the following product from the
-            wishlist?
-          </DialogContentText>
+    <Dialog
+      open={open}
+      onClose={handleClose}
+      style={{ border: "12px solid #ede5e5" }}
+    >
+      <DialogActions>
+        <IconButton aria-label="close" onClick={handleClose}>
+          <CloseIcon />
+        </IconButton>
+      </DialogActions>
+      <DialogContent>
+        <DialogContentText
+          className="text-center p-3"
+          sx={{ fontSize: "18px", color: "#666666" }}
+        >
+          Are you sure you want to remove the following product from the
+          wishlist?
+        </DialogContentText>
 
-          <Divider variant="fullWidth" />
-          <Grid container className="p-3">
-            <Grid item xs={3}>
-              <img
-                src={productImage}
-                style={{ height: "81px", width: "81px" }}
-                alt=""
-              />
-            </Grid>
-
-            <Grid item xs={9}>
-              Typeogra
-            </Grid>
+        <Divider variant="fullWidth" />
+        <Grid container className="container p-4" sx={{ width: "80%" }}>
+          <Grid item xs={3}>
+            <img src={productImage} style={{ height: "81px", width: "81px" }} />
           </Grid>
-          <Divider variant="fullWidth" />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleYesClick} color="primary">
-            Yes
-          </Button>
-          <Button onClick={handleNoClick} color="primary">
-            No
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </div>
+
+          <Grid
+            item
+            xs={9}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+            }}
+          >
+            <Typography
+              sx={{
+                fontSize: "16px",
+                color: "#333333",
+                fontWeight: "900",
+                letterSpacing: "1.2px",
+              }}
+            >
+              Product name
+            </Typography>
+
+            <Typography
+              sx={{
+                fontSize: "16px",
+                color: "#333333",
+                fontWeight: "700",
+                letterSpacing: "1.2px",
+              }}
+            >
+              &#8377; 1200.00
+            </Typography>
+          </Grid>
+        </Grid>
+        <Divider variant="fullWidth" />
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={handleYesClick} color="primary">
+          Yes
+        </Button>
+        <Button onClick={handleNoClick} color="primary">
+          No
+        </Button>
+      </DialogActions>
+    </Dialog>
   );
 };
 
