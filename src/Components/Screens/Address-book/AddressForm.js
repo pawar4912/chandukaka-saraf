@@ -19,13 +19,16 @@ export const AddressForm = ({ handleCloseForm, addressData = null }) => {
   const countries = ["India", "Indonasia", "Iran", "Irac"];
   const cities = ["Baramati", "Pune", "Nasik", "Nagpur", "Thane"];
 
-  const [country, setCountry] = useState(addressData?.country ?? countries[0]);
-  const [city, setCity] = useState(addressData?.city ?? cities[0]);
-  const [firstName, setFirstName] = useState(addressData?.firstName ?? "");
-  const [lastName, setLastName] = useState(addressData?.lastName ?? "");
-  const [address1, setAddress1] = useState(addressData?.address1 ?? "");
-  const [address2, setAddress2] = useState(addressData?.address2 ?? "");
-  const [pinCode, setPinCode] = useState(addressData?.pinCode ?? "");
+  const [data, setData] = useState({
+    flat_no: '',
+    street_name: '',
+    country: '',
+    state: '',
+    city: '',
+    pincode: '',
+    address_type: '',
+    is_default: 0
+  })
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -76,7 +79,7 @@ export const AddressForm = ({ handleCloseForm, addressData = null }) => {
   };
 
   return (
-    <div className="d-flex">
+    <div className="d-flex col-12 col-lg-8 col-xl-6">
       <div className="address-form-container p-3">
         <h5>ADDRESS BOOK</h5>
 

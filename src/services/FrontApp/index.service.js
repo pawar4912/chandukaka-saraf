@@ -11,6 +11,5 @@ export const login = async (data) => {
 
 export const verifyOtp = async (data) => {
   const result = await httpService.post(`verifyOTP`, data)
-  httpService.saveToken('')
-  console.log(result)
+  httpService.saveToken(result.data.token)
 }

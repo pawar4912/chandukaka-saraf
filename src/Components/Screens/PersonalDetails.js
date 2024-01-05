@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Sidebar from "../Common/Sidebar";
 import {
   Select,
@@ -10,96 +10,104 @@ import {
   Button,
 } from "@mui/material";
 import EastIcon from "@mui/icons-material/East";
+import { myProfile, updateProfile } from "../../services/profile";
+import ErrorList from "../Common/ErrorList";
+import SuccessMsg from "../Common/SuccessMsg";
 
 export const PersonalDetails = () => {
-
+  const [errors, setErrors] = useState([])
+  const [successMsg, setSuccesMsg] = useState('')
   const days = Array.from({ length: 31 }, (_, i) => i + 1);
   const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
+    {value: '01', label: "January"},
+    {value: '02', label: "February"},
+    {value: '03', label: "March"},
+    {value: '04', label: "April"},
+    {value: '05', label: "May"},
+    {value: '06', label: "June"},
+    {value: '07', label: "July"},
+    {value: '08', label: "August"},
+    {value: '09', label: "September"},
+    {value: '10', label: "October"},
+    {value: '11', label: "November"},
+    {value: '12', label: "December"},
   ];
 
   const currentYear = new Date().getFullYear();
   const years = Array.from({ length: 100 }, (_, i) => currentYear - i);
 
-  const [title, setTitle] = useState("mrs");
-  const [gender, setGender] = useState("female");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
+  const [data, setData] = useState({
+    first_name: '',
+    last_name: '',
+    title: 'mrs',
+    gender: 'm',
+    email: '',
+    dob: ''
+  })
   const [date, setDate] = useState(1);
-  const [month, setMonth] = useState(months[0]);
+  const [month, setMonth] = useState('01');
   const [year, setYear] = useState(currentYear - 20);
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    switch (name) {
-      case "title":
-        setTitle(value);
-        break;
-      case "gender":
-        setGender(value);
-        break;
-      case "firstName":
-        setFirstName(value);
-        break;
-      case "lastName":
-        setLastName(value);
-        break;
-      case "email":
-        setEmail(value);
-        break;
-      default:
-        break;
-    }
-  };
+  const getData = async () => {
+    const result = await myProfile();
+    setData(result.data.data[0])
+  }
+
+  useEffect(() => {
+    getData()
+  }, [])
+
+  const handleChange = ({ target }) => {
+    data[target.name] = target.value
+    const temp = Object.assign({}, data)
+    setData(temp)
+  }
 
   const handleDateChange = (event) => {
     setDate(event.target.value);
+    console.log(`${event.target.value}/${month}/${year}`)
+    data['dob'] = `${event.target.value}/${month}/${year}`
+    const temp = Object.assign({}, data)
+    setData(temp)
   };
 
   const handleMonthChange = (event) => {
     setMonth(event.target.value);
+    data['dob'] = `${date}/${event.target.value}/${year}`
+    const temp = Object.assign({}, data)
+    setData(temp)
   };
 
   const handleYearChange = (event) => {
     setYear(event.target.value);
+    data['dob'] = `${date}/${month}/${event.target.value}`
+    const temp = Object.assign({}, data)
+    setData(temp)
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    let postData = {
-      title: title.trim(),
-      gender: gender.trim(),
-      firstName: firstName.trim(),
-      lastName: lastName.trim(),
-      email: email.trim(),
-      date: date,
-      month: month,
-      year: year,
-    };
+    setErrors([])
+    try {
+      const result = await updateProfile(data);
+      setSuccesMsg(result.data.message)
+    } catch (error) {
+      setErrors(error.response.data.message)
+    }
 
-    console.log("form values", postData);
   };
 
   return (
-    <div className="d-flex">
-      <Sidebar></Sidebar>
-
-      <div className="personal-details-container p-3">
+    <div className="d-flex col-12">
+      <div className="col-0 col-md-6 col-lg-4">
+        <Sidebar/>
+      </div>
+      <div className="personal-details-container p-3 col-12 col-md-6 col-lg-8">
         <h5>PERSONAL DETAILS</h5>
 
-        <div className="personal-details-form p-3">
+        <div className="personal-details-form p-3 col-12 col-md-10 col-lg-8">
+          <ErrorList errors={errors} />
+          <SuccessMsg message={successMsg} />
           <form onSubmit={handleSubmit}>
             <Grid container spacing={2}>
               <Grid item xs={12} md={6}>
@@ -109,9 +117,11 @@ export const PersonalDetails = () => {
                     labelId="select-title"
                     id="title-dropdown"
                     label="Title"
-                    value={"mrs"}
+                    name="title"
+                    value={data.title}
                     onChange={handleChange}
                   >
+                    <MenuItem value={null}>Select Title</MenuItem>
                     <MenuItem value="mrs">Mrs</MenuItem>
                     <MenuItem value="mr">Mr</MenuItem>
                   </Select>
@@ -131,15 +141,17 @@ export const PersonalDetails = () => {
                     labelId="select-gender"
                     id="gender-dropdown"
                     label="Gender"
-                    value={"female"}
+                    value={data.gender}
+                    name="gender"
                     sx={{
                       border: "none",
                       outline: "none",
                     }}
                     onChange={handleChange}
                   >
-                    <MenuItem value="female">Female</MenuItem>
-                    <MenuItem value="male">Male</MenuItem>
+                    <MenuItem value={null}>Select Gender</MenuItem>
+                    <MenuItem value="f">Female</MenuItem>
+                    <MenuItem value="m">Male</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>
@@ -148,12 +160,12 @@ export const PersonalDetails = () => {
                 <TextField
                   id="outlined-basic"
                   label="First Name"
-                  name="firstName"
+                  name="first_name"
                   variant="outlined"
-                  sx={{ color: "#000" }}
+                  sx={{ color: "#fff" }}
                   required
                   fullWidth
-                  value={firstName}
+                  value={data.first_name}
                   onChange={handleChange}
                 />
               </Grid>
@@ -162,11 +174,11 @@ export const PersonalDetails = () => {
                 <TextField
                   id="outlined-basic"
                   label="Last Name"
-                  name="lastName"
+                  name="last_name"
                   variant="outlined"
                   required
                   fullWidth
-                  value={lastName}
+                  value={data.last_name}
                   onChange={handleChange}
                 />
               </Grid>
@@ -180,7 +192,7 @@ export const PersonalDetails = () => {
                   variant="outlined"
                   required
                   fullWidth
-                  value={email}
+                  value={data.email}
                   onChange={handleChange}
                 />
               </Grid>
@@ -217,8 +229,8 @@ export const PersonalDetails = () => {
                     onChange={handleMonthChange}
                   >
                     {months.map((m, index) => (
-                      <MenuItem key={index} value={m}>
-                        {m}
+                      <MenuItem key={index} value={m.value}>
+                        {m.label}
                       </MenuItem>
                     ))}
                   </Select>

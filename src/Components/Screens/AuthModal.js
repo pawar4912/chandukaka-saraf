@@ -21,6 +21,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { login, verifyOtp } from "../../services/FrontApp/index.service";
 import ErrorList from "../Common/ErrorList";
+import { useNavigate } from "react-router-dom";
 
 const Boxstyle = {
   position: "absolute",
@@ -46,6 +47,7 @@ const AuthModal = ({ open, handleClose }) => {
     otp3: "",
     otp4: "",
   });
+  const navigate = useNavigate();
 
   const handleChange = (key, event) => {
     setOtpValues({ ...otpValues, [key]: event.target.value });
@@ -86,6 +88,10 @@ const AuthModal = ({ open, handleClose }) => {
       setshowPhoneNumberScreen(false);
       setShowOtpScreen(false);
       setShowThankYou(true);
+      setTimeout(() => {
+        handleCloseButton();
+        navigate('myorder')
+      }, 3000);
     } catch (error) {
       setErrors(error.response.data.message)
     }

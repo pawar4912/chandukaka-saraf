@@ -57,110 +57,114 @@ export const AddressBook = () => {
   };
 
   return (
-    <div className="d-flex">
-      <Sidebar></Sidebar>
-      {!showAddressForm ? (
-        <div className="address-book-container p-3">
-          <h5>ADDRESS BOOK</h5>
+    <div className="d-flex col-12">
+      <div className="col-0 col-md-6 col-lg-4">
+        <Sidebar />
+      </div>
 
-          <div className="new-address-btn-wrapper p-3 my-4 bg-white">
-            <Button
-              className="btn btn-block bg-black btn-submit"
-              fullWidth
-              variant="contained"
-              type="submit"
-              onClick={handleOpenForm}
-            >
-              ADD NEW ADDRESS &nbsp;
-              <EastIcon />
-            </Button>
-          </div>
-          <div className="saved-address-cards-container p-3 bg-white">
-            <h5>SAVED ADDRESS</h5>
+      <div className="address-book-container p-3 col-12 col-md-6 col-lg-8">
+        {!showAddressForm ? (
+          <div className="col-12 col-md-10 col-lg-8">
+            <h5>ADDRESS BOOK</h5>
 
-            <div className="cards-container">
-              {addresses.map((address) => (
-                <Card
-                  key={address.id}
-                  sx={{ minWidth: 100 }}
-                  variant="outlined"
-                  className="mt-3 p-2"
-                >
-                  <CardContent>
-                    <Typography variant="h6" component="div">
-                      {address.firstName + " " + address.lastName}
-                    </Typography>
+            <div className="new-address-btn-wrapper p-3 my-4 bg-white">
+              <Button
+                className="btn btn-block bg-black btn-submit col-12 col-md-10 col-lg-6"
+                variant="contained"
+                type="submit"
+                onClick={handleOpenForm}
+              >
+                ADD NEW ADDRESS &nbsp;
+                <EastIcon />
+              </Button>
+            </div>
+            <div className="saved-address-cards-container p-3 bg-white">
+              <h5>SAVED ADDRESS</h5>
 
-                    <Typography
-                      sx={{ fontSize: 14 }}
-                      color="text.secondary"
-                      gutterBottom
-                    >
-                      {address.address1},
-                    </Typography>
+              <div className="cards-container">
+                {addresses.map((address) => (
+                  <Card
+                    key={address.id}
+                    sx={{ minWidth: 100 }}
+                    variant="outlined"
+                    className="mt-3 p-2"
+                  >
+                    <CardContent>
+                      <Typography variant="h6" component="div">
+                        {address.firstName + " " + address.lastName}
+                      </Typography>
 
-                    <Typography
-                      sx={{ fontSize: 14 }}
-                      color="text.secondary"
-                      gutterBottom
-                    >
-                      {address.address2},
-                    </Typography>
+                      <Typography
+                        sx={{ fontSize: 14 }}
+                        color="text.secondary"
+                        gutterBottom
+                      >
+                        {address.address1},
+                      </Typography>
 
-                    <Typography
-                      sx={{ fontSize: 14 }}
-                      color="text.secondary"
-                      gutterBottom
-                    >
-                      {address.city},
-                    </Typography>
+                      <Typography
+                        sx={{ fontSize: 14 }}
+                        color="text.secondary"
+                        gutterBottom
+                      >
+                        {address.address2},
+                      </Typography>
 
-                    <Typography
-                      sx={{ fontSize: 14 }}
-                      color="text.secondary"
-                      gutterBottom
-                    >
-                      {address.country},
-                    </Typography>
+                      <Typography
+                        sx={{ fontSize: 14 }}
+                        color="text.secondary"
+                        gutterBottom
+                      >
+                        {address.city},
+                      </Typography>
 
-                    <Typography
-                      sx={{ fontSize: 14 }}
-                      color="text.secondary"
-                      gutterBottom
-                    >
-                      {address.pinCode}.
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button
-                      variant="outlined"
-                      className="outlined-black"
-                      onClick={() => handleEditClick(address)}
-                    >
-                      EDIT &nbsp;
-                      <EastIcon />
-                    </Button>
+                      <Typography
+                        sx={{ fontSize: 14 }}
+                        color="text.secondary"
+                        gutterBottom
+                      >
+                        {address.country},
+                      </Typography>
 
-                    <Button
-                      variant="outlined"
-                      className="outlined-black"
-                      onClick={() => handleRemoveClick(address)}
-                    >
-                      REMOVE &nbsp;
-                      <EastIcon />
-                    </Button>
-                  </CardActions>
-                </Card>
-              ))}
+                      <Typography
+                        sx={{ fontSize: 14 }}
+                        color="text.secondary"
+                        gutterBottom
+                      >
+                        {address.pinCode}.
+                      </Typography>
+                    </CardContent>
+                    <CardActions>
+                      <Button
+                        variant="outlined"
+                        className="outlined-black"
+                        onClick={() => handleEditClick(address)}
+                      >
+                        EDIT &nbsp;
+                        <EastIcon />
+                      </Button>
+
+                      <Button
+                        variant="outlined"
+                        className="outlined-black"
+                        onClick={() => handleRemoveClick(address)}
+                      >
+                        REMOVE &nbsp;
+                        <EastIcon />
+                      </Button>
+                    </CardActions>
+                  </Card>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      ) : (
-        <AddressForm
-          handleCloseForm={handleCloseForm}
-          addressData={addressData}
-        />
-      )}
+        ) : (
+          <AddressForm
+            handleCloseForm={handleCloseForm}
+            addressData={addressData}
+          />
+        )}
+      </div>
     </div>
   );
 };
