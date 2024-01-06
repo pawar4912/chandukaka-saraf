@@ -28,7 +28,7 @@ export default function Sidebar() {
               <img className="profile-img" src={web} />
               <div className="profile-info">
                 <b className="name">Hi Smita</b>
-                <small>+91 9480000032</small>
+                <small style={{whiteSpace: 'nowrap'}}>+91 9480000032</small>
               </div>
             </li>
             <div className="sidebar-menu">
