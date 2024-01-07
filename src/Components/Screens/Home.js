@@ -37,30 +37,12 @@ const offerImages = [CardImageLarge, CardImageLarge, CardImageLarge, CardImageLa
 const shineImages = [CardImageNoPadding, CardImageNoPadding, CardImageNoPadding, CardImageNoPadding];
 const catImgs = [catImg1, catImg2, catImg3, catImg4, catImg5, catImg6];
 
-const itemsCarouse = [
-  {
-    name: 'Elegance Redefined:',
-    description: 'Discover exquisite jewellery that reflects your inner radiance',
-    imagepath: img1,
-  },
-  {
-    name: 'Elegance Redefined:',
-    description: 'Discover exquisite jewellery that reflects your inner radiance',
-    imagepath: img2,
-  },
-  {
-    name: 'Elegance Redefined:',
-    description: 'Discover exquisite jewellery that reflects your inner radiance',
-    imagepath: img3,
-  },
-];
-
 function Home() {
   const windoDimensions = useWindowWidthAndHeight();
   return (
     <div className='col-12'>
       <div>
-        <CarouselHome itemsCarouse={itemsCarouse} />
+        <CarouselHome />
       </div>
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={1}>

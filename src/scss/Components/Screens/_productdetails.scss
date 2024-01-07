@@ -247,16 +247,21 @@
 
 .product-details-reviews {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 10px;
-    grid-auto-rows: minmax(100px, auto);
+}
+
+.write-a-review-button {
+    justify-self: right;
 }
 
 @media (max-width: 768px) {
     .product-grid-container {
         padding: 0 !important;
     }
-
+    .product-details-reviews-container{
+        padding-bottom: 10px;
+    }
     .product-details-header {
         text-align: left;
         font: normal normal 600 24px/32px Playfair Display;
@@ -323,6 +328,61 @@
                 }
             }
 
+        }
+    }
+
+    .product-details-reviews {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+
+    .you-may-also-like-product-details-section {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+
+    .product-details-reviews {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+
+        .customer-reviews-title {
+            text-align: left;
+            font: normal normal 600 24px/32px Playfair Display;
+            letter-spacing: 0.36px;
+            color: #672A2F;
+            opacity: 1;
+        }
+
+        .rating-value {
+            text-align: left;
+            font: normal normal 900 21px/25px Lato;
+            letter-spacing: 0px;
+            color: #333333;
+            text-transform: uppercase;
+            opacity: 1;
+        }
+
+        .product-description-details-rating {
+            text-align: left;
+            font: normal normal 900 21px/25px Lato;
+            letter-spacing: 0px;
+            color: #333333;
+            text-transform: uppercase;
+            opacity: 1;
+            align-items: center;
+
+            label {
+                text-align: left;
+                font: normal normal 900 21px/25px Lato;
+                letter-spacing: 0px;
+                color: #333333;
+                text-transform: uppercase;
+                opacity: 1;
+            }
+        }
+        .rating-values-customer-container{
+            display: flex;
         }
     }
 }

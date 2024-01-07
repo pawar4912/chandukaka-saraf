@@ -15,20 +15,20 @@ export default function ProductReviewCard({ reviewDetails }) {
           <Rating
             className='product-description-details-rating'
             name="simple-controlled"
-            value={reviewDetails.rating}
+            value={reviewDetails?.rating}
             onChange={(event, newValue) => {
               setValue(newValue);
             }}
           />
           <div>
-          {reviewDetails.date}
+          {reviewDetails?.date}
         </div>
         </div>
         <div className='review-user-name'>
-          {reviewDetails.userName}
+          {reviewDetails?.userName}
         </div>
         <div>
-          {reviewDetails.comment}
+          {reviewDetails?.comment}
         </div>
       </CardContent>
     </Card >

@@ -4,6 +4,9 @@ import { Paper } from '@mui/material';
 import rightArrowIcon from '../images/icons/right-arrow.svg';
 import imageMobileView from '../images/mobile-view-corousel.png';
 import useWindowWidthAndHeight from '../utilities/CustomHooks';
+import img1 from '../images/banners/desktop/1.jpg';
+import img2 from '../images/banners/desktop/2.jpg';
+import img3 from '../images/banners/desktop/3.jpg';
 
 const items = [
   {
@@ -62,7 +65,7 @@ function CarouselHome() {
           }}
         >
           {
-            itemsCarouse.map((item) => (
+            items.map((item) => (
               <Paper key={item.name} className="carouselPaper" >
                 <img className="carousel-img" src={windoDimensions[0] <= 768 ? `${imageMobileView}`:  `${item.imagepath}` } />
                 <div className="service-slide-text-wrapper">

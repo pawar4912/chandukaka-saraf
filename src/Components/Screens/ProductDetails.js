@@ -16,6 +16,8 @@ import ProductDetailsTab from '../ProductDetailsTab';
 import ProductDetailsAccordion from '../ProductDetailsAccordion';
 import imageSliderHeaderIconRight from '../../images/icons/Group40.svg';
 import ProductReviewCard from '../ProductReviewCard';
+import productImage from "../../images/jewellery/youMayLike.png";
+import ProductCard from '../ProductCard';
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -94,6 +96,48 @@ const producDetailsTabData = [
             "Product Name : 1 Grams Ganesha Silver Coin",
         ]
     }
+]
+const allProduct = [
+    {
+        productImage: productImage,
+        Product_Type: "Gold Coin",
+        Metal_Weight: "0.5 gram",
+        Metal_Cost: "3092",
+        Wastage_Charges: "154",
+        GST: "97",
+        Final_Cost: "3343",
+        Wastage_percentage: "0.025"
+    },
+    {
+        productImage: productImage,
+        Product_Type: "Gold Coin",
+        Metal_Weight: "1 gram",
+        Metal_Cost: "6185",
+        Wastage_Charges: "154",
+        GST: "190",
+        Final_Cost: "6529",
+        Wastage_percentage: "0.025"
+    },
+    {
+        productImage: productImage,
+        Product_Type: "Gold Coin",
+        Metal_Weight: "2 gram",
+        Metal_Cost: "12370",
+        Wastage_Charges: "154",
+        GST: "375",
+        Final_Cost: "12899",
+        Wastage_percentage: "0.025"
+    },
+    {
+        productImage: productImage,
+        Product_Type: "Gold Coin",
+        Metal_Weight: "3 gram",
+        Metal_Cost: "18555",
+        Wastage_Charges: "154",
+        GST: "561",
+        Final_Cost: "19270",
+        Wastage_percentage: "0.025"
+    },
 ]
 export default function ProductDetails() {
     const windoDimensions = useWindowWidthAndHeight();
@@ -302,7 +346,7 @@ export default function ProductDetails() {
                                 {' '}
                                 <img src={imageSliderHeaderIconRight} alt="React Logo" />
                             </div>
-                            <div>
+                            <div className='rating-values-customer-container'>
                                 <div className='rating-values-customer-review'>
                                     <div className='rating-value'>
                                         {ratingValue}
@@ -321,7 +365,7 @@ export default function ProductDetails() {
                             </div>
                         </div>
                         <div>
-                            <Button className='product-details-page-add-to-cart-button'>
+                            <Button className='product-details-page-add-to-cart-button write-a-review-button'>
                                 WRITE A REVIEW {" "} <img src={RightIcon} alt="React Logo" />
                             </Button>
                         </div>
@@ -330,10 +374,33 @@ export default function ProductDetails() {
                         <Item className="empty-container-section">xs=6 md=4</Item>
                     </Grid>}
                     {windoDimensions[0] >= 768 && <Grid item xs={10} md={10}>
-                        <Divider className='divider-product-details-reviews'/>
+                        <Divider className='divider-product-details-reviews' />
                     </Grid>}
                     <Grid className='product-details-reviews' item xs={12} md={10} >
-                        {reviews.map( review => (<ProductReviewCard reviewDetails={review} />))}
+                        {reviews.map(review => (<ProductReviewCard reviewDetails={review} />))}
+                    </Grid>
+                    <Grid className='you-may-also-like-product-details-section' item xs={12} md={10}>
+                        <div className="image-slider-header customer-reviews-title">
+                            You might also like
+                            {' '}
+                            <img src={imageSliderHeaderIconRight} alt="React Logo" />
+                        </div>
+                        <div className="big-image-slider-description image-slider-description">
+                            Elevate your style with our exquisite bullion pieces, each crafted to perfection.
+                        </div>
+                    </Grid>
+                    <Grid className='you-may-also-like-product-details-section' item xs={12} md={10}>
+                        <Grid container spacing={1} className="product-grid-container">
+                            {allProduct.map(element => (
+                                <Grid item xs={6} md={3}>
+                                    <ProductCard productImage={element.productImage}
+                                        productNmae={element.Product_Type + ' - ' + element.Metal_Weight}
+                                        isFavourite={element.isFavourite}
+                                        newArrival={element.newArrival}
+                                        productPrice={'₹' + element.Final_Cost} />
+                                </Grid>
+                            ))}
+                        </Grid>
                     </Grid>
                 </Grid>
             </Box>
