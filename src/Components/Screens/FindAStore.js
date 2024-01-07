@@ -99,7 +99,7 @@ export default function FindAStore() {
                         </div>
                         <div className="find-store-change-location">
                             <TextField placeholder='Enter Pincode or city' className='location-change-text-field' />
-                            <Button className='location-change-button'>CHANGE</Button>
+                            <Button className='location-change-button'>FIND STORES</Button>
                         </div>
                     </div>
                 </Grid>
