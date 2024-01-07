@@ -34,7 +34,7 @@ export const ProductCard = ({ product = null }) => {
   };
 
   return (
-    <Card variant="outlined" className="product-card" sx={{ width: 300 }}>
+    <Card variant="outlined" className="product-card">
       <div className="image-container">
         <CardMedia
           component="img"
@@ -43,12 +43,12 @@ export const ProductCard = ({ product = null }) => {
         // alt={product.name}
         />
         <div style={{ position: "absolute", top: 0, right: 0 }}>
-          <IconButton color="inherit" onClick={handleOpenDialog}>
+          <IconButton onClick={handleOpenDialog}>
             <CloseIcon />
           </IconButton>
 
         </div>
-        <ConfirmationDialog onConfirm={handleConfirm} open={isDialogOpen} handleClose={handleClose}/>
+        <ConfirmationDialog onConfirm={handleConfirm} open={isDialogOpen} handleClose={handleClose} />
         <div
           style={{ position: "absolute", bottom: 0, right: 0 }}
           className="favourite-button-container"

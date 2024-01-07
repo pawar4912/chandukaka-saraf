@@ -17,16 +17,6 @@ import CloseIcon from "@mui/icons-material/Close";
 import EastIcon from "@mui/icons-material/East";
 
 const ConfirmationDialog = ({ onConfirm, open, handleClose }) => {
-  const Boxstyle = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
-    width: "40em",
-  };
 
   const handleYesClick = () => {
     // Todo: Handle remove from the wishlist logic here
@@ -43,7 +33,7 @@ const ConfirmationDialog = ({ onConfirm, open, handleClose }) => {
   return (
     <Modal open={open} onClose={handleClose}>
       <Fade in={open}>
-        <Box sx={Boxstyle} style={{ border: "12px solid #ede5e5" }}>
+        <Box className="box-style" style={{ border: "12px solid #ede5e5" }}>
           <DialogActions>
             <IconButton aria-label="close" onClick={handleClose}>
               <CloseIcon />
@@ -64,7 +54,7 @@ const ConfirmationDialog = ({ onConfirm, open, handleClose }) => {
                 style={{ backgroundColor: "#666666" }}
               />
               <Grid container className="container p-3" sx={{ width: "80%" }}>
-                <Grid item xs={3}>
+                <Grid item xs={6}>
                   <img
                     src={productImage}
                     style={{ height: "81px", width: "81px" }}
@@ -72,7 +62,7 @@ const ConfirmationDialog = ({ onConfirm, open, handleClose }) => {
                 </Grid>
                 <Grid
                   item
-                  xs={9}
+                  xs={6}
                   style={{
                     display: "flex",
                     flexDirection: "column",
@@ -119,11 +109,11 @@ const ConfirmationDialog = ({ onConfirm, open, handleClose }) => {
                 }
               }
             >
-              <Grid item xs={3} md={3}>
+              <Grid item xs={6} md={3}>
                 <Button
                   onClick={handleNoClick}
                   variant="outlined"
-                  className="outlined-black"
+                  className="btn btn-block outlined-black"
                   fullWidth
                 >
                   Cancel
@@ -131,9 +121,9 @@ const ConfirmationDialog = ({ onConfirm, open, handleClose }) => {
                 </Button>
               </Grid>
 
-              <Grid item xs={3} md={3}>
+              <Grid item xs={6} md={3}>
                 <Button
-                  className="btn btn-block bg-black p-3"
+                  className="btn btn-block bg-black"
                   fullWidth
                   onClick={handleYesClick}
                 >
