@@ -13,3 +13,15 @@ export const verifyOtp = async (data) => {
   const result = await httpService.post(`verifyOTP`, data)
   httpService.saveToken(result.data.token)
 }
+
+export const getTestimonial = async () => {
+  return await httpService.get(`testimonial`)
+}
+
+export const subscribeEmail = async (data) => {
+  return await httpService.post(`subscription`, data)
+}
+
+export const getFaqs = async () => {
+  return await httpService.get(`faqs`)
+}

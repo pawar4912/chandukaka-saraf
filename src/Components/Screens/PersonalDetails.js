@@ -88,6 +88,7 @@ export const PersonalDetails = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setErrors([])
+    setSuccesMsg('')
     try {
       const result = await updateProfile(data);
       setSuccesMsg(result.data.message)

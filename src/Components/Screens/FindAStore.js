@@ -7,80 +7,6 @@ import googleMapAPI from "../../images/googleMapAPI.png";
 import { Item } from '../Item';
 import FAQs from '../FAQs';
 
-const dataList = [
-    {
-        title: "BARAMATI",
-        description: "Kacheri Road, Mahaveer Path, Gandhi Chowk, Baramati, Maharashtra 413102.",
-        tollFreeNo:"18002670999",
-        workingHours: "Tue - Sun: 9am - 8pm",
-        holiday: "Monday closed"
-    },
-    {
-        title: "RAVIVAR PETH",
-        description: "Kacheri Road, Mahaveer Path, Gandhi Chowk, Baramati, Maharashtra 413102.",
-        tollFreeNo:"18002670999",
-        workingHours: "Tue - Sun: 9am - 8pm",
-        holiday: "Monday closed"
-    },
-    {
-        title: "CHINCHWAD",
-        description: "Kacheri Road, Mahaveer Path, Gandhi Chowk, Baramati, Maharashtra 413102.",
-        tollFreeNo:"18002670999",
-        workingHours: "Tue - Sun: 9am - 8pm",
-        holiday: "Monday closed"
-    },
-    {
-        title: "CHANDAN NAGAR",
-        description: "Kacheri Road, Mahaveer Path, Gandhi Chowk, Baramati, Maharashtra 413102.",
-        tollFreeNo:"18002670999",
-        workingHours: "Tue - Sun: 9am - 8pm",
-        holiday: "Monday closed"
-    },
-    {
-        title: "AKLUJ",
-        description: "Kacheri Road, Mahaveer Path, Gandhi Chowk, Baramati, Maharashtra 413102.",
-        tollFreeNo:"18002670999",
-        workingHours: "Tue - Sun: 9am - 8pm",
-        holiday: "Monday closed"
-    },
-    {
-        title: "SATARA",
-        description: "Kacheri Road, Mahaveer Path, Gandhi Chowk, Baramati, Maharashtra 413102.",
-        tollFreeNo:"18002670999",
-        workingHours: "Tue - Sun: 9am - 8pm",
-        holiday: "Monday closed"
-    },
-    {
-        title: "KARAD",
-        description: "Kacheri Road, Mahaveer Path, Gandhi Chowk, Baramati, Maharashtra 413102.",
-        tollFreeNo:"18002670999",
-        workingHours: "Tue - Sun: 9am - 8pm",
-        holiday: "Monday closed"
-    },
-    {
-        title: "HADAPSAR",
-        description: "Kacheri Road, Mahaveer Path, Gandhi Chowk, Baramati, Maharashtra 413102.",
-        tollFreeNo:"18002670999",
-        workingHours: "Tue - Sun: 9am - 8pm",
-        holiday: "Monday closed"
-    },
-    {
-        title: "PUNE-SATARA ROAD",
-        description: "Kacheri Road, Mahaveer Path, Gandhi Chowk, Baramati, Maharashtra 413102.",
-        tollFreeNo:"18002670999",
-        workingHours: "Tue - Sun: 9am - 8pm",
-        holiday: "Monday closed"
-    },
-    {
-        title: "BARAMATI MIDC",
-        description: "Kacheri Road, Mahaveer Path, Gandhi Chowk, Baramati, Maharashtra 413102.",
-        tollFreeNo:"18002670999",
-        workingHours: "Tue - Sun: 9am - 8pm",
-        holiday: "Monday closed"
-    },
-
-  ]
-
 export default function FindAStore() {
     return (
         <div className='col-12 about-us find-store-main-container'>
@@ -111,7 +37,7 @@ export default function FindAStore() {
                         ALL STORES
                     </div>
                     <div className='store-locations-acordion'>
-                        <FAQs dataList={dataList} isContactusPage={false} />
+                        <FAQs />
                     </div>
                     
                 </Grid>
