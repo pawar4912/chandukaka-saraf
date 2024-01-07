@@ -30,47 +30,25 @@ export const AddressForm = ({ handleCloseForm, addressData = null }) => {
     is_default: 0
   })
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    switch (name) {
-      case "country":
-        setCountry(value);
-        break;
-      case "city":
-        setCity(value);
-        break;
-      case "firstName":
-        setFirstName(value);
-        break;
-      case "lastName":
-        setLastName(value);
-        break;
-      case "address1":
-        setAddress1(value);
-        break;
-      case "address2":
-        setAddress2(value);
-        break;
-      case "address1":
-        setAddress1(value);
-        break;
-      case "pinCode":
-        setPinCode(value);
-        break;
-      default:
-        break;
-    }
-  };
+  const handleChange = ({ target }) => {
+    data[target.name] = target.value
+    const temp = Object.assign({}, data)
+    setData(temp)
+  }
 
   const handleCancel = () => {
-    setCountry(countries[0]);
-    setCity(cities[0]);
-    setFirstName("");
-    setLastName("");
-    setAddress1("");
-    setAddress2("");
-    setPinCode("");
-    handleCloseForm();
+    setData({
+      first_name: '',
+      last_name: '',
+      flat_no: '',
+      street_name: '',
+      country: '',
+      state: '',
+      city: '',
+      pincode: '',
+      address_type: '',
+      is_default: 0
+    })
   };
 
   const handleSubmit = (event) => {
@@ -93,8 +71,8 @@ export const AddressForm = ({ handleCloseForm, addressData = null }) => {
                   variant="outlined"
                   required
                   fullWidth
-                  name="firstName"
-                  value={firstName}
+                  name="first_name"
+                  value={data.first_name}
                   onChange={handleChange}
                 />
               </Grid>
@@ -105,8 +83,8 @@ export const AddressForm = ({ handleCloseForm, addressData = null }) => {
                   variant="outlined"
                   required
                   fullWidth
-                  name="lastName"
-                  value={lastName}
+                  name="last_name"
+                  value={data.last_name}
                   onChange={handleChange}
                 />
               </Grid>
@@ -118,7 +96,7 @@ export const AddressForm = ({ handleCloseForm, addressData = null }) => {
                   required
                   fullWidth
                   name="address1"
-                  value={address1}
+                  value={data.first_name}
                   onChange={handleChange}
                 />
               </Grid>

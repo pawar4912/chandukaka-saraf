@@ -58,11 +58,11 @@ export const AddressBook = () => {
 
   return (
     <div className="d-flex col-12">
-      <div className="col-0 col-md-6 col-lg-4">
+      <div className="col-0 col-md-5 col-lg-4">
         <Sidebar />
       </div>
 
-      <div className="address-book-container p-3 col-12 col-md-6 col-lg-8">
+      <div className="address-book-container p-3 col-12 col-md-7 col-lg-8">
         {!showAddressForm ? (
           <div className="col-12 col-md-10 col-lg-8">
             <h5>ADDRESS BOOK</h5>
