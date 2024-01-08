@@ -14,6 +14,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import productImage from "../../../images/productImage.png";
 import ConfirmationDialog from "./ConfirmationDialog";
+import { Link } from "react-router-dom";
 
 export const ProductCard = ({ product = null }) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -39,7 +40,6 @@ export const ProductCard = ({ product = null }) => {
         <CardMedia
           component="img"
           image={productImage}
-          height={300}
         // alt={product.name}
         />
         <div style={{ position: "absolute", top: 0, right: 0 }}>
@@ -60,27 +60,18 @@ export const ProductCard = ({ product = null }) => {
       </div>
       <CardContent>
         <Typography
-          variant="h6"
-          component="div"
-          style={{
-            fontSize: "16px",
-            color: "#333333",
-            letterSpacing: "1.6px",
-          }}
+          className="product-name"
         >
           {product.productType}
         </Typography>
         <Typography
-          variant="body2"
           color="text.secondary"
-          style={{
-            fontWeight: "bolder",
-            fontSize: "18px",
-            letterSpacing: "1.8px",
-          }}
+         className="product-price"
         >
           &#8377; {product.finalCost.toFixed(2)}
         </Typography>
+
+        <Link to="#" className="add-to-cart-link">ADD TO CART</Link>
       </CardContent>
     </Card>
   );
@@ -197,7 +188,7 @@ export const Wishlist = () => {
         <Box>
           <Grid container spacing={3}>
             {products.map((product) => (
-              <Grid key={product.id} item xs={12} sm={6} md={3} lg={3}>
+              <Grid key={product.id} item xs={6} sm={6} md={3} lg={3}>
                 <ProductCard product={product} />
               </Grid>
             ))}
