@@ -17,8 +17,10 @@ import SuccessMsg from "../Common/SuccessMsg";
 export const PersonalDetails = () => {
   const [errors, setErrors] = useState([])
   const [successMsg, setSuccesMsg] = useState('')
-  const days = Array.from({ length: 31 }, (_, i) => i + 1);
+  const days = Array.from({ length: 31 }, (_, i) => { return { value: i + 1,label: i + 1 } });
+  days.push({value: '00', label: "Select Day"})
   const months = [
+    {value: '00', label: "Select Month"},
     {value: '01', label: "January"},
     {value: '02', label: "February"},
     {value: '03', label: "March"},
@@ -34,7 +36,8 @@ export const PersonalDetails = () => {
   ];
 
   const currentYear = new Date().getFullYear();
-  const years = Array.from({ length: 100 }, (_, i) => currentYear - i);
+  const years = Array.from({ length: 100 }, (_, i) =>  { return { value: currentYear - i,label: currentYear - i } });
+  years.push({value: '0000', label: "Select Year"})
 
   const [data, setData] = useState({
     first_name: '',
@@ -50,6 +53,10 @@ export const PersonalDetails = () => {
 
   const getData = async () => {
     const result = await myProfile();
+    const dob = result.data.data[0].dob.split("-")
+    setYear(dob[0])
+    setMonth(dob[1])
+    setDate(dob[2])
     setData(result.data.data[0])
   }
 
@@ -65,22 +72,21 @@ export const PersonalDetails = () => {
 
   const handleDateChange = (event) => {
     setDate(event.target.value);
-    console.log(`${event.target.value}/${month}/${year}`)
-    data['dob'] = `${event.target.value}/${month}/${year}`
+    data['dob'] = `${event.target.value}-${month}-${year}`
     const temp = Object.assign({}, data)
     setData(temp)
   };
 
   const handleMonthChange = (event) => {
     setMonth(event.target.value);
-    data['dob'] = `${date}/${event.target.value}/${year}`
+    data['dob'] = `${year}-${event.target.value}-${date}`
     const temp = Object.assign({}, data)
     setData(temp)
   };
 
   const handleYearChange = (event) => {
     setYear(event.target.value);
-    data['dob'] = `${date}/${month}/${event.target.value}`
+    data['dob'] = `${event.target.value}-${month}-${date}`
     const temp = Object.assign({}, data)
     setData(temp)
   };
@@ -210,8 +216,8 @@ export const PersonalDetails = () => {
                     onChange={handleDateChange}
                   >
                     {days.map((d) => (
-                      <MenuItem key={d} value={d}>
-                        {d}
+                      <MenuItem key={d} value={d.value}>
+                        {d.label}
                       </MenuItem>
                     ))}
                   </Select>
@@ -250,8 +256,8 @@ export const PersonalDetails = () => {
                     onChange={handleYearChange}
                   >
                     {years.map((y) => (
-                      <MenuItem key={y} value={y}>
-                        {y}
+                      <MenuItem key={y} value={y.value}>
+                        {y.label}
                       </MenuItem>
                     ))}
                   </Select>

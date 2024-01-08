@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Sidebar from "../../Common/Sidebar";
 import {
   Button,
@@ -9,30 +9,19 @@ import {
 } from "@mui/material";
 import EastIcon from "@mui/icons-material/East";
 import { AddressForm } from "./AddressForm";
+import { getAllAddAddress } from "../../../services/profile";
 
 export const AddressBook = () => {
-  const [addresses, setAddresses] = useState([
-    {
-      id: 1,
-      firstName: "Sharvari",
-      lastName: "Gupta",
-      address1: "193 B wing, Mukund complex",
-      address2: "Near GB road",
-      city: "Thane",
-      country: "India",
-      pinCode: 411233,
-    },
-    {
-      id: 2,
-      firstName: "Swapnil",
-      lastName: "Pawar",
-      address1: "193 B wing, Mukund complex",
-      address2: "Near GB road",
-      city: "Baramati",
-      country: "India",
-      pinCode: 413102,
-    },
-  ]);
+  const [data, setData] = useState([]);
+
+  const getData = async () => {
+    const result = await getAllAddAddress();
+    setData(result.data.data)
+  }
+
+  useEffect(() => {
+    getData()
+  }, [])
 
   const [showAddressForm, setShowAddressForm] = useState(false);
   const [addressData, setAddressData] = useState(null);
@@ -51,9 +40,8 @@ export const AddressBook = () => {
     handleOpenForm();
   };
 
-  const handleRemoveClick = (address) => {
-    let index = addresses.findIndex((a) => a.id == address.id);
-    setAddresses(addresses.splice(index, 1));
+  const handleRemoveClick = (id) => {
+    console.log(id)
   };
 
   return (
@@ -82,7 +70,7 @@ export const AddressBook = () => {
               <h5>SAVED ADDRESS</h5>
 
               <div className="cards-container">
-                {addresses.map((address) => (
+                {data.map((address) => (
                   <Card
                     key={address.id}
                     sx={{ minWidth: 100 }}
@@ -91,7 +79,7 @@ export const AddressBook = () => {
                   >
                     <CardContent>
                       <Typography variant="h6" component="div">
-                        {address.firstName + " " + address.lastName}
+                        {address.first_name + " " + address.last_name}
                       </Typography>
 
                       <Typography
@@ -99,7 +87,7 @@ export const AddressBook = () => {
                         color="text.secondary"
                         gutterBottom
                       >
-                        {address.address1},
+                        {address.flat_no}, {address.street_name},
                       </Typography>
 
                       <Typography
@@ -107,32 +95,9 @@ export const AddressBook = () => {
                         color="text.secondary"
                         gutterBottom
                       >
-                        {address.address2},
+                        {address.city},  {address.country}, {address.pincode}.
                       </Typography>
 
-                      <Typography
-                        sx={{ fontSize: 14 }}
-                        color="text.secondary"
-                        gutterBottom
-                      >
-                        {address.city},
-                      </Typography>
-
-                      <Typography
-                        sx={{ fontSize: 14 }}
-                        color="text.secondary"
-                        gutterBottom
-                      >
-                        {address.country},
-                      </Typography>
-
-                      <Typography
-                        sx={{ fontSize: 14 }}
-                        color="text.secondary"
-                        gutterBottom
-                      >
-                        {address.pinCode}.
-                      </Typography>
                     </CardContent>
                     <CardActions>
                       <Button
@@ -147,7 +112,7 @@ export const AddressBook = () => {
                       <Button
                         variant="outlined"
                         className="outlined-black"
-                        onClick={() => handleRemoveClick(address)}
+                        onClick={() => handleRemoveClick(address.id)}
                       >
                         REMOVE &nbsp;
                         <EastIcon />

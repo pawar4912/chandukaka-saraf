@@ -14,12 +14,19 @@ import {
 } from "@mui/material";
 import EastIcon from "@mui/icons-material/East";
 import React, { useState, useEffect } from "react";
+import { addAddress } from "../../../services/profile";
+import ErrorList from "../../Common/ErrorList";
+import SuccessMsg from "../../Common/SuccessMsg";
 
 export const AddressForm = ({ handleCloseForm, addressData = null }) => {
   const countries = ["India", "Indonasia", "Iran", "Irac"];
   const cities = ["Baramati", "Pune", "Nasik", "Nagpur", "Thane"];
+  const [errors, setErrors] = useState([])
+  const [successMsg, setSuccesMsg] = useState('')
 
   const [data, setData] = useState({
+    first_name: '',
+    last_name: '',
     flat_no: '',
     street_name: '',
     country: '',
@@ -36,7 +43,7 @@ export const AddressForm = ({ handleCloseForm, addressData = null }) => {
     setData(temp)
   }
 
-  const handleCancel = () => {
+  const handleClean = () => {
     setData({
       first_name: '',
       last_name: '',
@@ -51,9 +58,22 @@ export const AddressForm = ({ handleCloseForm, addressData = null }) => {
     })
   };
 
-  const handleSubmit = (event) => {
+  const cancel = () => {
+    handleClean()
+    handleCloseForm()
+  }
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    handleCloseForm();
+    setErrors([])
+    setSuccesMsg('')
+    try {
+      const result = await addAddress(data);
+      setSuccesMsg(result.data.message)
+      handleClean()
+    } catch (error) {
+      setErrors(error.response.data.message)
+    }
   };
 
   return (
@@ -62,6 +82,8 @@ export const AddressForm = ({ handleCloseForm, addressData = null }) => {
         <h5>ADDRESS BOOK</h5>
 
         <Box className="address-form-wrapper p-3 my-4 bg-white">
+          <ErrorList errors={errors} />
+          <SuccessMsg message={successMsg} />
           <form onSubmit={handleSubmit}>
             <Grid container spacing={2}>
               <Grid item xs={12} md={6}>
@@ -95,8 +117,8 @@ export const AddressForm = ({ handleCloseForm, addressData = null }) => {
                   variant="outlined"
                   required
                   fullWidth
-                  name="address1"
-                  value={data.first_name}
+                  name="flat_no"
+                  value={data.flat_no}
                   onChange={handleChange}
                 />
               </Grid>
@@ -107,8 +129,8 @@ export const AddressForm = ({ handleCloseForm, addressData = null }) => {
                   variant="outlined"
                   required
                   fullWidth
-                  name="address2"
-                  value={address2}
+                  name="street_name"
+                  value={data.street_name}
                   onChange={handleChange}
                 />
               </Grid>
@@ -121,7 +143,7 @@ export const AddressForm = ({ handleCloseForm, addressData = null }) => {
                     label="Country"
                     required
                     name="country"
-                    value={country}
+                    value={data.country}
                     onChange={handleChange}
                   >
                     {countries.map((d) => (
@@ -142,7 +164,7 @@ export const AddressForm = ({ handleCloseForm, addressData = null }) => {
                     label="City"
                     required
                     name="city"
-                    value={city}
+                    value={data.city}
                     onChange={handleChange}
                   >
                     {cities.map((d) => (
@@ -161,8 +183,8 @@ export const AddressForm = ({ handleCloseForm, addressData = null }) => {
                   variant="outlined"
                   required
                   fullWidth
-                  name="pinCode"
-                  value={pinCode}
+                  name="pincode"
+                  value={data.pincode}
                   onChange={handleChange}
                 />
               </Grid>
@@ -181,14 +203,14 @@ export const AddressForm = ({ handleCloseForm, addressData = null }) => {
                     <FormControlLabel
                       value="home"
                       className="radio-label"
-                      control={<Radio />}
+                      control={<Radio name="address_type" value="H" checked={data.address_type == 'H'} onChange={handleChange}/>}
                       label="Home"
                     />
 
                     <FormControlLabel
                       value="office"
                       className="radio-label"
-                      control={<Radio />}
+                      control={<Radio name="address_type" value="W" checked={data.address_type == 'W'} onChange={handleChange}/>}
                       label="Office"
                     />
                   </RadioGroup>
@@ -197,7 +219,7 @@ export const AddressForm = ({ handleCloseForm, addressData = null }) => {
 
               <Grid item xs={6} md={6}>
                 <Button
-                  onClick={handleCancel}
+                  onClick={cancel}
                   variant="outlined"
                   className="outlined-black"
                   fullWidth
