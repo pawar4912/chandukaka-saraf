@@ -9,6 +9,7 @@ import {
   CardContent,
   Typography,
   IconButton,
+  Pagination,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -20,17 +21,17 @@ export const ProductCard = ({ product = null }) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const handleConfirm = (response) => {
-    console.log('User confirmed:', response);
+    console.log("User confirmed:", response);
     // Handle the response here
     setIsDialogOpen(false); // Close the dialog after handling the response
   };
 
   const handleClose = () => {
     setIsDialogOpen(false);
-  }
+  };
 
   const handleOpenDialog = () => {
-    console.log("dialog opened")
+    console.log("dialog opened");
     setIsDialogOpen(true);
   };
 
@@ -40,15 +41,18 @@ export const ProductCard = ({ product = null }) => {
         <CardMedia
           component="img"
           image={productImage}
-        // alt={product.name}
+          // alt={product.name}
         />
         <div style={{ position: "absolute", top: 0, right: 0 }}>
           <IconButton onClick={handleOpenDialog}>
             <CloseIcon />
           </IconButton>
-
         </div>
-        <ConfirmationDialog onConfirm={handleConfirm} open={isDialogOpen} handleClose={handleClose} />
+        <ConfirmationDialog
+          onConfirm={handleConfirm}
+          open={isDialogOpen}
+          handleClose={handleClose}
+        />
         <div
           style={{ position: "absolute", bottom: 0, right: 0 }}
           className="favourite-button-container"
@@ -59,19 +63,14 @@ export const ProductCard = ({ product = null }) => {
         </div>
       </div>
       <CardContent>
-        <Typography
-          className="product-name"
-        >
-          {product.productType}
-        </Typography>
-        <Typography
-          color="text.secondary"
-         className="product-price"
-        >
+        <Typography className="product-name">{product.productType}</Typography>
+        <Typography color="text.secondary" className="product-price">
           &#8377; {product.finalCost.toFixed(2)}
         </Typography>
 
-        <Link to="#" className="add-to-cart-link">ADD TO CART</Link>
+        <Link to="#" className="add-to-cart-link">
+          ADD TO CART
+        </Link>
       </CardContent>
     </Card>
   );
@@ -167,7 +166,73 @@ export const Wishlist = () => {
       finalCost: 128047,
       Wastage_percentage: "0.100 ",
     },
+    {
+      id: 9,
+      productImage: productImage,
+      productType: "Gold Coin",
+      metalWeight: "20 gram",
+      metalCost: "123700",
+      wastageCharges: "618",
+      GST: "3729",
+      finalCost: 128047,
+      Wastage_percentage: "0.100 ",
+    },
+    {
+      id: 10,
+      productImage: productImage,
+      productType: "Gold Coin",
+      metalWeight: "20 gram",
+      metalCost: "123700",
+      wastageCharges: "618",
+      GST: "3729",
+      finalCost: 128047,
+      Wastage_percentage: "0.100 ",
+    },
+    {
+      id: 11,
+      productImage: productImage,
+      productType: "Gold Coin",
+      metalWeight: "20 gram",
+      metalCost: "123700",
+      wastageCharges: "618",
+      GST: "3729",
+      finalCost: 128047,
+      Wastage_percentage: "0.100 ",
+    },
+    {
+      id: 12,
+      productImage: productImage,
+      productType: "Gold Coin",
+      metalWeight: "20 gram",
+      metalCost: "123700",
+      wastageCharges: "618",
+      GST: "3729",
+      finalCost: 128047,
+      Wastage_percentage: "0.100 ",
+    },
+    {
+      id: 13,
+      productImage: productImage,
+      productType: "Gold Coin",
+      metalWeight: "20 gram",
+      metalCost: "123700",
+      wastageCharges: "618",
+      GST: "3729",
+      finalCost: 128047,
+      Wastage_percentage: "0.100 ",
+    },
   ];
+
+  const itemsPerPage = 8; 
+  const [currentPage, setCurrentPage] = useState(1);
+  const handleChangePage = (event, newPage) => {
+    setCurrentPage(newPage);
+  };
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const displayedProducts = products.slice(startIndex, endIndex);
+// todo: refactor above logic for static implementation
 
   return (
     <div className="wishlist">
@@ -186,13 +251,21 @@ export const Wishlist = () => {
 
       <div className="wishlist-items-container container">
         <Box>
-          <Grid container spacing={3}>
-            {products.map((product) => (
+          <Grid container className="mb-4" spacing={3}>
+            {displayedProducts.map((product) => (
               <Grid key={product.id} item xs={6} sm={6} md={3} lg={3}>
                 <ProductCard product={product} />
               </Grid>
             ))}
           </Grid>
+
+          <Pagination
+            count={Math.ceil(products.length / itemsPerPage)}
+            page={currentPage}
+            onChange={handleChangePage}
+            color="primary"
+            shape="rounded"
+          />
         </Box>
       </div>
     </div>
