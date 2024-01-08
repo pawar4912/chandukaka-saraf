@@ -25,3 +25,7 @@ export const subscribeEmail = async (data) => {
 export const getFaqs = async () => {
   return await httpService.get(`faqs`)
 }
+
+export const getStores = async () => {
+  return await httpService.get(`stores`)
+}

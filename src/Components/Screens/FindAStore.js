@@ -5,7 +5,7 @@ import fillWhiteLeftIcon from '../../images/icons/fillWhiteLeftIcon.svg';
 import fillWhiteRightIcon from '../../images/icons/fillWhiteRightIcon.svg';
 import googleMapAPI from "../../images/googleMapAPI.png";
 import { Item } from '../Item';
-import FAQs from '../FAQs';
+import AllStores from '../AllStores';
 
 export default function FindAStore() {
     return (
@@ -37,7 +37,7 @@ export default function FindAStore() {
                         ALL STORES
                     </div>
                     <div className='store-locations-acordion'>
-                        <FAQs />
+                        <AllStores />
                     </div>
                     
                 </Grid>
