@@ -35,6 +35,11 @@ export const ProductCard = ({ product = null }) => {
     setIsDialogOpen(true);
   };
 
+  const addToCart = (product) => {
+    // Todo: handle the api call for the add to cart functionality
+    console.log("Product added to cart")
+  }
+
   return (
     <Card variant="outlined" className="product-card">
       <div className="image-container">
@@ -69,7 +74,7 @@ export const ProductCard = ({ product = null }) => {
           &#8377; {product.finalCost.toFixed(2)}
         </Typography>
 
-        <Link to="#" className="add-to-cart-link">
+        <Link to="#" onClick={() => addToCart(product)} className="add-to-cart-link">
           ADD TO CART
         </Link>
       </CardContent>
