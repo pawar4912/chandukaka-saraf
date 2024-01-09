@@ -16,7 +16,7 @@ import productImage from "../../../images/productImage.png";
 import CloseIcon from "@mui/icons-material/Close";
 import EastIcon from "@mui/icons-material/East";
 
-const ConfirmationDialog = ({ onConfirm, open, handleClose }) => {
+const ConfirmationDialog = ({ onConfirm, open, handleClose, product }) => {
 
   const handleYesClick = () => {
     // Todo: Handle remove from the wishlist logic here
@@ -56,7 +56,7 @@ const ConfirmationDialog = ({ onConfirm, open, handleClose }) => {
               <Grid container className="container p-3" sx={{ width: "80%" }}>
                 <Grid item xs={6}>
                   <img
-                    src={productImage}
+                    src={product.productImage}
                     style={{ height: "81px", width: "81px" }}
                   />
                 </Grid>
@@ -77,7 +77,7 @@ const ConfirmationDialog = ({ onConfirm, open, handleClose }) => {
                       letterSpacing: "1.2px",
                     }}
                   >
-                    Product name
+                   {product.productType}
                   </Typography>
                   <Typography
                     sx={{
@@ -87,7 +87,7 @@ const ConfirmationDialog = ({ onConfirm, open, handleClose }) => {
                       letterSpacing: "1.2px",
                     }}
                   >
-                    &#8377; 1200.00
+                    &#8377; {product.metalCost}
                   </Typography>
                 </Grid>
               </Grid>

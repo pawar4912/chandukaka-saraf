@@ -40,8 +40,8 @@ export const ProductCard = ({ product = null }) => {
       <div className="image-container">
         <CardMedia
           component="img"
-          image={productImage}
-          // alt={product.name}
+          image={product.productImage}
+          alt={product.productType}
         />
         <div style={{ position: "absolute", top: 0, right: 0 }}>
           <IconButton onClick={handleOpenDialog}>
@@ -51,6 +51,7 @@ export const ProductCard = ({ product = null }) => {
         <ConfirmationDialog
           onConfirm={handleConfirm}
           open={isDialogOpen}
+          product={product}
           handleClose={handleClose}
         />
         <div
@@ -80,8 +81,8 @@ export const Wishlist = () => {
   const products = [
     {
       id: 1,
-      productImage: productImage,
-      productType: "Gold Coin",
+      productImage: "https://source.unsplash.com/random/300x300?jewellery=1",
+      productType: "Necklace",
       metalWeight: "0.5 gram",
       metalCost: "3092",
       wastageCharges: "154",
@@ -91,7 +92,7 @@ export const Wishlist = () => {
     },
     {
       id: 2,
-      productImage: productImage,
+      productImage: "https://source.unsplash.com/random/300x300?jewellery=2",
       productType: "Gold Coin",
       metalWeight: "1 gram",
       metalCost: "6185",
@@ -102,7 +103,7 @@ export const Wishlist = () => {
     },
     {
       id: 3,
-      productImage: productImage,
+      productImage: "https://source.unsplash.com/random/300x300?jewellery=3",
       productType: "Gold Coin",
       metalWeight: "2 gram",
       metalCost: "12370",
@@ -113,7 +114,7 @@ export const Wishlist = () => {
     },
     {
       id: 4,
-      productImage: productImage,
+      productImage: "https://source.unsplash.com/random/300x300?jewellery=4",
       productType: "Gold Coin",
       metalWeight: "3 gram",
       metalCost: "18555",
@@ -124,7 +125,7 @@ export const Wishlist = () => {
     },
     {
       id: 5,
-      productImage: productImage,
+      productImage: "https://source.unsplash.com/random/300x300?jewellery=5",
       productType: "Gold Coin",
       metalWeight: "5 gram",
       metalCost: "30925",
@@ -135,7 +136,7 @@ export const Wishlist = () => {
     },
     {
       id: 6,
-      productImage: productImage,
+      productImage: "https://source.unsplash.com/random/300x300?jewellery=6",
       productType: "Gold Coin",
       metalWeight: "10 gram",
       metalCost: "61850",
@@ -146,7 +147,7 @@ export const Wishlist = () => {
     },
     {
       id: 7,
-      productImage: productImage,
+      productImage: "https://source.unsplash.com/random/300x300?jewellery=7",
       productType: "Gold Coin",
       metalWeight: "15 gram",
       metalCost: "92775",
@@ -157,7 +158,7 @@ export const Wishlist = () => {
     },
     {
       id: 8,
-      productImage: productImage,
+      productImage: "https://source.unsplash.com/random/300x300?jewellery=8",
       productType: "Gold Coin",
       metalWeight: "20 gram",
       metalCost: "123700",
@@ -168,7 +169,7 @@ export const Wishlist = () => {
     },
     {
       id: 9,
-      productImage: productImage,
+      productImage: "https://source.unsplash.com/random/300x300?jewellery=9",
       productType: "Gold Coin",
       metalWeight: "20 gram",
       metalCost: "123700",
@@ -179,7 +180,7 @@ export const Wishlist = () => {
     },
     {
       id: 10,
-      productImage: productImage,
+      productImage: "https://source.unsplash.com/random/300x300?jewellery=10",
       productType: "Gold Coin",
       metalWeight: "20 gram",
       metalCost: "123700",
@@ -190,7 +191,7 @@ export const Wishlist = () => {
     },
     {
       id: 11,
-      productImage: productImage,
+       productImage: "https://source.unsplash.com/random/300x300?jewellery=11",
       productType: "Gold Coin",
       metalWeight: "20 gram",
       metalCost: "123700",
@@ -201,7 +202,7 @@ export const Wishlist = () => {
     },
     {
       id: 12,
-      productImage: productImage,
+       productImage: "https://source.unsplash.com/random/300x300?jewellery=12",
       productType: "Gold Coin",
       metalWeight: "20 gram",
       metalCost: "123700",
@@ -212,7 +213,7 @@ export const Wishlist = () => {
     },
     {
       id: 13,
-      productImage: productImage,
+       productImage: "https://source.unsplash.com/random/300x300?jewellery=13",
       productType: "Gold Coin",
       metalWeight: "20 gram",
       metalCost: "123700",
