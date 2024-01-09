@@ -16,6 +16,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import productImage from "../../../images/productImage.png";
 import ConfirmationDialog from "./ConfirmationDialog";
 import { Link } from "react-router-dom";
+import { Paginator } from "../../Common/Paginator";
 
 export const ProductCard = ({ product = null }) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -34,6 +35,11 @@ export const ProductCard = ({ product = null }) => {
     console.log("dialog opened");
     setIsDialogOpen(true);
   };
+
+  const addToCart = (product) => {
+    // Todo: handle the api call for the add to cart functionality
+    console.log("Product added to cart")
+  }
 
   return (
     <Card variant="outlined" className="product-card">
@@ -69,7 +75,7 @@ export const ProductCard = ({ product = null }) => {
           &#8377; {product.finalCost.toFixed(2)}
         </Typography>
 
-        <Link to="#" className="add-to-cart-link">
+        <Link to="#" onClick={() => addToCart(product)} className="add-to-cart-link">
           ADD TO CART
         </Link>
       </CardContent>
@@ -191,7 +197,7 @@ export const Wishlist = () => {
     },
     {
       id: 11,
-       productImage: "https://source.unsplash.com/random/300x300?jewellery=11",
+      productImage: "https://source.unsplash.com/random/300x300?jewellery=11",
       productType: "Gold Coin",
       metalWeight: "20 gram",
       metalCost: "123700",
@@ -202,7 +208,7 @@ export const Wishlist = () => {
     },
     {
       id: 12,
-       productImage: "https://source.unsplash.com/random/300x300?jewellery=12",
+      productImage: "https://source.unsplash.com/random/300x300?jewellery=12",
       productType: "Gold Coin",
       metalWeight: "20 gram",
       metalCost: "123700",
@@ -213,7 +219,7 @@ export const Wishlist = () => {
     },
     {
       id: 13,
-       productImage: "https://source.unsplash.com/random/300x300?jewellery=13",
+      productImage: "https://source.unsplash.com/random/300x300?jewellery=13",
       productType: "Gold Coin",
       metalWeight: "20 gram",
       metalCost: "123700",
@@ -224,7 +230,7 @@ export const Wishlist = () => {
     },
   ];
 
-  const itemsPerPage = 8; 
+  const itemsPerPage = 8;
   const [currentPage, setCurrentPage] = useState(1);
   const handleChangePage = (event, newPage) => {
     setCurrentPage(newPage);
@@ -233,7 +239,7 @@ export const Wishlist = () => {
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const displayedProducts = products.slice(startIndex, endIndex);
-// todo: refactor above logic for static implementation
+  // todo: refactor above logic for static implementation
 
   return (
     <div className="wishlist">
@@ -260,13 +266,7 @@ export const Wishlist = () => {
             ))}
           </Grid>
 
-          <Pagination
-            count={Math.ceil(products.length / itemsPerPage)}
-            page={currentPage}
-            onChange={handleChangePage}
-            color="primary"
-            shape="rounded"
-          />
+          <Paginator currentPage={currentPage} itemsPerPage={itemsPerPage} productsLength={products.length} handleChangePage={handleChangePage} />
         </Box>
       </div>
     </div>
