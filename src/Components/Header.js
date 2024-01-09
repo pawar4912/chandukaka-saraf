@@ -9,6 +9,8 @@ import menuOpen from "../images/icons/open-menu.svg";
 import closeMenu from "../images/icons/close.svg";
 import { getLiveRateForCSPL } from "../services/FrontApp/index.service";
 import AuthModal from "./Screens/AuthModal";
+import { isLoggedIn } from "../services/auth.service";
+import LoginIcon from '@mui/icons-material/Login';
 
 function Header() {
   const $ = window.jQuery;
@@ -235,6 +237,7 @@ function Header() {
                               alt="Logo"
                               className="image"
                             />
+
                           </Link>
                         </li>
                         <li>
@@ -242,12 +245,21 @@ function Header() {
                             <img src={heartLogo} alt="Logo" className="image heart" />
                           </Link>
                         </li>
-                        <li>
-                          <Link onClick={handleOpenDialog}>
-                            <img src={userLogo} alt="Logo" className="image" />
-                          </Link>
-                          <AuthModal open={open} handleClose={handleCloseDialog} />
-                        </li>
+
+                        {isLoggedIn() ?
+                          <li>
+                            <Link  to="/myorder">
+                              <img src={userLogo} alt="Logo" className="image" />
+                            </Link>
+                          </li>
+                          :
+                          <li className="login-icon">
+                            <Link onClick={handleOpenDialog} classsName="image" style={{color: '#A3A3A3'}}>
+                              <LoginIcon />
+                            </Link>
+                            <AuthModal open={open} handleClose={handleCloseDialog} />
+                          </li>
+                        }
                       </ul>
                     </div>
                   </div>
