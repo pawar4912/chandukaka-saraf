@@ -9,6 +9,8 @@ import menuOpen from "../images/icons/open-menu.svg";
 import closeMenu from "../images/icons/close.svg";
 import { getLiveRateForCSPL } from "../services/FrontApp/index.service";
 import AuthModal from "./Screens/AuthModal";
+import { isLoggedIn } from "../services/auth.service";
+import LoginIcon from '@mui/icons-material/Login';
 
 function Header() {
   const $ = window.jQuery;
@@ -64,29 +66,29 @@ function Header() {
                         className="menu-open"
                       />
                       <div className="logo">
-                        <a href="/">
+                        <Link to="/">
                           <img src={logo} alt="Logo" className="image" />
-                        </a>
+                        </Link>
                       </div>
                       <div className="header-icon-list">
                         <ul>
                           <li>
-                            <a href="/">
+                            <Link to="/">
                               <img
                                 src={shoppingBagLogo}
                                 alt="Logo"
                                 className="image"
                               />
-                            </a>
+                            </Link>
                           </li>
                           <li>
-                            <a href="/">
+                            <Link to="/">
                               <img
                                 src={heartLogo}
                                 alt="Logo"
-                                className="image"
+                                className="image heart"
                               />
-                            </a>
+                            </Link>
                           </li>
                         </ul>
                       </div>
@@ -94,9 +96,9 @@ function Header() {
                     <div className="col-12 col-lg-12  d-none d-md-block">
                       <div className="row position-relative">
                         <div className="logo">
-                          <a href="/">
+                          <Link to="/">
                             <img src={logo} alt="Logo" className="image" />
-                          </a>
+                          </Link>
                         </div>
                         <div className="col-8 p-0 position-absolute end-0 h-100">
                           <div className="quick-links-wrapper">
@@ -109,10 +111,10 @@ function Header() {
                                   <small>SILVER - ₹{rates.Silver1}</small>
                                 </li>
                                 <li>
-                                  <a href="/find-a-store">FIND A STORE</a>
+                                  <Link to="/find-a-store">FIND A STORE</Link>
                                 </li>
                                 <li>
-                                  <a href="/">SUPPORT</a>
+                                  <Link to="/">SUPPORT</Link>
                                 </li>
                               </div>
                             </ul>
@@ -147,41 +149,41 @@ function Header() {
                             />
                           </div>
                           <div className="col-2">
-                            <a href="/" className="shopping-logo">
+                            <Link to="/" className="shopping-logo">
                               <img
                                 src={shoppingBagLogo}
                                 alt="Logo"
                                 className="image"
                               />
-                            </a>
+                            </Link>
                           </div>
                         </div>
                         <h3 className="drawer-header">POPULAR SEARCHES</h3>
                         <div className="d-lg-none">
                           <li className="w-100">
-                            <a href="/" className="menu-link">
+                            <Link to="/" className="menu-link">
                               Fancy Earrings
-                            </a>
+                            </Link>
                           </li>
                           <li className="w-100">
-                            <a href="/" className="menu-link">
+                            <Link to="/" className="menu-link">
                               Gift under 10k
-                            </a>
+                            </Link>
                           </li>
                           <li className="w-100">
-                            <a href="/" className="menu-link">
+                            <Link to="/" className="menu-link">
                               Every day Necklaces
-                            </a>
+                            </Link>
                           </li>
                           <li className="w-100">
-                            <a href="/" className="menu-link">
+                            <Link to="/" className="menu-link">
                               Diamonds Mangalsutra
-                            </a>
+                            </Link>
                           </li>
                           <li className="w-100">
-                            <a href="/" className="menu-link">
+                            <Link to="/" className="menu-link">
                               Office wear earrings
-                            </a>
+                            </Link>
                           </li>
                         </div>
                       </ul>
@@ -220,34 +222,44 @@ function Header() {
                     <div className="header-icon-list">
                       <ul className="w-100">
                         <li>
-                          <a href="/">
+                          <Link to="/">
                             <img
                               src={searchLogo}
                               alt="Logo"
                               className="image"
                             />
-                          </a>
+                          </Link>
                         </li>
                         <li>
-                          <a href="/">
+                          <Link to="/">
                             <img
                               src={shoppingBagLogo}
                               alt="Logo"
                               className="image"
                             />
-                          </a>
-                        </li>
-                        <li>
-                          <a href="/">
-                            <img src={heartLogo} alt="Logo" className="image" />
-                          </a>
-                        </li>
-                        <li>
-                          <Link onClick={handleOpenDialog}>
-                            <img src={userLogo} alt="Logo" className="image" />
+
                           </Link>
-                          <AuthModal open={open} handleClose={handleCloseDialog} />
                         </li>
+                        <li>
+                          <Link to="/">
+                            <img src={heartLogo} alt="Logo" className="image heart" />
+                          </Link>
+                        </li>
+
+                        {isLoggedIn() ?
+                          <li>
+                            <Link  to="/myorder">
+                              <img src={userLogo} alt="Logo" className="image" />
+                            </Link>
+                          </li>
+                          :
+                          <li className="login-icon">
+                            <Link onClick={handleOpenDialog} classsName="image" style={{color: '#A3A3A3'}}>
+                              <LoginIcon />
+                            </Link>
+                            <AuthModal open={open} handleClose={handleCloseDialog} />
+                          </li>
+                        }
                       </ul>
                     </div>
                   </div>
