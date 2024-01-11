@@ -266,8 +266,8 @@ export const Wishlist = () => {
             ))}
           </Grid>
 
-          <Paginator currentPage={currentPage} itemsPerPage={itemsPerPage} productsLength={products.length} handleChangePage={handleChangePage} />
         </Box>
+        <Paginator currentPage={currentPage} itemsPerPage={itemsPerPage} productsLength={products.length} handleChangePage={handleChangePage} />
       </div>
     </div>
   );

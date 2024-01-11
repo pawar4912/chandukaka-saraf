@@ -13,7 +13,7 @@ export const Paginator = ({productsLength, itemsPerPage, currentPage, handleChan
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        '& .Mui-selected': {
+        '.Mui-selected': {
             background: 'transparent',
             fontWeight: 'bolder',
             color: '#333',
