@@ -14,6 +14,7 @@ import {
   IconButton,
   DialogActions,
   Container,
+  Grid,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import rightArrowIcon from "../../images/icons/right-arrow-white.svg";
@@ -176,34 +177,40 @@ const AuthModal = ({ open, handleClose }) => {
                   noValidate
                   autoComplete="off"
                 >
-                  <TextField
-                    id="outlined-select-currency"
-                    select
-                    label="Country Code*"
-                    defaultValue="ind"
-                  >
-                    {countrycode.map((option) => (
-                      <MenuItem key={option.value} value={option.value}>
-                        {option.label}
-                      </MenuItem>
-                    ))}
-                  </TextField>
+                  <Grid container spacing={1} className="w-100">
+                    <Grid item xs={4}>
+                      <TextField fullWidth
+                        id="outlined-select-currency"
+                        select
+                        label="Country Code*"
+                        defaultValue="ind"
+                      >
+                        {countrycode.map((option) => (
+                          <MenuItem key={option.value} value={option.value}>
+                            {option.label}
+                          </MenuItem>
+                        ))}
+                      </TextField>
+                    </Grid>
 
-                  <TextField
-                    id="outlined-number"
-                    label="Mobile Number*"
-                    type="number"
-                    inputProps={{
-                      inputMode: "numeric",
-                      pattern: "[0-9]*",
-                      maxLength: 10,
-                    }}
-                    InputLabelProps={{
-                      shrink: true,
-                    }}
-                    value={phoneNumber}
-                    onChange={handleOnPhoneNumberChange}
-                  />
+                    <Grid item xs={8}>
+                      <TextField
+                        id="outlined-number"
+                        label="Mobile Number*"
+                        type="number"
+                        inputProps={{
+                          inputMode: "numeric",
+                          pattern: "[0-9]*",
+                          maxLength: 10,
+                        }}
+                        InputLabelProps={{
+                          shrink: true,
+                        }}
+                        value={phoneNumber}
+                        onChange={handleOnPhoneNumberChange}
+                      />
+                    </Grid>
+                  </Grid>
                 </Box>
 
                 <div>

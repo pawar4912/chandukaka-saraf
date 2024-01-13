@@ -1,4 +1,4 @@
-import jwt_decode from 'jwt-decode'
+import { jwtDecode } from "jwt-decode";
 import * as tokenService from './token.service'
 
 export const getTokenKey = () => {
@@ -14,7 +14,7 @@ export const getLoginUserInfo = () => {
   let tokenKey = getTokenKey()
 
   try {
-    var decodedHeader = jwt_decode(tokenService.getToken(tokenKey))
+    var decodedHeader = jwtDecode(tokenService.getToken(tokenKey))
     return decodedHeader
   } catch (e) {
     console.log('Invalid access token')

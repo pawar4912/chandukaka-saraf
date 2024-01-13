@@ -75,14 +75,15 @@ export default function Sidebar() {
                 </Link>
               </li>
               <li className="w-100">
-                <a href="#" className="menu-link">
+                <Link to="/contact-us" className="menu-link w-100 link-with-open-new">
                   <img
                     src={helpIcon}
                     alt="Logo"
                     className="image"
                   />
                   SUPPORT
-                </a>
+                  <OpenInNewIcon className="new-tab-icon" />
+                </Link>
               </li>
             </div>
             <li className="w-100 sign-out">
