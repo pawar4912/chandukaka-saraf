@@ -241,8 +241,8 @@ function Header() {
                           </Link>
                         </li>
                         <li>
-                          <Link to="/">
-                            <img src={heartLogo} alt="Logo" className="image heart" />
+                          <Link to="/wishlist">
+                            <img src={heartLogo} alt="Logo" className="image" />
                           </Link>
                         </li>
 
