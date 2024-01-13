@@ -14,9 +14,10 @@ export const getLoginUserInfo = () => {
   let tokenKey = getTokenKey()
 
   try {
-    var decodedHeader = jwtDecode(tokenService.getToken(tokenKey))
-    return decodedHeader
+    // var decodedHeader = jwtDecode(tokenService.getToken(tokenKey))
+    return tokenService.getToken(tokenKey)
   } catch (e) {
+    // console.log(e)
     console.log('Invalid access token')
   }
 }
