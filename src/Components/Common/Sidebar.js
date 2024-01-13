@@ -10,6 +10,7 @@ import { SwipeableDrawer } from "@mui/material";
 import { Link } from "react-router-dom";
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
+
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false)
   const openDrawer = () => {
@@ -63,13 +64,14 @@ export default function Sidebar() {
                 </Link>
               </li>
               <li className="w-100">
-                <Link to="/wishlist" className="menu-link">
+                <Link to="/wishlist" className="menu-link w-100 link-with-open-new">
                   <img
                     src={heartIcon}
                     alt="Logo"
                     className="image"
                   />
                   WISHLIST
+                  <OpenInNewIcon className="new-tab-icon" />
                 </Link>
               </li>
               <li className="w-100">

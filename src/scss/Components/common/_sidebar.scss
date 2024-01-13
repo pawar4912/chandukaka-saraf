@@ -66,28 +66,28 @@
     text-transform: uppercase;
     opacity: 1;
 
-    img {
-      width: 25px;
-      height: 25px;
-      margin-right: 18px;
+        img {
+            width: 25px;
+            height: 25px;
+            margin-right: 18px;
+        }
+
+        .new-tab-icon {
+            color: #CCCCCC;
+            margin-left: auto;
+        }
     }
 
-    .new-tab-icon {
-      color: #cccccc;
-      margin-left: auto;
-    }
-  }
+    .link-with-open-new {
+        display: flex;
+        line-height: 64.55px;
+        align-items: center;
 
-  .link-with-open-new {
-    display: flex;
-    line-height: 64.55px;
-    align-items: center;
-
-    svg {
-      margin-left: auto;
-      margin-right: 0.3rem;
+        svg {
+            margin-left: auto;
+            margin-right: .3rem;
+        }
     }
-  }
 
   .sign-out {
     margin-top: 72px;
