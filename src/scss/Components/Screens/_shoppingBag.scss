@@ -1,11 +1,26 @@
-.shopping-bag {
-  .shopping-bag-header {
-    text-align: center;
-    font-family: normal normal 900 21px/25px Lato;
-    letter-spacing: 3.15px;
-    color: #333333;
-    text-transform: uppercase;
-  }
+
+button {
+  outline: none;
+}
+
+button:hover {
+  border: none;
+  background-color: transparent;
+  color: #333333;
+}
+
+.shopping-bag-header {
+  align-items: center;
+}
+
+h4 {
+  text-align: center;
+  font: normal normal 900 20px/44px Lato;
+  letter-spacing: 3.15px;
+  color: #333333;
+  text-transform: uppercase;
+  padding: 0;
+  margin: 0;
 }
 .cart-items-wrapper {
   max-height: 63%;
@@ -25,16 +40,6 @@
   .card-actions {
     flex-direction: column;
     align-items: center;
-
-    button {
-      outline: none;
-    }
-
-    button:hover {
-      border: none;
-      background-color: transparent;
-      color: #333333;
-    }
   }
 }
 

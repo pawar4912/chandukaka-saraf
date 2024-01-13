@@ -30,30 +30,31 @@ const StyledDrawer = styled(Drawer)(({ theme }) => ({
     width: "25vw !important", // Customizable width
     height: "100%", // Full-screen height
   },
+  "@media screen and (max-width: 425px)": {
+    width: "90vw !important",
+    "& .MuiDrawer-paper": {
+      width: "90vw !important",
+    },
+  },
 }));
 
 export const CartItem = ({ product }) => {
-  const { id, name, image, quantity, price } = product;
-
   const handleRemove = () => {
-    // Implement logic to remove the item from the cart
-    console.log(`Remove item with id ${id}`);
+    console.log(`Remove item with id ${product.name}`);
   };
 
   const handleIncreaseQuantity = () => {
     product.quantity = product.quantity + 1;
-    // Implement logic to update the cart or state with increased quantity
   };
 
   const handleDecreaseQuantity = () => {
     if (product.quantity > 1) {
       product.quantity = product.quantity - 1;
-      // Implement logic to update the cart or state with decreased quantity
     }
   };
 
   return (
-    <Card className="cart-item p-4" sx={{ border: 'none' }}>
+    <Card className="cart-item p-4" sx={{ border: "none" }}>
       <Grid container spacing={1}>
         <Grid item xs={4}>
           <div className="product-image">
@@ -62,26 +63,36 @@ export const CartItem = ({ product }) => {
               alt={name}
               height="81"
               width="81"
-              image={image}
+              image={product.image}
             />
           </div>
         </Grid>
 
-        {/* <CardContent> */}
         <Grid item xs={4}>
           <div className="product-information">
             <Typography variant="h6" component="div">
-              {name}
+              {product.name}
+            </Typography>
+            <Typography
+              variant="body2"
+              fontWeight="bold"
+              color="text.secondary"
+            >
+              &#8377; {product.type}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              Price: ${price}
+              Price: &#8377; {product.price}
             </Typography>
           </div>
         </Grid>
 
         <Grid item xs={4}>
           <Box className="card-actions" display="flex" alignItems="center">
-            <IconButton onClick={handleRemove} aria-label="remove">
+            <IconButton
+              onClick={handleRemove}
+              aria-label="remove"
+              sx={{ marginLeft: "auto", width: "50%" }}
+            >
               <CloseIcon />
             </IconButton>
             <Box
@@ -105,7 +116,6 @@ export const CartItem = ({ product }) => {
             </Box>
           </Box>
         </Grid>
-        {/* </CardContent> */}
       </Grid>
     </Card>
   );
@@ -116,22 +126,25 @@ export const ShoppingBag = ({ open, handleDrawer }) => {
     {
       id: 1,
       name: "gold coin",
-      image: "https://source.unsplash.com/random/300x300?jewellery=2",
+      image: "https://source.unsplash.com/random/300x300?jewellery=1",
       quantity: 1,
+      type: "24KT | 1GM",
       price: 1200,
     },
     {
       id: 2,
-      name: "gold coin",
+      name: "gold coin 2",
       image: "https://source.unsplash.com/random/300x300?jewellery=2",
       quantity: 1,
+      type: "24KT | 1GM",
       price: 1200,
     },
     {
       id: 3,
-      name: "gold coin",
-      image: "https://source.unsplash.com/random/300x300?jewellery=2",
+      name: "gold coin 3",
+      image: "https://source.unsplash.com/random/300x300?jewellery=3",
       quantity: 1,
+      type: "24KT | 1GM",
       price: 1200,
     },
   ];
@@ -150,29 +163,35 @@ export const ShoppingBag = ({ open, handleDrawer }) => {
         onClose={toggleDrawer}
       >
         <div className="shopping-bag-header d-flex justify-content-between p-3">
-          <Badge badgeContent={4} color="primary">
-            <img src={shoppingBagLogo} />
-          </Badge>
+          <div>
+            <Badge badgeContent={cartItems.length} color="primary">
+              <img
+                src={shoppingBagLogo}
+                style={{ height: "20px", width: "20px" }}
+              />
+            </Badge>
+          </div>
 
-          <Typography>YOUR SHOPPING BAG</Typography>
+          <h4>YOUR SHOPPING BAG</h4>
 
           <IconButton aria-label="close" onClick={toggleDrawer}>
             <CloseIcon />
           </IconButton>
         </div>
 
-        <Divider style={{ backgroundColor: "#666666" }}/>
+        <Divider style={{ backgroundColor: "#666666" }} />
         <div className="cart-items-wrapper">
-
           {cartItems.map((cartItem) => {
-            return <>
-              <CartItem product={cartItem} />
-              <Divider  style={{ backgroundColor: "#666666" }} />
-            </>
+            return (
+              <div key={cartItem.id}>
+                <CartItem product={cartItem} />
+                <Divider style={{ backgroundColor: "#666666" }} />
+              </div>
+            );
           })}
         </div>
 
-        <Paper elevation={4} className="w-100 continue-to-checkout p-3">
+        <Paper elevation={4} className="w-100 continue-to-checkout p-4">
           <div className="apply-code-wrapper">
             <input
               type="text"
@@ -216,15 +235,6 @@ export const ShoppingBag = ({ open, handleDrawer }) => {
             <EastIcon />
           </Button>
         </Paper>
-
-        {/* <List>
-          <ListItem button onClick={toggleDrawer}>
-            <ListItemText primary="Drawer Item 1" />
-          </ListItem>
-          <ListItem button onClick={toggleDrawer}>
-            <ListItemText primary="Drawer Item 2" />
-          </ListItem>
-        </List> */}
       </StyledDrawer>
     </div>
   );
