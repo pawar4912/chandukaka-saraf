@@ -101,6 +101,28 @@
   }
 }
 
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .sidebar {
+    width: 35%;
+  }
+
+  .menu-wrapper .menu-link {
+    text-decoration: none;
+    color: #333333;
+    font: normal normal 600 10px/39px Lato;
+    letter-spacing: 3.2px;
+    text-transform: uppercase;
+    opacity: 1;
+    display: flex;
+    align-items: center;
+  }
+  .menu-wrapper .menu-link img {
+    width: 20px;
+    height: 20px;
+    margin-right: 18px;
+  }
+}
+
 @media (max-width: 767px) {
   .sidebar {
     width: 0;
