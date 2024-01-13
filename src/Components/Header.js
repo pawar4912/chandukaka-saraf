@@ -12,7 +12,6 @@ import AuthModal from "./Screens/AuthModal";
 import { isLoggedIn } from "../services/auth.service";
 import LoginIcon from "@mui/icons-material/Login";
 import { ShoppingBag } from "./Screens/ShoppingBag";
-import { Drawer } from "@mui/material";
 
 function Header() {
   const $ = window.jQuery;
