@@ -16,6 +16,7 @@ import { PersonalDetails } from './Components/Screens/PersonalDetails';
 import { AddressBook } from './Components/Screens/Address-book/AddressBook';
 import { ShoppingBag } from './Components/Screens/ShoppingBag';
 
+import { Wishlist } from './Components/Screens/Wishlist/Wishlist';
 
 const routes = [
   {
@@ -134,6 +135,13 @@ const routes = [
     path: '/address-book',
     name: 'addressBook',
     element: <AddressBook />,
+    exact: true,
+    strict: false,
+  },
+  {
+    path: '/wishlist',
+    name: 'wishlist',
+    element: <Wishlist />,
     exact: true,
     strict: false,
   },
