@@ -7,6 +7,14 @@
     text-transform: uppercase;
   }
 }
+.cart-items-wrapper {
+  max-height: 63%;
+  overflow: auto;
+}
+
+.cart-items-wrapper::-webkit-scrollbar {
+  display: none;
+}
 
 .cart-item {
   .product-image {
@@ -17,6 +25,16 @@
   .card-actions {
     flex-direction: column;
     align-items: center;
+
+    button {
+      outline: none;
+    }
+
+    button:hover {
+      border: none;
+      background-color: transparent;
+      color: #333333;
+    }
   }
 }
 

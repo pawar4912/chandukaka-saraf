@@ -15,7 +15,7 @@ import {
   Box,
   Grid,
   Button,
-  Paper
+  Paper,
 } from "@mui/material";
 import shoppingBagLogo from "../../images/icons/shopping-bag.svg";
 import CloseIcon from "@mui/icons-material/Close";
@@ -26,22 +26,13 @@ import EastIcon from "@mui/icons-material/East";
 const StyledDrawer = styled(Drawer)(({ theme }) => ({
   width: "20vw !important", // Customizable width
   height: "100%", // Full-screen height
-  border: "2px solid red",
   "& .MuiDrawer-paper": {
     width: "25vw !important", // Customizable width
     height: "100%", // Full-screen height
-    border: "3px solid green",
   },
 }));
 
-export const CartItem = () => {
-  const [product, setProduct] = useState({
-    id: 1,
-    name: "gold coin",
-    image: "https://source.unsplash.com/random/300x300?jewellery=2",
-    quantity: 1,
-    price: 1200,
-  });
+export const CartItem = ({ product }) => {
   const { id, name, image, quantity, price } = product;
 
   const handleRemove = () => {
@@ -62,7 +53,7 @@ export const CartItem = () => {
   };
 
   return (
-    <Card className="cart-item p-4">
+    <Card className="cart-item p-4" sx={{ border: 'none' }}>
       <Grid container spacing={1}>
         <Grid item xs={4}>
           <div className="product-image">
@@ -116,13 +107,35 @@ export const CartItem = () => {
         </Grid>
         {/* </CardContent> */}
       </Grid>
-
-      <Divider></Divider>
     </Card>
   );
 };
 
 export const ShoppingBag = ({ open, handleDrawer }) => {
+  const cartItems = [
+    {
+      id: 1,
+      name: "gold coin",
+      image: "https://source.unsplash.com/random/300x300?jewellery=2",
+      quantity: 1,
+      price: 1200,
+    },
+    {
+      id: 2,
+      name: "gold coin",
+      image: "https://source.unsplash.com/random/300x300?jewellery=2",
+      quantity: 1,
+      price: 1200,
+    },
+    {
+      id: 3,
+      name: "gold coin",
+      image: "https://source.unsplash.com/random/300x300?jewellery=2",
+      quantity: 1,
+      price: 1200,
+    },
+  ];
+
   const toggleDrawer = () => {
     console.log("In toggle");
     handleDrawer();
@@ -148,12 +161,18 @@ export const ShoppingBag = ({ open, handleDrawer }) => {
           </IconButton>
         </div>
 
-        <Divider />
+        <Divider style={{ backgroundColor: "#666666" }}/>
+        <div className="cart-items-wrapper">
 
-        <CartItem></CartItem>
+          {cartItems.map((cartItem) => {
+            return <>
+              <CartItem product={cartItem} />
+              <Divider  style={{ backgroundColor: "#666666" }} />
+            </>
+          })}
+        </div>
 
         <Paper elevation={4} className="w-100 continue-to-checkout p-3">
-
           <div className="apply-code-wrapper">
             <input
               type="text"
@@ -161,7 +180,10 @@ export const ShoppingBag = ({ open, handleDrawer }) => {
               placeholder="Enter coupon code"
             />
 
-            <Button variant="outlined" className="outlined-black btn-apply-code">
+            <Button
+              variant="outlined"
+              className="outlined-black btn-apply-code"
+            >
               APPLY CODE &nbsp;
               <EastIcon />
             </Button>
@@ -185,16 +207,14 @@ export const ShoppingBag = ({ open, handleDrawer }) => {
           </div>
 
           <Button
-              className="btn btn-block bg-black btn-submit btn-checkout"
-              fullWidth
-              variant="contained"
-              type="submit"
-            >
-              CONTINUE TO CHECKOUT &nbsp;
-              <EastIcon />
-            </Button>
-
-
+            className="btn btn-block bg-black btn-submit btn-checkout"
+            fullWidth
+            variant="contained"
+            type="submit"
+          >
+            CONTINUE TO CHECKOUT &nbsp;
+            <EastIcon />
+          </Button>
         </Paper>
 
         {/* <List>

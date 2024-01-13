@@ -92,10 +92,10 @@ function Header() {
                                 className="image"
                               />
                             </Link>
-                            <ShoppingBag
+                            {/* <ShoppingBag
                               open={openDrawer}
                               handleOpenDrawer={handleOpenDrawer}
-                            />
+                            /> */}
                           </li>
                           <li>
                             <Link to="/">
@@ -267,7 +267,7 @@ function Header() {
                               className="image"
                             />
                           </Link>
-                          <ShoppingBag open={openDrawer} handleDrawer = {handleOpenDrawer} />
+                          {/* <ShoppingBag open={openDrawer} handleDrawer = {handleOpenDrawer} /> */}
                         </li>
                         <li>
                           <Link to="/">
@@ -312,6 +312,7 @@ function Header() {
             </div>
           </div>
         </header>
+        <ShoppingBag open={openDrawer} handleDrawer={handleOpenDrawer} />
       </div>
     </>
   );
