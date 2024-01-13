@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { ListItemIcon } from "@mui/material";
 import orderIcon from '../../images/icons/sidebar/orders-icon.svg';
 import personalDetailsIcon from '../../images/icons/sidebar/personal-details-icon.svg';
 import addressBookIcon from '../../images/icons/sidebar/address-book-icon.svg';
@@ -9,6 +8,8 @@ import logoutIcon from '../../images/icons/sidebar/logout-icon.svg';
 import web from "../../images/Group265.png";
 import { SwipeableDrawer } from "@mui/material";
 import { Link } from "react-router-dom";
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -63,24 +64,26 @@ export default function Sidebar() {
                 </Link>
               </li>
               <li className="w-100">
-                <a href="#" className="menu-link">
+                <Link to="/wishlist" className="menu-link w-100 link-with-open-new">
                   <img
                     src={heartIcon}
                     alt="Logo"
                     className="image"
                   />
                   WISHLIST
-                </a>
+                  <OpenInNewIcon className="new-tab-icon" />
+                </Link>
               </li>
               <li className="w-100">
-                <a href="#" className="menu-link">
+                <Link to="/contact-us" className="menu-link w-100 link-with-open-new">
                   <img
                     src={helpIcon}
                     alt="Logo"
                     className="image"
                   />
                   SUPPORT
-                </a>
+                  <OpenInNewIcon className="new-tab-icon" />
+                </Link>
               </li>
             </div>
             <li className="w-100 sign-out">
