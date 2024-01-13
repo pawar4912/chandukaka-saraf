@@ -14,6 +14,7 @@ import Bullions from './Components/Screens/Bullions';
 import Jewellerys from './Components/Screens/Jewellerys';
 import { PersonalDetails } from './Components/Screens/PersonalDetails';
 import { AddressBook } from './Components/Screens/Address-book/AddressBook';
+import { ShoppingBag } from './Components/Screens/ShoppingBag';
 
 
 const routes = [
@@ -69,7 +70,7 @@ const routes = [
   {
     path: '/auth',
     name: 'Home',
-    element: <AuthModal/>,
+    element: <AuthModal />,
     exact: true,
     strict: false,
   },
@@ -83,7 +84,7 @@ const routes = [
   {
     path: '/myorder',
     name: 'Home',
-    element: <MyOrder/>,
+    element: <MyOrder />,
     exact: true,
     strict: false,
   },
@@ -133,6 +134,13 @@ const routes = [
     path: '/address-book',
     name: 'addressBook',
     element: <AddressBook />,
+    exact: true,
+    strict: false,
+  },
+   {
+    path: '/shopping-bag',
+    name: 'shoppingBag',
+    element: <ShoppingBag />,
     exact: true,
     strict: false,
   },
