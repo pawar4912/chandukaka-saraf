@@ -29,3 +29,24 @@ export const getFaqs = async () => {
 export const getStores = async () => {
   return await httpService.get(`stores`)
 }
+
+
+export const getProducts = async (data) => {
+  return await httpService.post(`products`, data)
+}
+
+export const addToWishlist = async (id) => {
+  return await httpService.get(`wishlist/add/${id}`)
+}
+
+export const getWishlist = async () => {
+  return await httpService.get(`wishlist`)
+}
+
+export const removeProductFromWishList = async (id) => {
+  return await httpService.get(`wishlist/remove/${id}`)
+}
+
+export const addToCart = async (data) => {
+  return await httpService.post(`cart/add`, data)
+}

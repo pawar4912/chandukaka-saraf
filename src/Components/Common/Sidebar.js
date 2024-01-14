@@ -120,8 +120,8 @@ export default function Sidebar() {
                 <div className="profile-section w-100 d-flex">
                   <img className="profile-img" src={web} />
                   <div className="profile-info">
-                    <b className="name">Hi Smita</b>
-                    <small>+91 9480000032</small>
+                    <b className="name">Hi {data.first_name} {data.last_name}</b>
+                    <small>{data.mobile}</small>
                   </div>
                 </div>
               </li>
