@@ -236,8 +236,9 @@ function Header() {
                           </li>
                           <li>
                             <Link to="jewellerys"
-                              onMouseEnter={() => {setShowDropdown(true); console.log("in enter")}}
-                              onMouseLeave={() => setShowDropdown(true)}>
+                              onMouseEnter={() => {setShowDropdown(true)}}
+                              // onMouseLeave={() => setShowDropdown(false)}
+                              >
                               Jewellerys
                             </Link>
                             {showDropdown && (

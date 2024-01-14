@@ -1,27 +1,32 @@
 .navigation-dropdown-wrapper {
-  position: relative;
-  transform: translate(-167px, 0px);
+  position: absolute;
+  transform: translate(-167px, -3px);
   width: 100vw;
   background: #fff;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border: 1px solid red;
 
   .jewellery-links {
     display: flex;
     justify-content: space-between;
-    grid-gap: 1rem;
+    grid-gap: 8rem;
 
     .catergory-section {
       .jewellwery-type {
-        text-transform: capitalize;
+        font: normal normal 900 13px/16px Lato;
+        letter-spacing: 1.95px;
+        color: #333333;
+        text-transform: uppercase;
       }
 
       .jewelleries {
         display: grid;
-        grid-gap: 0.6rem;
+        grid-gap: 1rem;
         grid-template-columns: auto auto;
+        font: normal normal medium 13px/28px Lato;
+        letter-spacing: 1.3px;
+        color: #333333;
       }
     }
   }
@@ -30,6 +35,7 @@
     .overlay-text {
       position: relative;
       transform: translate(0, -100%);
+      color: #fff;
     }
   }
 }
