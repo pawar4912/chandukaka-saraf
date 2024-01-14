@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import imageSliderHeaderIconRight from '../images/icons/Group40.svg';
 import imageSliderHeaderIconLeft from '../images/icons/Group45.svg';
 import LeftIcon from '../images/icons/sliderLeftIcon.svg';
@@ -7,14 +7,15 @@ import Grid from '@mui/material/Grid';
 import useWindowWidthAndHeight from '../utilities/CustomHooks';
 import img from '../images/young-indian-woman-wearing-sari.jpg';
 import StarFilled from '../images/icons/star-filled.svg'
+import { getTestimonial } from '../services/FrontApp/index.service';
 import { useSnapCarousel } from 'react-snap-carousel';
 
-const TestimonialComponent = ({ item }) => {
+const TestimonialComponent = ({ data }) => {
   return (
     <div className="testimonial-wrapper">
-      <img src={img} alt="img" className="client-img" />
+      <img src={data.image_path} alt="img" className="client-img" />
       <div className="feedback-wrapper">
-        <p>Absolutely delighted with my experience! The attention to design aspect is evident in the stunning piece I received, perfectly encapsulating the trendy jewellery I adore. Can’t wait to shop here again!</p>
+        <p> {data.description} </p>
         <div className="d-flex">
           <img src={StarFilled} alt="Logo" />
           <img src={StarFilled} alt="Logo" />
@@ -24,7 +25,7 @@ const TestimonialComponent = ({ item }) => {
         </div>
         <div className="name-wrapper">
           <hr />
-          <small className="client-name">Smita Jain </small>
+          <small className="client-name"> {data.author} </small>
         </div>
       </div>
     </div>
@@ -36,6 +37,21 @@ export default function Testimonial() {
     scrollRef, next, prev, pages, activePageIndex, goTo
   } = useSnapCarousel();
   const windoDimensions = useWindowWidthAndHeight();
+  
+  const [data, setData] = useState([])
+
+  const getData = async () => {
+    try {
+      const result = await getTestimonial();
+      setData(result.data.data)
+    } catch (error) {
+      console.error(error.message)
+    }
+  }
+
+  useEffect(() => {
+    getData()
+  }, [])
 
   return (
     <div className="testimonial-section">
@@ -75,8 +91,8 @@ export default function Testimonial() {
         className={`testimonial-slider-component`}
         ref={scrollRef}
       >
-        {Array.from({ length: 4 }).map((_, i) => (
-          <TestimonialComponent key={i} item={i} />
+        {data.map((item) => (
+          <TestimonialComponent key={item.id.toString()} data={item} />
         ))}
       </ul>
       {windoDimensions[0] <768  && <ol style={{ display: 'flex', justifyContent: "center", paddingLeft: "0", marginTop: 24, marginBottom: 0 }}>

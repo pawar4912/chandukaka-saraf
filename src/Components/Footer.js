@@ -1,13 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from '../images/icons/logo.svg';
 import rightArrowIcon from '../images/icons/right-arrow.svg';
 import facebookIcon from '../images/icons/social-media/facebook.svg';
 import instagramIcon from '../images/icons/social-media/instagram.svg';
 import twitterIcon from '../images/icons/social-media/twitter.svg';
 import { useNavigate } from "react-router-dom";
+import { subscribeEmail } from '../services/FrontApp/index.service';
+import ErrorList from "./Common/ErrorList";
+import SuccessMsg from "./Common/SuccessMsg";
 
 
 function Footer() {
+  const [errors, setErrors] = useState([])
+  const [successMsg, setSuccesMsg] = useState('')
+  const [data, setData] = useState({
+    email: '',
+  })
+
+  const handleChange = ({ target }) => {
+    data[target.name] = target.value
+    const temp = Object.assign({}, data)
+    setData(temp)
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setErrors([])
+    setSuccesMsg('')
+    try {
+      const result = await subscribeEmail(data);
+      setSuccesMsg(result.data.message)
+    } catch (error) {
+      setErrors(error.response.data.message)
+    }
+
+  };
+
   let navigate = useNavigate(); 
   const navigateToFindStore = () =>{ 
     let path = `/find-a-store`; 
@@ -92,13 +120,18 @@ function Footer() {
                 Be the first to know about our special offers, news, and
                 updates.
               </p>
+              <ErrorList errors={errors} />
+              <SuccessMsg message={successMsg} />
               <div className="sbscribe-wrapper">
                 <input
                   type="text"
                   className="w-100 subscribe-input"
                   placeholder="Enter your email ID"
+                  name="email"
+                  value={data.email}
+                  onChange={handleChange}
                 />
-                <button type="button" className="subscribe-btn">
+                <button type="button" className="subscribe-btn" onClick={handleSubmit}>
                   Subscribe
                   {' '}
                   <img src={rightArrowIcon} alt="rightArrowIcon" />

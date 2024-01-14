@@ -10,13 +10,20 @@ import closeMenu from "../images/icons/close.svg";
 import { getLiveRateForCSPL } from "../services/FrontApp/index.service";
 import AuthModal from "./Screens/AuthModal";
 import { isLoggedIn } from "../services/auth.service";
-import LoginIcon from '@mui/icons-material/Login';
+import LoginIcon from "@mui/icons-material/Login";
+import { ShoppingBag } from "./Screens/ShoppingBag";
 
 function Header() {
   const $ = window.jQuery;
-  const [rates, setRates] = useState({ Platinum: 0, Silver1: 0, Silver2: 0, gold: [] })
+  const [rates, setRates] = useState({
+    Platinum: 0,
+    Silver1: 0,
+    Silver2: 0,
+    gold: [],
+  });
 
   const [open, setOpen] = useState(false);
+  const [openDrawer, setOpenDrawer] = useState(false);
 
   const handleOpenDialog = () => {
     setOpen(true);
@@ -26,19 +33,24 @@ function Header() {
     setOpen(false);
   };
 
+  const handleOpenDrawer = () => {
+    console.log("in handle");
+    setOpenDrawer(!openDrawer);
+  };
+
   const getData = async () => {
     try {
       const result = await getLiveRateForCSPL();
       const { Platinum, Silver1, Silver2, ...gold } = result.data.data;
       setRates({ Platinum, Silver1, Silver2, gold });
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   useEffect(() => {
     getData();
-  }, [])
+  }, []);
 
   useEffect(() => {
     $(".header-content .open-nav-btn").click(function (e) {
@@ -59,11 +71,11 @@ function Header() {
               <div className="row">
                 <div className="col-12 col-md-12 col-lg-12">
                   <div className="brand-wrapper">
-                    <div className="open-nav-btn d-md-none d-lg-none mobile-header-bar">
+                    <div className="d-md-none d-lg-none mobile-header-bar">
                       <img
                         src={menuOpen}
                         alt="menu-open"
-                        className="menu-open"
+                        className="menu-open open-nav-btn"
                       />
                       <div className="logo">
                         <Link to="/">
@@ -73,19 +85,23 @@ function Header() {
                       <div className="header-icon-list">
                         <ul>
                           <li>
-                            <Link to="/">
+                            <Link to="#" onClick={handleOpenDrawer}>
                               <img
                                 src={shoppingBagLogo}
                                 alt="Logo"
                                 className="image"
                               />
                             </Link>
+                            {/* <ShoppingBag
+                              open={openDrawer}
+                              handleOpenDrawer={handleOpenDrawer}
+                            /> */}
                           </li>
                           <li>
                             <Link to="/">
                               <img
-                                src={heartLogo}
                                 alt="Logo"
+                                src={heartLogo}
                                 className="image heart"
                               />
                             </Link>
@@ -105,7 +121,12 @@ function Header() {
                             <ul className="w-100">
                               <div className="quick-link-items">
                                 <li>
-                                  <small>GOLD - ₹{rates.gold['24.00'] ? rates.gold['24.00'] : 0}</small>
+                                  <small>
+                                    GOLD - ₹
+                                    {rates.gold["24.00"]
+                                      ? rates.gold["24.00"]
+                                      : 0}
+                                  </small>
                                 </li>
                                 <li>
                                   <small>SILVER - ₹{rates.Silver1}</small>
@@ -149,13 +170,21 @@ function Header() {
                             />
                           </div>
                           <div className="col-2">
-                            <Link to="/" className="shopping-logo">
+                            <Link
+                              to="#"
+                              className="shopping-logo"
+                              onClick={handleOpenDrawer}
+                            >
                               <img
                                 src={shoppingBagLogo}
                                 alt="Logo"
                                 className="image"
                               />
                             </Link>
+                            <ShoppingBag
+                              open={openDrawer}
+                              handleDrawer={handleOpenDrawer}
+                            />
                           </div>
                         </div>
                         <h3 className="drawer-header">POPULAR SEARCHES</h3>
@@ -200,6 +229,9 @@ function Header() {
                       <ul className="w-100">
                         <div className="menu-link-items">
                           <li>
+                            <Link to="/">Home</Link>
+                          </li>
+                          <li>
                             <Link to="jewellerys">Jewellery</Link>
                           </li>
                           <li>
@@ -211,7 +243,7 @@ function Header() {
                           {/* <li>
                             <Link to="e-gold">E-gold</Link>
                           </li> */}
-                          { /* <li>
+                          {/* <li>
                             <Link to="gifting">Gifting</Link>
                         </li> */}
                         </div>
@@ -231,35 +263,50 @@ function Header() {
                           </Link>
                         </li>
                         <li>
-                          <Link to="/">
+                          <Link to="#" onClick={handleOpenDrawer}>
                             <img
                               src={shoppingBagLogo}
                               alt="Logo"
                               className="image"
                             />
-
                           </Link>
+                          {/* <ShoppingBag open={openDrawer} handleDrawer = {handleOpenDrawer} /> */}
                         </li>
                         <li>
-                          <Link to="/wishlist">
-                            <img src={heartLogo} alt="Logo" className="image" />
+                          <Link to="/">
+                            <img
+                              src={heartLogo}
+                              alt="Logo"
+                              className="image heart"
+                            />
                           </Link>
                         </li>
 
-                        {isLoggedIn() ?
+                        {isLoggedIn() ? (
                           <li>
-                            <Link  to="/myorder">
-                              <img src={userLogo} alt="Logo" className="image" />
+                            <Link to="/myorder">
+                              <img
+                                src={userLogo}
+                                alt="Logo"
+                                className="image"
+                              />
                             </Link>
                           </li>
-                          :
+                        ) : (
                           <li className="login-icon">
-                            <Link onClick={handleOpenDialog} classsName="image" style={{color: '#A3A3A3'}}>
+                            <Link
+                              onClick={handleOpenDialog}
+                              classsName="image"
+                              style={{ color: "#A3A3A3" }}
+                            >
                               <LoginIcon />
                             </Link>
-                            <AuthModal open={open} handleClose={handleCloseDialog} />
+                            <AuthModal
+                              open={open}
+                              handleClose={handleCloseDialog}
+                            />
                           </li>
-                        }
+                        )}
                       </ul>
                     </div>
                   </div>
@@ -268,6 +315,7 @@ function Header() {
             </div>
           </div>
         </header>
+        <ShoppingBag open={openDrawer} handleDrawer={handleOpenDrawer} />
       </div>
     </>
   );

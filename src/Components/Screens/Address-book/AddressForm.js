@@ -14,73 +14,76 @@ import {
 } from "@mui/material";
 import EastIcon from "@mui/icons-material/East";
 import React, { useState, useEffect } from "react";
+import { addAddress } from "../../../services/profile";
+import ErrorList from "../../Common/ErrorList";
+import SuccessMsg from "../../Common/SuccessMsg";
 
 export const AddressForm = ({ handleCloseForm, addressData = null }) => {
   const countries = ["India", "Indonasia", "Iran", "Irac"];
   const cities = ["Baramati", "Pune", "Nasik", "Nagpur", "Thane"];
+  const [errors, setErrors] = useState([])
+  const [successMsg, setSuccesMsg] = useState('')
 
-  const [country, setCountry] = useState(addressData?.country ?? countries[0]);
-  const [city, setCity] = useState(addressData?.city ?? cities[0]);
-  const [firstName, setFirstName] = useState(addressData?.firstName ?? "");
-  const [lastName, setLastName] = useState(addressData?.lastName ?? "");
-  const [address1, setAddress1] = useState(addressData?.address1 ?? "");
-  const [address2, setAddress2] = useState(addressData?.address2 ?? "");
-  const [pinCode, setPinCode] = useState(addressData?.pinCode ?? "");
+  const [data, setData] = useState({
+    first_name: '',
+    last_name: '',
+    flat_no: '',
+    street_name: '',
+    country: '',
+    state: '',
+    city: '',
+    pincode: '',
+    address_type: '',
+    is_default: 0
+  })
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    switch (name) {
-      case "country":
-        setCountry(value);
-        break;
-      case "city":
-        setCity(value);
-        break;
-      case "firstName":
-        setFirstName(value);
-        break;
-      case "lastName":
-        setLastName(value);
-        break;
-      case "address1":
-        setAddress1(value);
-        break;
-      case "address2":
-        setAddress2(value);
-        break;
-      case "address1":
-        setAddress1(value);
-        break;
-      case "pinCode":
-        setPinCode(value);
-        break;
-      default:
-        break;
+  const handleChange = ({ target }) => {
+    data[target.name] = target.value
+    const temp = Object.assign({}, data)
+    setData(temp)
+  }
+
+  const handleClean = () => {
+    setData({
+      first_name: '',
+      last_name: '',
+      flat_no: '',
+      street_name: '',
+      country: '',
+      state: '',
+      city: '',
+      pincode: '',
+      address_type: '',
+      is_default: 0
+    })
+  };
+
+  const cancel = () => {
+    handleClean()
+    handleCloseForm()
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setErrors([])
+    setSuccesMsg('')
+    try {
+      const result = await addAddress(data);
+      setSuccesMsg(result.data.message)
+      handleClean()
+    } catch (error) {
+      setErrors(error.response.data.message)
     }
   };
 
-  const handleCancel = () => {
-    setCountry(countries[0]);
-    setCity(cities[0]);
-    setFirstName("");
-    setLastName("");
-    setAddress1("");
-    setAddress2("");
-    setPinCode("");
-    handleCloseForm();
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    handleCloseForm();
-  };
-
   return (
-    <div className="d-flex">
+    <div className="d-flex col-12 col-lg-8 col-xl-6">
       <div className="address-form-container p-3">
         <h5>ADDRESS BOOK</h5>
 
         <Box className="address-form-wrapper p-3 my-4 bg-white">
+          <ErrorList errors={errors} />
+          <SuccessMsg message={successMsg} />
           <form onSubmit={handleSubmit}>
             <Grid container spacing={2}>
               <Grid item xs={12} md={6}>
@@ -90,8 +93,8 @@ export const AddressForm = ({ handleCloseForm, addressData = null }) => {
                   variant="outlined"
                   required
                   fullWidth
-                  name="firstName"
-                  value={firstName}
+                  name="first_name"
+                  value={data.first_name}
                   onChange={handleChange}
                 />
               </Grid>
@@ -102,8 +105,8 @@ export const AddressForm = ({ handleCloseForm, addressData = null }) => {
                   variant="outlined"
                   required
                   fullWidth
-                  name="lastName"
-                  value={lastName}
+                  name="last_name"
+                  value={data.last_name}
                   onChange={handleChange}
                 />
               </Grid>
@@ -114,8 +117,8 @@ export const AddressForm = ({ handleCloseForm, addressData = null }) => {
                   variant="outlined"
                   required
                   fullWidth
-                  name="address1"
-                  value={address1}
+                  name="flat_no"
+                  value={data.flat_no}
                   onChange={handleChange}
                 />
               </Grid>
@@ -126,8 +129,8 @@ export const AddressForm = ({ handleCloseForm, addressData = null }) => {
                   variant="outlined"
                   required
                   fullWidth
-                  name="address2"
-                  value={address2}
+                  name="street_name"
+                  value={data.street_name}
                   onChange={handleChange}
                 />
               </Grid>
@@ -140,7 +143,7 @@ export const AddressForm = ({ handleCloseForm, addressData = null }) => {
                     label="Country"
                     required
                     name="country"
-                    value={country}
+                    value={data.country}
                     onChange={handleChange}
                   >
                     {countries.map((d) => (
@@ -161,7 +164,7 @@ export const AddressForm = ({ handleCloseForm, addressData = null }) => {
                     label="City"
                     required
                     name="city"
-                    value={city}
+                    value={data.city}
                     onChange={handleChange}
                   >
                     {cities.map((d) => (
@@ -180,8 +183,8 @@ export const AddressForm = ({ handleCloseForm, addressData = null }) => {
                   variant="outlined"
                   required
                   fullWidth
-                  name="pinCode"
-                  value={pinCode}
+                  name="pincode"
+                  value={data.pincode}
                   onChange={handleChange}
                 />
               </Grid>
@@ -200,14 +203,14 @@ export const AddressForm = ({ handleCloseForm, addressData = null }) => {
                     <FormControlLabel
                       value="home"
                       className="radio-label"
-                      control={<Radio />}
+                      control={<Radio name="address_type" value="H" checked={data.address_type == 'H'} onChange={handleChange}/>}
                       label="Home"
                     />
 
                     <FormControlLabel
                       value="office"
                       className="radio-label"
-                      control={<Radio />}
+                      control={<Radio name="address_type" value="W" checked={data.address_type == 'W'} onChange={handleChange}/>}
                       label="Office"
                     />
                   </RadioGroup>
@@ -216,7 +219,7 @@ export const AddressForm = ({ handleCloseForm, addressData = null }) => {
 
               <Grid item xs={6} md={6}>
                 <Button
-                  onClick={handleCancel}
+                  onClick={cancel}
                   variant="outlined"
                   className="outlined-black"
                   fullWidth

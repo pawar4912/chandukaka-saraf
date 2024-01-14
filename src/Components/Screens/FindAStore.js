@@ -3,81 +3,9 @@ import storeLocaterTitleImage from "../../images/storeLocaterTitleImageCropped.p
 import { Button, Grid } from '@mui/material';
 import fillWhiteLeftIcon from '../../images/icons/fillWhiteLeftIcon.svg';
 import fillWhiteRightIcon from '../../images/icons/fillWhiteRightIcon.svg';
-import FAQs from '../FAQs';
-
-const dataList = [
-    {
-        title: "BARAMATI",
-        description: "Kacheri Road, Mahaveer Path, Gandhi Chowk, Baramati, Maharashtra 413102.",
-        tollFreeNo: "18002670999",
-        workingHours: "Tue - Sun: 9am - 8pm",
-        holiday: "Monday closed"
-    },
-    {
-        title: "RAVIVAR PETH",
-        description: "Kacheri Road, Mahaveer Path, Gandhi Chowk, Baramati, Maharashtra 413102.",
-        tollFreeNo: "18002670999",
-        workingHours: "Tue - Sun: 9am - 8pm",
-        holiday: "Monday closed"
-    },
-    {
-        title: "CHINCHWAD",
-        description: "Kacheri Road, Mahaveer Path, Gandhi Chowk, Baramati, Maharashtra 413102.",
-        tollFreeNo: "18002670999",
-        workingHours: "Tue - Sun: 9am - 8pm",
-        holiday: "Monday closed"
-    },
-    {
-        title: "CHANDAN NAGAR",
-        description: "Kacheri Road, Mahaveer Path, Gandhi Chowk, Baramati, Maharashtra 413102.",
-        tollFreeNo: "18002670999",
-        workingHours: "Tue - Sun: 9am - 8pm",
-        holiday: "Monday closed"
-    },
-    {
-        title: "AKLUJ",
-        description: "Kacheri Road, Mahaveer Path, Gandhi Chowk, Baramati, Maharashtra 413102.",
-        tollFreeNo: "18002670999",
-        workingHours: "Tue - Sun: 9am - 8pm",
-        holiday: "Monday closed"
-    },
-    {
-        title: "SATARA",
-        description: "Kacheri Road, Mahaveer Path, Gandhi Chowk, Baramati, Maharashtra 413102.",
-        tollFreeNo: "18002670999",
-        workingHours: "Tue - Sun: 9am - 8pm",
-        holiday: "Monday closed"
-    },
-    {
-        title: "KARAD",
-        description: "Kacheri Road, Mahaveer Path, Gandhi Chowk, Baramati, Maharashtra 413102.",
-        tollFreeNo: "18002670999",
-        workingHours: "Tue - Sun: 9am - 8pm",
-        holiday: "Monday closed"
-    },
-    {
-        title: "HADAPSAR",
-        description: "Kacheri Road, Mahaveer Path, Gandhi Chowk, Baramati, Maharashtra 413102.",
-        tollFreeNo: "18002670999",
-        workingHours: "Tue - Sun: 9am - 8pm",
-        holiday: "Monday closed"
-    },
-    {
-        title: "PUNE-SATARA ROAD",
-        description: "Kacheri Road, Mahaveer Path, Gandhi Chowk, Baramati, Maharashtra 413102.",
-        tollFreeNo: "18002670999",
-        workingHours: "Tue - Sun: 9am - 8pm",
-        holiday: "Monday closed"
-    },
-    {
-        title: "BARAMATI MIDC",
-        description: "Kacheri Road, Mahaveer Path, Gandhi Chowk, Baramati, Maharashtra 413102.",
-        tollFreeNo: "18002670999",
-        workingHours: "Tue - Sun: 9am - 8pm",
-        holiday: "Monday closed"
-    },
-
-]
+import googleMapAPI from "../../images/googleMapAPI.png";
+import { Item } from '../Item';
+import AllStores from '../AllStores';
 
 export default function FindAStore() {
     return (
@@ -106,8 +34,8 @@ export default function FindAStore() {
                     <div className='all-store-titles p-3'>
                         ALL STORES
                     </div>
-                    <div className='store-locations-acordion p-3'>
-                        <FAQs dataList={dataList} isContactusPage={false} />
+                    <div className='store-locations-acordion'>
+                        <AllStores />
                     </div>
                 </Grid>
                 <Grid className='find-store-google-map-container p-3' item xs={12} md={5}>

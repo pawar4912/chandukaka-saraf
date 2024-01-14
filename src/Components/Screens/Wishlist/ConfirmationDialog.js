@@ -12,21 +12,19 @@ import {
   Modal,
   Box,
 } from "@mui/material";
-import productImage from "../../../images/productImage.png";
 import CloseIcon from "@mui/icons-material/Close";
 import EastIcon from "@mui/icons-material/East";
+import { removeProductFromWishList } from "../../../services/FrontApp/index.service";
 
 const ConfirmationDialog = ({ onConfirm, open, handleClose, product }) => {
 
-  const handleYesClick = () => {
-    // Todo: Handle remove from the wishlist logic here
-    onConfirm(true);
+  const handleYesClick = async () => {
+    await removeProductFromWishList(product.id)
+    onConfirm();
     handleClose();
   };
 
   const handleNoClick = () => {
-    console.log("User clicked No!");
-    onConfirm(false);
     handleClose();
   };
 
@@ -56,7 +54,7 @@ const ConfirmationDialog = ({ onConfirm, open, handleClose, product }) => {
               <Grid container className="container p-3" sx={{ width: "80%" }}>
                 <Grid item xs={6}>
                   <img
-                    src={product.productImage}
+                    src={product.images[0].image_path}
                     style={{ height: "81px", width: "81px" }}
                   />
                 </Grid>
@@ -77,7 +75,7 @@ const ConfirmationDialog = ({ onConfirm, open, handleClose, product }) => {
                       letterSpacing: "1.2px",
                     }}
                   >
-                   {product.productType}
+                   {product.product_name}
                   </Typography>
                   <Typography
                     sx={{
@@ -87,7 +85,7 @@ const ConfirmationDialog = ({ onConfirm, open, handleClose, product }) => {
                       letterSpacing: "1.2px",
                     }}
                   >
-                    &#8377; {product.metalCost}
+                    &#8377; {product.sales_price}
                   </Typography>
                 </Grid>
               </Grid>
