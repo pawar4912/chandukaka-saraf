@@ -1,0 +1,35 @@
+.navigation-dropdown-wrapper {
+  position: relative;
+  transform: translate(-167px, 0px);
+  width: 100vw;
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 1px solid red;
+
+  .jewellery-links {
+    display: flex;
+    justify-content: space-between;
+    grid-gap: 1rem;
+
+    .catergory-section {
+      .jewellwery-type {
+        text-transform: capitalize;
+      }
+
+      .jewelleries {
+        display: grid;
+        grid-gap: 0.6rem;
+        grid-template-columns: auto auto;
+      }
+    }
+  }
+
+  .bestsellers-section {
+    .overlay-text {
+      position: relative;
+      transform: translate(0, -100%);
+    }
+  }
+}
