@@ -1,10 +1,10 @@
 import { Pagination } from '@mui/material'
 import React from 'react'
 
-export const Paginator = ({ productsLength, itemsPerPage, currentPage, handleChangePage }) => {
+export const Paginator = ({ totalPage, currentPage, handleChangePage }) => {
   return (
     <Pagination
-      count={Math.ceil(productsLength / itemsPerPage)}
+      count={totalPage}
       page={currentPage}
       onChange={handleChangePage}
       color="primary"
@@ -13,7 +13,7 @@ export const Paginator = ({ productsLength, itemsPerPage, currentPage, handleCha
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        '.Mui-selected': {
+        '& .Mui-selected': {
           background: 'transparent',
           fontWeight: 'bolder',
           color: '#333',

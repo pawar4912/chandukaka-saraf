@@ -5,29 +5,28 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
 import plusIcon from "../images/icons/plusicon.svg"
 import minusIcon from "../images/icons/minusicon.svg"
-import { getFaqs } from '../services/FrontApp/index.service';
+import { getStores } from '../services/FrontApp/index.service';
 
-export default function FAQs() {
+export default function AllStores() {
     const [expanded, setExpanded] = React.useState(false);
     const [data, setData] = useState([]);
 
     const getData = async () => {
         try {
-            const result = await getFaqs();
-            console.log(result.data.data)
+            const result = await getStores();
             setData(result.data.data)
-          } catch (error) {
+        } catch (error) {
             console.error(error.message)
-          }
+        }
     }
 
     useEffect(() => {
         getData()
     }, [])
 
-  const handleChange = (panel) => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : false);
-  };
+    const handleChange = (panel) => (event, isExpanded) => {
+        setExpanded(isExpanded ? panel : false);
+    };
 
     return (
         <div className='faqs-container'>
@@ -39,14 +38,22 @@ export default function FAQs() {
                         id="panel1bh-header"
                     >
                         <Typography sx={{ width: '90%', flexShrink: 0 }}>
-                            {element.question}
+                            {element.store_name}
                         </Typography>
                     </AccordionSummary>
                     <AccordionDetails>
-                        <Typography>
-                            <div
-                                dangerouslySetInnerHTML={{ __html: element.answers}}
-                            />
+                        <Typography className='find-store-description find-store-description-text'>
+                            {element.address}
+                        </Typography>
+                        <Typography className='find-store-description'>
+                            Toll Free No: {" "}
+                            <p className='toll-free-no'>
+                                {element.mobile}
+                            </p>
+                        </Typography>
+                        <Typography className='working-hours-container find-store-description'>
+                            <p>Working Hours: {" "}</p>
+                            <p className='workingHours-text-field'>{element.working_hrs}</p>
                         </Typography>
                     </AccordionDetails>
                 </Accordion>))}

@@ -200,6 +200,9 @@ function Header() {
                       <ul className="w-100">
                         <div className="menu-link-items">
                           <li>
+                            <Link to="/">Home</Link>
+                          </li>
+                          <li>
                             <Link to="jewellerys">Jewellery</Link>
                           </li>
                           <li>

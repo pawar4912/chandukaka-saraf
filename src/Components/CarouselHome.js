@@ -56,6 +56,7 @@ function CarouselHome() {
               zIndex: '1',
               color: '#FFFFFF',
               opacity: '0.3',
+              height: '100%'
             },
           }}
           activeIndicatorIconButtonProps={{

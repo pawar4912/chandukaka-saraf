@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import orderIcon from '../../images/icons/sidebar/orders-icon.svg';
 import personalDetailsIcon from '../../images/icons/sidebar/personal-details-icon.svg';
 import addressBookIcon from '../../images/icons/sidebar/address-book-icon.svg';
@@ -8,17 +8,32 @@ import logoutIcon from '../../images/icons/sidebar/logout-icon.svg';
 import web from "../../images/Group265.png";
 import { SwipeableDrawer } from "@mui/material";
 import { Link } from "react-router-dom";
+import { myProfile } from "../../services/profile";
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false)
+  const [data, setData] = useState({
+    first_name: '-',
+    last_name: '-',
+    mobile: ''
+  })
   const openDrawer = () => {
     setIsOpen(true)
   }
   const closeDrawer = () => {
     setIsOpen(false)
   }
+
+  const getData = async () => {
+    const result = await myProfile();
+    setData(result.data.data[0])
+  }
+
+  useEffect(() => {
+    getData()
+  }, [])
 
   return (
     <>
@@ -28,8 +43,8 @@ export default function Sidebar() {
             <li className="w-100 d-flex profile-wrapper">
               <img className="profile-img" src={web} />
               <div className="profile-info">
-                <b className="name">Hi Smita</b>
-                <small style={{whiteSpace: 'nowrap'}}>+91 9480000032</small>
+                <b className="name">Hi {data.first_name} {data.last_name}</b>
+                <small>{data.mobile}</small>
               </div>
             </li>
             <div className="sidebar-menu">
@@ -105,8 +120,8 @@ export default function Sidebar() {
                 <div className="profile-section w-100 d-flex">
                   <img className="profile-img" src={web} />
                   <div className="profile-info">
-                    <b className="name">Hi Smita</b>
-                    <small>+91 9480000032</small>
+                    <b className="name">Hi {data.first_name} {data.last_name}</b>
+                    <small>{data.mobile}</small>
                   </div>
                 </div>
               </li>

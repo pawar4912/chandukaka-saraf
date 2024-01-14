@@ -1,13 +1,13 @@
-import React from 'react'
-import productDashBoardImage from "../../images/productDashBoardImage.png";
-import { Box, Button, Checkbox, Chip, Divider, Grid, ListItemText, MenuItem, OutlinedInput, Pagination, Select, Stack } from '@mui/material';
+import React, { useEffect, useState } from 'react'
+import { Box, Button, Checkbox, Chip, Divider, Grid, ListItemText, MenuItem, OutlinedInput, Select } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import ClearFilterIcon from "../../images/icons/ClearFilterIcon.svg";
 import jewellerysImage from "../../images/jewellerysImage.png"
 import ProductCard from '../ProductCard';
-import CarouselHome from '../CarouselHome';
 import CarouselJewellery from './CarouselJewellery';
+import { getProducts } from '../../services/FrontApp/index.service';
+import { Paginator } from '../Common/Paginator';
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -119,17 +119,40 @@ export default function Jewellerys() {
             name: "SILVER"
         },
     ]);
-    const handleChange = (event) => {
-        const {
-            target: { value },
-        } = event;
-        console.log(value);
-        const preventDuplicate = value.filter((v, i, a) => a.findIndex((t) => t.id === v.id) === i);
-        setTypeName(
-            // On autofill we get a the stringified value.
-            typeof preventDuplicate === 'string' ? preventDuplicate.split(',') : preventDuplicate
-        );
+
+    const [filterData, setFilterData] = useState({
+        limit: 10,
+        page: 1,
+        sort_by: ''
+    })
+    const [refrashCount, setRefrashCount] = useState(0)
+
+    const [products, setProducts] = useState([])
+
+    const getData = async () => {
+        console.log(filterData)
+        const result = await getProducts(filterData)
+        setProducts(result.data.data.data)
+    }
+
+    useEffect(() => {
+        getData()
+    }, [refrashCount])
+
+    const handleChange = ({ target }) => {
+        filterData[target.name] = target.value
+        const temp = Object.assign({}, filterData)
+        setFilterData(temp)
+        setRefrashCount(refrashCount + 1)
+    }
+
+    const handleChangePage = (event, newPage) => {
+        filterData['page'] = newPage
+        const temp = Object.assign({}, filterData)
+        setFilterData(temp)
+        setRefrashCount(refrashCount + 1)
     };
+
     const handleDeleteFilterData = (event) => {
         var tempArray = typeNameSelected;
         tempArray = removeByAttr(tempArray, 'id', event)
@@ -177,15 +200,18 @@ export default function Jewellerys() {
                     </Grid>
                     <Grid className='product-page-sort-by-container' item xs={1} md={6}>
                         <Select
-                            defaultValue={1}
+                            defaultValue=''
                             sx={{ boxShadow: 'none', '.MuiOutlinedInput-notchedOutline': { border: 0 } }}
-                            renderValue={(selected) => "SORT BY"}
+                            value={filterData.sort_by}
+                            name='sort_by'
+                            onChange={handleChange}
                         >
-                            <MenuItem value={1}>Price - low to high</MenuItem>
-                            <MenuItem value={2}>Price - high to low</MenuItem>
-                            <MenuItem value={3}>Popularity</MenuItem>
-                            <MenuItem value={3}>Newly added</MenuItem>
-                            <MenuItem value={3}>Bestsellers</MenuItem>
+                            <MenuItem value=''>SORT BY</MenuItem>
+                            <MenuItem value='low_to_high'>Price - low to high</MenuItem>
+                            <MenuItem value='high_to_low'>Price - high to low</MenuItem>
+                            <MenuItem value='is_popular'>Popularity</MenuItem>
+                            <MenuItem value='newly_added'>Newly added</MenuItem>
+                            <MenuItem value='bestseller'>Bestsellers</MenuItem>
                         </Select>
                     </Grid>
                     <Grid item xs={1} md={1}>
@@ -222,16 +248,17 @@ export default function Jewellerys() {
             <Box sx={{ flexGrow: 1 }}>
                 <Grid container spacing={1} className="product-grid-container">
                     <Grid className="product-list-grid-section" item xs={12} md={10}>
-                        {allProduct.map(element => (
+                        {products.map(product => (
                             <ProductCard
-                                productImage={element.productImage}
-                                Description={element.Description}
-                               
+                                productImage={product.image_path}
+                                description={product.description}
+                                key={product.id}
                             />
                         ))}
                     </Grid>
                 </Grid>
             </Box>
+            <Paginator currentPage={filterData.page} itemsPerPage={filterData.limit} productsLength={products.length} handleChangePage={handleChangePage} />
         </div>
     )
 }
