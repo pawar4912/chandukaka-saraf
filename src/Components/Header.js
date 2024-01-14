@@ -71,11 +71,11 @@ function Header() {
               <div className="row">
                 <div className="col-12 col-md-12 col-lg-12">
                   <div className="brand-wrapper">
-                    <div className="open-nav-btn d-md-none d-lg-none mobile-header-bar">
+                    <div className="d-md-none d-lg-none mobile-header-bar">
                       <img
                         src={menuOpen}
                         alt="menu-open"
-                        className="menu-open"
+                        className="menu-open open-nav-btn"
                       />
                       <div className="logo">
                         <Link to="/">
