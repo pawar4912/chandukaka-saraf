@@ -235,13 +235,23 @@ function Header() {
                             <Link to="/">Home</Link>
                           </li>
                           <li>
-                            <Link to="jewellerys"
-                              onMouseEnter={() => {setShowDropdown(true)}}
-                             >
+                            <Link
+                              to="jewellerys"
+                              onMouseEnter={() => {
+                                setShowDropdown(true);
+                              }}
+                            >
                               Jewellerys
                             </Link>
                             {showDropdown && (
-                              <NavigationDropdown  onMouseLeave={() => {setShowDropdown(false); console.log("mouse leave fired")}} />
+                              <div
+                                className="dropdown-wrapper"
+                                onMouseLeave={() => {
+                                  setShowDropdown(false);
+                                }}
+                              >
+                                <NavigationDropdown />
+                              </div>
                             )}
                           </li>
                           <li>

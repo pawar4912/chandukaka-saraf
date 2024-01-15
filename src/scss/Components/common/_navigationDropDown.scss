@@ -1,6 +1,6 @@
 .navigation-dropdown-wrapper {
   position: absolute;
-  transform: translate(-182px, -2px);
+  transform: translate(-182px, 24px);
   width: 100vw;
   background: #fff;
   display: flex;
@@ -10,7 +10,7 @@
   .jewellery-links {
     display: flex;
     justify-content: space-between;
-    grid-gap: 8rem;
+    grid-gap: 6rem;
 
     .catergory-section {
       .jewellwery-type {
@@ -22,7 +22,8 @@
 
       .jewelleries {
         display: grid;
-        grid-gap: 1rem;
+        grid-column-gap: 1.2rem;
+        grid-row-gap: 1rem;
         grid-template-columns: auto auto;
         font: normal normal medium 13px/28px Lato;
         letter-spacing: 1.3px;
@@ -32,6 +33,7 @@
   }
 
   .bestsellers-section {
+    max-height: 302px;
     .overlay-text {
       position: relative;
       transform: translate(0, -100%);
