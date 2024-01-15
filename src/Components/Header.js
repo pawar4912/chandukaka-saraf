@@ -237,12 +237,11 @@ function Header() {
                           <li>
                             <Link to="jewellerys"
                               onMouseEnter={() => {setShowDropdown(true)}}
-                              // onMouseLeave={() => setShowDropdown(false)}
-                              >
+                             >
                               Jewellerys
                             </Link>
                             {showDropdown && (
-                              <NavigationDropdown />
+                              <NavigationDropdown  onMouseLeave={() => {setShowDropdown(false); console.log("mouse leave fired")}} />
                             )}
                           </li>
                           <li>
@@ -326,7 +325,7 @@ function Header() {
             </div>
           </div>
         </header>
-        <ShoppingBag open={openDrawer} handleDrawer={handleOpenDrawer} />
+        {/* <ShoppingBag open={openDrawer} handleDrawer={handleOpenDrawer} /> */}
       </div>
     </>
   );

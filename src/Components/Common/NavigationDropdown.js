@@ -7,16 +7,16 @@ export const NavigationDropdown = () => {
     jewelleryTypes: ["Gold", "Diamonds", "Silver"],
     jwewlleries: [
       "Rings",
-      "Earrings",
-      "Pendants",
-      "Bangles",
-      "Nosepins",
-      "Bracelets",
       "Mangalsutra",
+      "Earrings",
       "Chain",
+      "Pendants",
       "Necklace",
+      "Bangles",
       "Toe rings",
+      "Nosepins",
       "Anklet",
+      "Bracelets",
     ],
   };
   return (
