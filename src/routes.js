@@ -123,16 +123,16 @@ export const frontAppRoutes = [
     exact: true,
     strict: false,
   },
-];
-
-export const dashboardRoutes = [
   {
-    path: '/dashboard/product-details',
+    path: '/product-details',
     name: 'Product Details',
     element: <ProductDetails />,
     exact: true,
     strict: false,
   },
+];
+
+export const dashboardRoutes = [
   {
     path: '/dashboard/personal-details',
     name: 'Personal Details',
