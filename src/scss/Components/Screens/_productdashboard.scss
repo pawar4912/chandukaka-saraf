@@ -81,6 +81,15 @@
     grid-gap: 10px;
 }
 
+@media (max-width: 1024px) {
+    .product-list-grid-section {
+        display: grid;
+        align-items: center;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 10px;
+    }
+}
+
 .product-grid-container {
     justify-content: center !important;
 }

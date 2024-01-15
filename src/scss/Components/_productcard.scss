@@ -25,8 +25,23 @@
     color: inherit !important;
 }
 .product-page-product-card-container{
-    // margin: 10px !important;
-    // width: 25% !important;
+    .images {
+        height: 100%;
+        width: 100%;
+    }
+    @media (max-width: 767px) {
+        .images {
+            height: 100%;
+            width: 100%;
+        }
+        .product-name {
+            font-size: 8px;
+            letter-spacing: 0;
+        }
+        .product-price {
+            font-size: 12px;
+        }
+    }
 }
 .product-list-page-heart-icon-container{
     position: absolute;

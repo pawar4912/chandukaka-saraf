@@ -12,7 +12,7 @@ button {
 
 button:hover {
     background-color: #916F25;
-    color: #FFFFFF;
+    color: #FFFFFF !important;
     border: 1px solid #916F25;
 }
 
@@ -63,9 +63,17 @@ hr {
 .main-body-container{
     margin-top: 120px;
 }
+.section-header {
+  font: normal normal 600 32px/43px Playfair Display;
+  letter-spacing: 0.48px;
+  color: #672A2F;
+}
 @media (max-width: 767px) {
     .main-body-container{
         margin-top: 60px;
+    }
+    .section-header {
+      font-size: 24px;
     }
 }
 
@@ -92,7 +100,11 @@ hr {
   .image-container-news {
     position: relative;
   }
-  
+  .image-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+  }
   .gallery-image-news {
     width: 100%;
   }
@@ -145,4 +157,8 @@ hr {
   .icon-space
   {
     margin-left: 1em;
+  }
+  .review-stars {
+    display: flex;
+    align-items: center;
   }

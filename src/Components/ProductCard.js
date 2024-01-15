@@ -23,6 +23,7 @@ export default function ProductCard({ productImage, productName, id = 0, newArri
             component="img"
             height="260"
             width="285"
+            className="images"
             image={productImage}
             alt="green iguana"
           />
