@@ -78,14 +78,14 @@ function Header() {
                         className="menu-open open-nav-btn"
                       />
                       <div className="logo">
-                        <Link to="/">
+                        <Link to="/home">
                           <img src={logo} alt="Logo" className="image" />
                         </Link>
                       </div>
                       <div className="header-icon-list">
                         <ul>
                           <li>
-                            <Link to="#" onClick={handleOpenDrawer}>
+                            <Link onClick={handleOpenDrawer}>
                               <img
                                 src={shoppingBagLogo}
                                 alt="Logo"
@@ -232,13 +232,13 @@ function Header() {
                             <Link to="/">Home</Link>
                           </li>
                           <li>
-                            <Link to="jewellerys">Jewellery</Link>
+                            <Link to="/jewellerys">Jewellery</Link>
                           </li>
                           <li>
-                            <Link to="aboutus">About us</Link>
+                            <Link to="/aboutus">About us</Link>
                           </li>
                           <li>
-                            <Link to="bullions">Bullion</Link>
+                            <Link to="/bullions">Bullion</Link>
                           </li>
                           {/* <li>
                             <Link to="e-gold">E-gold</Link>
@@ -263,7 +263,7 @@ function Header() {
                           </Link>
                         </li>
                         <li>
-                          <Link to="#" onClick={handleOpenDrawer}>
+                          <Link onClick={handleOpenDrawer}>
                             <img
                               src={shoppingBagLogo}
                               alt="Logo"
@@ -284,7 +284,7 @@ function Header() {
 
                         {isLoggedIn() ? (
                           <li>
-                            <Link to="/myorder">
+                            <Link to="/dashboard/myorder">
                               <img
                                 src={userLogo}
                                 alt="Logo"
@@ -293,7 +293,7 @@ function Header() {
                             </Link>
                           </li>
                         ) : (
-                          <li className="login-icon">
+                          <li className="/login-icon">
                             <Link
                               onClick={handleOpenDialog}
                               classsName="image"

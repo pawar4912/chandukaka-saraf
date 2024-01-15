@@ -7,7 +7,6 @@ import fillWhiteLeftIcon from '../../images/icons/fillWhiteLeftIcon.svg';
 import fillWhiteRightIcon from '../../images/icons/fillWhiteRightIcon.svg';
 import ProductBreadcrumb from '../ProductBreadcrumb';
 import ClearFilterIcon from "../../images/icons/ClearFilterIcon.svg";
-import productImage from "../../images/productImage.png";
 import ProductCard from '../ProductCard';
 import { Paginator } from '../Common/Paginator';
 import { getProducts } from '../../services/FrontApp/index.service';

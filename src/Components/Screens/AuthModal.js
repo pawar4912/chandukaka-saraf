@@ -91,7 +91,7 @@ const AuthModal = ({ open, handleClose }) => {
       setShowThankYou(true);
       setTimeout(() => {
         handleCloseButton();
-        navigate('myorder')
+        navigate('dashboard/myorder')
       }, 3000);
     } catch (error) {
       setErrors(error.response.data.message)

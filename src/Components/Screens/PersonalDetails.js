@@ -53,7 +53,7 @@ export const PersonalDetails = () => {
 
   const getData = async () => {
     const result = await myProfile();
-    const dob = result.data.data[0].dob.split("-")
+    const dob = result.data.data[0].dob == null ? ['0000', '00', '00'] : result.data.data[0].dob.split("-")
     setYear(dob[0])
     setMonth(dob[1])
     setDate(dob[2])
