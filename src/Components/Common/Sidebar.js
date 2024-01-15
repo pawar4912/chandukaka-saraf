@@ -69,7 +69,7 @@ export default function Sidebar() {
                 </Link>
               </li>
               <li className="w-100">
-                <Link to="/home/address-book" className="menu-link">
+                <Link to="/address-book" className="menu-link">
                   <img
                     src={addressBookIcon}
                     alt="Logo"
@@ -79,7 +79,7 @@ export default function Sidebar() {
                 </Link>
               </li>
               <li className="w-100">
-                <Link to="/home/wishlist" className="menu-link w-100 link-with-open-new">
+                <Link to="/wishlist" className="menu-link w-100 link-with-open-new">
                   <img
                     src={heartIcon}
                     alt="Logo"
@@ -90,7 +90,7 @@ export default function Sidebar() {
                 </Link>
               </li>
               <li className="w-100">
-                <Link to="/home/contact-us" className="menu-link w-100 link-with-open-new">
+                <Link to="/contact-us" className="menu-link w-100 link-with-open-new">
                   <img
                     src={helpIcon}
                     alt="Logo"

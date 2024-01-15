@@ -98,7 +98,7 @@ function Header() {
                             /> */}
                           </li>
                           <li>
-                            <Link to="/home/">
+                            <Link to="/">
                               <img
                                 alt="Logo"
                                 src={heartLogo}
@@ -112,7 +112,7 @@ function Header() {
                     <div className="col-12 col-lg-12  d-none d-md-block">
                       <div className="row position-relative">
                         <div className="logo">
-                          <Link to="/home/">
+                          <Link to="/">
                             <img src={logo} alt="Logo" className="image" />
                           </Link>
                         </div>
@@ -132,10 +132,10 @@ function Header() {
                                   <small>SILVER - ₹{rates.Silver1}</small>
                                 </li>
                                 <li>
-                                  <Link to="/home/find-a-store">FIND A STORE</Link>
+                                  <Link to="/find-a-store">FIND A STORE</Link>
                                 </li>
                                 <li>
-                                  <Link to="/home/">SUPPORT</Link>
+                                  <Link to="/">SUPPORT</Link>
                                 </li>
                               </div>
                             </ul>
@@ -190,27 +190,27 @@ function Header() {
                         <h3 className="drawer-header">POPULAR SEARCHES</h3>
                         <div className="d-lg-none">
                           <li className="w-100">
-                            <Link to="/home/" className="menu-link">
+                            <Link to="/" className="menu-link">
                               Fancy Earrings
                             </Link>
                           </li>
                           <li className="w-100">
-                            <Link to="/home/" className="menu-link">
+                            <Link to="/" className="menu-link">
                               Gift under 10k
                             </Link>
                           </li>
                           <li className="w-100">
-                            <Link to="/home/" className="menu-link">
+                            <Link to="/" className="menu-link">
                               Every day Necklaces
                             </Link>
                           </li>
                           <li className="w-100">
-                            <Link to="/home/" className="menu-link">
+                            <Link to="/" className="menu-link">
                               Diamonds Mangalsutra
                             </Link>
                           </li>
                           <li className="w-100">
-                            <Link to="/home/" className="menu-link">
+                            <Link to="/" className="menu-link">
                               Office wear earrings
                             </Link>
                           </li>
@@ -229,16 +229,16 @@ function Header() {
                       <ul className="w-100">
                         <div className="menu-link-items">
                           <li>
-                            <Link to="/home/">Home</Link>
+                            <Link to="/">Home</Link>
                           </li>
                           <li>
-                            <Link to="/home/jewellerys">Jewellery</Link>
+                            <Link to="/jewellerys">Jewellery</Link>
                           </li>
                           <li>
-                            <Link to="/home/aboutus">About us</Link>
+                            <Link to="/aboutus">About us</Link>
                           </li>
                           <li>
-                            <Link to="/home/bullions">Bullion</Link>
+                            <Link to="/bullions">Bullion</Link>
                           </li>
                           {/* <li>
                             <Link to="e-gold">E-gold</Link>
@@ -254,7 +254,7 @@ function Header() {
                     <div className="header-icon-list">
                       <ul className="w-100">
                         <li>
-                          <Link to="/home/">
+                          <Link to="/">
                             <img
                               src={searchLogo}
                               alt="Logo"
@@ -273,7 +273,7 @@ function Header() {
                           {/* <ShoppingBag open={openDrawer} handleDrawer = {handleOpenDrawer} /> */}
                         </li>
                         <li>
-                          <Link to="/home/">
+                          <Link to="/">
                             <img
                               src={heartLogo}
                               alt="Logo"
@@ -293,7 +293,7 @@ function Header() {
                             </Link>
                           </li>
                         ) : (
-                          <li className="/home/login-icon">
+                          <li className="/login-icon">
                             <Link
                               onClick={handleOpenDialog}
                               classsName="image"

@@ -12,11 +12,12 @@ function App() {
         <div className="main-body-container">
           <Suspense>
             <Routes>
+              
               <Route
-                path='/home'
-                element={<HomeLayout />}
+                path='/dashboard'
+                element={<DashboardLayout />}
               >
-                {frontAppRoutes.map(
+                {dashboardRoutes.map(
                   (route, indx) => route.element && (
                     <Route
                       key={indx}
@@ -29,10 +30,10 @@ function App() {
                 )}
               </Route>
               <Route
-                path='/dashboard'
-                element={<DashboardLayout />}
+                path='/'
+                element={<HomeLayout />}
               >
-                {dashboardRoutes.map(
+                {frontAppRoutes.map(
                   (route, indx) => route.element && (
                     <Route
                       key={indx}
