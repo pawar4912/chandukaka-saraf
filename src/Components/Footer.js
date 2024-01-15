@@ -45,7 +45,7 @@ function Footer() {
     <footer>
       <div className="footer-container">
         <div className="logo">
-          <a href="/">
+          <a href="/home">
             <img src={logo} alt="Logo" className="image" />
           </a>
         </div>
@@ -76,30 +76,30 @@ function Footer() {
                 <div className="col-xl-8 col-lg-7 col-md-6 col-sm-6 col-6">
                   <div className="row">
                     <div className="col-lg-6">
-                      <a href="/aboutus" className="btn btn-link">
+                      <a href="/home/aboutus" className="btn btn-link">
                         About us
                       </a>
-                      <a href="/news-&-blog" className="btn btn-link">
+                      <a href="/home/news-&-blog" className="btn btn-link">
                         News & Blogs
                       </a>
-                      <a href="/contact-us" className="btn btn-link">
+                      <a href="/home/contact-us" className="btn btn-link">
                         Contact us
                       </a>
-                      <a href="/" className="btn btn-link">
+                      <a href="/home/" className="btn btn-link">
                         Help & Support
                       </a>
                     </div>
                     <div className="col-lg-6">
-                      <a href="/privacy-policy" className="btn btn-link">
+                      <a href="/home/privacy-policy" className="btn btn-link">
                         Privacy Policy
                       </a>
-                      <a href="/terms-and-conditions" className="btn btn-link">
+                      <a href="/home/terms-and-conditions" className="btn btn-link">
                         Terms & Condition
                       </a>
-                      {/* <a href="/" className="btn btn-link">
+                      {/* <a href="/home/" className="btn btn-link">
                         Shipping Policy
                       </a> */}
-                      <a href="/CSR-Policy" className="btn btn-link">
+                      <a href="/home/CSR-Policy" className="btn btn-link">
                         CSR Policy
                       </a>
                     </div>

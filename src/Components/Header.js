@@ -78,14 +78,14 @@ function Header() {
                         className="menu-open open-nav-btn"
                       />
                       <div className="logo">
-                        <Link to="/">
+                        <Link to="/home">
                           <img src={logo} alt="Logo" className="image" />
                         </Link>
                       </div>
                       <div className="header-icon-list">
                         <ul>
                           <li>
-                            <Link to="#" onClick={handleOpenDrawer}>
+                            <Link onClick={handleOpenDrawer}>
                               <img
                                 src={shoppingBagLogo}
                                 alt="Logo"
@@ -98,7 +98,7 @@ function Header() {
                             /> */}
                           </li>
                           <li>
-                            <Link to="/">
+                            <Link to="/home/">
                               <img
                                 alt="Logo"
                                 src={heartLogo}
@@ -112,7 +112,7 @@ function Header() {
                     <div className="col-12 col-lg-12  d-none d-md-block">
                       <div className="row position-relative">
                         <div className="logo">
-                          <Link to="/">
+                          <Link to="/home/">
                             <img src={logo} alt="Logo" className="image" />
                           </Link>
                         </div>
@@ -132,10 +132,10 @@ function Header() {
                                   <small>SILVER - ₹{rates.Silver1}</small>
                                 </li>
                                 <li>
-                                  <Link to="/find-a-store">FIND A STORE</Link>
+                                  <Link to="/home/find-a-store">FIND A STORE</Link>
                                 </li>
                                 <li>
-                                  <Link to="/">SUPPORT</Link>
+                                  <Link to="/home/">SUPPORT</Link>
                                 </li>
                               </div>
                             </ul>
@@ -190,27 +190,27 @@ function Header() {
                         <h3 className="drawer-header">POPULAR SEARCHES</h3>
                         <div className="d-lg-none">
                           <li className="w-100">
-                            <Link to="/" className="menu-link">
+                            <Link to="/home/" className="menu-link">
                               Fancy Earrings
                             </Link>
                           </li>
                           <li className="w-100">
-                            <Link to="/" className="menu-link">
+                            <Link to="/home/" className="menu-link">
                               Gift under 10k
                             </Link>
                           </li>
                           <li className="w-100">
-                            <Link to="/" className="menu-link">
+                            <Link to="/home/" className="menu-link">
                               Every day Necklaces
                             </Link>
                           </li>
                           <li className="w-100">
-                            <Link to="/" className="menu-link">
+                            <Link to="/home/" className="menu-link">
                               Diamonds Mangalsutra
                             </Link>
                           </li>
                           <li className="w-100">
-                            <Link to="/" className="menu-link">
+                            <Link to="/home/" className="menu-link">
                               Office wear earrings
                             </Link>
                           </li>
@@ -229,16 +229,16 @@ function Header() {
                       <ul className="w-100">
                         <div className="menu-link-items">
                           <li>
-                            <Link to="/">Home</Link>
+                            <Link to="/home/">Home</Link>
                           </li>
                           <li>
-                            <Link to="jewellerys">Jewellery</Link>
+                            <Link to="/home/jewellerys">Jewellery</Link>
                           </li>
                           <li>
-                            <Link to="aboutus">About us</Link>
+                            <Link to="/home/aboutus">About us</Link>
                           </li>
                           <li>
-                            <Link to="bullions">Bullion</Link>
+                            <Link to="/home/bullions">Bullion</Link>
                           </li>
                           {/* <li>
                             <Link to="e-gold">E-gold</Link>
@@ -254,7 +254,7 @@ function Header() {
                     <div className="header-icon-list">
                       <ul className="w-100">
                         <li>
-                          <Link to="/">
+                          <Link to="/home/">
                             <img
                               src={searchLogo}
                               alt="Logo"
@@ -263,7 +263,7 @@ function Header() {
                           </Link>
                         </li>
                         <li>
-                          <Link to="#" onClick={handleOpenDrawer}>
+                          <Link onClick={handleOpenDrawer}>
                             <img
                               src={shoppingBagLogo}
                               alt="Logo"
@@ -273,7 +273,7 @@ function Header() {
                           {/* <ShoppingBag open={openDrawer} handleDrawer = {handleOpenDrawer} /> */}
                         </li>
                         <li>
-                          <Link to="/">
+                          <Link to="/home/">
                             <img
                               src={heartLogo}
                               alt="Logo"
@@ -284,7 +284,7 @@ function Header() {
 
                         {isLoggedIn() ? (
                           <li>
-                            <Link to="/myorder">
+                            <Link to="/dashboard/myorder">
                               <img
                                 src={userLogo}
                                 alt="Logo"
@@ -293,7 +293,7 @@ function Header() {
                             </Link>
                           </li>
                         ) : (
-                          <li className="login-icon">
+                          <li className="/home/login-icon">
                             <Link
                               onClick={handleOpenDialog}
                               classsName="image"

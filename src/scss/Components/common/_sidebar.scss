@@ -1,6 +1,5 @@
 .sidebar {
   background-color: #fff;
-  width: 30%;
 }
 
 .MuiDrawer-paper {
@@ -102,9 +101,6 @@
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
-  .sidebar {
-    width: 35%;
-  }
 
   .menu-wrapper .menu-link {
     text-decoration: none;

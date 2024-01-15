@@ -15,131 +15,109 @@ import Jewellerys from './Components/Screens/Jewellerys';
 import { PersonalDetails } from './Components/Screens/PersonalDetails';
 import { AddressBook } from './Components/Screens/Address-book/AddressBook';
 import { ShoppingBag } from './Components/Screens/ShoppingBag';
-
 import { Wishlist } from './Components/Screens/Wishlist/Wishlist';
 
-const routes = [
+export const frontAppRoutes = [
   {
-    path: '/',
+    path: '/home/',
     name: 'Home',
     element: <Home />,
     exact: true,
     strict: false,
   },
   {
-    path: '/contact-us',
+    path: '/home/contact-us',
     name: 'Contact Us',
     element: <ContactUs />,
     exact: true,
     strict: false,
   },
   {
-    path: '/terms-and-conditions',
+    path: '/home/terms-and-conditions',
     name: 'Terms And Condition',
     element: <TermsAndCondition />,
     exact: true,
     strict: false,
   },
   {
-    path: '/CSR-Policy',
+    path: '/home/CSR-Policy',
     name: 'CRS Policy',
     element: <CRSPolicy />,
     exact: true,
     strict: false,
   },
   {
-    path: '/privacy-policy',
+    path: '/home/privacy-policy',
     name: 'PrivacyPolicy',
     element: <PrivacyPolicy />,
     exact: true,
     strict: false,
   },
   {
-    path: '/aboutus',
+    path: '/home/aboutus',
     name: 'About Us',
     element: <AboutUs />,
     exact: true,
     strict: false,
   },
   {
-    path: '/auth',
+    path: '/home/auth',
     name: 'Auth',
     element: <AuthModal />,
     exact: true,
     strict: false,
   },
   {
-    path: '/news-&-blog',
+    path: '/home/news-&-blog',
     name: 'News And Blogs',
     element: <NewsAndBlogs />,
     exact: true,
     strict: false,
   },
-  {
-    path: '/myorder',
-    name: 'My Order',
-    element: <MyOrder />,
-    exact: true,
-    strict: false,
-  },
   // {
-  //   path: '/dashboard',
+  //   path: '/home/dashboard',
   //   name: 'Home',
   //   element: <Bullions />,
   //   exact: true,
   //   strict: false,
   // },
   {
-    path: '/bullions',
+    path: '/home/bullions',
     name: 'Bullions',
     element: <Bullions />,
     exact: true,
     strict: false,
   },
   {
-    path: '/jewellerys',
+    path: '/home/jewellerys',
     name: 'Jewellerys',
     element: <Jewellerys />,
     exact: true,
     strict: false,
   },
   {
-    path: '/find-a-store',
+    path: '/home/find-a-store',
     name: 'Find A Store',
     element: <FindAStore />,
     exact: true,
     strict: false,
   },
   {
-    path: '/product-details',
-    name: 'Product Details',
-    element: <ProductDetails />,
-    exact: true,
-    strict: false,
-  },
-  {
-    path: '/personal-details',
-    name: 'Personal Details',
-    element: <PersonalDetails />,
-    exact: true,
-    strict: false,
-  },
-  {
-    path: '/address-book',
+    path: '/home/address-book',
     name: 'Address Book',
     element: <AddressBook />,
     exact: true,
     strict: false,
   },
   {
-    path: '/wishlist',
+    path: '/home/wishlist',
     name: 'Wish List',
     element: <Wishlist />,
     exact: true,
     strict: false,
   },
    {
-    path: '/shopping-bag',
+    path: '/home/shopping-bag',
     name: 'Shopping Bag',
     element: <ShoppingBag />,
     exact: true,
@@ -147,4 +125,26 @@ const routes = [
   },
 ];
 
-export default routes;
+export const dashboardRoutes = [
+  {
+    path: '/dashboard/product-details',
+    name: 'Product Details',
+    element: <ProductDetails />,
+    exact: true,
+    strict: false,
+  },
+  {
+    path: '/dashboard/personal-details',
+    name: 'Personal Details',
+    element: <PersonalDetails />,
+    exact: true,
+    strict: false,
+  },
+  {
+    path: '/dashboard/myorder',
+    name: 'My Order',
+    element: <MyOrder />,
+    exact: true,
+    strict: false,
+  },
+]
