@@ -21,8 +21,7 @@ export default function ProductCard({ productImage, productName, id = 0, newArri
         <div className="image-container">
           <CardMedia
             component="img"
-            height="260"
-            width="285"
+            className="images"
             image={productImage}
             alt="green iguana"
           />

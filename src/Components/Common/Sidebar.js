@@ -49,7 +49,7 @@ export default function Sidebar() {
             </li>
             <div className="sidebar-menu">
               <li className="w-100">
-                <Link to="/myorder" className="menu-link">
+                <Link to="/dashboard/myorder" className="menu-link">
                   <img
                     src={orderIcon}
                     alt="Logo"
@@ -59,7 +59,7 @@ export default function Sidebar() {
                 </Link>
               </li>
               <li className="w-100">
-                <Link to="/personal-details" className="menu-link">
+                <Link to="/dashboard/personal-details" className="menu-link">
                   <img
                     src={personalDetailsIcon}
                     alt="Logo"

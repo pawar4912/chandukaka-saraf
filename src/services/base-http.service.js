@@ -55,7 +55,7 @@ export default class BaseHttpService {
   }
 
   _handle401(error) {
-    window.location = "/";
+    window.location = "/home";
   }
 
   _getCommonOptions() {

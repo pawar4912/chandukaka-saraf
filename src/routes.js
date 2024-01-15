@@ -15,10 +15,9 @@ import Jewellerys from './Components/Screens/Jewellerys';
 import { PersonalDetails } from './Components/Screens/PersonalDetails';
 import { AddressBook } from './Components/Screens/Address-book/AddressBook';
 import { ShoppingBag } from './Components/Screens/ShoppingBag';
-
 import { Wishlist } from './Components/Screens/Wishlist/Wishlist';
 
-const routes = [
+export const frontAppRoutes = [
   {
     path: '/',
     name: 'Home',
@@ -27,29 +26,22 @@ const routes = [
     strict: false,
   },
   {
-    path: '/test',
-    name: 'Home',
-    element: <Home />,
-    exact: true,
-    strict: false,
-  },
-  {
     path: '/contact-us',
-    name: 'ContactUs',
+    name: 'Contact Us',
     element: <ContactUs />,
     exact: true,
     strict: false,
   },
   {
     path: '/terms-and-conditions',
-    name: 'TermsAndCondition',
+    name: 'Terms And Condition',
     element: <TermsAndCondition />,
     exact: true,
     strict: false,
   },
   {
     path: '/CSR-Policy',
-    name: 'CRSPolicy',
+    name: 'CRS Policy',
     element: <CRSPolicy />,
     exact: true,
     strict: false,
@@ -63,29 +55,22 @@ const routes = [
   },
   {
     path: '/aboutus',
-    name: 'AboutUs',
+    name: 'About Us',
     element: <AboutUs />,
     exact: true,
     strict: false,
   },
   {
     path: '/auth',
-    name: 'Home',
+    name: 'Auth',
     element: <AuthModal />,
     exact: true,
     strict: false,
   },
   {
     path: '/news-&-blog',
-    name: 'NewsAndBlogs',
+    name: 'News And Blogs',
     element: <NewsAndBlogs />,
-    exact: true,
-    strict: false,
-  },
-  {
-    path: '/myorder',
-    name: 'Home',
-    element: <MyOrder />,
     exact: true,
     strict: false,
   },
@@ -112,46 +97,54 @@ const routes = [
   },
   {
     path: '/find-a-store',
-    name: 'Home',
+    name: 'Find A Store',
     element: <FindAStore />,
     exact: true,
     strict: false,
   },
   {
-    path: '/product-details',
-    name: 'Home',
-    element: <ProductDetails />,
-    exact: true,
-    strict: false,
-  },
-  {
-    path: '/personal-details',
-    name: 'personalDetails',
-    element: <PersonalDetails />,
-    exact: true,
-    strict: false,
-  },
-  {
     path: '/address-book',
-    name: 'addressBook',
+    name: 'Address Book',
     element: <AddressBook />,
     exact: true,
     strict: false,
   },
   {
     path: '/wishlist',
-    name: 'wishlist',
+    name: 'Wish List',
     element: <Wishlist />,
     exact: true,
     strict: false,
   },
    {
     path: '/shopping-bag',
-    name: 'shoppingBag',
+    name: 'Shopping Bag',
     element: <ShoppingBag />,
+    exact: true,
+    strict: false,
+  },
+  {
+    path: '/product-details',
+    name: 'Product Details',
+    element: <ProductDetails />,
     exact: true,
     strict: false,
   },
 ];
 
-export default routes;
+export const dashboardRoutes = [
+  {
+    path: '/dashboard/personal-details',
+    name: 'Personal Details',
+    element: <PersonalDetails />,
+    exact: true,
+    strict: false,
+  },
+  {
+    path: '/dashboard/myorder',
+    name: 'My Order',
+    element: <MyOrder />,
+    exact: true,
+    strict: false,
+  },
+]
