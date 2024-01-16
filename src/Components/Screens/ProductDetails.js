@@ -57,10 +57,11 @@ export default function ProductDetails() {
     return (
         <div className='product-details-container'>
             <Grid className='product-details-main'>
-                <div className='product-images-container' item xs={12} md={5}>
+                <div className='product-images-container' xs={12} md={5}>
                     <div className="image-container">
-                        {product.images.map((image) => (
+                        {product.images.map((image, indx) => (
                             <CardMedia
+                                key={indx}
                                 component="img"
                                 image={image.image_path}
                                 alt={image.image_name}
@@ -69,7 +70,7 @@ export default function ProductDetails() {
                         ))}
                     </div>
                 </div>
-                <div className='product-info-container p-3' item xs={12} md={5}>
+                <div className='product-info-container p-3' xs={12} md={5}>
                     <div className="product-name-wrapper">
                         <div className="product-name">
                             Ganesha Silver Coin
@@ -182,12 +183,12 @@ export default function ProductDetails() {
 
                 <div className="product-grid-container">
                     <Grid className="product-list-grid-section" item xs={12} md={10}>
-                        {youMayAlsoLikeProducts.map(product => (
+                        {youMayAlsoLikeProducts.map((product, indx) => (
                             <ProductCard
+                                key={indx}
                                 productImage={product.image_path}
                                 productName={product.product_name}
                                 productPrice={product.sales_price}
-                                key={product.id}
                             />
                         ))}
                     </Grid>
