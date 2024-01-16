@@ -16,6 +16,7 @@ import { PersonalDetails } from './Components/Screens/PersonalDetails';
 import { AddressBook } from './Components/Screens/Address-book/AddressBook';
 import { ShoppingBag } from './Components/Screens/ShoppingBag';
 import { Wishlist } from './Components/Screens/Wishlist/Wishlist';
+import CheckOut from './Components/Screens/CheckOut';
 
 export const frontAppRoutes = [
   {
@@ -74,13 +75,6 @@ export const frontAppRoutes = [
     exact: true,
     strict: false,
   },
-  // {
-  //   path: '/dashboard',
-  //   name: 'Home',
-  //   element: <Bullions />,
-  //   exact: true,
-  //   strict: false,
-  // },
   {
     path: '/bullions',
     name: 'Bullions',
@@ -144,6 +138,16 @@ export const dashboardRoutes = [
     path: '/dashboard/myorder',
     name: 'My Order',
     element: <MyOrder />,
+    exact: true,
+    strict: false,
+  },
+]
+
+export const orderRoutes = [
+  {
+    path: '/order/check-out',
+    name: 'Check Out',
+    element: <CheckOut />,
     exact: true,
     strict: false,
   },

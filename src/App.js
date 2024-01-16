@@ -3,7 +3,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './scss/style.scss';
 import HomeLayout from './HomeLayout';
 import DashboardLayout from './DashboardLayout';
-import { frontAppRoutes, dashboardRoutes } from "./routes";
+import OrderLayout from './OrderLayout';
+import { frontAppRoutes, dashboardRoutes, orderRoutes } from "./routes";
 
 function App() {
   return (
@@ -18,6 +19,22 @@ function App() {
                 element={<DashboardLayout />}
               >
                 {dashboardRoutes.map(
+                  (route, indx) => route.element && (
+                    <Route
+                      key={indx}
+                      path={route.path}
+                      element={route.element }
+                      exact={route.exact}
+                      strict={route.strict}
+                    />
+                  ),
+                )}
+              </Route>
+              <Route
+                path='/order'
+                element={<OrderLayout />}
+              >
+                {orderRoutes.map(
                   (route, indx) => route.element && (
                     <Route
                       key={indx}

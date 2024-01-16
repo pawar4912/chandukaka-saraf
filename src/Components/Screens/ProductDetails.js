@@ -11,9 +11,11 @@ import sectionHeaderIcons from '../../images/icons/Group40.svg';
 import ProductReviewCard from "../Common/ProductReviewCard";
 import ProductCard from "../ProductCard";
 import { getProducts } from "../../services/FrontApp/index.service";
+import { useNavigate } from "react-router-dom";
 
 export default function ProductDetails() {
     const [quantity, setQuantity] = useState(0)
+    const navigate = useNavigate();
     const [selectedTab, setSelectedTab] = useState('description')
     const [youMayAlsoLikeProducts, setYouMayAlsoLikeProducts] = useState([])
 
@@ -126,7 +128,7 @@ export default function ProductDetails() {
                             ADD TO CART <EastIcon className="icon" />
                         </button>
 
-                        <button className="buy-now-btn">
+                        <button className="buy-now-btn" onClick={() => navigate('/order/check-out')} >
                             BUY NOW <EastIcon className="icon" />
                         </button>
                     </div>
