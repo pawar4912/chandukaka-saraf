@@ -38,7 +38,7 @@ export const NavigationDropdown = () => {
                       <div className="jewelleries">
                         {navigations.jwewlleries.map((jewellery) => (
                           <div className=""  key={jewellery}>
-                            <Link className="" to="#">
+                            <Link className="jewellery-link" to="#">
                               {jewellery}
                             </Link>
                           </div>

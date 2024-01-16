@@ -1,6 +1,7 @@
 .navigation-dropdown-wrapper {
   position: absolute;
-  transform: translate(-182px, 24px);
+  transform: translate(-210px, 24px);
+  border: 1px solid red;
   width: 100vw;
   background: #fff;
   display: flex;
@@ -28,6 +29,10 @@
         font: normal normal medium 13px/28px Lato;
         letter-spacing: 1.3px;
         color: #333333;
+
+        .jewellery-link:hover {
+          text-decoration: underline;
+        }
       }
     }
   }

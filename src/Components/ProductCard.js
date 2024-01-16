@@ -29,9 +29,9 @@ export default function ProductCard({ productImage, productName, id = 0, newArri
             style={{ position: "absolute", bottom: 0, right: 0 }}
             className="favourite-button-container"
           >
-            <IconButton style={{ color: "#666666" }} onClick={addToFavorite}>
+            <div style={{ color: "#666666" }} onClick={addToFavorite}>
               <FavoriteBorderIcon />
-            </IconButton>
+            </div>
           </div>
         </div>
         <CardContent>
