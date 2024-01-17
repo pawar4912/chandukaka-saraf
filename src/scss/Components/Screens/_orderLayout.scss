@@ -1,20 +1,130 @@
+.main-body-container {
+  margin: 0;
+}
 
 .order-layout {
-    border: 1px solid red;
-    height: 100vh;
-    .form-section {
-        background-color: #fff;
+  border: 1px solid red;
+  height: 100vh;
 
-        .checkout-header {
-            img {
-                width: 103px;
-                height: 60px;
-            }
-        }
+  .form-section {
+    background-color: #fff;
+    border: 2px solid green;
 
-        .order-layout-breadcrumb {
-            
-        }
-        
+    .form-section-wrapper {
+      margin: auto;
+      width: 60%;
+      margin-left: 3rem;
+      margin-top: 3rem;
     }
+
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    .checkout-header {
+      img {
+        width: 103px;
+        height: 60px;
+      }
+    }
+
+    .order-layout-breadcrumb {
+    }
+  }
+
+  .shopping-bag-section {
+    height: 100%;
+    width: 55%;
+    margin: auto;
+    margin-top: 5rem;
+    margin-left: 4rem;
+    .shopping-bag {
+      border: 1px solid red;
+      background-color: #fff;
+      button {
+        outline: none;
+      }
+
+      button:hover {
+        border: none;
+        background-color: transparent;
+        color: #333333;
+      }
+
+      .shopping-bag-header {
+        align-items: center;
+      }
+
+      h4 {
+        text-align: center;
+        font: normal normal 900 20px/44px Lato;
+        letter-spacing: 3.15px;
+        color: #333333;
+        text-transform: uppercase;
+        padding: 0;
+        margin: 0;
+      }
+
+      .cart-items-wrapper {
+        max-height: 63%;
+        overflow: auto;
+      }
+
+      .cart-items-wrapper::-webkit-scrollbar {
+        display: none;
+      }
+
+      .cart-item {
+        .product-image {
+          height: 81px;
+          width: 81px;
+        }
+
+        .card-actions {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+
+      .order-continue-to-checkout {
+        // position: absolute;
+        // bottom: 55px;
+
+        .apply-code-wrapper {
+          display: flex;
+          justify-content: space-between;
+
+          .btn-apply-code {
+            white-space: nowrap;
+            font-size: 0.7rem;
+            padding: 0 21px;
+          }
+        }
+
+        .totals {
+          .total-info {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.3rem 0;
+          }
+        }
+
+        .btn-checkout {
+          font-family: normal normal medium 12px/15px Lato;
+          letter-spacing: 1.8px;
+          text-transform: uppercase;
+        }
+      }
+
+      .outlined-black {
+        border-color: #000 !important;
+        color: #000 !important;
+      }
+
+      .text-bold {
+        font-weight: bolder;
+      }
+    }
+  }
 }
