@@ -98,7 +98,7 @@ function Header() {
                             /> */}
                           </li>
                           <li>
-                            <Link to="/">
+                            <Link to="/wishlist">
                               <img
                                 alt="Logo"
                                 src={heartLogo}
@@ -135,7 +135,7 @@ function Header() {
                                   <Link to="/find-a-store">FIND A STORE</Link>
                                 </li>
                                 <li>
-                                  <Link to="/">SUPPORT</Link>
+                                  <Link to="/contact-us">SUPPORT</Link>
                                 </li>
                               </div>
                             </ul>
@@ -273,7 +273,7 @@ function Header() {
                           {/* <ShoppingBag open={openDrawer} handleDrawer = {handleOpenDrawer} /> */}
                         </li>
                         <li>
-                          <Link to="/">
+                          <Link to="/wishlist">
                             <img
                               src={heartLogo}
                               alt="Logo"
