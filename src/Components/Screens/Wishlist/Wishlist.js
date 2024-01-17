@@ -47,8 +47,8 @@ export const ProductCard = ({ product = null, refrashCount, setRefrashCount }) =
       <div className="image-container">
         <CardMedia
           component="img"
-          image={product.images[0].image_path}
-          alt={product.images[0].image_name}
+          image={product.images.length > 0 ? product.images[0].image_path : ''}
+          alt={product.images.length > 0 ? product.images[0].image_name : ''}
         />
         <div style={{ position: "absolute", top: 0, right: 0 }}>
           <IconButton onClick={handleOpenDialog}>
@@ -127,11 +127,12 @@ export const Wishlist = () => {
       <div className="wishlist-items-container container">
         <Box>
           <Grid container className="mb-4" spacing={3}>
-            {data.map((data) => (
+            {data.map((data) => (data.product_master_id != 0 ?
+              (
               <Grid key={data.id} item xs={6} sm={6} md={3} lg={3}>
                 <ProductCard product={data.product} refrashCount={refrashCount} setRefrashCount={setRefrashCount}/>
               </Grid>
-            ))}
+            ) : ''))}
           </Grid>
 
         </Box>
