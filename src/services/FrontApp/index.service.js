@@ -50,3 +50,11 @@ export const removeProductFromWishList = async (id) => {
 export const addToCart = async (data) => {
   return await httpService.post(`cart/add`, data)
 }
+
+export const getCartItems = async () => {
+  return await httpService.get(`cart`)
+}
+
+export const removeProductFromCat = async (id) => {
+  return await httpService.get(`cart/remove/${id}`)
+}

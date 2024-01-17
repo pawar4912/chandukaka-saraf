@@ -1,17 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Drawer from "@mui/material/Drawer";
 import { styled } from "@mui/system";
 import {
   Badge,
-  List,
-  ListItem,
-  ListItemText,
   Typography,
   IconButton,
   Divider,
   Card,
   CardMedia,
-  CardContent,
   Box,
   Grid,
   Button,
@@ -22,6 +18,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import EastIcon from "@mui/icons-material/East";
+import { getCartItems, addToCart, removeProductFromCat } from "../../services/FrontApp/index.service";
 
 const StyledDrawer = styled(Drawer)(({ theme }) => ({
   width: "20vw !important", // Customizable width
@@ -38,18 +35,31 @@ const StyledDrawer = styled(Drawer)(({ theme }) => ({
   },
 }));
 
-export const CartItem = ({ product }) => {
-  const handleRemove = () => {
-    console.log(`Remove item with id ${product.name}`);
+export const CartItem = ({ id, item, setRefreshCount, refreshCount }) => {
+  const quantity = item.quantity;
+  
+  const handleRemove = async () => {
+    await removeProductFromCat(id)
+    setRefreshCount(refreshCount + 1)
   };
 
-  const handleIncreaseQuantity = () => {
-    product.quantity = product.quantity + 1;
+  const handleIncreaseQuantity = async () => {
+    const data = {
+      product_master_id: item.product_id,
+      quantity: 1
+    }
+    await addToCart(data)
+    setRefreshCount(refreshCount + 1)
   };
 
-  const handleDecreaseQuantity = () => {
-    if (product.quantity > 1) {
-      product.quantity = product.quantity - 1;
+  const handleDecreaseQuantity = async () => {
+    if (quantity > 1) {
+      const data = {
+        product_master_id: item.product_id,
+        quantity: - 1
+      }
+      await addToCart(data)
+      setRefreshCount(refreshCount + 1)
     }
   };
 
@@ -60,10 +70,10 @@ export const CartItem = ({ product }) => {
           <div className="product-image">
             <CardMedia
               component="img"
-              alt={name}
+              alt={item.image_name}
               height="81"
               width="81"
-              image={product.image}
+              image={item.image_path}
             />
           </div>
         </Grid>
@@ -71,17 +81,17 @@ export const CartItem = ({ product }) => {
         <Grid item xs={4}>
           <div className="product-information">
             <Typography variant="h6" component="div">
-              {product.name}
+              {item.product_name}
             </Typography>
             <Typography
               variant="body2"
               fontWeight="bold"
               color="text.secondary"
             >
-              &#8377; {product.type}
+              &#8377; {item.metal_type}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              Price: &#8377; {product.price}
+              Price: &#8377; {item.sales_price}
             </Typography>
           </div>
         </Grid>
@@ -106,7 +116,7 @@ export const CartItem = ({ product }) => {
               >
                 <RemoveIcon />
               </IconButton>
-              <Typography variant="body1">{product.quantity}</Typography>
+              <Typography variant="body1">{quantity}</Typography>
               <IconButton
                 onClick={handleIncreaseQuantity}
                 aria-label="add quantity"
@@ -122,35 +132,31 @@ export const CartItem = ({ product }) => {
 };
 
 export const ShoppingBag = ({ open, handleDrawer }) => {
-  const cartItems = [
-    {
-      id: 1,
-      name: "gold coin",
-      image: "https://source.unsplash.com/random/300x300?jewellery=1",
-      quantity: 1,
-      type: "24KT | 1GM",
-      price: 1200,
-    },
-    {
-      id: 2,
-      name: "gold coin 2",
-      image: "https://source.unsplash.com/random/300x300?jewellery=2",
-      quantity: 1,
-      type: "24KT | 1GM",
-      price: 1200,
-    },
-    {
-      id: 3,
-      name: "gold coin 3",
-      image: "https://source.unsplash.com/random/300x300?jewellery=3",
-      quantity: 1,
-      type: "24KT | 1GM",
-      price: 1200,
-    },
-  ];
+  const [refreshCount, setRefreshCount] = useState(0)
+  const [items, setItems] = useState([])
+  const [subTotal, setSubTotal] = useState(0)
+  const [total, setTotal] = useState(0)
+
+  const getData = async () => {
+    try {
+      const result = await getCartItems()
+      let totalPrice = 0;
+      for (let i = 0; i < result.data.data.length; i++) {
+        totalPrice += result.data.data[i].sales_price * result.data.data[i].quantity;
+      }
+      setSubTotal(totalPrice)
+      setTotal(totalPrice)
+      setItems(result.data.data)
+    } catch (error) {
+      setItems([])
+    }
+  }
+
+  useEffect(() => {
+      getData()
+  }, [refreshCount, open])
 
   const toggleDrawer = () => {
-    console.log("In toggle");
     handleDrawer();
   };
 
@@ -164,7 +170,7 @@ export const ShoppingBag = ({ open, handleDrawer }) => {
       >
         <div className="shopping-bag-header d-flex justify-content-between p-3">
           <div>
-            <Badge badgeContent={cartItems.length} color="primary">
+            <Badge badgeContent={items.length} color="primary">
               <img
                 src={shoppingBagLogo}
                 style={{ height: "20px", width: "20px" }}
@@ -181,10 +187,10 @@ export const ShoppingBag = ({ open, handleDrawer }) => {
 
         <Divider style={{ backgroundColor: "#666666" }} />
         <div className="cart-items-wrapper">
-          {cartItems.map((cartItem) => {
+          {items.map((item) => {
             return (
-              <div key={cartItem.id}>
-                <CartItem product={cartItem} />
+              <div key={item.id}>
+                <CartItem id={item.id} item={item} refreshCount={refreshCount} setRefreshCount={setRefreshCount}/>
                 <Divider style={{ backgroundColor: "#666666" }} />
               </div>
             );
@@ -211,7 +217,7 @@ export const ShoppingBag = ({ open, handleDrawer }) => {
           <div className="totals">
             <div className="subtotal total-info">
               <span>subtotal</span>
-              <span className="text-bold">&#8377; 190</span>
+              <span className="text-bold">&#8377; {subTotal}</span>
             </div>
 
             <div className="shipping-charges total-info">
@@ -221,7 +227,7 @@ export const ShoppingBag = ({ open, handleDrawer }) => {
 
             <div className="total total-info">
               <span className="text-bold">Total</span>
-              <span className="text-bold">&#8377; 190</span>
+              <span className="text-bold">&#8377; {total}</span>
             </div>
           </div>
 
