@@ -5,8 +5,10 @@ import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea, IconButton } from '@mui/material';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { addToWishlist } from '../services/FrontApp/index.service';
+import { useNavigate } from 'react-router-dom';
 
 export default function ProductCard({ productImage, productName, id = 0, newArrival, productPrice }) {
+  const navigate = useNavigate()
   const addToFavorite = async () => {
     try {
       await addToWishlist(id)
@@ -24,6 +26,7 @@ export default function ProductCard({ productImage, productName, id = 0, newArri
             className="images"
             image={productImage}
             alt="green iguana"
+            onClick={() => navigate(`/product-details/${id}`)}
           />
           <div
             style={{ position: "absolute", bottom: 0, right: 0 }}

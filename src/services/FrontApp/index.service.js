@@ -35,6 +35,10 @@ export const getProducts = async (data) => {
   return await httpService.post(`products`, data)
 }
 
+export const getProductDetails = async (data) => {
+  return await httpService.post(`products/details`, data)
+}
+
 export const addToWishlist = async (id) => {
   return await httpService.get(`wishlist/add/${id}`)
 }

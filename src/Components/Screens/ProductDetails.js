@@ -10,21 +10,38 @@ import { TabPanel, TabContext, TabList } from '@mui/lab';
 import sectionHeaderIcons from '../../images/icons/Group40.svg';
 import ProductReviewCard from "../Common/ProductReviewCard";
 import ProductCard from "../ProductCard";
-import { getProducts } from "../../services/FrontApp/index.service";
-import { useNavigate } from "react-router-dom";
+import { getProducts, getProductDetails } from "../../services/FrontApp/index.service";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function ProductDetails() {
+    const { id } = useParams();
     const [quantity, setQuantity] = useState(0)
     const navigate = useNavigate();
     const [selectedTab, setSelectedTab] = useState('description')
     const [youMayAlsoLikeProducts, setYouMayAlsoLikeProducts] = useState([])
+    const [productDetails, setProductDetails] = useState({
+        product_name: '',
+        metal_description: '',
+        metal_amount: '',
+        item_description: '',
+        purity: '',
+        description: '',
+        sales_price: 0,
+        gross_wt: 0
+    })
 
     const getData = async () => {
         const result = await getProducts()
         setYouMayAlsoLikeProducts(result.data.data.data)
     }
 
+    const getProductData = async () => {
+        const result = await getProductDetails({product_id: id})
+        setProductDetails(result.data.data)
+    }
+
     useEffect(() => {
+        getProductData()
         getData()
     }, [])
 
@@ -75,7 +92,7 @@ export default function ProductDetails() {
                 <div className='product-info-container p-3' xs={12} md={5}>
                     <div className="product-name-wrapper">
                         <div className="product-name">
-                            Ganesha Silver Coin
+                            {productDetails.product_name}
                         </div>
                         <div className="logo">
                             <FavoriteBorderIcon />
@@ -87,9 +104,9 @@ export default function ProductDetails() {
                         <div className="review-count">7 reviews</div>
                         <button className="review-btn">write a review</button>
                     </div>
-                    <div className="weight">24 KT | 1 GM</div>
-                    <div className="price">₹ 94</div>
-                    <p className="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <div className="weight">{productDetails.purity} | {productDetails.gross_wt} GM</div>
+                    <div className="price">₹ {productDetails.sales_price}</div>
+                    <p className="description">{productDetails.description}</p>
                     <hr className="devider" />
                     <div className="col-12 availability-wrapper" >
                         <div className="col-12 col-md-8">
@@ -150,11 +167,14 @@ export default function ProductDetails() {
                             </TabList>
                         </Box>
                         <TabPanel className="tab-panel" value="description">
-                            <p>Product Code : GP1 </p>
-                            <p>Product Name : 1 Grams Ganesha Silver Coin</p>
+                            <p>{productDetails.item_description}</p>
                         </TabPanel>
-                        <TabPanel className="tab-panel" value="metal_details">Item Two</TabPanel>
-                        <TabPanel className="tab-panel" value="product_details">Item Three</TabPanel>
+                        <TabPanel className="tab-panel" value="metal_details">
+                            <p>{productDetails.metal_description}</p>
+                        </TabPanel>
+                        <TabPanel className="tab-panel" value="product_details">
+                            <p>{productDetails.item_group_description}</p>
+                        </TabPanel>
                     </TabContext>
                 </div>
             </Grid>
