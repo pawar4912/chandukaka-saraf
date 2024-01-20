@@ -4,13 +4,10 @@
 }
 
 .order-layout {
-  border: 1px solid red;
   height: 100%;
 
   .form-section {
     background-color: #fff;
-    border: 2px solid green;
-
     .form-section-wrapper {
       margin: auto;
       width: 70%;
@@ -18,9 +15,6 @@
       margin-top: 3rem;
     }
 
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
     .checkout-header {
       img {
         width: 103px;
