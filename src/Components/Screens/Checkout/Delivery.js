@@ -1,21 +1,24 @@
 import {
   Box,
   FormControlLabel,
-  FormLabel,
   Radio,
   RadioGroup,
+  Button,
 } from "@mui/material";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import EastIcon from "@mui/icons-material/East";
 
 export const Delivery = () => {
+  const navigate = useNavigate();
   return (
     <div>
       <Box className="delivery-wrapper">
         <div className="delivery-estimate-section">
           <div className="pincode-section section-background p-3">
-            <span><b>Pincode:</b> 413102</span>
-            
+            <span>
+              <b>Pincode:</b> 413102
+            </span>
 
             <Link to="#">CHANGE</Link>
           </div>
@@ -70,7 +73,7 @@ export const Delivery = () => {
         </div>
 
         <div className="address-section">
-          <div className="">
+          <div className="address section-background d-flex justify-content-between align-items-center p-3">
             <RadioGroup
               aria-labelledby="demo-radio-buttons-group-label"
               defaultValue="female"
@@ -82,11 +85,25 @@ export const Delivery = () => {
                 label="Same as delivery address"
               />
             </RadioGroup>
-          </div>
-          <div>
-            <Link to="#">EDIT</Link>
+            <div>
+              <Link to="#">EDIT</Link>
+            </div>
           </div>
         </div>
+
+        <span>
+          + <Link>ADD NEW ADDRESS</Link>
+        </span>
+
+        <Button
+          className="btn btn-block bg-black btn-submit"
+          fullWidth
+          variant="contained"
+          onClick={() => navigate("/order/check-out/payment")}
+        >
+          CONTINUE TO DELIVERY &nbsp;
+          <EastIcon />
+        </Button>
       </Box>
     </div>
   );
