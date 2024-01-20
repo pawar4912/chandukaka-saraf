@@ -54,6 +54,7 @@ const OrderLayout = () => {
               <img src={siteLogo} alt="" />
             </div>
             <Breadcrumbs
+            className="my-5"
           separator={
             <NavigateNextIcon sx={{ color: "#000" }} fontSize="small" />
           }
