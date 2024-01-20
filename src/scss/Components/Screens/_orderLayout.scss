@@ -1,10 +1,11 @@
 .main-body-container {
   margin: 0;
+  height: 100vh;
 }
 
 .order-layout {
   border: 1px solid red;
-  height: 100vh;
+  height: 100%;
 
   .form-section {
     background-color: #fff;
@@ -12,7 +13,7 @@
 
     .form-section-wrapper {
       margin: auto;
-      width: 60%;
+      width: 70%;
       margin-left: 3rem;
       margin-top: 3rem;
     }
@@ -27,19 +28,22 @@
       }
     }
 
-    .order-layout-breadcrumb {
+    .breadcrumb-link {
+      color: #000;
+      text-decoration: none;
+    }
+
+    .breadcrumb-link.active {
+      font-weight: bold;
     }
   }
 
   .shopping-bag-section {
-    height: 100%;
-    width: 55%;
+    padding: 6rem;
     margin: auto;
-    margin-top: 5rem;
-    margin-left: 4rem;
     .shopping-bag {
-      border: 1px solid red;
       background-color: #fff;
+      width: 450px;
       button {
         outline: none;
       }
@@ -126,5 +130,11 @@
         font-weight: bolder;
       }
     }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .shopping-bag-section {
+    display: none;
   }
 }

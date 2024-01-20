@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, NavLink } from "react-router-dom";
 import {
   Breadcrumbs,
   Grid,
@@ -54,22 +54,33 @@ const OrderLayout = () => {
               <img src={siteLogo} alt="" />
             </div>
             <Breadcrumbs
-              className="order-layout-breadcrumb my-5"
-              separator={
-                <NavigateNextIcon sx={{ color: "#000" }} fontSize="small" />
-              }
-              aria-label="breadcrumb"
-            >
-              <div color="inherit" to="check-out/details">
-                YOUR DETAILS
-              </div>
-              <div color="inherit" to="check-out/delivery">
-                DELIVERY
-              </div>
-              <div color="inherit" to="check-out/payment">
-                PAYMENT
-              </div>
-            </Breadcrumbs>
+          separator={
+            <NavigateNextIcon sx={{ color: "#000" }} fontSize="small" />
+          }
+          aria-label="breadcrumb"
+        >
+          <NavLink
+            to="/order/check-out/details"
+            activeClassName="active"
+            className="breadcrumb-link"
+          >
+            YOUR DETAILS
+          </NavLink>
+          <NavLink
+            to="/order/check-out/delivery"
+            activeClassName="active"
+            className="breadcrumb-link"
+          >
+            DELIVERY
+          </NavLink>
+          <NavLink
+            to="/order/check-out/payment"
+            activeClassName="active"
+            className="breadcrumb-link"
+          >
+            PAYMENT
+          </NavLink>
+        </Breadcrumbs>
             <div className="outlet-wrapper">
               <Outlet />
             </div>
