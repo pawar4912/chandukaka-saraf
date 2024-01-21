@@ -11,6 +11,13 @@ import EastIcon from "@mui/icons-material/East";
 
 export const Delivery = () => {
   const navigate = useNavigate();
+  const radioStyle = {
+    color: 'black',
+    '&$checked': {
+      color: 'black',
+    },
+  };
+
   return (
     <div>
       <Box className="delivery-wrapper">
@@ -52,7 +59,7 @@ export const Delivery = () => {
                 >
                   <FormControlLabel
                     value="same"
-                    control={<Radio />}
+                    control={<Radio style={radioStyle} />}
                     label="29 Park Street CHS, Gunawadi Road, Baramati, Dist - Pune"
                   />
                 </RadioGroup>
@@ -81,7 +88,7 @@ export const Delivery = () => {
               >
                 <FormControlLabel
                   value="same"
-                  control={<Radio />}
+                  control={<Radio style={radioStyle}/>}
                   label="Same as delivery address"
                 />
               </RadioGroup>

@@ -1,7 +1,6 @@
 import {
   FormControl,
   FormControlLabel,
-  FormLabel,
   Button,
   Radio,
   RadioGroup,
@@ -12,6 +11,12 @@ import EastIcon from "@mui/icons-material/East";
 
 export const Payment = () => {
   const navigate = useNavigate();
+  const radioStyle = {
+    color: 'black',
+    '&$checked': {
+      color: 'black',
+    },
+  };
 
   return (
     <div className="payment-wrapper">
@@ -50,25 +55,25 @@ export const Payment = () => {
             >
               <FormControlLabel
                 value="credit-card"
-                control={<Radio />}
+                control={<Radio style={radioStyle}/>}
                 label="Credit Card"
                 className="section-background my-2"
               />
               <FormControlLabel
                 value="debitCard"
-                control={<Radio />}
+                control={<Radio style={radioStyle}/>}
                 label="Debit Card"
                 className="section-background my-2"
               />
               <FormControlLabel
                 value="upi"
-                control={<Radio />}
+                control={<Radio style={radioStyle}/>}
                 label="UPI"
                 className="section-background"
               />
               <FormControlLabel
                 value="netbanking"
-                control={<Radio />}
+                control={<Radio style={radioStyle}/>}
                 label="Netbanking"
                 className="section-background my-2"
               />
