@@ -14,7 +14,7 @@ export const Delivery = () => {
   return (
     <div>
       <Box className="delivery-wrapper">
-        <div className="delivery-estimate-section">
+        <div className="delivery-estimate-section mb-5">
           <div className="pincode-section section-background p-3">
             <span>
               <b>Pincode:</b> 413102
@@ -29,9 +29,9 @@ export const Delivery = () => {
           </div>
         </div>
 
-        <div className="delivery-address-section">
+        <div className="delivery-address-section mb-5">
           <b>Delivery Address</b>
-          <div className="personal-information section-background p-3">
+          <div className="personal-information section-background d-flex justify-content-between align-items-center p-3">
             <div className="">
               <div className="section-title">Name, email and mobile</div>
               <b>Smita Jain, Smitajain@gmail.com, 9876543210</b>
@@ -40,12 +40,40 @@ export const Delivery = () => {
               <Link to="#">EDIT</Link>
             </div>
           </div>
+
+          <div className="address-section my-2">
+            <div className="section-background p-3">
+              <div className="section-title">Address 1</div>
+              <div className="d-flex justify-content-between align-items-center">
+                <RadioGroup
+                  aria-labelledby="demo-radio-buttons-group-label"
+                  defaultValue="female"
+                  name="radio-buttons-group"
+                >
+                  <FormControlLabel
+                    value="same"
+                    control={<Radio />}
+                    label="29 Park Street CHS, Gunawadi Road, Baramati, Dist - Pune"
+                  />
+                </RadioGroup>
+                <div>
+                  <Link to="#">EDIT</Link>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <span>
+            + <Link>ADD NEW ADDRESS</Link>
+          </span>
         </div>
 
-        <div className="address-section my-2">
-          <div className="section-background p-3">
-            <div className="section-title">Address 1</div>
-            <div className="d-flex justify-content-between align-items-center">
+        <div className="mb-5">
+          <div className="billing-address-section">
+            <b>Billing Address</b>
+          </div>
+          <div className="address-section">
+            <div className="address section-background d-flex justify-content-between align-items-center p-3">
               <RadioGroup
                 aria-labelledby="demo-radio-buttons-group-label"
                 defaultValue="female"
@@ -54,7 +82,7 @@ export const Delivery = () => {
                 <FormControlLabel
                   value="same"
                   control={<Radio />}
-                  label="29 Park Street CHS, Gunawadi Road, Baramati, Dist - Pune"
+                  label="Same as delivery address"
                 />
               </RadioGroup>
               <div>
@@ -62,38 +90,10 @@ export const Delivery = () => {
               </div>
             </div>
           </div>
+          <span>
+            + <Link>ADD NEW ADDRESS</Link>
+          </span>
         </div>
-
-        <span>
-          + <Link>ADD NEW ADDRESS</Link>
-        </span>
-
-        <div className="billing-address-section">
-          <b>Billing Address</b>
-        </div>
-
-        <div className="address-section">
-          <div className="address section-background d-flex justify-content-between align-items-center p-3">
-            <RadioGroup
-              aria-labelledby="demo-radio-buttons-group-label"
-              defaultValue="female"
-              name="radio-buttons-group"
-            >
-              <FormControlLabel
-                value="same"
-                control={<Radio />}
-                label="Same as delivery address"
-              />
-            </RadioGroup>
-            <div>
-              <Link to="#">EDIT</Link>
-            </div>
-          </div>
-        </div>
-
-        <span>
-          + <Link>ADD NEW ADDRESS</Link>
-        </span>
 
         <Button
           className="btn btn-block bg-black btn-submit"
