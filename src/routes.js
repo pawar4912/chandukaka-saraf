@@ -123,7 +123,7 @@ export const frontAppRoutes = [
     strict: false,
   },
   {
-    path: '/product-details',
+    path: '/product-details/:id',
     name: 'Product Details',
     element: <ProductDetails />,
     exact: true,

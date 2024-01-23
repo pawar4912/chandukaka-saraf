@@ -85,7 +85,7 @@ function Footer() {
                       <a href="/contact-us" className="btn btn-link">
                         Contact us
                       </a>
-                      <a href="/" className="btn btn-link">
+                      <a href="/contact-us" className="btn btn-link">
                         Help & Support
                       </a>
                     </div>

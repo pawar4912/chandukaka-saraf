@@ -157,7 +157,7 @@ export default function Sidebar() {
                   </a>
                 </li>
                 <li className="w-100">
-                  <a href="#" className="menu-link">
+                  <a href="/wishlist" className="menu-link">
                     <img
                       src={heartIcon}
                       alt="Logo"
@@ -167,7 +167,7 @@ export default function Sidebar() {
                   </a>
                 </li>
                 <li className="w-100">
-                  <a href="#" className="menu-link">
+                  <a href="/contact-us" className="menu-link">
                     <img
                       src={helpIcon}
                       alt="Logo"

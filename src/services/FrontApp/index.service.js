@@ -35,6 +35,10 @@ export const getProducts = async (data) => {
   return await httpService.post(`products`, data)
 }
 
+export const getProductDetails = async (data) => {
+  return await httpService.post(`products/details`, data)
+}
+
 export const addToWishlist = async (id) => {
   return await httpService.get(`wishlist/add/${id}`)
 }
@@ -49,4 +53,16 @@ export const removeProductFromWishList = async (id) => {
 
 export const addToCart = async (data) => {
   return await httpService.post(`cart/add`, data)
+}
+
+export const getCartItems = async () => {
+  return await httpService.get(`cart`)
+}
+
+export const removeProductFromCat = async (id) => {
+  return await httpService.get(`cart/remove/${id}`)
+}
+
+export const contactUs = async (data) => {
+  return await httpService.post(`support/add`, data)
 }
