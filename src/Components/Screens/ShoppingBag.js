@@ -26,18 +26,20 @@ const StyledDrawer = styled(Drawer)(({ theme }) => ({
   "& .MuiDrawer-paper": {
     width: "25vw !important", // Customizable width
     height: "100%", // Full-screen height
+    marginTop: '0'
   },
   "@media screen and (max-width: 425px)": {
     width: "90vw !important",
     "& .MuiDrawer-paper": {
       width: "90vw !important",
+      marginTop: '0'
     },
   },
 }));
 
 export const CartItem = ({ id, item, setRefreshCount, refreshCount }) => {
   const quantity = item.quantity;
-  
+
   const handleRemove = async () => {
     await removeProductFromCat(id)
     setRefreshCount(refreshCount + 1)
@@ -153,7 +155,7 @@ export const ShoppingBag = ({ open, handleDrawer }) => {
   }
 
   useEffect(() => {
-      getData()
+    getData()
   }, [refreshCount, open])
 
   const toggleDrawer = () => {
@@ -190,7 +192,7 @@ export const ShoppingBag = ({ open, handleDrawer }) => {
           {items.map((item) => {
             return (
               <div key={item.id}>
-                <CartItem id={item.id} item={item} refreshCount={refreshCount} setRefreshCount={setRefreshCount}/>
+                <CartItem id={item.id} item={item} refreshCount={refreshCount} setRefreshCount={setRefreshCount} />
                 <Divider style={{ backgroundColor: "#666666" }} />
               </div>
             );

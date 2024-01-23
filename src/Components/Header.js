@@ -13,7 +13,7 @@ import { isLoggedIn } from "../services/auth.service";
 import LoginIcon from "@mui/icons-material/Login";
 import { ShoppingBag } from "./Screens/ShoppingBag";
 
-function Header() {
+function Header({openDrawer, handleOpenDrawer}) {
   const $ = window.jQuery;
   const [rates, setRates] = useState({
     Platinum: 0,
@@ -23,7 +23,7 @@ function Header() {
   });
 
   const [open, setOpen] = useState(false);
-  const [openDrawer, setOpenDrawer] = useState(false);
+  // const [openDrawer, setOpenDrawer] = useState(false);
 
   const handleOpenDialog = () => {
     setOpen(true);
@@ -33,10 +33,10 @@ function Header() {
     setOpen(false);
   };
 
-  const handleOpenDrawer = () => {
-    console.log("in handle");
-    setOpenDrawer(!openDrawer);
-  };
+  // const handleOpenDrawer = () => {
+  //   console.log("in handle");
+  //   setOpenDrawer(!openDrawer);
+  // };
 
   const getData = async () => {
     try {
@@ -181,10 +181,10 @@ function Header() {
                                 className="image"
                               />
                             </Link>
-                            <ShoppingBag
+                            {/* <ShoppingBag
                               open={openDrawer}
                               handleDrawer={handleOpenDrawer}
-                            />
+                            /> */}
                           </div>
                         </div>
                         <h3 className="drawer-header">POPULAR SEARCHES</h3>
@@ -315,7 +315,7 @@ function Header() {
             </div>
           </div>
         </header>
-        <ShoppingBag open={openDrawer} handleDrawer={handleOpenDrawer} />
+        {/* <ShoppingBag open={openDrawer} handleDrawer={handleOpenDrawer} /> */}
       </div>
     </>
   );
