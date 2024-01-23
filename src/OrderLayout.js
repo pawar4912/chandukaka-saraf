@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import { Link, Outlet, NavLink } from "react-router-dom";
 import {
   Breadcrumbs,
@@ -13,37 +14,31 @@ import {
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import siteLogo from "./images/icons/logo.svg";
 import EastIcon from "@mui/icons-material/East";
+import { getCartItems } from "./services/FrontApp/index.service";
 
 const OrderLayout = () => {
-  const cartItems = [
-    {
-      id: 1,
-      name: "gold coin",
-      image: "https://source.unsplash.com/random/300x300?jewellery=1",
-      quantity: 1,
-      type: "24KT | 1GM",
-      price: 1200,
-      quantity: 2,
-    },
-    {
-      id: 2,
-      name: "gold coin 2",
-      image: "https://source.unsplash.com/random/300x300?jewellery=2",
-      quantity: 1,
-      type: "24KT | 1GM",
-      price: 1200,
-      quantity: 2,
-    },
-    {
-      id: 3,
-      name: "gold coin 3",
-      image: "https://source.unsplash.com/random/300x300?jewellery=3",
-      quantity: 1,
-      type: "24KT | 1GM",
-      price: 1200,
-      quantity: 2,
-    },
-  ];
+  const [items, setItems] = useState([])
+  const [subTotal, setSubTotal] = useState(0)
+  const [total, setTotal] = useState(0)
+
+  const getData = async () => {
+    try {
+      const result = await getCartItems()
+      let totalPrice = 0;
+      for (let i = 0; i < result.data.data.length; i++) {
+        totalPrice += result.data.data[i].sales_price * result.data.data[i].quantity;
+      }
+      setSubTotal(totalPrice)
+      setTotal(totalPrice)
+      setItems(result.data.data)
+    } catch (error) {
+      setItems([])
+    }
+  }
+
+  useEffect(() => {
+      getData()
+  }, [])
 
   return (
     <div className="order-layout d-flex justify-content-center">
@@ -99,40 +94,40 @@ const OrderLayout = () => {
               <Divider style={{ backgroundColor: "#666666" }} />
 
               <div className="cart-items-wrapper">
-                {cartItems.map((product) => {
+                {items.map((item) => {
                   return (
-                    <div key={product.id}>
+                    <div key={item.id}>
                       <Card className="cart-item p-3" sx={{ border: "none" }}>
                         <Grid container spacing={1}>
                           <Grid item xs={4}>
                             <div className="product-image">
-                              <CardMedia
-                                component="img"
-                                alt={name}
-                                height="81"
-                                width="81"
-                                image={product.image}
-                              />
+                            <CardMedia
+                              component="img"
+                              alt={item.image_name}
+                              height="81"
+                              width="81"
+                              image={item.image_path}
+                            />
                             </div>
                           </Grid>
 
-                          <Grid item xs={4}>
+                          <Grid item xs={8}>
                             <div className="product-information">
                               <Typography variant="h6" component="div">
-                                {product.name}
+                                {item.product_name}
                               </Typography>
                               <Typography
                                 variant="body2"
                                 fontWeight="bold"
                                 color="text.secondary"
                               >
-                                &#8377; {product.type}
+                                &#8377; {item.sales_price}
                               </Typography>
                               <Typography
                                 variant="body2"
                                 color="text.secondary"
                               >
-                                Quantity: {product.quantity}
+                                Quantity: {item.quantity}
                               </Typography>
                             </div>
                           </Grid>
@@ -162,7 +157,7 @@ const OrderLayout = () => {
                   <div className="totals">
                     <div className="subtotal total-info">
                       <span>subtotal</span>
-                      <span className="text-bold">&#8377; 190</span>
+                      <span className="text-bold">&#8377; {subTotal}</span>
                     </div>
 
                     <div className="shipping-charges total-info">
@@ -172,19 +167,9 @@ const OrderLayout = () => {
 
                     <div className="total total-info">
                       <span className="text-bold">Total</span>
-                      <span className="text-bold">&#8377; 190</span>
+                      <span className="text-bold">&#8377; {total}</span>
                     </div>
                   </div>
-
-                  <Button
-                    className="btn btn-block bg-black btn-submit btn-checkout"
-                    fullWidth
-                    variant="contained"
-                    type="submit"
-                  >
-                    CONTINUE TO CHECKOUT &nbsp;
-                    <EastIcon />
-                  </Button>
                 </div>
               </div>
             </div>

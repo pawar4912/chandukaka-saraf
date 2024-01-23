@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import {
   FormControl,
   FormControlLabel,
@@ -5,9 +6,10 @@ import {
   Radio,
   RadioGroup,
 } from "@mui/material";
-import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import EastIcon from "@mui/icons-material/East";
+import { isLoggedIn } from "../../../services/auth.service";
+import { myProfile } from "../../../services/profile";
 
 export const Payment = () => {
   const navigate = useNavigate();
@@ -18,6 +20,24 @@ export const Payment = () => {
     },
   };
 
+  const [profileData, setProfileData] = useState({
+    first_name: '',
+    last_name: '',
+    email: '',
+    mobile: ''
+  })
+
+  const getProfileData = async () => {
+    if (isLoggedIn()) {
+      const result = await myProfile();
+      setProfileData({...result.data.data[0]})
+    }
+  }
+
+  useEffect(() => {
+    getProfileData()
+  }, [])
+
   return (
     <div className="payment-wrapper">
       <div className="delivery-details mb-5">
@@ -26,7 +46,7 @@ export const Payment = () => {
         <div className="personal-information section-background p-3 d-flex justify-content-between align-items-center">
           <div className="">
             <div className="section-title">Name, email and mobile</div>
-            <b>Smita Jain, Smitajain@gmail.com, 9876543210</b>
+            <b>{profileData.first_name} {profileData.last_name}, {profileData.email}, {profileData.mobile}</b>
           </div>
           <div>
             <Link to="#">EDIT</Link>
