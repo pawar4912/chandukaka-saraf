@@ -62,3 +62,7 @@ export const getCartItems = async () => {
 export const removeProductFromCat = async (id) => {
   return await httpService.get(`cart/remove/${id}`)
 }
+
+export const contactUs = async (data) => {
+  return await httpService.post(`support/add`, data)
+}
