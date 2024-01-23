@@ -131,4 +131,25 @@
   .shopping-bag-section {
     display: none;
   }
+
+  .order-layout {
+    height: 100%;
+
+    .form-section {
+      background-color: #fff;
+      .form-section-wrapper {
+        margin: auto;
+        width: 100%;
+
+        .checkout-header {
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  .expansion-cart-view-wrapper {
+    background: #F0EEE5 0% 0% no-repeat padding-box;
+    border: 1px solid red;
+  }
 }
