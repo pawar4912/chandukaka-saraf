@@ -27,7 +27,7 @@ const OrderLayout = () => {
               <img src={siteLogo} alt="" />
             </div>
 
-            <ExpansionCartView className="expansion-cart-view" />
+            <ExpansionCartView style={{display: 'none'}} className="expansion-cart-view" />
 
             <Breadcrumbs
               className="my-5"
@@ -64,7 +64,7 @@ const OrderLayout = () => {
           </div>
         </Grid>
 
-        <Grid item md={6}>
+        <Grid item md={6} className="order-layout-shopping-bag-grid">
          <OrderLayoutShoppingBag />
         </Grid>
       </Grid>

@@ -23,13 +23,13 @@ export const ExpansionCartView = () => {
                     aria-controls="panel1-content"
                     id="panel1-header"
                 >
+                    <Badge sx={{marginLeft: '3px'}} badgeContent={4} color="primary">
+                        <img
+                            src={shoppingBagLogo}
+                            style={{ height: "20px", width: "20px" }}
+                        />
+                    </Badge>
                     <Typography>
-                        <Badge badgeContent={4} color="primary">
-                            <img
-                                src={shoppingBagLogo}
-                                style={{ height: "20px", width: "20px" }}
-                            />
-                        </Badge>
                         Order summary
                     </Typography>
                 </AccordionSummary>
