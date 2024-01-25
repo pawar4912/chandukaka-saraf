@@ -3,9 +3,9 @@
   height: 100vh;
 }
 
-.order-layout {
-  height: 100%;
-
+// .order-layout {
+  // height: 100%;
+.order-main-wrapper {
   .form-section {
     background-color: #fff;
     .form-section-wrapper {
@@ -126,6 +126,7 @@
     }
   }
 }
+// }
 
 @media screen and (max-width: 768px) {
   .shopping-bag-section {
@@ -136,17 +137,28 @@
       background-color: rgb(240, 238, 229) !important;
       width: 100% !important;
     }
+
+    .apply-code-input {
+      background-color: #fff;
+      opacity: 1;
+    }
   }
 
-  .order-layout {
+  .css-zow5z4-MuiGrid-root {
+    // for order main
+    margin-top: 0 !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+  }
+  .order-main-wrapper {
     height: 100%;
 
     .form-section {
       background-color: #fff;
       padding: 4px !important;
       .form-section-wrapper {
-        margin: auto;
-        width: 100%;
+        margin: 0;
+        width: 100% !important;
 
         .checkout-header {
           text-align: center;
