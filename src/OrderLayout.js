@@ -19,8 +19,8 @@ import { OrderLayoutShoppingBag } from "./Components/Screens/Checkout/OrderLayou
 
 const OrderLayout = () => {
   return (
-    <div className="order-layout d-flex justify-content-center">
-      <Grid container className="order-main-wrapper" spacing={3}>
+    // <div className="order-layout d-flex justify-content-center">
+      <Grid container  className="order-main-wrapper" spacing={3}>
         <Grid item xs={12} md={6} className="form-section p-5">
           <div className="form-section-wrapper">
             <div className="checkout-header">
@@ -68,7 +68,7 @@ const OrderLayout = () => {
          <OrderLayoutShoppingBag />
         </Grid>
       </Grid>
-    </div>
+    // </div>
   );
 };
 

@@ -29,9 +29,11 @@ export const ExpansionCartView = () => {
                             style={{ height: "20px", width: "20px" }}
                         />
                     </Badge>
-                    <Typography>
+                    <Typography style={{marginLeft: '5px'}}>
                         Order summary
                     </Typography>
+
+                    <b> &#8377; 240</b>
                 </AccordionSummary>
                 <AccordionDetails>
                     <OrderLayoutShoppingBag />
