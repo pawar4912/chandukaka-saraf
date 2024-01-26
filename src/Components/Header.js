@@ -12,6 +12,8 @@ import AuthModal from "./Screens/AuthModal";
 import { isLoggedIn } from "../services/auth.service";
 import LoginIcon from "@mui/icons-material/Login";
 import { ShoppingBag } from "./Screens/ShoppingBag";
+import { MenuItem, Select } from "@mui/material";
+import { NavigationDropdown } from "./Common/NavigationDropdown";
 
 function Header() {
   const $ = window.jQuery;
@@ -24,6 +26,7 @@ function Header() {
 
   const [open, setOpen] = useState(false);
   const [openDrawer, setOpenDrawer] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
 
   const handleOpenDialog = () => {
     setOpen(true);
@@ -232,7 +235,24 @@ function Header() {
                             <Link to="/">Home</Link>
                           </li>
                           <li>
-                            <Link to="/jewellerys">Jewellery</Link>
+                            <Link
+                              to="jewellerys"
+                              onMouseEnter={() => {
+                                setShowDropdown(true);
+                              }}
+                            >
+                              Jewellerys
+                            </Link>
+                            {showDropdown && (
+                              <div
+                                className="dropdown-wrapper"
+                                onMouseLeave={() => {
+                                  setShowDropdown(false);
+                                }}
+                              >
+                                <NavigationDropdown />
+                              </div>
+                            )}
                           </li>
                           <li>
                             <Link to="/aboutus">About us</Link>
@@ -315,7 +335,7 @@ function Header() {
             </div>
           </div>
         </header>
-        <ShoppingBag open={openDrawer} handleDrawer={handleOpenDrawer} />
+        {/* <ShoppingBag open={openDrawer} handleDrawer={handleOpenDrawer} /> */}
       </div>
     </>
   );
