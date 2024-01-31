@@ -171,7 +171,7 @@ export const orderRoutes = [
     strict: false,
   },
   {
-    path: '/order/check-out/payment',
+    path: '/order/check-out/payment/:order_id',
     name: 'Payment',
     element: <Payment />,
     exact: true,

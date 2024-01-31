@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import productDashBoardImage from "../../images/productDashBoardImage.png";
-import { Box, Button, Checkbox, Chip, Divider, Grid, ListItemText, MenuItem, OutlinedInput, Pagination, Select, Stack } from '@mui/material';
+import { Box, Button, Checkbox, Chip, Divider, Grid, ListItemText, MenuItem, OutlinedInput, Select } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import fillWhiteLeftIcon from '../../images/icons/fillWhiteLeftIcon.svg';
@@ -73,7 +73,7 @@ export default function Bullions() {
         page: 1,
         sort_by: ''
     })
-    const [refrashCount, setRefrashCount] = useState(0)
+    const [refreshCount, setRefreshCount] = useState(0)
     const [totalPages, setTotalPages] = useState(0)
     const [products, setProducts] = useState([])
 
@@ -85,20 +85,20 @@ export default function Bullions() {
 
     useEffect(() => {
         getData()
-    }, [refrashCount])
+    }, [refreshCount])
 
     const handleChange = ({ target }) => {
         filterData[target.name] = target.value
         const temp = Object.assign({}, filterData)
         setFilterData(temp)
-        setRefrashCount(refrashCount + 1)
+        setRefreshCount(refreshCount + 1)
     }
 
     const handleChangePage = (event, newPage) => {
         filterData['page'] = newPage
         const temp = Object.assign({}, filterData)
         setFilterData(temp)
-        setRefrashCount(refrashCount + 1)
+        setRefreshCount(refreshCount + 1)
     };
 
     const handleDeleteFilterData = (event) => {
@@ -262,6 +262,9 @@ export default function Bullions() {
                                 productPrice={product.sales_price}
                                 id={product.product_id}
                                 key={product.product_id}
+                                isWishlist={product.is_wishlist}
+                                setRefreshCount={setRefreshCount}
+                                refreshCount={refreshCount}
                             />
                         ))}
                     </Grid>

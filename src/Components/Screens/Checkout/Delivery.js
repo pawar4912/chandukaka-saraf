@@ -10,8 +10,13 @@ import { Link, useNavigate } from "react-router-dom";
 import EastIcon from "@mui/icons-material/East";
 import { getAllAddAddress, myProfile } from "../../../services/profile";
 import { isLoggedIn } from "../../../services/auth.service";
+import { AddressBookModal } from "../../Common/AddressBookModal";
+import { EditAddressBookModal } from "../../Common/EditAddressBookModal";
+import { placeOrder } from "../../../services/FrontApp/order.service";
+import ErrorList from "../../Common/ErrorList";
 
 export const Delivery = () => {
+  const [errors, setErrors] = useState([])
   const navigate = useNavigate();
   const radioStyle = {
     color: 'black',
@@ -21,26 +26,31 @@ export const Delivery = () => {
   };
   const days = Array.from({ length: 31 }, (_, i) => { return { value: i + 1,label: i + 1 } });
   days.push({value: '00', label: "Select Day"})
-  const months = [
-    {value: '00', label: "Select Month"},
-    {value: '01', label: "January"},
-    {value: '02', label: "February"},
-    {value: '03', label: "March"},
-    {value: '04', label: "April"},
-    {value: '05', label: "May"},
-    {value: '06', label: "June"},
-    {value: '07', label: "July"},
-    {value: '08', label: "August"},
-    {value: '09', label: "September"},
-    {value: '10', label: "October"},
-    {value: '11', label: "November"},
-    {value: '12', label: "December"},
-  ];
+  const [selectedAddress, setSelectedAddress] = useState(0)
 
   const currentYear = new Date().getFullYear();
   const years = Array.from({ length: 100 }, (_, i) =>  { return { value: currentYear - i,label: currentYear - i } });
   years.push({value: '0000', label: "Select Year"})
+  const [open, setOpen] = useState(false);
+  const [openEditAddress, setOpenEditAddress] = useState(false);
+  const [selectedAddressIdToEdit, setSelectedAddressIdToEdit] = useState(0);
 
+  const handleOpenAddAddressDialog = () => {
+    setOpen(true);
+  };
+
+  const handleCloseDialog = () => {
+    setOpen(false);
+  };
+
+  const handleOpenEditAddressDialog = (id) => {
+    setSelectedAddressIdToEdit(id)
+    setOpenEditAddress(true)
+  }
+
+  const handleCloseEditAddressDialog = () => {
+    setOpenEditAddress(false)
+  };
   const [profileData, setProfileData] = useState({
     first_name: '',
     last_name: '',
@@ -55,29 +65,42 @@ export const Delivery = () => {
     }
   }
 
-  useEffect(() => {
-    getProfileData()
-    getData()
-  }, [])
-
-  const [data, setData] = useState([]);
-
-  const getData = async () => {
+  const handleSubmit = async () => {
+    setErrors([])
     try {
-      const result = await getAllAddAddress();
-      setData(result.data.data)
+      const result = await placeOrder()
+      const order_id = result.data.data.order_id
+      navigate("/order/check-out/payment/" + order_id)
     } catch (error) {
-      setData([])
+      setErrors(error.response.data.message)
     }
   }
 
   useEffect(() => {
-    getData()
+    getProfileData()
+    getDataAddress()
   }, [])
+
+  const [deliveryAddress, setDeliveryAddress] = useState([])
+
+  const getDataAddress = async () => {
+    try {
+      const addressesResult = await getAllAddAddress();
+      setDeliveryAddress(addressesResult.data.data)
+      addressesResult.data.data.forEach((address, key) => {
+        if(address.is_default) {
+          setSelectedAddress(key)
+        }
+      });
+    } catch (error) {
+      setDeliveryAddress([])
+    }
+  }
 
   return (
     <div>
       <Box className="delivery-wrapper">
+        <ErrorList errors={errors} />
         <div className="delivery-estimate-section mb-5">
           <div className="pincode-section section-background p-3">
             <span>
@@ -114,21 +137,26 @@ export const Delivery = () => {
                   defaultValue="female"
                   name="radio-buttons-group"
                 >
-                  <FormControlLabel
-                    value="same"
-                    control={<Radio style={radioStyle} />}
-                    label="29 Park Street CHS, Gunawadi Road, Baramati, Dist - Pune"
-                  />
+                  {deliveryAddress.map((address, key) => (
+                    <div className="d-flex">
+                      <FormControlLabel
+                        value="same"
+                        control={<Radio style={radioStyle} checked={key == selectedAddress} />}
+                        label={address.flat_no + ', ' + address.street_name + ', ' + address.city + ' - ' + address.pincode + ', ' + address.country}
+                      />
+                      <div>
+                        <Link onClick={() => handleOpenEditAddressDialog(address.id)}>EDIT</Link>
+                      </div>
+                    </div>
+                  ))}
                 </RadioGroup>
-                <div>
-                  <Link to="#">EDIT</Link>
-                </div>
+                
               </div>
             </div>
           </div>
 
           <span>
-            + <Link>ADD NEW ADDRESS</Link>
+            + <Link onClick={handleOpenAddAddressDialog}>ADD NEW ADDRESS</Link>
           </span>
         </div>
 
@@ -143,6 +171,7 @@ export const Delivery = () => {
                 defaultValue="female"
                 name="radio-buttons-group"
               >
+
                 <FormControlLabel
                   value="same"
                   control={<Radio style={radioStyle}/>}
@@ -163,12 +192,21 @@ export const Delivery = () => {
           className="btn btn-block bg-black btn-submit"
           fullWidth
           variant="contained"
-          onClick={() => navigate("/order/check-out/payment")}
+          onClick={handleSubmit}
         >
           CONTINUE TO DELIVERY &nbsp;
           <EastIcon />
         </Button>
       </Box>
+      <AddressBookModal
+        open={open}
+        handleClose={handleCloseDialog}
+      />
+      <EditAddressBookModal
+        open={openEditAddress}
+        handleClose={handleCloseEditAddressDialog}
+        id={selectedAddressIdToEdit}
+      />
     </div>
   );
 };

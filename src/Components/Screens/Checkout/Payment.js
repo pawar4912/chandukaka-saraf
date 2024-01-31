@@ -6,19 +6,56 @@ import {
   Radio,
   RadioGroup,
 } from "@mui/material";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import EastIcon from "@mui/icons-material/East";
 import { isLoggedIn } from "../../../services/auth.service";
-import { myProfile } from "../../../services/profile";
+import { myProfile, getAllAddAddress } from "../../../services/profile";
+import { getCartItems } from "../../../services/FrontApp/index.service";
 
 export const Payment = () => {
+  const [total, setTotal] = useState(0)
   const navigate = useNavigate();
-  const radioStyle = {
-    color: 'black',
-    '&$checked': {
-      color: 'black',
-    },
-  };
+  const { order_id } = useParams();
+
+  const getCardData = async () => {
+    try {
+      const result = await getCartItems()
+      let totalPrice = 0;
+      for (let i = 0; i < result.data.data.length; i++) {
+        totalPrice += result.data.data[i].sales_price * result.data.data[i].quantity;
+      }
+      setTotal(totalPrice)
+    } catch (error) {
+      setItems([])
+    }
+  }
+
+  useEffect(() => {
+      getCardData()
+  }, [])
+
+  const createOrder = async () => {
+    var request = {
+      "order_amount": "1",
+      "order_currency": "INR",
+      "customer_details": {
+        "customer_id": "node_sdk_test",
+        "customer_name": profileData.first_name + ' ' + profileData.last_name,
+        "customer_email": profileData.email,
+        "customer_phone": profileData.mobile
+      },
+    }
+  
+    Cashfree.PGCreateOrder(new Date(), request).then((response) => {
+      var a = response.data;
+      console.log(a)
+    })
+      .catch((error) => {
+        console.error('Error setting up order request:', error.response.data);
+      });
+  }
+
+  const [deliveryAddress, setDeliveryAddress] = useState('')
 
   const [profileData, setProfileData] = useState({
     first_name: '',
@@ -27,15 +64,28 @@ export const Payment = () => {
     mobile: ''
   })
 
-  const getProfileData = async () => {
+  const getData = async () => {
     if (isLoggedIn()) {
       const result = await myProfile();
       setProfileData({...result.data.data[0]})
     }
+    const addressesResult = await getAllAddAddress();
+    if (addressesResult.data.data.length > 0) {
+      const addresses = addressesResult.data.data.filter((data) => {
+        return data.is_default == 1;
+      });
+      if (addresses.length > 0) {
+        const address = addresses[0];
+        setDeliveryAddress(address.flat_no + ', ' + address.street_name + ', ' + address.city + ' - ' + address.pincode + ', ' + address.country)
+      } else {
+        const address = addressesResult.data.data[0];
+        setDeliveryAddress(address.flat_no + ', ' + address.street_name + ', ' + address.city + ' - ' + address.pincode + ', ' + address.country)
+      }
+    }
   }
 
   useEffect(() => {
-    getProfileData()
+    getData()
   }, [])
 
   return (
@@ -48,58 +98,20 @@ export const Payment = () => {
             <div className="section-title">Name, email and mobile</div>
             <b>{profileData.first_name} {profileData.last_name}, {profileData.email}, {profileData.mobile}</b>
           </div>
-          <div>
-            <Link to="#">EDIT</Link>
-          </div>
         </div>
 
         <div className="personal-information section-background p-3 d-flex justify-content-between align-items-center my-2">
           <div className="">
             <div className="section-title">Delivery address</div>
-            <b>29 Park Street CHS, Gunawadi Road, Baramati, Dist - Pune</b>
-          </div>
-          <div>
-            <Link to="#">EDIT</Link>
+            <b>{deliveryAddress}</b>
           </div>
         </div>
       </div>
 
       <div className="payment-method mb-5">
-        <b>Select payment methods</b>
-
-        <div className="">
-          <FormControl fullWidth style={{ marginLeft: "10px" }}>
-            <RadioGroup
-              aria-labelledby="demo-radio-buttons-group-label"
-              name="radio-buttons-group"
-            >
-              <FormControlLabel
-                value="credit-card"
-                control={<Radio style={radioStyle}/>}
-                label="Credit Card"
-                className="section-background my-2"
-              />
-              <FormControlLabel
-                value="debitCard"
-                control={<Radio style={radioStyle}/>}
-                label="Debit Card"
-                className="section-background my-2"
-              />
-              <FormControlLabel
-                value="upi"
-                control={<Radio style={radioStyle}/>}
-                label="UPI"
-                className="section-background"
-              />
-              <FormControlLabel
-                value="netbanking"
-                control={<Radio style={radioStyle}/>}
-                label="Netbanking"
-                className="section-background my-2"
-              />
-            </RadioGroup>
-          </FormControl>
-        </div>
+        <button type="button" id="renderBtn">
+          Pay Now
+        </button>
       </div>
 
       <Button
@@ -108,7 +120,7 @@ export const Payment = () => {
         variant="contained"
         onClick={() => navigate("/order/check-out/payment")}
       >
-        PAY &#8377; 240 &nbsp;
+        PAY &#8377; total &nbsp;
         <EastIcon />
       </Button>
     </div>
