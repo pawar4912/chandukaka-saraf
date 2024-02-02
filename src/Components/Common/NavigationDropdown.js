@@ -38,7 +38,7 @@ export const NavigationDropdown = () => {
                       <div className="jewelleries">
                         {navigations.jwewlleries.map((jewellery) => (
                           <div className=""  key={jewellery}>
-                            <Link className="jewellery-link" to="#">
+                            <Link className="jewellery-link" to="#" onClick={() => {console.log("Jai shree ram")}}>
                               {jewellery}
                             </Link>
                           </div>
@@ -48,7 +48,7 @@ export const NavigationDropdown = () => {
                   );
                 })}
               </div>
-              <div className="bestsellers-section">
+              {/* <div className="bestsellers-section">
                 <div>
                   <img
                     src="https://source.unsplash.com/random/300x300?jewellery=1"
@@ -64,7 +64,7 @@ export const NavigationDropdown = () => {
                     </Typography>
                   </CardContent>
                 </div>
-              </div>
+              </div> */}
             </div>
         </Grid>
     </Box>

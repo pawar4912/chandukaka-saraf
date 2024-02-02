@@ -64,6 +64,13 @@ function Header() {
       $(".mobile-menu-overlay").css("width", "0");
     });
   });
+
+  window.onclick = (event) => {
+    if (event.target.id != "navigation-dropdown-wrapper" && event.target.id != "jewellery-link") {
+      setShowDropdown(false);
+    }
+  };
+
   return (
     <>
       <div>
@@ -236,23 +243,14 @@ function Header() {
                           </li>
                           <li>
                             <Link
+                            id="jewellery-link"
                               to="jewellerys"
-                              onMouseEnter={() => {
+                              onClick={() => {
                                 setShowDropdown(true);
                               }}
                             >
                               Jewellerys
                             </Link>
-                            {showDropdown && (
-                              <div
-                                className="dropdown-wrapper"
-                                onMouseLeave={() => {
-                                  setShowDropdown(false);
-                                }}
-                              >
-                                <NavigationDropdown />
-                              </div>
-                            )}
                           </li>
                           <li>
                             <Link to="/aboutus">About us</Link>
@@ -335,6 +333,14 @@ function Header() {
             </div>
           </div>
         </header>
+        {showDropdown && (
+          <div
+          id="navigation-dropdown-wrapper"
+            className="dropdown-wrapper"
+          >
+            <NavigationDropdown />
+          </div>
+        )}
         {/* <ShoppingBag open={openDrawer} handleDrawer={handleOpenDrawer} /> */}
       </div>
     </>
