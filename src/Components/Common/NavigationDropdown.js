@@ -48,6 +48,7 @@ export const NavigationDropdown = () => {
                   );
                 })}
               </div>
+              <div></div>
               {/* <div className="bestsellers-section">
                 <div>
                   <img
