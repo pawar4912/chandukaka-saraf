@@ -88,7 +88,7 @@ export const CartItem = ({ id, item, setRefreshCount, refreshCount }) => {
               fontWeight="bold"
               color="text.secondary"
             >
-              &#8377; {item.metal_type}
+              {item.metal_type}
             </Typography>
             <Typography variant="body2" color="text.secondary">
               Price: &#8377; {item.sales_price}
@@ -101,7 +101,6 @@ export const CartItem = ({ id, item, setRefreshCount, refreshCount }) => {
             <IconButton
               onClick={handleRemove}
               aria-label="remove"
-              sx={{ marginLeft: "auto", width: "50%" }}
             >
               <CloseIcon />
             </IconButton>
@@ -161,7 +160,7 @@ export const ShoppingBag = ({ open, handleDrawer }) => {
   };
 
   return (
-    <div className="shopping-bag p-4">
+    <div className="shopping-bag p-4" style={{display: 'none'}}>
       <StyledDrawer
         anchor="right"
         className="MuiDrawer.paper"

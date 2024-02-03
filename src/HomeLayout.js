@@ -13,7 +13,7 @@ const HomeLayout = () => {
     };
     return (
         <div>
-            <ShoppingBag open={openDrawer} handleDrawer={handleOpenDrawer} />
+            <ShoppingBag open={openDrawer} handleDrawer={handleOpenDrawer} style={{display: 'none'}} />
             <Header openDrawer={openDrawer} handleOpenDrawer={handleOpenDrawer} />
             <Outlet className="outlet-container" />
             <Footer />
