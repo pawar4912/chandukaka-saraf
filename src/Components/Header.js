@@ -12,6 +12,8 @@ import AuthModal from "./Screens/AuthModal";
 import { isLoggedIn } from "../services/auth.service";
 import LoginIcon from "@mui/icons-material/Login";
 import { ShoppingBag } from "./Screens/ShoppingBag";
+import { MenuItem, Select } from "@mui/material";
+import { NavigationDropdown } from "./Common/NavigationDropdown";
 
 function Header({openDrawer, handleOpenDrawer}) {
   const $ = window.jQuery;
@@ -23,7 +25,8 @@ function Header({openDrawer, handleOpenDrawer}) {
   });
 
   const [open, setOpen] = useState(false);
-  // const [openDrawer, setOpenDrawer] = useState(false);
+  const [openDrawer, setOpenDrawer] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
 
   const handleOpenDialog = () => {
     setOpen(true);
@@ -98,7 +101,7 @@ function Header({openDrawer, handleOpenDrawer}) {
                             /> */}
                           </li>
                           <li>
-                            <Link to="/">
+                            <Link to="/wishlist">
                               <img
                                 alt="Logo"
                                 src={heartLogo}
@@ -135,7 +138,7 @@ function Header({openDrawer, handleOpenDrawer}) {
                                   <Link to="/find-a-store">FIND A STORE</Link>
                                 </li>
                                 <li>
-                                  <Link to="/">SUPPORT</Link>
+                                  <Link to="/contact-us">SUPPORT</Link>
                                 </li>
                               </div>
                             </ul>
@@ -232,7 +235,24 @@ function Header({openDrawer, handleOpenDrawer}) {
                             <Link to="/">Home</Link>
                           </li>
                           <li>
-                            <Link to="/jewellerys">Jewellery</Link>
+                            <Link
+                              to="jewellerys"
+                              onMouseEnter={() => {
+                                setShowDropdown(true);
+                              }}
+                            >
+                              Jewellerys
+                            </Link>
+                            {showDropdown && (
+                              <div
+                                className="dropdown-wrapper"
+                                onMouseLeave={() => {
+                                  setShowDropdown(false);
+                                }}
+                              >
+                                <NavigationDropdown />
+                              </div>
+                            )}
                           </li>
                           <li>
                             <Link to="/aboutus">About us</Link>
@@ -273,7 +293,7 @@ function Header({openDrawer, handleOpenDrawer}) {
                           {/* <ShoppingBag open={openDrawer} handleDrawer = {handleOpenDrawer} /> */}
                         </li>
                         <li>
-                          <Link to="/">
+                          <Link to="/wishlist">
                             <img
                               src={heartLogo}
                               alt="Logo"

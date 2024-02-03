@@ -1,0 +1,48 @@
+.navigation-dropdown-wrapper {
+  position: absolute;
+  transform: translate(-210px, 24px);
+  border: 1px solid red;
+  width: 100vw;
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .jewellery-links {
+    display: flex;
+    justify-content: space-between;
+    grid-gap: 6rem;
+
+    .catergory-section {
+      .jewellwery-type {
+        font: normal normal 900 13px/16px Lato;
+        letter-spacing: 1.95px;
+        color: #333333;
+        text-transform: uppercase;
+      }
+
+      .jewelleries {
+        display: grid;
+        grid-column-gap: 1.2rem;
+        grid-row-gap: 1rem;
+        grid-template-columns: auto auto;
+        font: normal normal medium 13px/28px Lato;
+        letter-spacing: 1.3px;
+        color: #333333;
+
+        .jewellery-link:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .bestsellers-section {
+    max-height: 302px;
+    .overlay-text {
+      position: relative;
+      transform: translate(0, -100%);
+      color: #fff;
+    }
+  }
+}

@@ -16,7 +16,12 @@ import { PersonalDetails } from './Components/Screens/PersonalDetails';
 import { AddressBook } from './Components/Screens/Address-book/AddressBook';
 import { ShoppingBag } from './Components/Screens/ShoppingBag';
 import { Wishlist } from './Components/Screens/Wishlist/Wishlist';
-import CheckOut from './Components/Screens/CheckOut';
+import CheckOut from './Components/Screens/Checkout/CheckOut';
+import { YourDetails } from './Components/Screens/Checkout/YourDetails';
+import { Delivery } from './Components/Screens/Checkout/Delivery';
+import { Payment } from './Components/Screens/Checkout/Payment';
+import { Navigate } from 'react-router-dom';
+
 
 export const frontAppRoutes = [
   {
@@ -110,7 +115,7 @@ export const frontAppRoutes = [
     exact: true,
     strict: false,
   },
-   {
+  {
     path: '/shopping-bag',
     name: 'Shopping Bag',
     element: <ShoppingBag />,
@@ -118,7 +123,7 @@ export const frontAppRoutes = [
     strict: false,
   },
   {
-    path: '/product-details',
+    path: '/product-details/:id',
     name: 'Product Details',
     element: <ProductDetails />,
     exact: true,
@@ -147,7 +152,28 @@ export const orderRoutes = [
   {
     path: '/order/check-out',
     name: 'Check Out',
-    element: <CheckOut />,
+    element: <Navigate to="/order/check-out/details" />,
+    exact: true,
+    strict: false,
+  },
+  {
+    path: '/order/check-out/details',
+    name: 'YourDetails',
+    element: <YourDetails />,
+    exact: true,
+    strict: false,
+  },
+  {
+    path: '/order/check-out/delivery',
+    name: 'Delivery',
+    element: <Delivery />,
+    exact: true,
+    strict: false,
+  },
+  {
+    path: '/order/check-out/payment',
+    name: 'Payment',
+    element: <Payment />,
     exact: true,
     strict: false,
   },
