@@ -27,7 +27,7 @@ const OrderLayout = () => {
               <img src={siteLogo} alt="" />
             </div>
 
-            <ExpansionCartView style={{display: 'none'}} className="expansion-cart-view" />
+            <ExpansionCartView />
 
             <Breadcrumbs
               className="my-5"

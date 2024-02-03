@@ -15,7 +15,7 @@ const HomeLayout = () => {
         <div>
             <ShoppingBag open={openDrawer} handleDrawer={handleOpenDrawer} />
             <Header openDrawer={openDrawer} handleOpenDrawer={handleOpenDrawer} />
-            <Outlet />
+            <Outlet className="outlet-container" />
             <Footer />
         </div>
     )
