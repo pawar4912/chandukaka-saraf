@@ -127,6 +127,10 @@
 }
 // }
 
+.expansion-cart-view-wrapper {
+  display: none;
+}
+
 @media screen and (max-width: 768px) {
   .shopping-bag-section {
     background-color: rgb(240, 238, 229);
@@ -171,10 +175,11 @@
   }
 
   .expansion-cart-view {
-    display: block;
+    display: none;
   }
 
   .expansion-cart-view-wrapper {
+    display: block;
     background: #f0eee5 0% 0% no-repeat padding-box;
 
     .css-15v22id-MuiAccordionDetails-root {
