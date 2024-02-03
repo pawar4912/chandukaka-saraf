@@ -6,7 +6,7 @@ const HomeLayout = () => {
     return (
         <div>
             <Header />
-            <Outlet />
+            <Outlet className="outlet-container"/>
             <Footer />
         </div>
     )

@@ -244,7 +244,6 @@ function Header() {
                           <li>
                             <Link
                             id="jewellery-link"
-                              to="jewellerys"
                               onClick={() => {
                                 setShowDropdown(true);
                               }}
