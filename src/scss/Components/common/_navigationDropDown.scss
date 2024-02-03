@@ -32,9 +32,10 @@
       .jewelleries {
         display: grid;
         grid-column-gap: 1.2rem;
-        grid-row-gap: 1rem;
+        grid-row-gap: 0.5rem;
         grid-template-columns: auto auto;
-        font: normal normal medium 13px/28px Lato;
+        font-family: Lato;
+        font-size: 13px;
         letter-spacing: 1.3px;
         color: #333333;
 
