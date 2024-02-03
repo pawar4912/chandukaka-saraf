@@ -22,34 +22,35 @@ export const NavigationDropdown = () => {
   };
   return (
     <Box>
-        <Grid>
-            <div className="navigation-dropdown-wrapper p-4">
-              <div className="jewellery-links">
-                {navigations.jewelleryTypes.map((jewelleryType) => {
-                  return (
-                    <div className="catergory-section" key={jewelleryType}>
-                      <h5
-                        variant="h5"
-                        color="initial"
-                        className="jewellwery-type mb-4"
-                      >
-                        {jewelleryType}
-                      </h5>
-                      <div className="jewelleries">
-                        {navigations.jwewlleries.map((jewellery) => (
-                          <div className=""  key={jewellery}>
-                            <Link className="jewellery-link" to="#" onClick={() => {console.log("Jai shree ram")}}>
-                              {jewellery}
-                            </Link>
-                          </div>
-                        ))}
+      <Grid>
+        <div className="navigation-dropdown-wrapper p-4">
+          <div className="jewellery-links">
+            {navigations.jewelleryTypes.map((jewelleryType) => {
+              return (
+                <div className="catergory-section" key={jewelleryType}>
+                  <h5
+                    variant="h5"
+                    color="initial"
+                    className="jewellwery-type mb-4"
+                  >
+                    {jewelleryType}
+                  </h5>
+                  <div className="jewelleries">
+                    {navigations.jwewlleries.map((jewellery) => (
+                      <div className="" key={jewellery}>
+                        <Link className="jewellery-link" to="#" onClick={() => { console.log("Jai shree ram") }}>
+                          {jewellery}
+                        </Link>
                       </div>
-                    </div>
-                  );
-                })}
-              </div>
-              <div></div>
-              {/* <div className="bestsellers-section">
+                    ))}
+                  </div>
+                </div>
+
+              );
+            })}
+            <div className="category-section"></div>
+          </div>
+          {/* <div className="bestsellers-section">
                 <div>
                   <img
                     src="https://source.unsplash.com/random/300x300?jewellery=1"
@@ -66,8 +67,8 @@ export const NavigationDropdown = () => {
                   </CardContent>
                 </div>
               </div> */}
-            </div>
-        </Grid>
+        </div>
+      </Grid>
     </Box>
   );
 };
