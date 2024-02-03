@@ -25,7 +25,7 @@ function Header({openDrawer, handleOpenDrawer}) {
   });
 
   const [open, setOpen] = useState(false);
-  const [openDrawer, setOpenDrawer] = useState(false);
+  // const [openDrawer, setOpenDrawer] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
 
   const handleOpenDialog = () => {

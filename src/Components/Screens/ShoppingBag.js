@@ -73,8 +73,6 @@ export const CartItem = ({ id, item, setRefreshCount, refreshCount }) => {
             <CardMedia
               component="img"
               alt={item.image_name}
-              height="81"
-              width="81"
               image={item.image_path}
             />
           </div>
