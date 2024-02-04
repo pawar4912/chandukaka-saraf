@@ -24,7 +24,7 @@ h4 {
 .cart-item {
   .product-image {
     // height: 81px;
-    width: 81px;
+    // width: 81px;
   }
 
   .card-actions {
@@ -36,7 +36,7 @@ h4 {
     }
     
     button:hover {
-      border: none;
+      border: none !important;
       background-color: transparent !important;
       color: #333333 !important;
     }

@@ -160,7 +160,7 @@ export const ShoppingBag = ({ open, handleDrawer }) => {
   };
 
   return (
-    <div className="shopping-bag p-4" style={{display: 'none'}}>
+    <div className="shopping-bag p-4" style={{display: 'none', zIndex: '200'}}>
       <StyledDrawer
         anchor="right"
         className="MuiDrawer.paper"
