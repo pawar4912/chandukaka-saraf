@@ -24,14 +24,14 @@ const StyledDrawer = styled(Drawer)(({ theme }) => ({
   width: "20vw !important", // Customizable width
   height: "100%", // Full-screen height
   "& .MuiDrawer-paper": {
-    width: "25vw !important", // Customizable width
+    width: "450px !important", // Customizable width
     height: "100%", // Full-screen height
     marginTop: '0'
   },
   "@media screen and (max-width: 425px)": {
     width: "90vw !important",
     "& .MuiDrawer-paper": {
-      width: "90vw !important",
+      width: "450px !important",
       marginTop: '0'
     },
   },
