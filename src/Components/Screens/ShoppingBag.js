@@ -31,7 +31,7 @@ const StyledDrawer = styled(Drawer)(({ theme }) => ({
   "@media screen and (max-width: 425px)": {
     width: "90vw !important",
     "& .MuiDrawer-paper": {
-      width: "450px !important",
+      width: "90vw !important",
       marginTop: '0'
     },
   },
