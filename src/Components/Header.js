@@ -15,7 +15,7 @@ import { ShoppingBag } from "./Screens/ShoppingBag";
 import { MenuItem, Select } from "@mui/material";
 import { NavigationDropdown } from "./Common/NavigationDropdown";
 
-function Header() {
+function Header({openDrawer, handleOpenDrawer}) {
   const $ = window.jQuery;
   const [rates, setRates] = useState({
     Platinum: 0,
@@ -25,7 +25,7 @@ function Header() {
   });
 
   const [open, setOpen] = useState(false);
-  const [openDrawer, setOpenDrawer] = useState(false);
+  // const [openDrawer, setOpenDrawer] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
 
   const handleOpenDialog = () => {
@@ -36,10 +36,10 @@ function Header() {
     setOpen(false);
   };
 
-  const handleOpenDrawer = () => {
-    console.log("in handle");
-    setOpenDrawer(!openDrawer);
-  };
+  // const handleOpenDrawer = () => {
+  //   console.log("in handle");
+  //   setOpenDrawer(!openDrawer);
+  // };
 
   const getData = async () => {
     try {
@@ -191,10 +191,10 @@ function Header() {
                                 className="image"
                               />
                             </Link>
-                            <ShoppingBag
+                            {/* <ShoppingBag
                               open={openDrawer}
                               handleDrawer={handleOpenDrawer}
-                            />
+                            /> */}
                           </div>
                         </div>
                         <h3 className="drawer-header">POPULAR SEARCHES</h3>

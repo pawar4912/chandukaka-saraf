@@ -253,15 +253,16 @@ export default function Bullions() {
                 </Grid>
             </Box>
             <Box sx={{ flexGrow: 1 }}>
-                <Grid spacing={1} className="product-grid-container">
-                    <Grid className="product-list-grid-section" xs={12} md={10}>
-                        {products.map(product => (
+                <Grid spacing={1} container className="product-grid-container">
+                    <Grid className="product-list-grid-section" item xs={12} md={10}>
+                        {products.map((product, index) =>
+                        (
                             <ProductCard
                                 productImage={product.image_path}
                                 productName={product.product_name}
                                 productPrice={product.sales_price}
                                 id={product.product_id}
-                                key={product.product_id}
+                                key={index}
                             />
                         ))}
                     </Grid>
