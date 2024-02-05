@@ -186,9 +186,9 @@ export const ShoppingBag = ({ open, handleDrawer }) => {
 
         <Divider style={{ backgroundColor: "#666666" }} />
         <div className="cart-items-wrapper">
-          {items.map((item) => {
+          {items.map((item, index) => {
             return (
-              <div key={item.id}>
+              <div key={index}>
                 <CartItem id={item.id} item={item} refreshCount={refreshCount} setRefreshCount={setRefreshCount} />
                 <Divider style={{ backgroundColor: "#666666" }} />
               </div>
