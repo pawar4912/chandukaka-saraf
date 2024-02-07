@@ -1,0 +1,11 @@
+.filter-section {
+    border: 1px solid red;
+}
+
+.mobile-filter-section {
+}
+@media screen and (max-width: 450px) {
+    .filter-section {
+        display: none;
+    }
+}
