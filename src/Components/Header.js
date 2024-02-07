@@ -15,7 +15,7 @@ import { ShoppingBag } from "./Screens/ShoppingBag";
 import { MenuItem, Select } from "@mui/material";
 import { NavigationDropdown } from "./Common/NavigationDropdown";
 
-function Header({openDrawer, handleOpenDrawer}) {
+function Header({ openDrawer, handleOpenDrawer }) {
   const $ = window.jQuery;
   const [rates, setRates] = useState({
     Platinum: 0,
@@ -243,7 +243,7 @@ function Header({openDrawer, handleOpenDrawer}) {
                           </li>
                           <li>
                             <Link
-                            id="jewellery-link"
+                              id="jewellery-link"
                               onClick={() => {
                                 setShowDropdown(true);
                               }}
@@ -266,6 +266,13 @@ function Header({openDrawer, handleOpenDrawer}) {
                         </div>
                       </ul>
                     </nav>
+                  </div>
+                  <div className="col-4 search-wrapper">
+                    <input
+                      type="text"
+                      className="search-input col-9 col-md-9"
+                      placeholder="Search for a product"
+                    />
                   </div>
                   <div className="col-12 col-sm-2 col-md-2 col-lg-2 p-0">
                     <div className="header-icon-list">
@@ -334,7 +341,7 @@ function Header({openDrawer, handleOpenDrawer}) {
         </header>
         {showDropdown && (
           <div
-          id="navigation-dropdown-wrapper"
+            id="navigation-dropdown-wrapper"
             className="dropdown-wrapper"
           >
             <NavigationDropdown />
