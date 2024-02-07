@@ -11,9 +11,8 @@ import { getLiveRateForCSPL } from "../services/FrontApp/index.service";
 import AuthModal from "./Screens/AuthModal";
 import { isLoggedIn } from "../services/auth.service";
 import LoginIcon from "@mui/icons-material/Login";
-import { ShoppingBag } from "./Screens/ShoppingBag";
-import { MenuItem, Select } from "@mui/material";
 import { NavigationDropdown } from "./Common/NavigationDropdown";
+import { SearchDropdown } from "./Common/SearchDropdown";
 
 function Header({ openDrawer, handleOpenDrawer }) {
   const $ = window.jQuery;
@@ -27,6 +26,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
   const [open, setOpen] = useState(false);
   // const [openDrawer, setOpenDrawer] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
+  const [searchDropdown, setSearchDropdown] = useState(false);
 
   const handleOpenDialog = () => {
     setOpen(true);
@@ -66,8 +66,11 @@ function Header({ openDrawer, handleOpenDrawer }) {
   });
 
   window.onclick = (event) => {
-    if (event.target.id != "navigation-dropdown-wrapper" && event.target.id != "jewellery-link") {
+    if (!$(event.target).closest('#navigation-dropdown-wrapper').length && event.target.id != "jewellery-link") {
       setShowDropdown(false);
+    }
+    if (!$(event.target).closest('#search-dropdown-wrapper').length && event.target.id != "search-logo") {
+      setSearchDropdown(false);
     }
   };
 
@@ -267,22 +270,16 @@ function Header({ openDrawer, handleOpenDrawer }) {
                       </ul>
                     </nav>
                   </div>
-                  <div className="col-4 search-wrapper">
-                    <input
-                      type="text"
-                      className="search-input col-9 col-md-9"
-                      placeholder="Search for a product"
-                    />
-                  </div>
                   <div className="col-12 col-sm-2 col-md-2 col-lg-2 p-0">
                     <div className="header-icon-list">
                       <ul className="w-100">
                         <li>
-                          <Link to="/">
+                          <Link onClick={() => setSearchDropdown(true)}>
                             <img
                               src={searchLogo}
                               alt="Logo"
                               className="image"
+                              id="search-logo"
                             />
                           </Link>
                         </li>
@@ -347,7 +344,14 @@ function Header({ openDrawer, handleOpenDrawer }) {
             <NavigationDropdown />
           </div>
         )}
-        {/* <ShoppingBag open={openDrawer} handleDrawer={handleOpenDrawer} /> */}
+        {searchDropdown && (
+          <div
+            id="search-dropdown-wrapper"
+            className="dropdown-wrapper"
+          >
+            <SearchDropdown setSearchDropdown={setSearchDropdown} />
+          </div>
+        )}
       </div>
     </>
   );

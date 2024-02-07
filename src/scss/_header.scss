@@ -153,6 +153,33 @@
                 position: relative;
                 display: flex;
 
+                .search-wrapper {
+                    align-self: center;
+                    height: 32px;
+                    display: flex;
+                }
+
+                .search-input {
+                    margin-left: 20px;
+                    box-sizing: border-box;
+                    border: none;
+                    border-bottom: 1px solid #707070;
+                    font-family: Lato;
+                    font-size: 14px;
+                    letter-spacing: 2.1px;
+                    height: 100%;
+                }
+
+                .search-input::placeholder {
+                    color: #666666 !important;
+                }
+
+                .search-input:focus {
+                    box-sizing: border-box;
+                    border: none;
+                    border-bottom: 1px solid #707070;
+                }
+
                 img {
                     width: 19.2px;
                     height: 23.19px;
