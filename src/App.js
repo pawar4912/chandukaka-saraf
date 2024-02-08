@@ -4,7 +4,8 @@ import './scss/style.scss';
 import HomeLayout from './HomeLayout';
 import DashboardLayout from './DashboardLayout';
 import OrderLayout from './OrderLayout';
-import { frontAppRoutes, dashboardRoutes, orderRoutes } from "./routes";
+import { frontAppRoutes, dashboardRoutes, orderRoutes, normalRouts } from "./routes";
+import NormalLayout from './NormalLayout';
 
 function App() {
   return (
@@ -13,7 +14,22 @@ function App() {
         <div className="main-body-container">
           <Suspense>
             <Routes>
-              
+            <Route
+                path='/success'
+                element={<NormalLayout />}
+              >
+                {normalRouts.map(
+                  (route, indx) => route.element && (
+                    <Route
+                      key={indx}
+                      path={route.path}
+                      element={route.element }
+                      exact={route.exact}
+                      strict={route.strict}
+                    />
+                  ),
+                )}
+              </Route>
               <Route
                 path='/dashboard'
                 element={<DashboardLayout />}

@@ -24,13 +24,9 @@ export const Delivery = () => {
       color: 'black',
     },
   };
-  const days = Array.from({ length: 31 }, (_, i) => { return { value: i + 1,label: i + 1 } });
-  days.push({value: '00', label: "Select Day"})
+
   const [selectedAddress, setSelectedAddress] = useState(0)
 
-  const currentYear = new Date().getFullYear();
-  const years = Array.from({ length: 100 }, (_, i) =>  { return { value: currentYear - i,label: currentYear - i } });
-  years.push({value: '0000', label: "Select Year"})
   const [open, setOpen] = useState(false);
   const [openEditAddress, setOpenEditAddress] = useState(false);
   const [selectedAddressIdToEdit, setSelectedAddressIdToEdit] = useState(0);
@@ -61,7 +57,7 @@ export const Delivery = () => {
   const getProfileData = async () => {
     if (isLoggedIn()) {
       const result = await myProfile();
-      setProfileData({...result.data.data[0]})
+      setProfileData({ ...result.data.data[0] })
     }
   }
 
@@ -69,8 +65,16 @@ export const Delivery = () => {
     setErrors([])
     try {
       const result = await placeOrder()
-      const order_id = result.data.data.order_id
-      navigate("/order/check-out/payment/" + order_id)
+      const order_id = result.data.order_id
+
+      const cashfree = Cashfree({
+        mode: process.env.REACT_APP_PAYMENT_GATEWAY_MODE
+      });
+      let checkoutOptions = {
+        paymentSessionId: result.data.payment_session_id,
+        returnUrl: process.env.REACT_APP_URL + "success/payment/" + order_id,
+      }
+      cashfree.checkout(checkoutOptions)
     } catch (error) {
       setErrors(error.response.data.message)
     }
@@ -88,7 +92,7 @@ export const Delivery = () => {
       const addressesResult = await getAllAddAddress();
       setDeliveryAddress(addressesResult.data.data)
       addressesResult.data.data.forEach((address, key) => {
-        if(address.is_default) {
+        if (address.is_default) {
           setSelectedAddress(key)
         }
       });
@@ -138,7 +142,7 @@ export const Delivery = () => {
                   name="radio-buttons-group"
                 >
                   {deliveryAddress.map((address, key) => (
-                    <div className="d-flex">
+                    <div className="d-flex" key={key}>
                       <FormControlLabel
                         value="same"
                         control={<Radio style={radioStyle} checked={key == selectedAddress} />}
@@ -150,7 +154,7 @@ export const Delivery = () => {
                     </div>
                   ))}
                 </RadioGroup>
-                
+
               </div>
             </div>
           </div>
@@ -174,7 +178,7 @@ export const Delivery = () => {
 
                 <FormControlLabel
                   value="same"
-                  control={<Radio style={radioStyle}/>}
+                  control={<Radio style={radioStyle} />}
                   label="Same as delivery address"
                 />
               </RadioGroup>
