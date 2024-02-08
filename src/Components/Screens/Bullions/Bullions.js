@@ -167,7 +167,7 @@ export default function Bullions() {
 
       <Paper
         className="mobile-filter-section"
-        sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
+        sx={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: '9999' }}
       >
         <BottomNavigation
           showLabels
@@ -176,9 +176,8 @@ export default function Bullions() {
             setBullionsFilterValue(newValue);
           }}
         >
-          <BottomNavigationAction label="Recents" />
-          <BottomNavigationAction label="Favorites" />
-          <BottomNavigationAction label="Nearby" />
+          <BottomNavigationAction label="Filter" />
+          <BottomNavigationAction label="Sort" />
         </BottomNavigation>
 
         <Button onClick={handleOpenBullionsFilter}>Open Bottom Sheet</Button>
