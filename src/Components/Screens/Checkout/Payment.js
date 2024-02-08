@@ -11,12 +11,78 @@ import EastIcon from "@mui/icons-material/East";
 
 export const Payment = () => {
   const navigate = useNavigate();
-  const radioStyle = {
-    color: 'black',
-    '&$checked': {
-      color: 'black',
-    },
-  };
+  const { order_id } = useParams();
+
+  const getCardData = async () => {
+    try {
+      const result = await getCartItems()
+      let totalPrice = 0;
+      for (let i = 0; i < result.data.data.length; i++) {
+        totalPrice += result.data.data[i].sales_price * result.data.data[i].quantity;
+      }
+      setTotal(totalPrice)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+      getCardData()
+  }, [])
+
+  const createOrder = async () => {
+    var request = {
+      "order_amount": "1",
+      "order_currency": "INR",
+      "customer_details": {
+        "customer_id": "node_sdk_test",
+        "customer_name": profileData.first_name + ' ' + profileData.last_name,
+        "customer_email": profileData.email,
+        "customer_phone": profileData.mobile
+      },
+    }
+  
+    Cashfree.PGCreateOrder(new Date(), request).then((response) => {
+      var a = response.data;
+      console.log(a)
+    })
+      .catch((error) => {
+        console.error('Error setting up order request:', error.response.data);
+      });
+  }
+
+  const [deliveryAddress, setDeliveryAddress] = useState('')
+
+  const [profileData, setProfileData] = useState({
+    first_name: '',
+    last_name: '',
+    email: '',
+    mobile: ''
+  })
+
+  const getData = async () => {
+    if (isLoggedIn()) {
+      const result = await myProfile();
+      setProfileData({...result.data.data[0]})
+    }
+    const addressesResult = await getAllAddAddress();
+    if (addressesResult.data.data.length > 0) {
+      const addresses = addressesResult.data.data.filter((data) => {
+        return data.is_default == 1;
+      });
+      if (addresses.length > 0) {
+        const address = addresses[0];
+        setDeliveryAddress(address.flat_no + ', ' + address.street_name + ', ' + address.city + ' - ' + address.pincode + ', ' + address.country)
+      } else {
+        const address = addressesResult.data.data[0];
+        setDeliveryAddress(address.flat_no + ', ' + address.street_name + ', ' + address.city + ' - ' + address.pincode + ', ' + address.country)
+      }
+    }
+  }
+
+  useEffect(() => {
+    getData()
+  }, [])
 
   return (
     <div className="payment-wrapper">

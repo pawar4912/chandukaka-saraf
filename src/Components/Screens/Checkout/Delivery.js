@@ -5,9 +5,11 @@ import {
   RadioGroup,
   Button,
 } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
+import { isLoggedIn } from "../../../services/auth.service";
 import EastIcon from "@mui/icons-material/East";
+import { myProfile } from "../../../services/profile";
 
 export const Delivery = () => {
   const navigate = useNavigate();
@@ -17,6 +19,87 @@ export const Delivery = () => {
       color: 'black',
     },
   };
+  const days = Array.from({ length: 31 }, (_, i) => { return { value: i + 1,label: i + 1 } });
+  days.push({value: '00', label: "Select Day"})
+  const [selectedAddress, setSelectedAddress] = useState(0)
+
+  const currentYear = new Date().getFullYear();
+  const years = Array.from({ length: 100 }, (_, i) =>  { return { value: currentYear - i,label: currentYear - i } });
+  years.push({value: '0000', label: "Select Year"})
+  const [open, setOpen] = useState(false);
+  const [openEditAddress, setOpenEditAddress] = useState(false);
+  const [selectedAddressIdToEdit, setSelectedAddressIdToEdit] = useState(0);
+
+  const handleOpenAddAddressDialog = () => {
+    setOpen(true);
+  };
+
+  const handleCloseDialog = () => {
+    setOpen(false);
+  };
+
+  const handleOpenEditAddressDialog = (id) => {
+    setSelectedAddressIdToEdit(id)
+    setOpenEditAddress(true)
+  }
+
+  const handleCloseEditAddressDialog = () => {
+    setOpenEditAddress(false)
+  };
+  const [profileData, setProfileData] = useState({
+    id: '',
+    first_name: '',
+    last_name: '',
+    email: '',
+    mobile: ''
+  })
+
+  const getProfileData = async () => {
+    if (isLoggedIn()) {
+      const result = await myProfile();
+      setProfileData({...result.data.data[0]})
+    }
+  }
+
+  const handleSubmit = async () => {
+    setErrors([])
+    try {
+      const result = await placeOrder();
+      const cashfree = Cashfree({
+        mode: process.env.REACT_APP_PAYMENT_GATEWAY_MODE
+      });
+      let checkoutOptions = {
+        paymentSessionId: result.data.payment_session_id,
+      }
+      cashfree.checkout(checkoutOptions)
+      const order_id = result.data.order_id
+      navigate("/order/check-out/payment/" + order_id)
+    } catch (error) {
+      console.log(error)
+      // setErrors(error.response.data.message)
+    }
+  }
+
+  useEffect(() => {
+    getProfileData()
+    getDataAddress()
+  }, [])
+
+  const [deliveryAddress, setDeliveryAddress] = useState([])
+
+  const getDataAddress = async () => {
+    try {
+      const addressesResult = await getAllAddAddress();
+      setDeliveryAddress(addressesResult.data.data)
+      addressesResult.data.data.forEach((address, key) => {
+        if(address.is_default) {
+          setSelectedAddress(key)
+        }
+      });
+    } catch (error) {
+      setDeliveryAddress([])
+    }
+  }
 
   return (
     <div>

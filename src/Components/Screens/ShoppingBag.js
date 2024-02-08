@@ -19,6 +19,7 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import EastIcon from "@mui/icons-material/East";
 import { getCartItems, addToCart, removeProductFromCat } from "../../services/FrontApp/index.service";
+import { useNavigate } from "react-router-dom";
 
 const StyledDrawer = styled(Drawer)(({ theme }) => ({
   width: "20vw !important", // Customizable width
@@ -135,6 +136,7 @@ export const ShoppingBag = ({ open, handleDrawer }) => {
   const [items, setItems] = useState([])
   const [subTotal, setSubTotal] = useState(0)
   const [total, setTotal] = useState(0)
+  let navigate = useNavigate(); 
 
   const getData = async () => {
     try {
@@ -235,6 +237,7 @@ export const ShoppingBag = ({ open, handleDrawer }) => {
             fullWidth
             variant="contained"
             type="submit"
+            onClick={() => navigate("/order/check-out/delivery")}
           >
             CONTINUE TO CHECKOUT &nbsp;
             <EastIcon />

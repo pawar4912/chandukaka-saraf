@@ -130,6 +130,7 @@ export const OrderLayoutShoppingBag = () => {
                 fullWidth
                 variant="contained"
                 type="submit"
+                onClick={() => navigate("/order/check-out/delivery")}
               >
                 CONTINUE TO CHECKOUT &nbsp;
                 <EastIcon />
