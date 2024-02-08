@@ -24,20 +24,22 @@ const StyledDrawer = styled(Drawer)(({ theme }) => ({
   width: "20vw !important", // Customizable width
   height: "100%", // Full-screen height
   "& .MuiDrawer-paper": {
-    width: "25vw !important", // Customizable width
+    width: "450px !important", // Customizable width
     height: "100%", // Full-screen height
+    marginTop: '0'
   },
   "@media screen and (max-width: 425px)": {
     width: "90vw !important",
     "& .MuiDrawer-paper": {
       width: "90vw !important",
+      marginTop: '0'
     },
   },
 }));
 
 export const CartItem = ({ id, item, setRefreshCount, refreshCount }) => {
   const quantity = item.quantity;
-  
+
   const handleRemove = async () => {
     await removeProductFromCat(id)
     setRefreshCount(refreshCount + 1)
@@ -71,8 +73,6 @@ export const CartItem = ({ id, item, setRefreshCount, refreshCount }) => {
             <CardMedia
               component="img"
               alt={item.image_name}
-              height="81"
-              width="81"
               image={item.image_path}
             />
           </div>
@@ -88,7 +88,7 @@ export const CartItem = ({ id, item, setRefreshCount, refreshCount }) => {
               fontWeight="bold"
               color="text.secondary"
             >
-              &#8377; {item.metal_type}
+              {item.metal_type}
             </Typography>
             <Typography variant="body2" color="text.secondary">
               Price: &#8377; {item.sales_price}
@@ -101,7 +101,6 @@ export const CartItem = ({ id, item, setRefreshCount, refreshCount }) => {
             <IconButton
               onClick={handleRemove}
               aria-label="remove"
-              sx={{ marginLeft: "auto", width: "50%" }}
             >
               <CloseIcon />
             </IconButton>
@@ -153,7 +152,7 @@ export const ShoppingBag = ({ open, handleDrawer }) => {
   }
 
   useEffect(() => {
-      getData()
+    getData()
   }, [refreshCount, open])
 
   const toggleDrawer = () => {
@@ -161,7 +160,7 @@ export const ShoppingBag = ({ open, handleDrawer }) => {
   };
 
   return (
-    <div className="shopping-bag p-4">
+    <div className="shopping-bag p-4" style={{display: 'none', zIndex: '200'}}>
       <StyledDrawer
         anchor="right"
         className="MuiDrawer.paper"
@@ -187,10 +186,10 @@ export const ShoppingBag = ({ open, handleDrawer }) => {
 
         <Divider style={{ backgroundColor: "#666666" }} />
         <div className="cart-items-wrapper">
-          {items.map((item) => {
+          {items.map((item, index) => {
             return (
-              <div key={item.id}>
-                <CartItem id={item.id} item={item} refreshCount={refreshCount} setRefreshCount={setRefreshCount}/>
+              <div key={index}>
+                <CartItem id={item.id} item={item} refreshCount={refreshCount} setRefreshCount={setRefreshCount} />
                 <Divider style={{ backgroundColor: "#666666" }} />
               </div>
             );

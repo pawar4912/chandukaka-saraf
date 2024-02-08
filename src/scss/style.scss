@@ -39,9 +39,15 @@
 //common component
 
 @import "./Components/common/sidebar";
+@import "./Components/common/navigationDropDown";
+@import "./Components/common/searchDropdown";
 @import "./Components/productcard";
 @import "./Components/testimonial";
 
 .main-container{
     background-color: #F8F6F0 ;
+}
+.outlet-container {
+    max-height: calc(100vh - 10px);
+    overflow: auto;
 }

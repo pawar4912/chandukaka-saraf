@@ -11,9 +11,10 @@ import { getLiveRateForCSPL } from "../services/FrontApp/index.service";
 import AuthModal from "./Screens/AuthModal";
 import { isLoggedIn } from "../services/auth.service";
 import LoginIcon from "@mui/icons-material/Login";
-import { ShoppingBag } from "./Screens/ShoppingBag";
+import { NavigationDropdown } from "./Common/NavigationDropdown";
+import { SearchDropdown } from "./Common/SearchDropdown";
 
-function Header() {
+function Header({ openDrawer, handleOpenDrawer }) {
   const $ = window.jQuery;
   const [rates, setRates] = useState({
     Platinum: 0,
@@ -23,7 +24,9 @@ function Header() {
   });
 
   const [open, setOpen] = useState(false);
-  const [openDrawer, setOpenDrawer] = useState(false);
+  // const [openDrawer, setOpenDrawer] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [searchDropdown, setSearchDropdown] = useState(false);
 
   const handleOpenDialog = () => {
     setOpen(true);
@@ -33,10 +36,10 @@ function Header() {
     setOpen(false);
   };
 
-  const handleOpenDrawer = () => {
-    console.log("in handle");
-    setOpenDrawer(!openDrawer);
-  };
+  // const handleOpenDrawer = () => {
+  //   console.log("in handle");
+  //   setOpenDrawer(!openDrawer);
+  // };
 
   const getData = async () => {
     try {
@@ -61,6 +64,16 @@ function Header() {
       $(".mobile-menu-overlay").css("width", "0");
     });
   });
+
+  window.onclick = (event) => {
+    if (!$(event.target).closest('#navigation-dropdown-wrapper').length && event.target.id != "jewellery-link") {
+      setShowDropdown(false);
+    }
+    if (!$(event.target).closest('#search-dropdown-wrapper').length && event.target.id != "search-logo") {
+      setSearchDropdown(false);
+    }
+  };
+
   return (
     <>
       <div>
@@ -181,10 +194,10 @@ function Header() {
                                 className="image"
                               />
                             </Link>
-                            <ShoppingBag
+                            {/* <ShoppingBag
                               open={openDrawer}
                               handleDrawer={handleOpenDrawer}
-                            />
+                            /> */}
                           </div>
                         </div>
                         <h3 className="drawer-header">POPULAR SEARCHES</h3>
@@ -232,7 +245,14 @@ function Header() {
                             <Link to="/">Home</Link>
                           </li>
                           <li>
-                            <Link to="/jewellerys">Jewellery</Link>
+                            <Link
+                              id="jewellery-link"
+                              onClick={() => {
+                                setShowDropdown(true);
+                              }}
+                            >
+                              Jewellerys
+                            </Link>
                           </li>
                           <li>
                             <Link to="/aboutus">About us</Link>
@@ -254,11 +274,12 @@ function Header() {
                     <div className="header-icon-list">
                       <ul className="w-100">
                         <li>
-                          <Link to="/">
+                          <Link onClick={() => setSearchDropdown(true)}>
                             <img
                               src={searchLogo}
                               alt="Logo"
                               className="image"
+                              id="search-logo"
                             />
                           </Link>
                         </li>
@@ -315,7 +336,22 @@ function Header() {
             </div>
           </div>
         </header>
-        <ShoppingBag open={openDrawer} handleDrawer={handleOpenDrawer} />
+        {showDropdown && (
+          <div
+            id="navigation-dropdown-wrapper"
+            className="dropdown-wrapper"
+          >
+            <NavigationDropdown />
+          </div>
+        )}
+        {searchDropdown && (
+          <div
+            id="search-dropdown-wrapper"
+            className="dropdown-wrapper"
+          >
+            <SearchDropdown setSearchDropdown={setSearchDropdown} />
+          </div>
+        )}
       </div>
     </>
   );

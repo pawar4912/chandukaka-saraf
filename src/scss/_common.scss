@@ -61,9 +61,9 @@ hr {
     opacity: 1;
     background-color: #FFFFFF;
 }
-.main-body-container{
-    margin-top: 120px;
-}
+// .main-body-container{
+//     margin-top: 120px;
+// }
 .section-header {
   font: normal normal 600 32px/43px Playfair Display;
   letter-spacing: 0.48px;
@@ -71,7 +71,6 @@ hr {
 }
 @media (max-width: 767px) {
     .main-body-container{
-        margin-top: 60px;
     }
     .section-header {
       font-size: 24px;
