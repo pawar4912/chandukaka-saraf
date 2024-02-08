@@ -10,6 +10,11 @@
 .myorder-container {
     width: 70%;
 
+    .orders-wrapper {
+        max-height: 60vh;
+        overflow: auto;
+    }
+
     .table-wrapper {
         min-width: 100%;
     }

@@ -29,3 +29,7 @@ export const updateAddress = async (id, data) => {
 export const getAddressById = async (id) => {
   return await httpService.get(`profile/address/${id}`)
 }
+
+export const myOrders = async () => {
+  return await httpService.get(`order/myOrders`)
+}
