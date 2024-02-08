@@ -10,6 +10,8 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import { isLoggedIn } from "../../../services/auth.service";
 import EastIcon from "@mui/icons-material/East";
 import { myProfile } from "../../../services/profile";
+import ErrorList from "../../Common/ErrorList";
+
 
 export const Delivery = () => {
   const navigate = useNavigate();
@@ -104,6 +106,7 @@ export const Delivery = () => {
   return (
     <div>
       <Box className="delivery-wrapper">
+        <ErrorList errors={errors} />
         <div className="delivery-estimate-section mb-5">
           <div className="pincode-section section-background p-3">
             <span>
@@ -124,7 +127,7 @@ export const Delivery = () => {
           <div className="personal-information section-background d-flex justify-content-between align-items-center p-3">
             <div className="">
               <div className="section-title">Name, email and mobile</div>
-              <b>Smita Jain, Smitajain@gmail.com, 9876543210</b>
+              <b>{profileData.first_name} {profileData.last_name}, {profileData.email}, {profileData.mobile}</b>
             </div>
             <div>
               <Link to="#">EDIT</Link>
@@ -140,21 +143,26 @@ export const Delivery = () => {
                   defaultValue="female"
                   name="radio-buttons-group"
                 >
-                  <FormControlLabel
-                    value="same"
-                    control={<Radio style={radioStyle} />}
-                    label="29 Park Street CHS, Gunawadi Road, Baramati, Dist - Pune"
-                  />
+                  {deliveryAddress.map((address, key) => (
+                    <div className="d-flex">
+                      <FormControlLabel
+                        value="same"
+                        control={<Radio style={radioStyle} checked={key == selectedAddress} />}
+                        label={address.flat_no + ', ' + address.street_name + ', ' + address.city + ' - ' + address.pincode + ', ' + address.country}
+                      />
+                      <div>
+                        <Link onClick={() => handleOpenEditAddressDialog(address.id)}>EDIT</Link>
+                      </div>
+                    </div>
+                  ))}
                 </RadioGroup>
-                <div>
-                  <Link to="#">EDIT</Link>
-                </div>
+                
               </div>
             </div>
           </div>
 
           <span>
-            + <Link>ADD NEW ADDRESS</Link>
+            + <Link onClick={handleOpenAddAddressDialog}>ADD NEW ADDRESS</Link>
           </span>
         </div>
 
@@ -169,6 +177,7 @@ export const Delivery = () => {
                 defaultValue="female"
                 name="radio-buttons-group"
               >
+
                 <FormControlLabel
                   value="same"
                   control={<Radio style={radioStyle}/>}
@@ -189,12 +198,21 @@ export const Delivery = () => {
           className="btn btn-block bg-black btn-submit"
           fullWidth
           variant="contained"
-          onClick={() => navigate("/order/check-out/payment")}
+          onClick={handleSubmit}
         >
           CONTINUE TO DELIVERY &nbsp;
           <EastIcon />
         </Button>
       </Box>
+      <AddressBookModal
+        open={open}
+        handleClose={handleCloseDialog}
+      />
+      <EditAddressBookModal
+        open={openEditAddress}
+        handleClose={handleCloseEditAddressDialog}
+        id={selectedAddressIdToEdit}
+      />
     </div>
   );
 };
