@@ -10,9 +10,7 @@ import {
   ListItemText,
   MenuItem,
   OutlinedInput,
-  Pagination,
   Select,
-  Stack,
 } from "@mui/material";
 import { BottomNavigation, BottomNavigationAction } from "@mui/material";
 import { styled } from "@mui/material/styles";
@@ -25,6 +23,7 @@ import ProductCard from "../../ProductCard";
 import { Paginator } from "../../Common/Paginator";
 import { getProducts } from "../../../services/FrontApp/index.service";
 import { BullionsFilter } from "./BullionsFilter";
+import { SortMenu } from "./SortMenu";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -65,7 +64,9 @@ const typeValues = [
 
 export default function Bullions() {
   const [bullionsFilterOpen, setBullionsFilterOpen] = useState(false);
-  const [bullionsFilterValue, setBullionsFilterValue] = React.useState(0);
+  const [bullionsFilterValue, setBullionsFilterValue] = useState(0);
+  const [openSortMenu, setOpenSortMenu] = useState(false);
+  const [openFilterMenu, setOpenFilterMenu] = useState(false);
 
   const handleOpenBullionsFilter = () => {
     setBullionsFilterOpen(true);
@@ -73,6 +74,18 @@ export default function Bullions() {
 
   const handleCloseBullionsFilter = () => {
     setBullionsFilterOpen(false);
+  };
+
+  const handleOpenFilterMenu = () => {
+    setOpenFilterMenu(true);
+    setOpenSortMenu(false);
+    handleOpenBullionsFilter();
+  };
+
+  const handleOpenSortMenu = () => {
+    setOpenSortMenu(true);
+    setOpenFilterMenu(false);
+    handleOpenBullionsFilter();
   };
 
   const navigationData = [
@@ -167,7 +180,7 @@ export default function Bullions() {
 
       <Paper
         className="mobile-filter-section"
-        sx={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: '9999' }}
+        sx={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: "9999" }}
       >
         <BottomNavigation
           showLabels
@@ -176,18 +189,19 @@ export default function Bullions() {
             setBullionsFilterValue(newValue);
           }}
         >
-          <BottomNavigationAction label="Filter" />
-          <BottomNavigationAction label="Sort" />
+          <BottomNavigationAction
+            label="Filter"
+            onClick={handleOpenFilterMenu}
+          />
+          <BottomNavigationAction label="Sort" onClick={handleOpenSortMenu} />
         </BottomNavigation>
 
-        <Button onClick={handleOpenBullionsFilter}>Open Bottom Sheet</Button>
         <BullionsFilter
           isOpen={bullionsFilterOpen}
           onClose={handleCloseBullionsFilter}
         >
-          {/* Your content for the bottom sheet goes here */}
-          <h2>Bottom Sheet Content</h2>
-          <p>This is your bottom sheet content.</p>
+         <SortMenu />
+         
         </BullionsFilter>
       </Paper>
 

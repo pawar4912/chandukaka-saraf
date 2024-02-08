@@ -1,11 +1,28 @@
 .filter-section {
-    border: 1px solid red;
+  border: 1px solid red;
 }
 
 .mobile-filter-section {
 }
+
+.bullions-filter {
+  justify-content: space-around;
+}
+
+.bullions-filter-header {
+  background-color: #f0eee5;
+  color: #333333;
+  font: normal normal bold 14px/17px Lato;
+  letter-spacing: 2.1px;
+
+  h2 {
+    margin: 0;
+    padding: 0;
+  }
+}
+
 @media screen and (max-width: 450px) {
-    .filter-section {
-        display: none;
-    }
+  .filter-section {
+    display: none;
+  }
 }
