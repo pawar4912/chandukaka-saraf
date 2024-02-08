@@ -21,3 +21,7 @@ export const getAllAddAddress = async () => {
 export const removeAddress = async (id) => {
   return await httpService.get(`profile/address/remove/${id}`)
 }
+
+export const myOrders = async () => {
+  return await httpService.get(`order/myOrders`)
+}

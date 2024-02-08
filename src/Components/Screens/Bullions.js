@@ -78,9 +78,14 @@ export default function Bullions() {
     const [products, setProducts] = useState([])
 
     const getData = async () => {
-        const { data } = await getProducts(filterData)
-        setProducts(data.data.data)
-        setTotalPages(data.data.last_page)
+        try {
+            const { data } = await getProducts(filterData)
+            setProducts(data.data.data)
+            setTotalPages(data.data.last_page)
+        } catch (error) {
+            setProducts([])
+            setTotalPages(0)
+        }
     }
 
     useEffect(() => {
@@ -253,20 +258,22 @@ export default function Bullions() {
                 </Grid>
             </Box>
             <Box sx={{ flexGrow: 1 }}>
-                <Grid spacing={1} container className="product-grid-container">
-                    <Grid className="product-list-grid-section" item xs={12} md={10}>
-                        {products.map((product, index) =>
-                        (
-                            <ProductCard
-                                productImage={product.image_path}
-                                productName={product.product_name}
-                                productPrice={product.sales_price}
-                                id={product.product_id}
-                                key={index}
-                            />
-                        ))}
+                {products.length > 0 ? (
+                    <Grid spacing={1} className="product-grid-container">
+                        <Grid className="product-list-grid-section" xs={12} md={10}>
+                            {products.map(product => (
+                                <ProductCard
+                                    productImage={product.image_path}
+                                    productName={product.product_name}
+                                    productPrice={product.sales_price}
+                                    id={product.product_id}
+                                    key={product.product_id}
+                                />
+                            ))}
+                        </Grid>
                     </Grid>
-                </Grid>
+                ) : ''}
+
             </Box>
             <Paginator currentPage={filterData.page} totalPage={totalPages} handleChangePage={handleChangePage} />
         </div>
