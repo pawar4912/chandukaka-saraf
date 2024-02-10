@@ -1,6 +1,5 @@
 import React from "react";
 import Drawer from "@mui/material/Drawer";
-import Button from "@mui/material/Button";
 
 export const BullionsFilter = ({ isOpen, onClose, children }) => {
   return (
@@ -16,7 +15,7 @@ export const BullionsFilter = ({ isOpen, onClose, children }) => {
         role="presentation"
         // onClick={onClose}
         // onKeyDown={onClose}
-        style={{ height: "50vh", padding: "16px" }}
+        style={{ height: "90vh", padding: ".4rem"}}
       >
         {children}
       </div>

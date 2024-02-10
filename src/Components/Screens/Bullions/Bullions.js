@@ -24,6 +24,7 @@ import { Paginator } from "../../Common/Paginator";
 import { getProducts } from "../../../services/FrontApp/index.service";
 import { BullionsFilter } from "./BullionsFilter";
 import { SortMenu } from "./SortMenu";
+import { FilterMenu } from "./FilterMenu";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -200,8 +201,7 @@ export default function Bullions() {
           isOpen={bullionsFilterOpen}
           onClose={handleCloseBullionsFilter}
         >
-         <SortMenu />
-         
+          {openSortMenu ? <SortMenu /> : <FilterMenu />}
         </BullionsFilter>
       </Paper>
 
