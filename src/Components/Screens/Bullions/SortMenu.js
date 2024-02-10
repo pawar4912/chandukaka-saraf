@@ -10,12 +10,12 @@ import {
 export const SortMenu = () => {
   return (
     <div className="sort-menu">
-      <div class="bullions-filter-sort-menu">
-        <div className="bullions-filter-header d-flex justify-content-between align-items-center">
+      <div className="bullions-filter-sort-menu">
+        <div className="bullions-filter-header p-3 d-flex justify-content-between align-items-center">
           <h2>SORT BY</h2>
           <CloseIcon />
         </div>
-        <div className="sort-by-radio-group">
+        <div className="sort-by-radio-group p-3">
           <FormControl>
             <FormLabel id="sort-by-radio-buttons-group-label"></FormLabel>
             <RadioGroup

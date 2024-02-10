@@ -15,7 +15,6 @@ export const BullionsFilter = ({ isOpen, onClose, children }) => {
         role="presentation"
         // onClick={onClose}
         // onKeyDown={onClose}
-        style={{ height: "90vh", padding: ".4rem"}}
       >
         {children}
       </div>
