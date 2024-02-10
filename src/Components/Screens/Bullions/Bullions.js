@@ -181,7 +181,7 @@ export default function Bullions() {
 
       <Paper
         className="mobile-filter-section"
-        sx={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: "9999" }}
+        sx={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: "9999", display: "none" }}
       >
         <BottomNavigation
           showLabels

@@ -1,8 +1,4 @@
 .filter-section {
-  border: 1px solid red;
-}
-
-.mobile-filter-section {
 }
 
 .bullions-filter {
@@ -24,5 +20,9 @@
 @media screen and (max-width: 450px) {
   .filter-section {
     display: none;
+  }
+
+  .mobile-filter-section {
+    display: block;
   }
 }
