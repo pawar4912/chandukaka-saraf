@@ -181,7 +181,13 @@ export default function Bullions() {
 
       <Paper
         className="mobile-filter-section"
-        sx={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: "9999", display: "none" }}
+        sx={{
+          position: "fixed",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          zIndex: "9999",
+        }}
       >
         <BottomNavigation
           showLabels
@@ -193,6 +199,7 @@ export default function Bullions() {
           <BottomNavigationAction
             label="Filter"
             onClick={handleOpenFilterMenu}
+            style={{borderRight: "2px solid"}}
           />
           <BottomNavigationAction label="Sort" onClick={handleOpenSortMenu} />
         </BottomNavigation>
@@ -200,6 +207,7 @@ export default function Bullions() {
         <BullionsFilter
           isOpen={bullionsFilterOpen}
           onClose={handleCloseBullionsFilter}
+          style={{borderLeft: "2px solid"}}
         >
           {openSortMenu ? <SortMenu /> : <FilterMenu />}
         </BullionsFilter>
