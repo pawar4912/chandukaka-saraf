@@ -45,24 +45,54 @@ export default class BaseHttpService {
   }
 
   _handleHttpError(error) {
-    console.log(error)
-    // const { statusCode } = error.response.data;
+    const statusCode = error.response.status;
 
-    // if (statusCode !== 401) {
-    //   throw error;
-    // } else {
-    //   return this._handle401(error);
-    // }
+    if (statusCode == 400) {
+      return this._handle400(error);
+    } else if (statusCode == 401) {
+      return this._handle401(error);
+    } else {
+      throw error;
+    }
   }
 
   _handle401(error) {
-    window.location = "/home";
+    window.location = "/";
+  }
+
+  async createGuestId() {
+    const guestSessionId = localStorage.getItem("Guest-Session-ID")
+    if (!guestSessionId) {
+      const data = {
+        secret_key: process.env.REACT_APP_LOGIN_SECRET_KEY
+      }
+      const result = await this.post('indexAction', data)
+      this.addHeader("Guest-Session-ID", result.data.guest_id)
+      localStorage.setItem("Guest-Session-ID", result.data.guest_id)
+    }
+  }
+
+  async previousRequestRecall(request) {
+    const instance = axios.create({
+      baseURL: this.BASE_URL,
+      options: this._getCommonOptions(),
+    });
+    Object.assign(request.headers, this.getHeaders());
+    return instance(request);
+  }
+
+  async _handle400(error) {
+    createGuestId()
+    return this.previousRequestRecall(error.config)
   }
 
   _getCommonOptions() {
     const token = this.loadToken();
+    const guestSessionId = localStorage.getItem("Guest-Session-ID")
     if (token) {
       this.addHeader("Authorization", `Bearer ${token}`);
+    } else if (guestSessionId) {
+      this.addHeader("Guest-Session-ID", guestSessionId)
     }
 
     return {

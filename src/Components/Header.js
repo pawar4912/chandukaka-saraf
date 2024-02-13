@@ -7,7 +7,7 @@ import searchLogo from "../images/icons/search.svg";
 import shoppingBagLogo from "../images/icons/shopping-bag.svg";
 import menuOpen from "../images/icons/open-menu.svg";
 import closeMenu from "../images/icons/close.svg";
-import { getLiveRateForCSPL } from "../services/FrontApp/index.service";
+import { getLiveRateForCSP } from "../services/FrontApp/index.service";
 import AuthModal from "./Screens/AuthModal";
 import { isLoggedIn } from "../services/auth.service";
 import LoginIcon from "@mui/icons-material/Login";
@@ -43,7 +43,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
 
   const getData = async () => {
     try {
-      const result = await getLiveRateForCSPL();
+      const result = await getLiveRateForCSP();
       const { Platinum, Silver1, Silver2, ...gold } = result.data.data;
       setRates({ Platinum, Silver1, Silver2, gold });
     } catch (error) {
