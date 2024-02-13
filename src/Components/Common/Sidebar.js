@@ -10,7 +10,7 @@ import { SwipeableDrawer } from "@mui/material";
 import { Link } from "react-router-dom";
 import { myProfile } from "../../services/profile";
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
-
+import { logout } from "../../services/auth.service";
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -102,7 +102,7 @@ export default function Sidebar() {
               </li>
             </div>
             <li className="w-100 sign-out">
-              <a href="#" className="menu-link">
+              <a onClick={logout} className="menu-link">
                 <img
                   src={logoutIcon}
                   alt="Logo"
@@ -178,7 +178,7 @@ export default function Sidebar() {
                 </li>
               </div>
               <li className="w-100 sign-out">
-                <a href="#" className="menu-link">
+                <a onClick={logout} className="menu-link">
                   <img
                     src={logoutIcon}
                     alt="Logo"

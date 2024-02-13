@@ -30,6 +30,9 @@ export const getStores = async () => {
   return await httpService.get(`stores`)
 }
 
+export const searchStores = async (data) => {
+  return await httpService.post(`stores/search`, data)
+}
 
 export const getProducts = async (data) => {
   return await httpService.post(`products`, data)
