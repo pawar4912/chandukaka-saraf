@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Box, Button, Checkbox, Chip, Divider, Grid, ListItemText, MenuItem, OutlinedInput, Pagination, Select, Stack } from '@mui/material';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import Menu from '@mui/material/Menu';
 import logo from "../images/icons/logo.svg";
 import heartLogo from "../images/icons/heart.svg";
 import userLogo from "../images/icons/user.svg";
@@ -12,10 +15,12 @@ import AuthModal from "./Screens/AuthModal";
 import { isLoggedIn } from "../services/auth.service";
 import LoginIcon from "@mui/icons-material/Login";
 import { ShoppingBag } from "./Screens/ShoppingBag";
-import { MenuItem, Select } from "@mui/material";
+// import { MenuItem, Select } from "@mui/material";
 import { NavigationDropdown } from "./Common/NavigationDropdown";
+import InputLabel from '@mui/material/InputLabel';
+import FormControl from '@mui/material/FormControl';
 
-function Header({openDrawer, handleOpenDrawer}) {
+function Header({ openDrawer, handleOpenDrawer }) {
   const $ = window.jQuery;
   const [rates, setRates] = useState({
     Platinum: 0,
@@ -27,6 +32,27 @@ function Header({openDrawer, handleOpenDrawer}) {
   const [open, setOpen] = useState(false);
   // const [openDrawer, setOpenDrawer] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
+
+
+  const [goldd, setGoldd] = React.useState(null);
+  const openGold = Boolean(goldd);
+  const handleClickGold = (event) => {
+    setGoldd(event.currentTarget);
+  };
+  const handleCloseGold = () => {
+    setGoldd(null);
+  };
+
+
+  const [silverr, setSilverr] = React.useState(null);
+  const openSilver = Boolean(silverr);
+  const handleClickSilver = (event) => {
+    setSilverr(event.currentTarget);
+  };
+  const handleCloseSilver = () => {
+    setSilverr(null);
+  };
+
 
   const handleOpenDialog = () => {
     setOpen(true);
@@ -131,15 +157,96 @@ function Header({openDrawer, handleOpenDrawer}) {
                             <ul className="w-100">
                               <div className="quick-link-items">
                                 <li>
-                                  <small>
-                                    GOLD - ₹
-                                    {rates.gold["24.00"]
-                                      ? rates.gold["24.00"]
-                                      : 0}
-                                  </small>
+                                  <div>
+                                    <Button
+                                      id="basic-button"
+                                      aria-controls={openGold ? 'basic-menu' : undefined}
+                                      aria-haspopup="true"
+                                      aria-expanded={openGold ? 'true' : undefined}
+                                      onClick={handleClickGold}
+                                      disableRipple
+                                      disableElevation="false"
+                                      endIcon={<ArrowDropDownIcon style={{ color: '#000' }} />}
+                                      sx={{
+                                        "&:hover": {
+                                          backgroundColor: "transparent !important", color: '#000 !important',
+                                          border: 'none !important'
+                                        }
+                                      }}
+                                    >
+                                      <small className="gold_silver_txt">
+                                        GOLD - ₹
+                                        {rates.gold["24.00"]
+                                          ? rates.gold["24.00"]
+                                          : 0}
+                                      </small>
+                                    </Button>
+                                    <Menu
+                                      id="basic-menu"
+                                      anchorEl={goldd}
+                                      open={openGold}
+                                      onClose={handleCloseGold}
+                                      MenuListProps={{
+                                        'aria-labelledby': 'basic-button',
+                                      }}
+                                    >
+                                      <MenuItem onClick={handleCloseGold}
+                                      sx={{fontSize:'0.875em'}}
+                                      >24KT - ₹5,859</MenuItem>
+                                      <MenuItem onClick={handleCloseGold}
+                                      sx={{fontSize:'0.875em'}}>22KT - ₹5,859</MenuItem>
+                                      <MenuItem onClick={handleCloseGold}
+                                      sx={{fontSize:'0.875em'}}>18KT - ₹5,859</MenuItem>
+                                      <MenuItem onClick={handleCloseGold}
+                                      sx={{fontSize:'0.875em'}}>14KT - ₹5,859</MenuItem>
+
+                                    </Menu>
+                                  </div>
                                 </li>
                                 <li>
-                                  <small>SILVER - ₹{rates.Silver1}</small>
+                                  {/* <small>SILVER - ₹{rates.Silver1}</small> */}
+                                   <div>
+                                    <Button
+                                      id="basic-button"
+                                      aria-controls={openSilver ? 'basic-menu' : undefined}
+                                      aria-haspopup="true"
+                                      aria-expanded={openSilver ? 'true' : undefined}
+                                      onClick={handleClickSilver}
+                                      disableRipple
+                                      disableElevation="false"
+                                      endIcon={<ArrowDropDownIcon style={{ color: '#000' }} />}
+                                      sx={{
+                                        "&:hover": {
+                                          backgroundColor: "transparent !important", color: '#000 !important',
+                                          border: 'none !important'
+                                        }
+                                      }}
+                                    >
+                                      <small className="gold_silver_txt">
+                                        SILVER - ₹
+                                        {rates.Silver1}
+                                      </small>
+                                    </Button>
+                                    <Menu
+                                      id="basic-menu"
+                                      anchorEl={silverr}
+                                      open={openSilver}
+                                      onClose={handleCloseSilver}
+                                      MenuListProps={{
+                                        'aria-labelledby': 'basic-button',
+                                      }}
+                                    >
+                                      <MenuItem onClick={handleCloseSilver}
+                                      sx={{fontSize:'0.875em'}}>24KT - ₹5,859</MenuItem>
+                                      <MenuItem onClick={handleCloseSilver}
+                                      sx={{fontSize:'0.875em'}}>22KT - ₹5,859</MenuItem>
+                                      <MenuItem onClick={handleCloseSilver}
+                                      sx={{fontSize:'0.875em'}}>18KT - ₹5,859</MenuItem>
+                                      <MenuItem onClick={handleCloseSilver}
+                                      sx={{fontSize:'0.875em'}}>14KT - ₹5,859</MenuItem>
+
+                                    </Menu>
+                                  </div>
                                 </li>
                                 <li>
                                   <Link to="/find-a-store">FIND A STORE</Link>
@@ -243,7 +350,7 @@ function Header({openDrawer, handleOpenDrawer}) {
                           </li>
                           <li>
                             <Link
-                            id="jewellery-link"
+                              id="jewellery-link"
                               onClick={() => {
                                 setShowDropdown(true);
                               }}
@@ -334,7 +441,7 @@ function Header({openDrawer, handleOpenDrawer}) {
         </header>
         {showDropdown && (
           <div
-          id="navigation-dropdown-wrapper"
+            id="navigation-dropdown-wrapper"
             className="dropdown-wrapper"
           >
             <NavigationDropdown />

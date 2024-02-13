@@ -47,6 +47,16 @@
             .quick-link-items {
                 display: flex;
                 justify-content: flex-end;
+                align-items: center;
+                text-align: center;
+
+
+               .gold_silver_txt {
+                color:#000;
+                font-size: 0.875em !important;
+               }
+
+              
             }
 
             li {
@@ -57,14 +67,16 @@
                 letter-spacing: 1px;
                 color: #525252;
                 text-transform: uppercase;
-
+               
                 a {
                     opacity: 1;
                     text-decoration: none;
                     color: #525252;
                 }
-            }
 
+            
+            }
+           
         }
     }
 
