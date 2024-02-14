@@ -18,7 +18,8 @@ import CloseIcon from "@mui/icons-material/Close";
 import rightArrowIcon from "../../images/icons/right-arrow-white.svg";
 import ErrorList from "../Common/ErrorList";
 import { addReview } from "../../services/FrontApp/index.service";
-import { getLoginUserInfo } from "../../services/auth.service";
+import { getLoginUserInfo, isLoggedIn } from "../../services/auth.service";
+import { myProfile } from "../../services/profile";
 const Boxstyle = {
   position: "absolute",
   top: "50%",
@@ -39,13 +40,19 @@ export const WriteReviewModal = ({ open, handleClose, productId }) => {
   const [rating, setRating] = useState(0);
   const [userInfo, setUserInfo] = useState({});
 
-  const getUserInformation = async() => {
-    let result = await getLoginUserInfo();
-    setUserInfo(result);
-  }
+  const getUserInformation = async () => {
+    let result = await myProfile();
+    setUserInfo(result.data.data[0]);
+  };
 
   useEffect(() => {
-    getUserInformation();
+    if (isLoggedIn()) {
+      getUserInformation();
+      SetData({
+        email: userInfo.email,
+        name: userInfo.first_name + " " + userInfo.last_name,
+      });
+    }
   }, []);
 
   const handleCloseButton = () => {
@@ -73,9 +80,10 @@ export const WriteReviewModal = ({ open, handleClose, productId }) => {
         product_master_id: productId,
         rating: rating,
         description: data.review,
+        email: data.email,
+        name: data.name,
       };
       console.log(payload);
-      console.log("user info", userInfo, userInfo.email, userInfo.fullName)
 
       // await addReview(payload);
       setShowReviewScreen(false);
@@ -137,7 +145,7 @@ export const WriteReviewModal = ({ open, handleClose, productId }) => {
                         sx={{ color: "#fff" }}
                         required
                         fullWidth
-                        value={data.first_name}
+                        value={data.name}
                         onChange={handleChange}
                       />
                     </Grid>
@@ -151,7 +159,7 @@ export const WriteReviewModal = ({ open, handleClose, productId }) => {
                         sx={{ color: "#fff" }}
                         required
                         fullWidth
-                        value={data.first_name}
+                        value={data.email}
                         onChange={handleChange}
                       />
                     </Grid>
