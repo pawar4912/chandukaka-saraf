@@ -6,13 +6,8 @@ import {
   Button,
   Typography,
   TextField,
-  MenuItem,
-  FormGroup,
-  FormControlLabel,
-  Checkbox,
   IconButton,
   DialogActions,
-  Container,
   Grid,
   Tooltip,
 } from "@mui/material";
@@ -24,7 +19,6 @@ import rightArrowIcon from "../../images/icons/right-arrow-white.svg";
 import ErrorList from "../Common/ErrorList";
 import { addReview } from "../../services/FrontApp/index.service";
 import { getLoginUserInfo } from "../../services/auth.service";
-import { useNavigate } from "react-router-dom";
 const Boxstyle = {
   position: "absolute",
   top: "50%",
@@ -44,7 +38,6 @@ export const WriteReviewModal = ({ open, handleClose, productId }) => {
   const [data, SetData] = useState({});
   const [rating, setRating] = useState(0);
   const [userInfo, setUserInfo] = useState({});
-  const navigate = useNavigate();
 
   const getUserInformation = async() => {
     let result = await getLoginUserInfo();
@@ -71,11 +64,9 @@ export const WriteReviewModal = ({ open, handleClose, productId }) => {
 
   const handleRatingChange = (newRating) => {
     setRating(newRating);
-    // onChange(newRating);
   };
 
   const handleSubmit = async () => {
-    // Todo: Add phone number submit logic
     setErrors([]);
     try {
       const payload = {
