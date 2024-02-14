@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Box, Button, Checkbox, Chip, Divider, Grid, ListItemText, MenuItem, OutlinedInput, Pagination, Select, Stack } from '@mui/material';
+import {Button,MenuItem} from '@mui/material';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import Menu from '@mui/material/Menu';
 import logo from "../images/icons/logo.svg";
@@ -14,11 +14,7 @@ import { getLiveRateForCSPL } from "../services/FrontApp/index.service";
 import AuthModal from "./Screens/AuthModal";
 import { isLoggedIn } from "../services/auth.service";
 import LoginIcon from "@mui/icons-material/Login";
-import { ShoppingBag } from "./Screens/ShoppingBag";
-// import { MenuItem, Select } from "@mui/material";
 import { NavigationDropdown } from "./Common/NavigationDropdown";
-import InputLabel from '@mui/material/InputLabel';
-import FormControl from '@mui/material/FormControl';
 
 function Header({ openDrawer, handleOpenDrawer }) {
   const $ = window.jQuery;
@@ -189,22 +185,27 @@ function Header({ openDrawer, handleOpenDrawer }) {
                                       MenuListProps={{
                                         'aria-labelledby': 'basic-button',
                                       }}
+                                       sx={{
+                                        "&:hover": {
+                                          backgroundColor: "transparent !important", color: '#000 !important',
+                                          border: 'none !important'
+                                        }
+                                      }}
                                     >
-                                      <MenuItem onClick={handleCloseGold}
+                                      <MenuItem
                                       sx={{fontSize:'0.875em'}}
                                       >24KT - ₹5,859</MenuItem>
-                                      <MenuItem onClick={handleCloseGold}
+                                      <MenuItem 
                                       sx={{fontSize:'0.875em'}}>22KT - ₹5,859</MenuItem>
-                                      <MenuItem onClick={handleCloseGold}
+                                      <MenuItem
                                       sx={{fontSize:'0.875em'}}>18KT - ₹5,859</MenuItem>
-                                      <MenuItem onClick={handleCloseGold}
+                                      <MenuItem 
                                       sx={{fontSize:'0.875em'}}>14KT - ₹5,859</MenuItem>
 
                                     </Menu>
                                   </div>
                                 </li>
                                 <li>
-                                  {/* <small>SILVER - ₹{rates.Silver1}</small> */}
                                    <div>
                                     <Button
                                       id="basic-button"
@@ -235,14 +236,20 @@ function Header({ openDrawer, handleOpenDrawer }) {
                                       MenuListProps={{
                                         'aria-labelledby': 'basic-button',
                                       }}
+                                      PaperProps={{
+                                        style:{
+                                          top:"0px !important",
+                                          borderRadius:'0px',
+                                        }
+                                      }}
                                     >
-                                      <MenuItem onClick={handleCloseSilver}
+                                      <MenuItem 
                                       sx={{fontSize:'0.875em'}}>24KT - ₹5,859</MenuItem>
-                                      <MenuItem onClick={handleCloseSilver}
+                                      <MenuItem 
                                       sx={{fontSize:'0.875em'}}>22KT - ₹5,859</MenuItem>
-                                      <MenuItem onClick={handleCloseSilver}
+                                      <MenuItem 
                                       sx={{fontSize:'0.875em'}}>18KT - ₹5,859</MenuItem>
-                                      <MenuItem onClick={handleCloseSilver}
+                                      <MenuItem 
                                       sx={{fontSize:'0.875em'}}>14KT - ₹5,859</MenuItem>
 
                                     </Menu>
