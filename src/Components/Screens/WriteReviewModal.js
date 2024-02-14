@@ -20,6 +20,7 @@ import ErrorList from "../Common/ErrorList";
 import { addReview } from "../../services/FrontApp/index.service";
 import { getLoginUserInfo, isLoggedIn } from "../../services/auth.service";
 import { myProfile } from "../../services/profile";
+import { Form } from "react-router-dom";
 const Boxstyle = {
   position: "absolute",
   top: "50%",
@@ -167,61 +168,63 @@ export const WriteReviewModal = ({ open, handleClose, productId }) => {
                 </Box>
 
                 <div>
-                  <div className="mt-2">
-                    <span>Ratings</span> <br />
-                    {[1, 2, 3, 4, 5].map((starValue) => (
-                      <Tooltip title={`${starValue} Star`} key={starValue}>
-                        <IconButton
-                          color={starValue <= rating ? "primary" : "default"}
-                          onClick={() => handleRatingChange(starValue)}
-                        >
-                          {starValue <= rating ? (
-                            <StarIcon />
-                          ) : (
-                            <StarBorderIcon />
-                          )}
-                        </IconButton>
-                      </Tooltip>
-                    ))}
-                  </div>
+                  <form onSubmit={handleSubmit}>
+                    <div className="mt-2">
+                      <span>Ratings</span> <br />
+                      {[1, 2, 3, 4, 5].map((starValue) => (
+                        <Tooltip title={`${starValue} Star`} key={starValue}>
+                          <IconButton
+                            color={starValue <= rating ? "primary" : "default"}
+                            onClick={() => handleRatingChange(starValue)}
+                          >
+                            {starValue <= rating ? (
+                              <StarIcon />
+                            ) : (
+                              <StarBorderIcon />
+                            )}
+                          </IconButton>
+                        </Tooltip>
+                      ))}
+                    </div>
 
-                  <Box>
-                    <Grid container>
-                      <Grid item xs={12} md={12}>
-                        <TextField
-                          id="outlined-basic"
-                          label="Write a review"
-                          name="review"
-                          multiline
-                          rows={4}
-                          variant="outlined"
-                          sx={{ color: "#fff" }}
-                          required
-                          fullWidth
-                          value={data.first_name}
-                          onChange={handleChange}
-                        />
+                    <Box>
+                      <Grid container>
+                        <Grid item xs={12} md={12}>
+                          <TextField
+                            id="outlined-basic"
+                            label="Write a review"
+                            name="review"
+                            multiline
+                            rows={4}
+                            variant="outlined"
+                            sx={{ color: "#fff" }}
+                            required
+                            fullWidth
+                            value={data.first_name}
+                            onChange={handleChange}
+                          />
+                        </Grid>
                       </Grid>
-                    </Grid>
-                  </Box>
+                    </Box>
 
-                  <div>
-                    <Button
-                      className="mt-4"
-                      style={{ background: "black" }}
-                      variant="contained"
-                      fullWidth={true}
-                      type="submit"
-                      onClick={handleSubmit}
-                    >
-                      SAVE &amp; CONTINUE{" "}
-                      <img
-                        className="ms-2"
-                        src={rightArrowIcon}
-                        alt="rightArrowIcon"
-                      />
-                    </Button>
-                  </div>
+                    <div>
+                      <Button
+                        className="mt-4"
+                        style={{ background: "black" }}
+                        variant="contained"
+                        fullWidth={true}
+                        type="submit"
+                        onClick={handleSubmit}
+                      >
+                        SAVE &amp; CONTINUE{" "}
+                        <img
+                          className="ms-2"
+                          src={rightArrowIcon}
+                          alt="rightArrowIcon"
+                        />
+                      </Button>
+                    </div>
+                  </form>
                 </div>
               </div>
             )}
