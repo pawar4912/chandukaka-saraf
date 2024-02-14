@@ -185,10 +185,10 @@ function Header({ openDrawer, handleOpenDrawer }) {
                                       MenuListProps={{
                                         'aria-labelledby': 'basic-button',
                                       }}
-                                       sx={{
-                                        "&:hover": {
-                                          backgroundColor: "transparent !important", color: '#000 !important',
-                                          border: 'none !important'
+                                       PaperProps={{
+                                        style:{
+                                          top:"0px !important",
+                                          borderRadius:'0px',
                                         }
                                       }}
                                     >
