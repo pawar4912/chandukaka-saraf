@@ -42,17 +42,19 @@ export const WriteReviewModal = ({ open, handleClose, productId }) => {
   const [userInfo, setUserInfo] = useState({});
 
   const getUserInformation = async () => {
-    let result = await myProfile();
-    setUserInfo(result.data.data[0]);
+    await myProfile().then((result) => {
+      let userData = result.data.data[0];
+      setUserInfo(userData);
+      SetData({
+        email: userData.email,
+        name: (userData?.first_name + " " + userData?.last_name).trim(),
+      });
+    });
   };
 
   useEffect(() => {
     if (isLoggedIn()) {
       getUserInformation();
-      SetData({
-        email: userInfo.email,
-        name: userInfo.first_name + " " + userInfo.last_name,
-      });
     }
   }, []);
 
@@ -200,7 +202,7 @@ export const WriteReviewModal = ({ open, handleClose, productId }) => {
                             sx={{ color: "#fff" }}
                             required
                             fullWidth
-                            value={data.first_name}
+                            value={data.review}
                             onChange={handleChange}
                           />
                         </Grid>
