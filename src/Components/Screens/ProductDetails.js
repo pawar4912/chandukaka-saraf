@@ -11,7 +11,7 @@ import sectionHeaderIcons from '../../images/icons/Group40.svg';
 import ProductReviewCard from "../Common/ProductReviewCard";
 import ProductCard from "../ProductCard";
 import { getProducts, getProductDetails } from "../../services/FrontApp/index.service";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { WriteReviewModal } from "./WriteReviewModal";
 
 export default function ProductDetails() {
@@ -112,7 +112,7 @@ export default function ProductDetails() {
                     <div className="review-section">
                         <ReviewStars review={3} />
                         <div className="review-count">7 reviews</div>
-                        <button className="review-btn" onClick={handleOpenReviewModal}>write a review</button>
+                        <Link className="review-btn" onClick={handleOpenReviewModal}>write a review</Link>
                         <WriteReviewModal
                         open={openReviewModal}
                         handleClose={handleCloseReviewModal}
@@ -200,9 +200,9 @@ export default function ProductDetails() {
                         <div className="avg-review">4.2</div>
                         <ReviewStars review={3} height={26} width={26} />
                     </div>
-                    <button type="button" className="write-a-btn" onClick={handleOpenReviewModal}>
+                    <Link type="button" className="write-a-btn" onClick={handleOpenReviewModal}>
                         WRITE A REVIEW<EastIcon className="icon" />
-                    </button>
+                    </Link>
                     <WriteReviewModal
                         open={openReviewModal}
                         handleClose={handleCloseReviewModal}
