@@ -39,17 +39,18 @@ export const WriteReviewModal = ({ open, handleClose, productId }) => {
   const [errors, setErrors] = useState([]);
   const [data, SetData] = useState({});
   const [rating, setRating] = useState(0);
-  const [userInfo, setUserInfo] = useState({});
 
   const getUserInformation = async () => {
-    await myProfile().then((result) => {
+    try {
+      let result = await myProfile();
       let userData = result.data.data[0];
-      setUserInfo(userData);
       SetData({
         email: userData.email,
         name: (userData?.first_name + " " + userData?.last_name).trim(),
       });
-    });
+    } catch (error) {
+      setErrors(error.response.data.message);
+    }
   };
 
   useEffect(() => {
@@ -88,7 +89,7 @@ export const WriteReviewModal = ({ open, handleClose, productId }) => {
       };
       console.log(payload);
 
-      // await addReview(payload);
+      let result = await addReview(payload);
       setShowReviewScreen(false);
       setShowThankYou(true);
       setTimeout(() => {
@@ -145,6 +146,8 @@ export const WriteReviewModal = ({ open, handleClose, productId }) => {
                         label="Name"
                         name="name"
                         variant="outlined"
+                        error={!data.name}
+                        helperText={!data.name ? "Write your name." : ""}
                         sx={{ color: "#fff" }}
                         required
                         fullWidth
@@ -159,6 +162,8 @@ export const WriteReviewModal = ({ open, handleClose, productId }) => {
                         label="Email"
                         name="email"
                         variant="outlined"
+                        error={!data.email}
+                        helperText={!data.email ? "Write your email." : ""}
                         sx={{ color: "#fff" }}
                         required
                         fullWidth
@@ -196,6 +201,8 @@ export const WriteReviewModal = ({ open, handleClose, productId }) => {
                             id="outlined-basic"
                             label="Write a review"
                             name="review"
+                            error={!data.review}
+                            helperText={!data.review ? "Write a review." : ""}
                             multiline
                             rows={4}
                             variant="outlined"
