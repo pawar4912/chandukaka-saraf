@@ -11,7 +11,8 @@ import sectionHeaderIcons from '../../images/icons/Group40.svg';
 import ProductReviewCard from "../Common/ProductReviewCard";
 import ProductCard from "../ProductCard";
 import { getProducts, getProductDetails } from "../../services/FrontApp/index.service";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { WriteReviewModal } from "./WriteReviewModal";
 
 export default function ProductDetails() {
     const { id } = useParams();
@@ -19,6 +20,7 @@ export default function ProductDetails() {
     const navigate = useNavigate();
     const [selectedTab, setSelectedTab] = useState('description')
     const [youMayAlsoLikeProducts, setYouMayAlsoLikeProducts] = useState([])
+    const [openReviewModal, setOpenReviewModal] = useState(false);
     const [productDetails, setProductDetails] = useState({
         product_name: '',
         metal_description: '',
@@ -36,7 +38,7 @@ export default function ProductDetails() {
     }
 
     const getProductData = async () => {
-        const result = await getProductDetails({product_id: id})
+        const result = await getProductDetails({ product_id: id })
         setProductDetails(result.data.data)
     }
 
@@ -73,6 +75,14 @@ export default function ProductDetails() {
     const handleTabChange = (e, value) => {
         setSelectedTab(value)
     }
+
+    const handleOpenReviewModal = () => {
+        setOpenReviewModal(true);
+      };
+    
+      const handleCloseReviewModal = () => {
+        setOpenReviewModal(false);
+      };
     return (
         <div className='product-details-container'>
             <Grid className='product-details-main'>
@@ -102,7 +112,12 @@ export default function ProductDetails() {
                     <div className="review-section">
                         <ReviewStars review={3} />
                         <div className="review-count">7 reviews</div>
-                        <button className="review-btn">write a review</button>
+                        <Link className="review-btn" onClick={handleOpenReviewModal}>write a review</Link>
+                        <WriteReviewModal
+                        open={openReviewModal}
+                        handleClose={handleCloseReviewModal}
+                        productId = {id}
+                    />
                     </div>
                     <div className="weight">{productDetails.purity} | {productDetails.gross_wt} GM</div>
                     <div className="price">₹ {productDetails.sales_price}</div>
@@ -185,9 +200,14 @@ export default function ProductDetails() {
                         <div className="avg-review">4.2</div>
                         <ReviewStars review={3} height={26} width={26} />
                     </div>
-                    <button type="button" className="write-a-btn" >
+                    <Link type="button" className="write-a-btn" onClick={handleOpenReviewModal}>
                         WRITE A REVIEW<EastIcon className="icon" />
-                    </button>
+                    </Link>
+                    <WriteReviewModal
+                        open={openReviewModal}
+                        handleClose={handleCloseReviewModal}
+                        productId = {id}
+                    />
                 </div>
                 <hr className="devider" />
                 <div className="product-review-wrapper">

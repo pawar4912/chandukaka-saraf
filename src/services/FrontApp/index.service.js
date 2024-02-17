@@ -66,3 +66,7 @@ export const removeProductFromCat = async (id) => {
 export const contactUs = async (data) => {
   return await httpService.post(`support/add`, data)
 }
+
+export const addReview = async (data) => {
+  return await httpService.post(`review/add`, data)
+}
