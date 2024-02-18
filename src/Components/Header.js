@@ -52,6 +52,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
           itemData = items.data.data;
         } catch (error) {}
         temp.push({
+          id: data.id,
           metal: data.metal_type,
           metal_items: itemData
         })
@@ -265,14 +266,14 @@ function Header({ openDrawer, handleOpenDrawer }) {
                             <Link to="/">Home</Link>
                           </li>
                           <li>
-                            <Link
+                            <div
                               id="jewellery-link"
                               onClick={() => {
                                 setShowDropdown(true);
                               }}
                             >
                               Jewellerys
-                            </Link>
+                            </div>
                           </li>
                           <li>
                             <Link to="/aboutus">About us</Link>
@@ -361,7 +362,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
             id="navigation-dropdown-wrapper"
             className="dropdown-wrapper"
           >
-            <NavigationDropdown metalData={metalTypesData}/>
+            <NavigationDropdown metalData={metalTypesData} setShowDropdown={setShowDropdown}/>
           </div>
         )}
         {searchDropdown && (

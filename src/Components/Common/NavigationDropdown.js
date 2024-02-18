@@ -2,7 +2,11 @@ import React, {useState, useEffect} from "react";
 import { Box, Grid } from "@mui/material";
 import { Link } from "react-router-dom";
 
-export const NavigationDropdown = ({metalData}) => {
+export const NavigationDropdown = ({metalData, setShowDropdown}) => {
+
+  const closeModal = () => {
+    setShowDropdown(false)
+  }
   
   return (
     <Box>
@@ -12,17 +16,19 @@ export const NavigationDropdown = ({metalData}) => {
             {metalData.map((data, index) => {
               return (
                 <div className="catergory-section" key={index}>
-                  <h5
+                  <Link
                     variant="h5"
                     color="initial"
                     className="jewellwery-type mb-4"
+                    to={`/bullions?metal=${data.metal}`}
+                    onClick={closeModal}
                   >
                     {data.metal}
-                  </h5>
+                  </Link>
                   <div className="jewelleries">
                     {data.metal_items.map((item, key) => (
                       <div className="" key={key}>
-                        <Link className="jewellery-link" to="#" onClick={() => { console.log("Jai shree ram") }}>
+                        <Link className="jewellery-link" to={`/bullions?metal=${data.id}&item_type=${item.item_name}`} onClick={closeModal}>
                           {item.item_name}
                         </Link>
                       </div>
