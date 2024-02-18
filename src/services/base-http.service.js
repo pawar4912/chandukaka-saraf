@@ -6,39 +6,40 @@ export default class BaseHttpService {
   _accessToken = null;
   _accessTokenKey = null;
   _headers = {};
+  _guestSessionId = null;
 
   //constructor() {}
 
   async get(endpoint, options = {}) {
-    Object.assign(options, this._getCommonOptions());
+    Object.assign(options, await this._getCommonOptions());
     return axios
       .get(`${this.BASE_URL}/${endpoint}`, options)
       .catch((error) => this._handleHttpError(error));
   }
 
   async post(endpoint, data = {}, options = {}) {
-    Object.assign(options, this._getCommonOptions());
+    Object.assign(options, await this._getCommonOptions());
     return axios
       .post(`${this.BASE_URL}/${endpoint}`, data, options)
       .catch((error) => this._handleHttpError(error));
   }
 
   async delete(endpoint, options = {}) {
-    Object.assign(options, this._getCommonOptions());
+    Object.assign(options, await this._getCommonOptions());
     return axios
       .delete(`${this.BASE_URL}/${endpoint}`, options)
       .catch((error) => this._handleHttpError(error));
   }
 
   async patch(endpoint, data = {}, options = {}) {
-    Object.assign(options, this._getCommonOptions());
+    Object.assign(options, await this._getCommonOptions());
     return axios
       .patch(`${this.BASE_URL}/${endpoint}`, data, options)
       .catch((error) => this._handleHttpError(error));
   }
 
   async put(endpoint, data = {}, options = {}) {
-    Object.assign(options, this._getCommonOptions());
+    Object.assign(options, await this._getCommonOptions());
     return axios
       .put(`${this.BASE_URL}/${endpoint}`, data, options)
       .catch((error) => this._handleHttpError(error));
@@ -46,10 +47,7 @@ export default class BaseHttpService {
 
   _handleHttpError(error) {
     const statusCode = error.response.status;
-
-    if (statusCode == 400) {
-      return this._handle400(error);
-    } else if (statusCode == 401) {
+    if (statusCode == 401) {
       return this._handle401(error);
     } else {
       throw error;
@@ -61,37 +59,25 @@ export default class BaseHttpService {
   }
 
   async createGuestId() {
-    const guestSessionId = localStorage.getItem("Guest-Session-ID")
-    if (!guestSessionId) {
-      const data = {
-        secret_key: process.env.REACT_APP_LOGIN_SECRET_KEY
-      }
-      const result = await this.post('indexAction', data)
-      this.addHeader("Guest-Session-ID", result.data.guest_id)
-      localStorage.setItem("Guest-Session-ID", result.data.guest_id)
+    const data = {
+      secret_key: process.env.REACT_APP_LOGIN_SECRET_KEY
     }
+    const result = await axios
+      .post(`${this.BASE_URL}/indexAction`, data);
+
+    return result.data.guest_id;
   }
 
-  async previousRequestRecall(request) {
-    const instance = axios.create({
-      baseURL: this.BASE_URL,
-      options: this._getCommonOptions(),
-    });
-    Object.assign(request.headers, this.getHeaders());
-    return instance(request);
-  }
-
-  async _handle400(error) {
-    createGuestId()
-    return this.previousRequestRecall(error.config)
-  }
-
-  _getCommonOptions() {
+  async _getCommonOptions() {
     const token = this.loadToken();
-    const guestSessionId = localStorage.getItem("Guest-Session-ID")
+    let guestSessionId = this.loadGuestSessionId();
     if (token) {
       this.addHeader("Authorization", `Bearer ${token}`);
     } else if (guestSessionId) {
+      this.addHeader("Guest-Session-ID", guestSessionId)
+    } else {
+      guestSessionId = await this.createGuestId()
+      tokenService.saveGuestSessionId(guestSessionId)
       this.addHeader("Guest-Session-ID", guestSessionId)
     }
 
@@ -122,6 +108,12 @@ export default class BaseHttpService {
     const token = tokenService.getToken(this._accessTokenKey);
     this._accessToken = token;
     return token;
+  }
+
+  loadGuestSessionId() {
+    const guestSessionId = tokenService.getGuestSessionId();
+    this._guestSessionId = guestSessionId;
+    return guestSessionId;
   }
 
   removeToken() {

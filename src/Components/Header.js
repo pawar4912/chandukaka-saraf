@@ -7,7 +7,7 @@ import searchLogo from "../images/icons/search.svg";
 import shoppingBagLogo from "../images/icons/shopping-bag.svg";
 import menuOpen from "../images/icons/open-menu.svg";
 import closeMenu from "../images/icons/close.svg";
-import { getLiveRateForCSP } from "../services/FrontApp/index.service";
+import { getLiveRateForCSP, getMetalType, getMetalItems } from "../services/FrontApp/index.service";
 import AuthModal from "./Screens/AuthModal";
 import { isLoggedIn } from "../services/auth.service";
 import LoginIcon from "@mui/icons-material/Login";
@@ -36,10 +36,29 @@ function Header({ openDrawer, handleOpenDrawer }) {
     setOpen(false);
   };
 
-  // const handleOpenDrawer = () => {
-  //   console.log("in handle");
-  //   setOpenDrawer(!openDrawer);
-  // };
+  const [metalTypesData, setMetalTypesData] = useState([]);
+
+  const getMetalData = async () => {
+    try {
+      const metals = await getMetalType();
+      const temp = []
+      for (let index = 0; index < metals.data.data.length; index++) {
+        const data = metals.data.data[index];
+        let itemData = [];
+        try {
+          var bodyFormData = new FormData();
+          bodyFormData.append('metal_type_master_id[0]', data.id);
+          const items = await getMetalItems(bodyFormData);
+          itemData = items.data.data;
+        } catch (error) {}
+        temp.push({
+          metal: data.metal_type,
+          metal_items: itemData
+        })
+      }
+      setMetalTypesData(temp)
+    } catch (error) {}
+  };
 
   const getData = async () => {
     try {
@@ -53,6 +72,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
 
   useEffect(() => {
     getData();
+    getMetalData();
   }, []);
 
   useEffect(() => {
@@ -341,7 +361,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
             id="navigation-dropdown-wrapper"
             className="dropdown-wrapper"
           >
-            <NavigationDropdown />
+            <NavigationDropdown metalData={metalTypesData}/>
           </div>
         )}
         {searchDropdown && (

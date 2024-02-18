@@ -69,3 +69,11 @@ export const removeProductFromCat = async (id) => {
 export const contactUs = async (data) => {
   return await httpService.post(`support/add`, data)
 }
+
+export const getMetalType = async () => {
+  return await httpService.post(`metalType`)
+}
+
+export const getMetalItems = async (data) => {
+  return await httpService.post(`items`, data)
+}
