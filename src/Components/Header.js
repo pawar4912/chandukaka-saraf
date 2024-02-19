@@ -7,7 +7,7 @@ import searchLogo from "../images/icons/search.svg";
 import shoppingBagLogo from "../images/icons/shopping-bag.svg";
 import menuOpen from "../images/icons/open-menu.svg";
 import closeMenu from "../images/icons/close.svg";
-import { getLiveRateForCSP, getMetalType, getMetalItems } from "../services/FrontApp/index.service";
+import { getLiveRateForCSP, getMetals, getMetalItems } from "../services/FrontApp/index.service";
 import AuthModal from "./Screens/AuthModal";
 import { isLoggedIn } from "../services/auth.service";
 import LoginIcon from "@mui/icons-material/Login";
@@ -40,7 +40,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
 
   const getMetalData = async () => {
     try {
-      const metals = await getMetalType();
+      const metals = await getMetals();
       const temp = []
       for (let index = 0; index < metals.data.data.length; index++) {
         const data = metals.data.data[index];

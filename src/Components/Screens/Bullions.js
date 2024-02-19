@@ -9,7 +9,7 @@ import ProductBreadcrumb from '../ProductBreadcrumb';
 import ClearFilterIcon from "../../images/icons/ClearFilterIcon.svg";
 import ProductCard from '../ProductCard';
 import { Paginator } from '../Common/Paginator';
-import { getProducts } from '../../services/FrontApp/index.service';
+import { getMetals, getProducts, getProductCategory } from '../../services/FrontApp/index.service';
 import { useSearchParams } from 'react-router-dom';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -50,6 +50,8 @@ const typeValues = [
 
 export default function Bullions() {
     const [queryParameters] = useSearchParams()
+    const [types, setTypes] = useState([])
+    const [metals, setMetals] = useState([])
     const metal = queryParameters.get("metal")
     const item_type = queryParameters.get("item_type")
     const navigationData = [
@@ -95,6 +97,17 @@ export default function Bullions() {
         setFilterData(temp)
         setRefreshCount(refreshCount + 1)
     }, [metal, item_type])
+
+    const getFiltersData = async () => {
+        let result = await getProductCategory();
+        setTypes(result.data.data)
+        result = await getMetals();
+        setMetals(result.data.data)
+    }
+
+    useEffect(() => {
+        getFiltersData()
+    }, [])
 
     useEffect(() => {
         getData()
@@ -161,14 +174,10 @@ export default function Bullions() {
                                 input={<OutlinedInput label="Tag" />}
                                 renderValue={(selected) => "TYPE"}
                             >
-                                {typeValues.map(variant => (
-                                    <MenuItem key={variant.id} value={variant}>
-                                        <Checkbox
-                                            checked={
-                                                typeNameSelected.findIndex(item => item.id === variant.id) >= 0
-                                            }
-                                        />
-                                        <ListItemText primary={variant.name} />
+                                {types.map(type => (
+                                    <MenuItem key={type.id} value={type}>
+                                        <Checkbox />
+                                        <ListItemText primary={type.category_name} />
                                     </MenuItem>
                                 ))}
                             </Select>
@@ -177,25 +186,20 @@ export default function Bullions() {
                                 sx={{ boxShadow: 'none', '.MuiOutlinedInput-notchedOutline': { border: 0 } }}
                                 labelId="demo-multiple-checkbox-label"
                                 id="demo-multiple-checkbox"
-                                multiple
-                                displayEmpty
-                                value={typeNameSelected}
+                                value={metal}
                                 onChange={handleChange}
-                                input={<OutlinedInput label="Tag" />}
-                                renderValue={(selected) => "METAL"}
+                                renderValue={(selected) => selected}
                             >
-                                {typeValues.map(variant => (
-                                    <MenuItem key={variant.id} value={variant}>
+                                {metals.map((item, index) => (
+                                    <MenuItem key={index} value={item.id}>
                                         <Checkbox
-                                            checked={
-                                                typeNameSelected.findIndex(item => item.id === variant.id) >= 0
-                                            }
+                                            checked={metal == item.id}
                                         />
-                                        <ListItemText primary={variant.name} />
+                                        <ListItemText primary={item.metal_type} />
                                     </MenuItem>
                                 ))}
                             </Select>
-                            <Select
+                            {/* <Select
                                 defaultValue={1}
                                 sx={{ boxShadow: 'none', '.MuiOutlinedInput-notchedOutline': { border: 0 } }}
                                 labelId="demo-multiple-checkbox-label"
@@ -217,7 +221,7 @@ export default function Bullions() {
                                         <ListItemText primary={variant.name} />
                                     </MenuItem>
                                 ))}
-                            </Select>
+                            </Select> */}
                         </Grid>
                         <Grid className='product-page-sort-by-container' item xs={1} md={6}>
                             <Select
@@ -225,11 +229,11 @@ export default function Bullions() {
                                 sx={{ boxShadow: 'none', '.MuiOutlinedInput-notchedOutline': { border: 0 } }}
                                 renderValue={(selected) => "SORT BY"}
                             >
-                                <MenuItem value={1}>Price - low to high</MenuItem>
-                                <MenuItem value={2}>Price - high to low</MenuItem>
-                                <MenuItem value={3}>Popularity</MenuItem>
-                                <MenuItem value={3}>Newly added</MenuItem>
-                                <MenuItem value={3}>Bestsellers</MenuItem>
+                                <MenuItem value='low_to_high'>Price - low to high</MenuItem>
+                                <MenuItem value='high_to_low'>Price - high to low</MenuItem>
+                                <MenuItem value='is_popular'>Popularity</MenuItem>
+                                <MenuItem value='bestseller'>Newly added</MenuItem>
+                                <MenuItem value='newly_added'>Bestsellers</MenuItem>
                             </Select>
                         </Grid>
                         <Grid item xs={1} md={12}>
