@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import productDashBoardImage from "../../images/productDashBoardImage.png";
-import { Box, Button, Checkbox, Chip, Divider, Grid, ListItemText, MenuItem, OutlinedInput, Pagination, Select, Stack } from '@mui/material';
+import { Box, Button, Checkbox, Chip, Divider, Grid, ListItemText, MenuItem, OutlinedInput, Select } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import fillWhiteLeftIcon from '../../images/icons/fillWhiteLeftIcon.svg';
@@ -9,7 +9,8 @@ import ProductBreadcrumb from '../ProductBreadcrumb';
 import ClearFilterIcon from "../../images/icons/ClearFilterIcon.svg";
 import ProductCard from '../ProductCard';
 import { Paginator } from '../Common/Paginator';
-import { getProducts } from '../../services/FrontApp/index.service';
+import { getMetals, getProducts, getProductCategory } from '../../services/FrontApp/index.service';
+import { useSearchParams } from 'react-router-dom';
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -32,22 +33,12 @@ var removeByAttr = function (arr, attr, value) {
     return arr;
 }
 
-const typeValues = [
-    {
-        "id": 1,
-        name: "Coins"
-    },
-    {
-        "id": 2,
-        name: "Bars"
-    },
-    {
-        "id": 3,
-        name: "Vedhani"
-    },
-]
-
 export default function Bullions() {
+    const [queryParameters] = useSearchParams()
+    const [types, setTypes] = useState([])
+    const [metals, setMetals] = useState([])
+    const metal = queryParameters.get("metal")
+    const item_type = queryParameters.get("item_type")
     const navigationData = [
         {
             text: "Home",
@@ -56,10 +47,6 @@ export default function Bullions() {
         {
             text: "Bullion",
             path: "bullion"
-        },
-        {
-            text: "Silver",
-            path: "silver"
         },
     ]
     const [typeNameSelected, setTypeName] = React.useState([
@@ -71,9 +58,10 @@ export default function Bullions() {
     const [filterData, setFilterData] = useState({
         limit: 12,
         page: 1,
-        sort_by: ''
+        sort_by: '',
+        metal_type: []
     })
-    const [refrashCount, setRefrashCount] = useState(0)
+    const [refreshCount, setRefreshCount] = useState(0)
     const [totalPages, setTotalPages] = useState(0)
     const [products, setProducts] = useState([])
 
@@ -89,21 +77,44 @@ export default function Bullions() {
     }
 
     useEffect(() => {
-        getData()
-    }, [refrashCount])
-
-    const handleChange = ({ target }) => {
-        filterData[target.name] = target.value
+        if (metal) {
+            filterData['metal_type'][0] = metal
+        }
+        filterData['search_query'] = item_type
         const temp = Object.assign({}, filterData)
         setFilterData(temp)
-        setRefrashCount(refrashCount + 1)
+        setRefreshCount(refreshCount + 1)
+    }, [metal, item_type])
+
+    const getFiltersData = async () => {
+        let result = await getProductCategory();
+        setTypes(result.data.data)
+        result = await getMetals();
+        setMetals(result.data.data)
+    }
+
+    useEffect(() => {
+        getFiltersData()
+    }, [])
+
+    useEffect(() => {
+        getData()
+    }, [refreshCount])
+
+    const handleChange = ({ target }) => {
+        if(target.value) {
+            filterData[target.name] = target.value
+            const temp = Object.assign({}, filterData)
+            setFilterData(temp)
+            setRefreshCount(refreshCount + 1)
+        }
     }
 
     const handleChangePage = (event, newPage) => {
         filterData['page'] = newPage
         const temp = Object.assign({}, filterData)
         setFilterData(temp)
-        setRefrashCount(refrashCount + 1)
+        setRefreshCount(refreshCount + 1)
     };
 
     const handleDeleteFilterData = (event) => {
@@ -112,12 +123,14 @@ export default function Bullions() {
         setTypeName(tempArray)
         console.info(tempArray);
     };
+
+
     return (
         <div className='about-us'>
             <div className='col-12'>
                 <Box sx={{ flexGrow: 1 }}>
                     <Grid container spacing={1}>
-                        <Grid item xs={12} md={12} className='product-dash-board-header-image-container' style={{ backgroundImage: `url(${productDashBoardImage})` }}>
+                        <Grid item={true} xs={12} md={12} className='product-dash-board-header-image-container' style={{ backgroundImage: `url(${productDashBoardImage})` }}>
                             <div className='breadcrumb-container-productpage'>
                                 <ProductBreadcrumb navigationData={navigationData} />
                             </div>
@@ -137,145 +150,138 @@ export default function Bullions() {
                     </Grid>
                 </Box>
             </div>
-            <Box sx={{ flexGrow: 1 }}>
-                <Grid container spacing={1}>
-                    <Grid item xs={1} md={1}>
-                        <Item className="empty-container-section">xs=6 md=4</Item>
-                    </Grid>
-                    <Grid item xs={6} md={4}>
-                        <Select
-                            defaultValue={1}
-                            sx={{ boxShadow: 'none', '.MuiOutlinedInput-notchedOutline': { border: 0 } }}
-                            labelId="demo-multiple-checkbox-label"
-                            id="demo-multiple-checkbox"
-                            multiple
-                            displayEmpty
-                            value={typeNameSelected}
-                            onChange={handleChange}
-                            input={<OutlinedInput label="Tag" />}
-                            renderValue={(selected) => "TYPE"}
-                        >
-                            {typeValues.map(variant => (
-                                <MenuItem key={variant.id} value={variant}>
-                                    <Checkbox
-                                        checked={
-                                            typeNameSelected.findIndex(item => item.id === variant.id) >= 0
+            <div className="product-main">
+                <Box sx={{ flexGrow: 1 }}>
+                    <Grid container spacing={1}>
+                        <Grid item={true} >
+                            <Select
+                                defaultValue={1}
+                                sx={{ boxShadow: 'none', '.MuiOutlinedInput-notchedOutline': { border: 0 } }}
+                                labelId="demo-multiple-checkbox-label"
+                                id="demo-multiple-checkbox"
+                                multiple
+                                displayEmpty
+                                value={typeNameSelected}
+                                onChange={handleChange}
+                                input={<OutlinedInput label="Tag" />}
+                                renderValue={(selected) => "TYPE"}
+                            >
+                                {types.map(type => (
+                                    <MenuItem key={type.id} value={type}>
+                                        <Checkbox />
+                                        <ListItemText primary={type.category_name} />
+                                    </MenuItem>
+                                ))}
+                            </Select>
+                            <Select
+                                id="demo-multiple-checkbox"
+                                name="metal_type"
+                                value={filterData['metal_type']}
+                                onChange={handleChange}
+                                multiple
+                                displayEmpty
+                                renderValue={(selected) => {
+                                    if (selected.length == 0) {
+                                      return 'METAL';
+                                    }
+                                    let result = ''
+                                    let count = 1;
+                                    metals.map((item, index) => {
+                                        if (selected.includes(item.id)) {
+                                            result += item.metal_type
+                                            if(count < selected.length) {
+                                                result +=  ', '
+                                            }
+                                            count++;
                                         }
-                                    />
-                                    <ListItemText primary={variant.name} />
-                                </MenuItem>
-                            ))}
-                        </Select>
-                        <Select
-                            defaultValue={1}
-                            sx={{ boxShadow: 'none', '.MuiOutlinedInput-notchedOutline': { border: 0 } }}
-                            labelId="demo-multiple-checkbox-label"
-                            id="demo-multiple-checkbox"
-                            multiple
-                            displayEmpty
-                            value={typeNameSelected}
-                            onChange={handleChange}
-                            input={<OutlinedInput label="Tag" />}
-                            renderValue={(selected) => "METAL"}
-                        >
-                            {typeValues.map(variant => (
-                                <MenuItem key={variant.id} value={variant}>
-                                    <Checkbox
-                                        checked={
-                                            typeNameSelected.findIndex(item => item.id === variant.id) >= 0
-                                        }
-                                    />
-                                    <ListItemText primary={variant.name} />
-                                </MenuItem>
-                            ))}
-                        </Select>
-                        <Select
-                            defaultValue={1}
-                            sx={{ boxShadow: 'none', '.MuiOutlinedInput-notchedOutline': { border: 0 } }}
-                            labelId="demo-multiple-checkbox-label"
-                            id="demo-multiple-checkbox"
-                            multiple
-                            displayEmpty
-                            value={typeNameSelected}
-                            onChange={handleChange}
-                            input={<OutlinedInput label="Tag" />}
-                            renderValue={(selected) => "WEIGHT"}
-                        >
-                            {typeValues.map(variant => (
-                                <MenuItem key={variant.id} value={variant}>
-                                    <Checkbox
-                                        checked={
-                                            typeNameSelected.findIndex(item => item.id === variant.id) >= 0
-                                        }
-                                    />
-                                    <ListItemText primary={variant.name} />
-                                </MenuItem>
-                            ))}
-                        </Select>
-                    </Grid>
-                    <Grid className='product-page-sort-by-container' item xs={1} md={6}>
-                        <Select
-                            defaultValue={1}
-                            sx={{ boxShadow: 'none', '.MuiOutlinedInput-notchedOutline': { border: 0 } }}
-                            renderValue={(selected) => "SORT BY"}
-                        >
-                            <MenuItem value={1}>Price - low to high</MenuItem>
-                            <MenuItem value={2}>Price - high to low</MenuItem>
-                            <MenuItem value={3}>Popularity</MenuItem>
-                            <MenuItem value={3}>Newly added</MenuItem>
-                            <MenuItem value={3}>Bestsellers</MenuItem>
-                        </Select>
-                    </Grid>
-                    <Grid item xs={1} md={1}>
-                        <Item className="empty-container-section">xs=6 md=4</Item>
-                    </Grid>
-                    <Grid item xs={1} md={12}>
-                        <Divider className='product-page-divider' variant="middle" />
-                    </Grid>
-                </Grid>
-            </Box>
-            <Box sx={{ flexGrow: 1 }}>
-                <Grid container spacing={1}>
-                    <Grid item xs={1} md={1}>
-                        <Item className="empty-container-section">xs=6 md=4</Item>
-                    </Grid>
-                    <Grid item xs={1} md={10}>
-                        {typeNameSelected.map(element =>
-                        (<Chip
-                            className='product-page-chip'
-                            key={element.id}
-                            onDelete={() => handleDeleteFilterData(element.id)}
-                            label={element.name}
-                            deleteIcon={<img src={ClearFilterIcon} />}
-                        />)
-                        )}
-                        <Button className='product-page-clear-all-button' >CLEAR ALL</Button>
-                    </Grid>
-                    <Grid item xs={1} md={1}>
-                        <Item className="empty-container-section">xs=6 md=4</Item>
-                    </Grid>
-
-                </Grid>
-            </Box>
-            <Box sx={{ flexGrow: 1 }}>
-                {products.length > 0 ? (
-                    <Grid spacing={1} className="product-grid-container">
-                        <Grid className="product-list-grid-section" xs={12} md={10}>
-                            {products.map(product => (
-                                <ProductCard
-                                    productImage={product.image_path}
-                                    productName={product.product_name}
-                                    productPrice={product.sales_price}
-                                    id={product.product_id}
-                                    key={product.product_id}
-                                />
-                            ))}
+                                    });
+                                    return result;
+                                  }}
+                            >
+                                {metals.map((item, index) => (
+                                    <MenuItem key={index} value={item.id}>
+                                        {item.metal_type}
+                                    </MenuItem>
+                                ))}
+                            </Select>
+                            {/* <Select
+                                defaultValue={1}
+                                sx={{ boxShadow: 'none', '.MuiOutlinedInput-notchedOutline': { border: 0 } }}
+                                labelId="demo-multiple-checkbox-label"
+                                id="demo-multiple-checkbox"
+                                multiple
+                                displayEmpty
+                                value={typeNameSelected}
+                                onChange={handleChange}
+                                input={<OutlinedInput label="Tag" />}
+                                renderValue={(selected) => "WEIGHT"}
+                            >
+                                {typeValues.map(variant => (
+                                    <MenuItem key={variant.id} value={variant}>
+                                        <Checkbox
+                                            checked={
+                                                typeNameSelected.findIndex(item => item.id === variant.id) >= 0
+                                            }
+                                        />
+                                        <ListItemText primary={variant.name} />
+                                    </MenuItem>
+                                ))}
+                            </Select> */}
+                        </Grid>
+                        <Grid className='product-page-sort-by-container' item={true} xs={1} md={6}>
+                            <Select
+                                sx={{ boxShadow: 'none', '.MuiOutlinedInput-notchedOutline': { border: 0 } }}
+                                renderValue={(selected) => "SORT BY"}
+                            >
+                                <MenuItem value='low_to_high'>Price - low to high</MenuItem>
+                                <MenuItem value='high_to_low'>Price - high to low</MenuItem>
+                                <MenuItem value='is_popular'>Popularity</MenuItem>
+                                <MenuItem value='bestseller'>Newly added</MenuItem>
+                                <MenuItem value='newly_added'>Bestsellers</MenuItem>
+                            </Select>
+                        </Grid>
+                        <Grid item={true} xs={1} md={12}>
+                            <Divider className='product-page-divider' variant="middle" />
                         </Grid>
                     </Grid>
-                ) : ''}
+                </Box>
+                <Box sx={{ flexGrow: 1 }}>
+                    <Grid container spacing={1}>
+                        <Grid item={true} xs={1} md={10}>
+                            {typeNameSelected.map(element =>
+                            (<Chip
+                                className='product-page-chip'
+                                key={element.id}
+                                onDelete={() => handleDeleteFilterData(element.id)}
+                                label={element.name}
+                                deleteIcon={<img src={ClearFilterIcon} />}
+                            />)
+                            )}
+                            <Button className='product-page-clear-all-button' >CLEAR ALL</Button>
+                        </Grid>
 
-            </Box>
-            <Paginator currentPage={filterData.page} totalPage={totalPages} handleChangePage={handleChangePage} />
+                    </Grid>
+                </Box>
+                <Box item={true} sx={{ flexGrow: 1 }}>
+                    {products.length > 0 ? (
+                        <Grid container spacing={1} className="product-grid-container">
+                            <Grid item={true} className="product-list-grid-section" xs={12} md={10}>
+                                {products.map((product, index) => (
+                                    <ProductCard
+                                        productImage={product.image_path}
+                                        productName={product.product_name}
+                                        productPrice={product.sales_price}
+                                        id={product.product_id}
+                                        key={index}
+                                    />
+                                ))}
+                            </Grid>
+                        </Grid>
+                    ) : ''}
+
+                </Box>
+                <Paginator currentPage={filterData.page} totalPage={totalPages} handleChangePage={handleChangePage} />
+            </div>
         </div>
     )
 }

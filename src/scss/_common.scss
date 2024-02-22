@@ -162,3 +162,9 @@ hr {
     display: flex;
     align-items: center;
   }
+  .success-wrapper {
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    height: 100%;
+  }

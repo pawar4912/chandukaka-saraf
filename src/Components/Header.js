@@ -7,7 +7,7 @@ import searchLogo from "../images/icons/search.svg";
 import shoppingBagLogo from "../images/icons/shopping-bag.svg";
 import menuOpen from "../images/icons/open-menu.svg";
 import closeMenu from "../images/icons/close.svg";
-import { getLiveRateForCSPL } from "../services/FrontApp/index.service";
+import { getLiveRateForCSP, getMetals, getMetalItems } from "../services/FrontApp/index.service";
 import AuthModal from "./Screens/AuthModal";
 import { isLoggedIn } from "../services/auth.service";
 import LoginIcon from "@mui/icons-material/Login";
@@ -36,14 +36,34 @@ function Header({ openDrawer, handleOpenDrawer }) {
     setOpen(false);
   };
 
-  // const handleOpenDrawer = () => {
-  //   console.log("in handle");
-  //   setOpenDrawer(!openDrawer);
-  // };
+  const [metalTypesData, setMetalTypesData] = useState([]);
+
+  const getMetalData = async () => {
+    try {
+      const metals = await getMetals();
+      const temp = []
+      for (let index = 0; index < metals.data.data.length; index++) {
+        const data = metals.data.data[index];
+        let itemData = [];
+        try {
+          var bodyFormData = new FormData();
+          bodyFormData.append('metal_type_master_id[0]', data.id);
+          const items = await getMetalItems(bodyFormData);
+          itemData = items.data.data;
+        } catch (error) {}
+        temp.push({
+          id: data.id,
+          metal: data.metal_type,
+          metal_items: itemData
+        })
+      }
+      setMetalTypesData(temp)
+    } catch (error) {}
+  };
 
   const getData = async () => {
     try {
-      const result = await getLiveRateForCSPL();
+      const result = await getLiveRateForCSP();
       const { Platinum, Silver1, Silver2, ...gold } = result.data.data;
       setRates({ Platinum, Silver1, Silver2, gold });
     } catch (error) {
@@ -53,6 +73,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
 
   useEffect(() => {
     getData();
+    getMetalData();
   }, []);
 
   useEffect(() => {
@@ -245,14 +266,14 @@ function Header({ openDrawer, handleOpenDrawer }) {
                             <Link to="/">Home</Link>
                           </li>
                           <li>
-                            <Link
+                            <div
                               id="jewellery-link"
                               onClick={() => {
                                 setShowDropdown(true);
                               }}
                             >
                               Jewellerys
-                            </Link>
+                            </div>
                           </li>
                           <li>
                             <Link to="/aboutus">About us</Link>
@@ -317,7 +338,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                           <li className="/login-icon">
                             <Link
                               onClick={handleOpenDialog}
-                              classsName="image"
+                              className="image"
                               style={{ color: "#A3A3A3" }}
                             >
                               <LoginIcon />
@@ -341,7 +362,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
             id="navigation-dropdown-wrapper"
             className="dropdown-wrapper"
           >
-            <NavigationDropdown />
+            <NavigationDropdown metalData={metalTypesData} setShowDropdown={setShowDropdown}/>
           </div>
         )}
         {searchDropdown && (
