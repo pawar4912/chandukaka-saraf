@@ -13,6 +13,7 @@ import { isLoggedIn } from "../services/auth.service";
 import LoginIcon from "@mui/icons-material/Login";
 import { NavigationDropdown } from "./Common/NavigationDropdown";
 import { SearchDropdown } from "./Common/SearchDropdown";
+import { List, ListItem, ListItemText } from "@mui/material";
 
 function Header({ openDrawer, handleOpenDrawer }) {
   const $ = window.jQuery;
@@ -23,10 +24,29 @@ function Header({ openDrawer, handleOpenDrawer }) {
     gold: [],
   });
 
+  const navigations = {
+    jewelleryTypes: ["Gold", "Diamonds", "Silver"],
+    jwewlleries: [
+      "Rings",
+      "Mangalsutra",
+      "Earrings",
+      "Chain",
+      "Pendants",
+      "Necklace",
+      "Bangles",
+      "Toe rings",
+      "Nosepins",
+      "Anklet",
+      "Bracelets",
+    ],
+  };
+
+
   const [open, setOpen] = useState(false);
   // const [openDrawer, setOpenDrawer] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const [searchDropdown, setSearchDropdown] = useState(false);
+  const [selectedJewelleryType, setSelectedJewelleryType] = useState(null);
 
   const handleOpenDialog = () => {
     setOpen(true);
@@ -34,6 +54,10 @@ function Header({ openDrawer, handleOpenDrawer }) {
 
   const handleCloseDialog = () => {
     setOpen(false);
+  };
+
+  const handleJewelleryTypeClick = (jewelleryType) => {
+    setSelectedJewelleryType(jewelleryType);
   };
 
   // const handleOpenDrawer = () => {
@@ -202,6 +226,27 @@ function Header({ openDrawer, handleOpenDrawer }) {
                         </div>
                         <h3 className="drawer-header">POPULAR SEARCHES</h3>
                         <div className="d-lg-none">
+                          <List>
+                            {navigations.jewelleryTypes.map((jewelleryType) => (
+                              <div key={jewelleryType}>
+                                <ListItem
+                                  onClick={() => handleJewelleryTypeClick(jewelleryType)}
+                                  selected={selectedJewelleryType === jewelleryType}
+                                >
+                                  <ListItemText primary={jewelleryType} />
+                                </ListItem>
+                                {selectedJewelleryType === jewelleryType && (
+                                  <List>
+                                    {navigations.jwewlleries.map((jewellery) => (
+                                      <ListItem key={jewellery}>
+                                        <ListItemText primary={jewellery} />
+                                      </ListItem>
+                                    ))}
+                                  </List>
+                                )}
+                              </div>
+                            ))}
+                          </List>
                           <li className="w-100">
                             <Link to="/" className="menu-link">
                               Fancy Earrings
