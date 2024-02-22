@@ -112,7 +112,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                         className="menu-open open-nav-btn"
                       />
                       <div className="logo">
-                        <Link to="/home">
+                        <Link to="/">
                           <img src={logo} alt="Logo" className="image" />
                         </Link>
                       </div>
