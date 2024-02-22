@@ -15,8 +15,12 @@ export const AddressBook = () => {
   const [data, setData] = useState([]);
 
   const getData = async () => {
-    const result = await getAllAddAddress();
-    setData(result.data.data)
+    try {
+      const result = await getAllAddAddress();
+      setData(result.data.data)
+    } catch (error) {
+      setData([])
+    }
   }
 
   useEffect(() => {
