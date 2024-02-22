@@ -7,13 +7,18 @@ import {
   FormControlLabel,
 } from "@mui/material";
 
-export const SortMenu = () => {
+export const SortMenu = ({ onClose }) => {
+
+  const handleClose = () => {
+    onClose();
+  }
+
   return (
     <div className="sort-menu">
       <div className="bullions-filter-sort-menu">
         <div className="bullions-filter-header p-3 d-flex justify-content-between align-items-center">
           <h2>SORT BY</h2>
-          <CloseIcon />
+          <CloseIcon onClick={handleClose} />
         </div>
         <div className="sort-by-radio-group p-3">
           <FormControl>
@@ -24,22 +29,22 @@ export const SortMenu = () => {
             >
               <FormControlLabel
                 value="popularity"
-                control={<Radio />}
+                control={<Radio style={{ color: '#000' }} />}
                 label="Popularity"
               />
               <FormControlLabel
                 value="newlyAdded"
-                control={<Radio />}
+                control={<Radio style={{ color: '#000' }} />}
                 label="Newly added"
               />
               <FormControlLabel
                 value="priceLowToHigh"
-                control={<Radio />}
+                control={<Radio style={{ color: '#000' }} />}
                 label="Price - Low to high"
               />
               <FormControlLabel
                 value="priceHighToLow"
-                control={<Radio />}
+                control={<Radio style={{ color: '#000' }} />}
                 label="Price - High to low"
               />
             </RadioGroup>

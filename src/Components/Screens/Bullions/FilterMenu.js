@@ -82,6 +82,7 @@ export const FilterMenu = () => {
                   control={
                     <Checkbox
                       checked={value}
+                      style={{color: '#000'}}
                       onChange={() => handleCheckboxChange("type", key)}
                     />
                   }
@@ -112,6 +113,7 @@ export const FilterMenu = () => {
                   control={
                     <Checkbox
                       checked={value}
+                      style={{color: '#000'}}
                       onChange={() => handleCheckboxChange("metal", key)}
                     />
                   }

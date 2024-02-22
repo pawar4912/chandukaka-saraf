@@ -65,7 +65,7 @@ const typeValues = [
 
 export default function Bullions() {
   const [bullionsFilterOpen, setBullionsFilterOpen] = useState(false);
-  const [bullionsFilterValue, setBullionsFilterValue] = useState(0);
+  const [bullionsFilterValue, setBullionsFilterValue] = useState(-1);
   const [openSortMenu, setOpenSortMenu] = useState(false);
   const [openFilterMenu, setOpenFilterMenu] = useState(false);
 
@@ -74,6 +74,7 @@ export default function Bullions() {
   };
 
   const handleCloseBullionsFilter = () => {
+    setBullionsFilterValue(-1);
     setBullionsFilterOpen(false);
   };
 
@@ -88,6 +89,11 @@ export default function Bullions() {
     setOpenFilterMenu(false);
     handleOpenBullionsFilter();
   };
+
+  const handleApplyFilter = () => {
+    // Todo : Apply filter logic
+    handleCloseBullionsFilter();
+  }
 
   const navigationData = [
     {
@@ -196,20 +202,22 @@ export default function Bullions() {
             setBullionsFilterValue(newValue);
           }}
         >
-          <BottomNavigationAction
-            label="Filter"
-            onClick={handleOpenFilterMenu}
-            style={{borderRight: "2px solid"}}
-          />
-          <BottomNavigationAction label="Sort" onClick={handleOpenSortMenu} />
+          {bullionsFilterValue == -1 && <BottomNavigationAction label="Filter" onClick={handleOpenFilterMenu} />}
+          {bullionsFilterValue == -1 && <BottomNavigationAction label="Sort" onClick={handleOpenSortMenu} />}
+
+          {bullionsFilterValue == 0 && <BottomNavigationAction label="CLOSE" onClick={handleCloseBullionsFilter} />}
+          {bullionsFilterValue == 0 && <BottomNavigationAction label="APPLY" onClick={handleApplyFilter} />}
+          {bullionsFilterValue == 1 && <BottomNavigationAction label="CLEAR" onClick={handleCloseBullionsFilter} />}
+          {bullionsFilterValue == 1 && <BottomNavigationAction label="APPLY" onClick={handleApplyFilter} />}
+
         </BottomNavigation>
 
         <BullionsFilter
           isOpen={bullionsFilterOpen}
           onClose={handleCloseBullionsFilter}
-          style={{borderLeft: "2px solid"}}
+          style={{ borderLeft: "2px solid" }}
         >
-          {openSortMenu ? <SortMenu /> : <FilterMenu />}
+          {openSortMenu ? <SortMenu onClose={handleCloseBullionsFilter} /> : <FilterMenu />}
         </BullionsFilter>
       </Paper>
 
