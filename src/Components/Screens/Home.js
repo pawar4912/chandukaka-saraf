@@ -77,7 +77,7 @@ function Home() {
           </Grid>
         </Grid>
       </Box>
-      <Box className="large-image-slider-container" sx={{ flexGrow: 1 }}>
+      {/* <Box className="large-image-slider-container" sx={{ flexGrow: 1 }}>
         <Grid container spacing={1} className="w-100">
           <Grid item xs={1} md={1}>
             <Item className="empty-container-section">xs=6 md=4</Item>
@@ -118,7 +118,7 @@ function Home() {
             </div>
           </Grid>}
         </Grid>
-      </Box>
+      </Box> */}
       <Box className="large-image-slider-container discover-image-slider-container" sx={{ flexGrow: 1 }}>
         <Grid container spacing={1} className="w-100">
           <Grid item xs={1} md={1}>

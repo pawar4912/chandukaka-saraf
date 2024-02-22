@@ -72,11 +72,11 @@ function CarouselHome() {
                 <div className="service-slide-text-wrapper">
                   <h2 className="service-slide-text">{item.name}</h2>
                   <p className="service-slide-description">{item.description}</p>
-                  <button type="button" className="carousel-explore-now-btn">
+                  {/* <button type="button" className="carousel-explore-now-btn">
                     EXPORE NOW
                     {' '}
                     <img src={rightArrowIcon} alt="rightArrowIcon" />
-                  </button>
+                  </button> */}
                 </div>
               </Paper>
             ))

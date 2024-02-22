@@ -105,11 +105,11 @@ function Footer() {
                     </div>
                   </div>
                 </div>
-                <div className="col-xl-3 col-lg-3 col-md-4 col-sm-4 col-7 ">
+                {/* <div className="col-xl-3 col-lg-3 col-md-4 col-sm-4 col-7 ">
                   <button onClick={navigateToFindStore} type="button" className="mt-3">
                     Find A Store
                   </button>
-                </div>
+                </div> */}
               </div>
             </div>
             <div className="col-12 col-md-8 col-lg-4">
