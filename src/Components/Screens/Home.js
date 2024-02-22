@@ -32,7 +32,7 @@ const Item = styled(Paper)(({ theme }) => ({
   textAlign: 'center',
   color: theme.palette.text.secondary,
 }));
-const prodImages = [prod1, prod2, prod3, prod4]; 
+const prodImages = [prod1, prod2, prod3, prod4, prod1]; 
 const offerImages = [CardImageLarge, CardImageLarge, CardImageLarge, CardImageLarge];
 const shineImages = [CardImageNoPadding, CardImageNoPadding, CardImageNoPadding, CardImageNoPadding];
 const catImgs = [catImg1, catImg2, catImg3, catImg4, catImg5, catImg6];
@@ -139,7 +139,7 @@ function Home() {
           </Grid>
         </Grid>
       </Box>
-      <Box className="large-image-slider-container" sx={{ flexGrow: 1 }}>
+      {/* <Box className="large-image-slider-container" sx={{ flexGrow: 1 }}>
         <Grid container spacing={3}>
           <Grid item xs={1} md={3}>
             <Item className="empty-container-section">xs=6 md=4</Item>
@@ -181,7 +181,7 @@ function Home() {
             <Item className="empty-container-section">xs=6 md=4</Item>
           </Grid>
         </Grid>
-      </Box>
+      </Box> */}
       <Testimonial />
     </div>
   );
