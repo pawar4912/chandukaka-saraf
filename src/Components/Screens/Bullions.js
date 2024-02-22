@@ -33,21 +33,6 @@ var removeByAttr = function (arr, attr, value) {
     return arr;
 }
 
-const typeValues = [
-    {
-        "id": 1,
-        name: "Coins"
-    },
-    {
-        "id": 2,
-        name: "Bars"
-    },
-    {
-        "id": 3,
-        name: "Vedhani"
-    },
-]
-
 export default function Bullions() {
     const [queryParameters] = useSearchParams()
     const [types, setTypes] = useState([])
@@ -73,7 +58,8 @@ export default function Bullions() {
     const [filterData, setFilterData] = useState({
         limit: 12,
         page: 1,
-        sort_by: ''
+        sort_by: '',
+        metal_type: []
     })
     const [refreshCount, setRefreshCount] = useState(0)
     const [totalPages, setTotalPages] = useState(0)
@@ -91,7 +77,9 @@ export default function Bullions() {
     }
 
     useEffect(() => {
-        filterData['metal_type[0]'] = metal
+        if (metal) {
+            filterData['metal_type'][0] = metal
+        }
         filterData['search_query'] = item_type
         const temp = Object.assign({}, filterData)
         setFilterData(temp)
@@ -114,10 +102,12 @@ export default function Bullions() {
     }, [refreshCount])
 
     const handleChange = ({ target }) => {
-        filterData[target.name] = target.value
-        const temp = Object.assign({}, filterData)
-        setFilterData(temp)
-        setRefreshCount(refreshCount + 1)
+        if(target.value) {
+            filterData[target.name] = target.value
+            const temp = Object.assign({}, filterData)
+            setFilterData(temp)
+            setRefreshCount(refreshCount + 1)
+        }
     }
 
     const handleChangePage = (event, newPage) => {
@@ -133,12 +123,14 @@ export default function Bullions() {
         setTypeName(tempArray)
         console.info(tempArray);
     };
+
+
     return (
         <div className='about-us'>
             <div className='col-12'>
                 <Box sx={{ flexGrow: 1 }}>
                     <Grid container spacing={1}>
-                        <Grid item xs={12} md={12} className='product-dash-board-header-image-container' style={{ backgroundImage: `url(${productDashBoardImage})` }}>
+                        <Grid item={true} xs={12} md={12} className='product-dash-board-header-image-container' style={{ backgroundImage: `url(${productDashBoardImage})` }}>
                             <div className='breadcrumb-container-productpage'>
                                 <ProductBreadcrumb navigationData={navigationData} />
                             </div>
@@ -161,7 +153,7 @@ export default function Bullions() {
             <div className="product-main">
                 <Box sx={{ flexGrow: 1 }}>
                     <Grid container spacing={1}>
-                        <Grid item xs={6} md={4}>
+                        <Grid item={true} >
                             <Select
                                 defaultValue={1}
                                 sx={{ boxShadow: 'none', '.MuiOutlinedInput-notchedOutline': { border: 0 } }}
@@ -182,20 +174,33 @@ export default function Bullions() {
                                 ))}
                             </Select>
                             <Select
-                                defaultValue={1}
-                                sx={{ boxShadow: 'none', '.MuiOutlinedInput-notchedOutline': { border: 0 } }}
-                                labelId="demo-multiple-checkbox-label"
                                 id="demo-multiple-checkbox"
-                                value={metal}
+                                name="metal_type"
+                                value={filterData['metal_type']}
                                 onChange={handleChange}
-                                renderValue={(selected) => selected}
+                                multiple
+                                displayEmpty
+                                renderValue={(selected) => {
+                                    if (selected.length == 0) {
+                                      return 'METAL';
+                                    }
+                                    let result = ''
+                                    let count = 1;
+                                    metals.map((item, index) => {
+                                        if (selected.includes(item.id)) {
+                                            result += item.metal_type
+                                            if(count < selected.length) {
+                                                result +=  ', '
+                                            }
+                                            count++;
+                                        }
+                                    });
+                                    return result;
+                                  }}
                             >
                                 {metals.map((item, index) => (
                                     <MenuItem key={index} value={item.id}>
-                                        <Checkbox
-                                            checked={metal == item.id}
-                                        />
-                                        <ListItemText primary={item.metal_type} />
+                                        {item.metal_type}
                                     </MenuItem>
                                 ))}
                             </Select>
@@ -223,9 +228,8 @@ export default function Bullions() {
                                 ))}
                             </Select> */}
                         </Grid>
-                        <Grid className='product-page-sort-by-container' item xs={1} md={6}>
+                        <Grid className='product-page-sort-by-container' item={true} xs={1} md={6}>
                             <Select
-                                defaultValue={1}
                                 sx={{ boxShadow: 'none', '.MuiOutlinedInput-notchedOutline': { border: 0 } }}
                                 renderValue={(selected) => "SORT BY"}
                             >
@@ -236,14 +240,14 @@ export default function Bullions() {
                                 <MenuItem value='newly_added'>Bestsellers</MenuItem>
                             </Select>
                         </Grid>
-                        <Grid item xs={1} md={12}>
+                        <Grid item={true} xs={1} md={12}>
                             <Divider className='product-page-divider' variant="middle" />
                         </Grid>
                     </Grid>
                 </Box>
                 <Box sx={{ flexGrow: 1 }}>
                     <Grid container spacing={1}>
-                        <Grid item xs={1} md={10}>
+                        <Grid item={true} xs={1} md={10}>
                             {typeNameSelected.map(element =>
                             (<Chip
                                 className='product-page-chip'
@@ -258,17 +262,17 @@ export default function Bullions() {
 
                     </Grid>
                 </Box>
-                <Box sx={{ flexGrow: 1 }}>
+                <Box item={true} sx={{ flexGrow: 1 }}>
                     {products.length > 0 ? (
-                        <Grid spacing={1} className="product-grid-container">
-                            <Grid className="product-list-grid-section" xs={12} md={10}>
-                                {products.map(product => (
+                        <Grid container spacing={1} className="product-grid-container">
+                            <Grid item={true} className="product-list-grid-section" xs={12} md={10}>
+                                {products.map((product, index) => (
                                     <ProductCard
                                         productImage={product.image_path}
                                         productName={product.product_name}
                                         productPrice={product.sales_price}
                                         id={product.product_id}
-                                        key={product.product_id}
+                                        key={index}
                                     />
                                 ))}
                             </Grid>

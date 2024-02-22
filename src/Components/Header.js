@@ -338,7 +338,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                           <li className="/login-icon">
                             <Link
                               onClick={handleOpenDialog}
-                              classsName="image"
+                              className="image"
                               style={{ color: "#A3A3A3" }}
                             >
                               <LoginIcon />
