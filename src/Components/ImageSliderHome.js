@@ -6,7 +6,7 @@ import EastIcon from "@mui/icons-material/East";
 import WestIcon from "@mui/icons-material/West";
 import _ from 'lodash';
 
-function ImageSliderHome({ height, width, CardImage, padding, CardImageType, className, imagesArray }) {
+function ImageSliderHome({ height, width, data, padding, CardImageType, className, imagesArray }) {
   const {
     scrollRef, pages, activePageIndex, next, prev, goTo
   } = useSnapCarousel();
@@ -25,14 +25,14 @@ function ImageSliderHome({ height, width, CardImage, padding, CardImageType, cla
         className={`image-slider-component ${className}`}
         ref={scrollRef}
       >
-        {CardImageType == "Favourites" && windoDimensions[0] <= 768 ? _.chunk(imagesArray, 4).map((item, key) => (
+        {CardImageType == "Favourites" && windoDimensions[0] <= 768 ? _.chunk(data, 4).map((item, key) => (
           <div className="item-section" key={key}>
             {item.map((inneritem, index) => (
-              <ImageSliderCardHome CardImageType={CardImageType} key={index} CardImage={inneritem} />
+              <ImageSliderCardHome CardImageType={CardImageType} key={index} CardImage={inneritem.img} name={inneritem.name} />
             ))}
           </div>
-        )) : imagesArray.map((item, index) => (
-          <ImageSliderCardHome CardImageType={CardImageType} height={height} width={width} key={index} CardImage={item} padding={padding} />
+        )) : data.map((item, index) => (
+          <ImageSliderCardHome CardImageType={CardImageType} height={height} width={width} key={index} CardImage={item.img} padding={padding} name={item.name} />
         ))}
       </ul>
       {CardImageType == "Favourites" && windoDimensions[0] < 768 && <ol style={{ display: 'flex', justifyContent: "center", paddingLeft: "0", marginTop: 24, marginBottom: 0 }}>

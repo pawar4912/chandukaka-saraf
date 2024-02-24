@@ -32,10 +32,11 @@ const Item = styled(Paper)(({ theme }) => ({
   textAlign: 'center',
   color: theme.palette.text.secondary,
 }));
-const prodImages = [prod1, prod2, prod3, prod4];
+
+const dazzlingFev = [{img: prod1, name: "DIAMOND BANGLES" },{img: prod2, name: "LAYERED BRACELETS" },{img: prod3, name: "KUNDAN NECKLACE" },{img: prod4, name: "KUNDAN NECKLACE" }]
 const offerImages = [CardImageLarge, CardImageLarge, CardImageLarge, CardImageLarge];
 const shineImages = [CardImageNoPadding, CardImageNoPadding, CardImageNoPadding, CardImageNoPadding];
-const catImgs = [catImg1, catImg2, catImg3, catImg4, catImg5, catImg6];
+const catData = [{img: catImg1, name: "BANGLES" },{img: catImg2, name: "NECKLACE" },{img: catImg3, name: "EARRINGS" },{img: catImg4, name: "EARRINGS" },{img: catImg5, name: "NECKLACE" },{img: catImg6, name: "NECKLACE" }];
 
 function Home() {
   const windoDimensions = useWindowWidthAndHeight();
@@ -73,7 +74,7 @@ function Home() {
             <Item className="empty-container-section">xs=6 md=4</Item>
           </Grid>
           <Grid className='favourite-image-slider' item xs={10} md={11}>
-            <ImageSliderHome width={295} height={355} CardImage={CardImageNormal} padding={30} CardImageType={"Favourites"} className="favorite-slider" imagesArray={prodImages} />
+            <ImageSliderHome width={295} height={355} CardImage={CardImageNormal} padding={30} CardImageType={"Favourites"} className="favorite-slider" data={dazzlingFev} />
           </Grid>
         </Grid>
       </Box>
@@ -135,7 +136,7 @@ function Home() {
             </div>
           </Grid>
           <Grid item xs={12} md={12} className="p-0">
-            <ImageSliderHome width={450} height={600} CardImage={CardImageNoPadding} padding={0} CardImageType={"Discover"} imagesArray={catImgs} />
+            <ImageSliderHome width={450} height={600} CardImage={CardImageNoPadding} padding={0} CardImageType={"Discover"} data={catData} />
           </Grid>
         </Grid>
       </Box>
