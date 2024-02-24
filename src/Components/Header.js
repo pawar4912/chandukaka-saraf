@@ -165,9 +165,9 @@ function Header({ openDrawer, handleOpenDrawer }) {
                                 <li>
                                   <small>SILVER - ₹{rates.Silver1}</small>
                                 </li>
-                                <li>
+                                {/* <li>
                                   <Link to="/find-a-store">FIND A STORE</Link>
-                                </li>
+                                </li> */}
                                 <li>
                                   <Link to="/contact-us">SUPPORT</Link>
                                 </li>
@@ -255,7 +255,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                 </div>
               </div>
             </div>
-            <div className="col-12 col-md-12 col-lg-12 order-1 order-md-1 d-none d-md-block ps-0">
+            {/* <div className="col-12 col-md-12 col-lg-12 order-1 order-md-1 d-none d-md-block ps-0">
               <div className="col-12 col-md-12 col-lg-12">
                 <div className="row">
                   <div className="col-12 col-sm-10 col-md-10 col-lg-10">
@@ -281,12 +281,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                           <li>
                             <Link to="/bullions">Bullion</Link>
                           </li>
-                          {/* <li>
-                            <Link to="e-gold">E-gold</Link>
-                          </li> */}
-                          {/* <li>
-                            <Link to="gifting">Gifting</Link>
-                        </li> */}
+                          
                         </div>
                       </ul>
                     </nav>
@@ -312,7 +307,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                               className="image"
                             />
                           </Link>
-                          {/* <ShoppingBag open={openDrawer} handleDrawer = {handleOpenDrawer} /> */}
+                        
                         </li>
                         <li>
                           <Link to="/wishlist">
@@ -354,7 +349,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </header>
         {showDropdown && (

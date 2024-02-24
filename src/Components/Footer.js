@@ -79,9 +79,9 @@ function Footer() {
                       <a href="/aboutus" className="btn btn-link">
                         About us
                       </a>
-                      <a href="/news-&-blog" className="btn btn-link">
+                      {/* <a href="/news-&-blog" className="btn btn-link">
                         News & Blogs
-                      </a>
+                      </a> */}
                       <a href="/contact-us" className="btn btn-link">
                         Contact us
                       </a>
@@ -105,11 +105,11 @@ function Footer() {
                     </div>
                   </div>
                 </div>
-                <div className="col-xl-3 col-lg-3 col-md-4 col-sm-4 col-7 ">
+                {/* <div className="col-xl-3 col-lg-3 col-md-4 col-sm-4 col-7 ">
                   <button onClick={navigateToFindStore} type="button" className="mt-3">
                     Find A Store
                   </button>
-                </div>
+                </div> */}
               </div>
             </div>
             <div className="col-12 col-md-8 col-lg-4">
