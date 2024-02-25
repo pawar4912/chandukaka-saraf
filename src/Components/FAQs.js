@@ -34,16 +34,16 @@ export default function FAQs() {
             {data.map((element, index) => (
                 <Accordion expanded={expanded === 'panel' + index} onChange={handleChange('panel' + index)}>
                     <AccordionSummary
-                        expandIcon={expanded === 'panel' + index ? <img src={minusIcon} alt="rightArrowIcon" /> : <img src={plusIcon} alt="rightArrowIcon" />}
+                        expandIcon={expanded === 'panel' + index ? <img className="expand-icon" src={minusIcon} alt="rightArrowIcon" /> : <img className="expand-icon" src={plusIcon} alt="rightArrowIcon" />}
                         aria-controls="panel1bh-content"
                         id="panel1bh-header"
                     >
-                        <Typography sx={{ width: '90%', flexShrink: 0 }}>
+                        <Typography sx={{ width: '90%', flexShrink: 0, fontFamily: 'Lato', fontWeight: 'bold', fontSize: '18px' }}>
                             {element.question}
                         </Typography>
                     </AccordionSummary>
                     <AccordionDetails>
-                        <Typography>
+                        <Typography sx={{ fontFamily: 'Lato', fontWeight: 'normal', fontSize: '16px'}}>
                             <div
                                 dangerouslySetInnerHTML={{ __html: element.answers}}
                             />

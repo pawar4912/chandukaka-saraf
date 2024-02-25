@@ -77,14 +77,14 @@ export default function ContactUs() {
                         <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
                             {windoDimensions[0] > 768? <div className='contact-us-one-line-form-field'>
                                 <TextField className='text-field text-field-name-contact-us' required id="outlined-basic" label="First Name" variant="outlined" name="first_name" value={data.first_name} onChange={handleChange} />
-                                <TextField className='text-field text-field-name-contact-us' required id="outlined-basic" label="First Name" variant="outlined" name="last_name" value={data.last_name} onChange={handleChange} />
+                                <TextField className='text-field text-field-name-contact-us' required id="outlined-basic" label="Last Name" variant="outlined" name="last_name" value={data.last_name} onChange={handleChange} />
                             </div>: 
                             <>
                                 <div className='contact-us-one-line-form-field'>
                                     <TextField className='text-field text-field-email-contact-us' required id="outlined-basic" label="First Name" variant="outlined" name="first_name" value={data.first_name} onChange={handleChange} />
                                 </div>
                                 <div className='contact-us-one-line-form-field'>
-                                    <TextField className='text-field text-field-email-contact-us' required id="outlined-basic" label="First Name" variant="outlined" name="last_name" value={data.last_name} onChange={handleChange} />
+                                    <TextField className='text-field text-field-email-contact-us' required id="outlined-basic" label="Last Name" variant="outlined" name="last_name" value={data.last_name} onChange={handleChange} />
                                 </div>
                             </>
                             }
