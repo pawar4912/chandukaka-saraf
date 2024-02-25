@@ -67,8 +67,8 @@ function Footer() {
                         1800 267 0999
                       </p>
                       <p className="address">
-                        Sr. No.32/1/B/5, Gunwadi Road, Baramati, Dist - Pune,
-                        PIN: 413102
+                      CHANDUKAKA SARAF JEWELS PRIVATE LIMITED
+OFFICE NO 1A AND 1B, 1ST,MUDLIYAR CHAMBERS CO-OP SOC, Rasta Peth, Pune City, Pune - 411011, Maharashtra
                       </p>
                     </div>
                   </div>
