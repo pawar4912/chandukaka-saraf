@@ -3,7 +3,7 @@ import logo from '../images/icons/logo.svg';
 import rightArrowIcon from '../images/icons/right-arrow.svg';
 import facebookIcon from '../images/icons/social-media/facebook.svg';
 import instagramIcon from '../images/icons/social-media/instagram.svg';
-import twitterIcon from '../images/icons/social-media/twitter.svg';
+import YouTubeIcon from '@mui/icons-material/YouTube';
 import { useNavigate } from "react-router-dom";
 import { subscribeEmail } from '../services/FrontApp/index.service';
 import ErrorList from "./Common/ErrorList";
@@ -36,9 +36,9 @@ function Footer() {
 
   };
 
-  let navigate = useNavigate(); 
-  const navigateToFindStore = () =>{ 
-    let path = `/find-a-store`; 
+  let navigate = useNavigate();
+  const navigateToFindStore = () => {
+    let path = `/find-a-store`;
     navigate(path);
   }
   return (
@@ -67,9 +67,9 @@ function Footer() {
                         1800 267 0999
                       </p>
                       <p className="address">
-                      Chandukaka Saraf Jewels Private Limited
-                      Office No 1A And 1B, 1st,Mudliyar Chambers CO-OP Soc,
-                      Rasta Peth, Pune City, Pune - 411011, Maharashtra
+                        Chandukaka Saraf Jewels Private Limited
+                        Office No 1A And 1B, 1st,Mudliyar Chambers CO-OP Soc,
+                        Rasta Peth, Pune City, Pune - 411011, Maharashtra
                       </p>
                     </div>
                   </div>
@@ -150,10 +150,13 @@ function Footer() {
                   alt="instagramIcon"
                   className="social-media-icon"
                 />
-                <img
-                  src={twitterIcon}
-                  alt="twitterIcon"
-                  className="social-media-icon"
+                <YouTubeIcon
+                  style={{
+                    border: '1px solid black',
+                    borderRadius: '50%',
+                    padding: '2px'
+                  }}
+                  fontSize='medium'
                 />
               </div>
             </div>
