@@ -6,11 +6,11 @@ import Paper from '@mui/material/Paper';
 import fillWhiteLeftIcon from '../../images/icons/fillWhiteLeftIcon.svg';
 import fillWhiteRightIcon from '../../images/icons/fillWhiteRightIcon.svg';
 import ProductBreadcrumb from '../ProductBreadcrumb';
-import ClearFilterIcon from "../../images/icons/ClearFilterIcon.svg";
 import ProductCard from '../ProductCard';
 import { Paginator } from '../Common/Paginator';
 import { getMetals, getProducts, getProductCategory } from '../../services/FrontApp/index.service';
-import { useSearchParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
+import { productArray } from '../Common/ProductArray';
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -34,6 +34,7 @@ var removeByAttr = function (arr, attr, value) {
 }
 
 export default function Bullions() {
+    const { category } = useParams();
     const [queryParameters] = useSearchParams()
     const [types, setTypes] = useState([])
     const [metals, setMetals] = useState([])
@@ -65,26 +66,33 @@ export default function Bullions() {
     const [totalPages, setTotalPages] = useState(0)
     const [products, setProducts] = useState([])
 
+    // const getData = async () => {
+    //     try {
+    //         const { data } = await getProducts(filterData)
+    //         setProducts(data.data.data)
+    //         setTotalPages(data.data.last_page)
+    //     } catch (error) {
+    //         setProducts([])
+    //         setTotalPages(0)
+    //     }
+    // }
+
     const getData = async () => {
-        try {
-            const { data } = await getProducts(filterData)
-            setProducts(data.data.data)
-            setTotalPages(data.data.last_page)
-        } catch (error) {
-            setProducts([])
-            setTotalPages(0)
-        }
+        const data = productArray.filter(item => item.category.includes(category))
+        setProducts(data)
+        setTotalPages(1)
     }
 
     useEffect(() => {
-        if (metal) {
-            filterData['metal_type'][0] = metal
-        }
-        filterData['search_query'] = item_type
-        const temp = Object.assign({}, filterData)
-        setFilterData(temp)
-        setRefreshCount(refreshCount + 1)
-    }, [metal, item_type])
+        // if (metal) {
+        //     filterData['metal_type'][0] = metal
+        // }
+        // filterData['search_query'] = item_type
+        // const temp = Object.assign({}, filterData)
+        // setFilterData(temp)
+        // setRefreshCount(refreshCount + 1)
+        getData()
+    }, [])
 
     const getFiltersData = async () => {
         let result = await getProductCategory();
@@ -93,13 +101,13 @@ export default function Bullions() {
         setMetals(result.data.data)
     }
 
-    useEffect(() => {
-        getFiltersData()
-    }, [])
+    // useEffect(() => {
+    //     getFiltersData()
+    // }, [])
 
-    useEffect(() => {
-        getData()
-    }, [refreshCount])
+    // useEffect(() => {
+    //     getData()
+    // }, [refreshCount])
 
     const handleChange = ({ target }) => {
         if(target.value) {
@@ -151,7 +159,7 @@ export default function Bullions() {
                 </Box>
             </div>
             <div className="product-main">
-                <Box sx={{ flexGrow: 1 }}>
+                {/* <Box sx={{ flexGrow: 1 }}>
                     <Grid container spacing={1}>
                         <Grid item={true} >
                             <Select
@@ -204,29 +212,6 @@ export default function Bullions() {
                                     </MenuItem>
                                 ))}
                             </Select>
-                            {/* <Select
-                                defaultValue={1}
-                                sx={{ boxShadow: 'none', '.MuiOutlinedInput-notchedOutline': { border: 0 } }}
-                                labelId="demo-multiple-checkbox-label"
-                                id="demo-multiple-checkbox"
-                                multiple
-                                displayEmpty
-                                value={typeNameSelected}
-                                onChange={handleChange}
-                                input={<OutlinedInput label="Tag" />}
-                                renderValue={(selected) => "WEIGHT"}
-                            >
-                                {typeValues.map(variant => (
-                                    <MenuItem key={variant.id} value={variant}>
-                                        <Checkbox
-                                            checked={
-                                                typeNameSelected.findIndex(item => item.id === variant.id) >= 0
-                                            }
-                                        />
-                                        <ListItemText primary={variant.name} />
-                                    </MenuItem>
-                                ))}
-                            </Select> */}
                         </Grid>
                         <Grid className='product-page-sort-by-container' item={true} xs={1} md={6}>
                             <Select
@@ -261,26 +246,26 @@ export default function Bullions() {
                         </Grid>
 
                     </Grid>
-                </Box>
+                </Box> */}
                 <Box item={true} sx={{ flexGrow: 1 }}>
                     {products.length > 0 ? (
                         <Grid container spacing={1} className="product-grid-container">
                             <Grid item={true} className="product-list-grid-section" xs={12} md={10}>
                                 {products.map((product, index) => (
                                     <ProductCard
-                                        productImage={product.image_path}
-                                        productName={product.product_name}
-                                        productPrice={product.sales_price}
-                                        id={product.product_id}
+                                        productImage={product.image}
+                                        productName={product.category}
                                         key={index}
                                     />
                                 ))}
                             </Grid>
                         </Grid>
-                    ) : ''}
+                    ) : (
+                        <div className='no-data-text'>Products Not Found</div>
+                    )}
 
                 </Box>
-                <Paginator currentPage={filterData.page} totalPage={totalPages} handleChangePage={handleChangePage} />
+                {/* <Paginator currentPage={filterData.page} totalPage={totalPages} handleChangePage={handleChangePage} /> */}
             </div>
         </div>
     )

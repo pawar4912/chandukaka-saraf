@@ -167,3 +167,10 @@ hr {
     justify-content: center;
     height: 100%;
   }
+
+  .no-data-text {
+    display: flex;
+    justify-content: center;
+    min-height: 100px;
+    align-items: center;
+  }
