@@ -89,7 +89,7 @@ export const frontAppRoutes = [
     strict: false,
   },
   {
-    path: '/bullions',
+    path: '/bullions/:category',
     name: 'Bullions',
     element: <Bullions />,
     exact: true,
