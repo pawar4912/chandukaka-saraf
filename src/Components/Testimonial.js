@@ -37,7 +37,7 @@ export default function Testimonial() {
     scrollRef, next, prev, pages, activePageIndex, goTo
   } = useSnapCarousel();
   const windoDimensions = useWindowWidthAndHeight();
-  
+
   const [data, setData] = useState([])
 
   const getData = async () => {
@@ -58,21 +58,17 @@ export default function Testimonial() {
       <Grid className="large-image-slider-test-area text-area-explore" item xs={9} md={6}>
         {windoDimensions[0] > 768 ?
           <div className="image-slider-header text-only-grid-header">
-            <img src={imageSliderHeaderIconLeft} alt="React Logo" />
+            <img className="img-left" src={imageSliderHeaderIconLeft} alt="React Logo" />
             Treasured Stories
-            <img src={imageSliderHeaderIconRight} alt="React Logo" />
+            <img className="img-right" src={imageSliderHeaderIconRight} alt="React Logo" />
           </div>
           : <div className="image-slider-header text-only-grid-header image-slider-header-explore">
             <div>
-              Explore Our Store
+              <img className="img-left" src={imageSliderHeaderIconLeft} alt="React Logo" />
+              Treasured Stories
+              <img className="img-right" src={imageSliderHeaderIconRight} alt="React Logo" />
             </div>
-            <div>
-              <img src={imageSliderHeaderIconLeft} alt="React Logo" />
-              {'  '}
-              Locations
-              {' '}
-              <img src={imageSliderHeaderIconRight} alt="React Logo" />
-            </div>
+
           </div>
         }
         <div className="image-slider-description text-only-grid text-only-grid-explore-description">
@@ -95,13 +91,13 @@ export default function Testimonial() {
           <TestimonialComponent key={item.id.toString()} data={item} />
         ))}
       </ul>
-      {windoDimensions[0] <768  && <ol style={{ display: 'flex', justifyContent: "center", paddingLeft: "0", marginTop: 24, marginBottom: 0 }}>
+      {windoDimensions[0] < 768 && <ol style={{ display: 'flex', justifyContent: "center", paddingLeft: "0", marginTop: 24, marginBottom: 0 }}>
         {pages.map((_, i) => (
-            <button key={i} className='image-scroll-navigation'
-              style={i === activePageIndex ? { opacity: 0.5 } : {}}
-              onClick={() => goTo(i)}
-            >
-            </button>
+          <button key={i} className='image-scroll-navigation'
+            style={i === activePageIndex ? { opacity: 0.5 } : {}}
+            onClick={() => goTo(i)}
+          >
+          </button>
         ))}
       </ol>}
     </div>

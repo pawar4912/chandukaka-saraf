@@ -8,8 +8,12 @@
     text-align: -webkit-center;
 }
 
-.image-slider-header img {
+.image-slider-header .img-left {
     padding-right: 10px;
+}
+
+.image-slider-header .img-right {
+    padding-left: 10px;
 }
 
 .contact-us-description {
