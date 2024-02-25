@@ -5,7 +5,7 @@ import Paper from '@mui/material/Paper';
 import ClearFilterIcon from "../../images/icons/ClearFilterIcon.svg";
 import jewellerysImage from "../../images/jewellerysImage.png"
 import ProductCard from '../ProductCard';
-import CarouselJewellery from './CarouselJewellery';
+// import CarouselJewellery from './CarouselJewellery';
 import { getProducts } from '../../services/FrontApp/index.service';
 import { Paginator } from '../Common/Paginator';
 
@@ -163,7 +163,7 @@ export default function Jewellerys() {
         <div className='about-us'>
             <div className='col-12'>
             <div>
-            <CarouselJewellery />
+            {/* <CarouselJewellery /> */}
           </div>
             </div>
             <Box sx={{ flexGrow: 1 }}>

@@ -53,7 +53,6 @@
     margin: 0;
     padding: 0;
     padding-right: 1em;
-    text-shadow: 3px 3px #916f25;
   }
 
   .service-slide-text {
@@ -196,4 +195,22 @@
       color: #ffffff;
     }
   }
+}
+.slick-dots {
+  bottom: 20px !important;
+
+
+  li button:before {
+    font-size: 12px !important;
+    color: #fcf7f7 !important;
+  }
+  li button:hover {
+    background-color: transparent !important;
+    border: none !important;
+  }
+  li button {
+    color: rgb(255, 255, 255) !important;
+    opacity: 1;
+  }
+  
 }
