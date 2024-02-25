@@ -145,9 +145,7 @@ export default function Bullions() {
                             <div className='product-dash-board-image-header-text-container'>
                                 <div className="product-dash-board-header text-only-grid-header">
                                     <img src={fillWhiteLeftIcon} alt="React Logo" />
-                                    {'  '}
-                                    Bullion
-                                    {' '}
+                                    {category}
                                     <img src={fillWhiteRightIcon} alt="React Logo" />
                                 </div>
                                 <div className="product-dash-board-description">

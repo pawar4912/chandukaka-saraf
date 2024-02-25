@@ -80,7 +80,7 @@
     color: #916F25;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .contact-us-description {
         text-align: center;
         font: normal normal normal 14px/22px Lato;
@@ -97,5 +97,8 @@
     }
     .text-field-email-contact-us{
         width: 90% !important;
+    }
+    .product-main {
+        padding: 0 25px;
     }
 }

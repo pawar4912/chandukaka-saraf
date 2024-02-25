@@ -71,6 +71,7 @@
 }
 
 .product-grid-container {
+    padding-top: 20px;
     padding-bottom: 20px;
 }
 
@@ -78,7 +79,8 @@
     display: grid;
     align-items: center;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 10px;
+    grid-gap: 50px;
+    min-width: 100% !important;
 }
 
 @media (max-width: 1024px) {
