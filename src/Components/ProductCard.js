@@ -36,9 +36,8 @@ export default function ProductCard({ productImage, productName, id = 0, isWishl
             className="images"
             image={productImage}
             alt="green iguana"
-            onClick={() => navigate(`/product-details/${id}`)}
           />
-          <div
+          {/* <div
             style={{ position: "absolute", bottom: 0, right: 0 }}
             className="favourite-button-container"
           >
@@ -46,16 +45,16 @@ export default function ProductCard({ productImage, productName, id = 0, isWishl
               {isWishlist ? (<FavoriteIcon onClick={removeFromFavorite} />) : (<FavoriteBorderIcon onClick={addToFavorite} />)}
               
             </div>
-          </div>
+          </div> */}
         </div>
-        <CardContent>
+        {/* <CardContent>
           <div className='product-name'>
             {productName}
           </div>
           <div className='product-price'>
             ₹ {productPrice}
           </div>
-        </CardContent>
+        </CardContent> */}
       </CardActionArea>
     </Card>
   );
