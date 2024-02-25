@@ -118,12 +118,7 @@
 @media (max-width: 768px) {
   .service-slide-text-wrapper {
     width: 100%;
-    position: absolute;
     bottom: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    margin-left: .5rem;
 
     .service-slide-text,
     .service-slide-description {
@@ -131,9 +126,6 @@
     }
   
     .service-slide-text {
-      font: normal normal 600 32px/48px Playfair Display;
-      letter-spacing: 0.54px;
-      color: #ffffff;
       text-align: left;
     }
   
@@ -183,7 +175,6 @@
     padding-left: 20px;
     justify-content: center;
     bottom: 50px !important;
-    margin-left: .5rem;
 
     .service-slide-text,
     .service-slide-description {
