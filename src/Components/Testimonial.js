@@ -79,14 +79,14 @@ export default function Testimonial() {
           In their own words, our customers share their personal experiences
         </div>
       </Grid>
-      {windoDimensions[0] >= 768 && <div className='navigation-icon'>
+      {/* {windoDimensions[0] >= 768 && <div className='navigation-icon'>
         <button className="arrow-icon-generic" type="button" onClick={() => prev()}>
           <img src={LeftIcon} alt="React Logo" />
         </button>
         <button className="arrow-icon-generic" type="button" onClick={() => next()}>
           <img src={RightIcon} alt="React Logo" />
         </button>
-      </div>}
+      </div>} */}
       <ul
         className={`testimonial-slider-component`}
         ref={scrollRef}

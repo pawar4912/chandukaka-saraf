@@ -106,11 +106,11 @@ function Header({ openDrawer, handleOpenDrawer }) {
                 <div className="col-12 col-md-12 col-lg-12">
                   <div className="brand-wrapper">
                     <div className="d-md-none d-lg-none mobile-header-bar">
-                      <img
+                      {/* <img
                         src={menuOpen}
                         alt="menu-open"
                         className="menu-open open-nav-btn"
-                      />
+                      /> */}
                       <div className="logo">
                         <Link to="/">
                           <img src={logo} alt="Logo" className="image" />
@@ -118,19 +118,19 @@ function Header({ openDrawer, handleOpenDrawer }) {
                       </div>
                       <div className="header-icon-list">
                         <ul>
-                          <li>
+                          {/* <li>
                             <Link onClick={handleOpenDrawer}>
                               <img
                                 src={shoppingBagLogo}
                                 alt="Logo"
                                 className="image"
                               />
-                            </Link>
+                            </Link> */}
                             {/* <ShoppingBag
                               open={openDrawer}
                               handleOpenDrawer={handleOpenDrawer}
                             /> */}
-                          </li>
+                          {/* </li>
                           <li>
                             <Link to="/wishlist">
                               <img
@@ -139,7 +139,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                                 className="image heart"
                               />
                             </Link>
-                          </li>
+                          </li> */}
                         </ul>
                       </div>
                     </div>
