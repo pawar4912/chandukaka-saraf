@@ -65,17 +65,19 @@ footer {
             margin-top: 40px;
             display: flex;
             justify-content: space-between;
+            align-items: center;
             width: 180px;
 
             h6 {
-                font-size: 16px;
+                font-size: 17px;
                 color: #333333;
+                margin: 0;
+                padding: 0;
             }
 
             .social-media-icon {
-                width: 19px;
-                height: 19px;
-                opacity: 1;
+                width: 24px;
+                height: 24px;
             }
         }
 
