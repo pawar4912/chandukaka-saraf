@@ -139,14 +139,14 @@ export default function Bullions() {
                 <Box sx={{ flexGrow: 1 }}>
                     <Grid container spacing={1}>
                         <Grid item={true} xs={12} md={12} className='product-dash-board-header-image-container' style={{ backgroundImage: `url(${productDashBoardImage})` }}>
-                            <div className='breadcrumb-container-productpage'>
+                            {/* <div className='breadcrumb-container-productpage'>
                                 <ProductBreadcrumb navigationData={navigationData} />
-                            </div>
+                            </div> */}
                             <div className='product-dash-board-image-header-text-container'>
                                 <div className="product-dash-board-header text-only-grid-header">
-                                    <img src={fillWhiteLeftIcon} alt="React Logo" />
+                                    <img className="img-left" src={fillWhiteLeftIcon} alt="React Logo" />
                                     {category}
-                                    <img src={fillWhiteRightIcon} alt="React Logo" />
+                                    <img className="img-right" src={fillWhiteRightIcon} alt="React Logo" />
                                 </div>
                                 <div className="product-dash-board-description">
                                     Discover the timeless beauty and enduring value of bullion, a symbol of luxury that transcends generations.

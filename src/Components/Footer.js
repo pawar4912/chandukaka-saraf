@@ -144,11 +144,13 @@ function Footer() {
                   src={facebookIcon}
                   alt="facebookIcon"
                   className="social-media-icon"
+                  onClick={()=>navigate('https://www.facebook.com/csjewel1827')}
                 />
                 <img
                   src={instagramIcon}
                   alt="instagramIcon"
                   className="social-media-icon"
+                  onClick={()=>navigate('https://instagram.com/csjewelsofficial?igshid=YTQwZjQ0NmI0OA==')}
                 />
                 <YouTubeIcon
                   style={{
@@ -157,6 +159,7 @@ function Footer() {
                     padding: '2px'
                   }}
                   fontSize='medium'
+                  onClick={()=>navigate('https://www.youtube.com/@ChandukakaSaraf')}
                 />
               </div>
             </div>
