@@ -59,12 +59,12 @@ function Footer() {
                       <p className="mb-2">
                         <span>Email: </span>
                         {' '}
-                        care@csjwellers.com
+                        care@csjewels.com
                       </p>
                       <p className="mb-4">
                         <span>Phone: </span>
                         {' '}
-                        1800 267 0999
+                        07969991827
                       </p>
                       <p className="address">
                         Chandukaka Saraf Jewels Private Limited

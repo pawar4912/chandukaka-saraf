@@ -58,7 +58,7 @@ export default function ContactUs() {
                     <Grid className='contact-us-center' item xs={12} md={6}>
                         <SectionTitleWithArrows textMessage={"Need assistance?"} arrowSides={"Both"} />
                         <div className='contact-us-description'>
-                            Send an email to &nbsp;<div className='decoration-contact-us-underline'>care@csjewellers.com</div> &nbsp;or call us on &nbsp; <div className='decoration-contact-us-underline'> 1800 267 0999 </div>&nbsp;anytime! We will get back to you as soon as we can!
+                            Send an email to &nbsp;<div className='decoration-contact-us-underline'>care@csjewels.com</div> &nbsp;or call us on &nbsp; <div className='decoration-contact-us-underline'> 07969991827 </div>&nbsp;anytime! We will get back to you as soon as we can!
                         </div>
                     </Grid>
                     {windoDimensions[0] > 768 &&
