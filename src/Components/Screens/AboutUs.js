@@ -14,7 +14,7 @@ import BlogSectionWithSideImage from '../BlogSectionWithSideImage';
 import digitalSpace from '../../images/digitalSpace.png';
 import TreasuredStoriesBackground from '../../images/TreasuredStoriesBackground.png';
 import AwardsAndRecognition from '../AwardsAndRecognition';
-import SocietyContributionImage from "../../images/SocietyContribution.png";
+import SocietyContributionImage from "../../images/about_us.jpg";
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -105,7 +105,7 @@ export default function AboutUs() {
             <Box className="box-about-us about-us-last-element" sx={{ flexGrow: 1 }}>
                 <BlogSectionWithSideImage
                     headerText={"Contributing to Society"}
-                    descriptionText={"We are making remarkable social contributions through our philanthropic arm, the ‘Sou. Kusum & Shri. Jindatta Shah Welfare Foundation.’ This foundation is dedicated to promoting education, with a special focus on empowering girls with access to quality schooling. Moreover, we actively engage in initiatives that enhance social hygiene and cleanliness, thereby creating a healthier environment for the entire community. Additionally, we generously support various needy organizations as part of our corporate social responsibility (CSR) activities, demonstrating our commitment to the betterment of society and leaving a lasting impact on the lives of many.."}
+                    descriptionText={"The leadership at CS Jewels headed by Dir Siddharth Shah always intended to extensively protect the sacred animal communities. Hence in 2020, CS Jewels opened up Dayoday Goshala in Baramati. Today, it has saved and sustained over 100 cows in its society, by providing it with fodder and shelter throughout the year."}
                     Item={Item}
                     imageSrc={SocietyContributionImage}
                     isImageFirst={true}

@@ -156,10 +156,11 @@ function Footer() {
                   style={{
                     border: '1px solid black',
                     borderRadius: '50%',
-                    padding: '2px'
+                    padding: '2px',
+                    cursor: 'pointer'
                   }}
                   fontSize='medium'
-                  onClick={()=>{window.location.href = 'https://www.youtube.com/@ChandukakaSaraf'}}
+                  onClick={()=>{window.location.href = 'https://www.youtube.com/@csjewels1827'}}
                 />
               </div>
             </div>
