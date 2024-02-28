@@ -16,7 +16,8 @@ export default function TermsAndCondition() {
                         <div className="privacy-policy-normal-text">
                             We abide by the laws of the land in all our transactions. Take a look at the terms and conditions that apply when doing a transaction with us.
                         </div>
-                        <Divider className='divider-privacy-policy' />
+                        {/* <Divider className='divider-privacy-policy' /> */}
+                        <hr />
                     </Grid>
                     <Grid item xs={1} md={4}>
                         <div className="empty-container-section">xs=6 md=4</div>
@@ -35,7 +36,8 @@ export default function TermsAndCondition() {
                         <div className="privacy-policy-normal-text">
                             As per Prevention of Money Laundering Act 2002, a copy of Aadhaar Card & PAN Card has been made mandatory for any transaction of an amount equal to or exceeding rupees two lakh, whether conducted as a single transaction or several transactions that appear to be connected.
                         </div>
-                        <Divider className='divider-privacy-policy' />
+                        {/* <Divider className='divider-privacy-policy' /> */}
+                        <hr />
                     </Grid>
                     <Grid item xs={1} md={4}>
                         <div className="empty-container-section">xs=6 md=4</div>
@@ -61,7 +63,8 @@ export default function TermsAndCondition() {
                                 </ListItem>
                             </List>
                         </div>
-                        <Divider className='divider-privacy-policy' />
+                        {/* <Divider className='divider-privacy-policy' /> */}
+                        <hr />
                     </Grid>
                     <Grid item xs={1} md={4}>
                         <div className="empty-container-section">xs=6 md=4</div>
@@ -83,7 +86,8 @@ export default function TermsAndCondition() {
                         <div className="privacy-policy-normal-text">
                             The customer agrees not to dispute the decision made by Chandukaka Saraf & Sons Pvt. Ltd. and accepts our decision regarding the returns policy. Disputes of any nature will come under Pune-India jurisdiction.
                         </div>
-                        <Divider className='divider-privacy-policy' />
+                        {/* <Divider className='divider-privacy-policy' /> */}
+                        <hr />
                     </Grid>
                     <Grid item xs={1} md={4}>
                         <div className="empty-container-section">xs=6 md=4</div>
@@ -108,7 +112,8 @@ export default function TermsAndCondition() {
                         <div className="privacy-policy-normal-text">
                             On our website, we may provide the measurement of our products based on our manufacturing specifications. Slight tolerances may be accounted for based on the finishing during the manufacturing.
                         </div>
-                        <Divider className='divider-privacy-policy' />
+                        {/* <Divider className='divider-privacy-policy' /> */}
+                        <hr />
                     </Grid>
                     <Grid item xs={1} md={4}>
                         <div className="empty-container-section">xs=6 md=4</div>
