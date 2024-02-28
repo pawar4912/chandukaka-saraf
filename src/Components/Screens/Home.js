@@ -74,7 +74,7 @@ function Home() {
             <Item className="empty-container-section">xs=6 md=4</Item>
           </Grid>
           <Grid className='favourite-image-slider' item xs={10} md={11}>
-            <ImageSliderHome width={295} height={355} CardImage={CardImageNormal} padding={30} CardImageType={"Favourites"} className="favorite-slider" data={dazzlingFev} />
+            <ImageSliderHome width={295} height={355} CardImage={CardImageNormal} padding={30} CardImageType={"Favourites"} className="favorite-slider" data={dazzlingFev} isSlideArrowEnabled={false} />
           </Grid>
         </Grid>
       </Box>
