@@ -4,11 +4,10 @@ import rightArrowIcon from '../images/icons/right-arrow.svg';
 import facebookIcon from '../images/icons/social-media/facebook.svg';
 import instagramIcon from '../images/icons/social-media/instagram.svg';
 import YouTubeIcon from '@mui/icons-material/YouTube';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { subscribeEmail } from '../services/FrontApp/index.service';
 import ErrorList from "./Common/ErrorList";
 import SuccessMsg from "./Common/SuccessMsg";
-
 
 function Footer() {
   const [errors, setErrors] = useState([])
@@ -45,9 +44,9 @@ function Footer() {
     <footer>
       <div className="footer-container">
         <div className="logo">
-          <a href="/">
+          <Link to="/">
             <img src={logo} alt="Logo" className="image" />
-          </a>
+          </Link>
         </div>
         <div className="col-12 col-md-12 col-lg-12 footer-containt">
           <div className="row">
@@ -77,32 +76,32 @@ function Footer() {
                 <div className="col-xl-8 col-lg-7 col-md-6 col-sm-6 col-6">
                   <div className="row">
                     <div className="col-lg-6">
-                      <a href="/aboutus" className="btn btn-link">
+                      <Link to="/aboutus" className="btn btn-link">
                         About us
-                      </a>
+                      </Link>
                       {/* <a href="/news-&-blog" className="btn btn-link">
                         News & Blogs
                       </a> */}
-                      <a href="/contact-us" className="btn btn-link">
+                      <Link to="/contact-us" className="btn btn-link">
                         Contact us
-                      </a>
-                      <a href="/contact-us" className="btn btn-link">
+                      </Link>
+                      <Link to="/contact-us" className="btn btn-link">
                         Help & Support
-                      </a>
+                      </Link>
                     </div>
                     <div className="col-lg-6">
-                      <a href="/privacy-policy" className="btn btn-link">
+                      <Link to="/privacy-policy" className="btn btn-link">
                         Privacy Policy
-                      </a>
-                      <a href="/terms-and-conditions" className="btn btn-link">
+                      </Link>
+                      <Link to="/terms-and-conditions" className="btn btn-link">
                         Terms & Condition
-                      </a>
+                      </Link>
                       {/* <a href="/" className="btn btn-link">
                         Shipping Policy
                       </a> */}
-                      <a href="/CSR-Policy" className="btn btn-link">
+                      <Link to="/CSR-Policy" className="btn btn-link">
                         CSR Policy
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -144,13 +143,13 @@ function Footer() {
                   src={facebookIcon}
                   alt="facebookIcon"
                   className="social-media-icon"
-                  onClick={()=>{window.location.href = 'https://www.facebook.com/csjewel1827'}}
+                  onClick={() => { window.location.href = 'https://www.facebook.com/csjewel1827' }}
                 />
                 <img
                   src={instagramIcon}
                   alt="instagramIcon"
                   className="social-media-icon"
-                  onClick={()=>{window.location.href = 'https://instagram.com/csjewelsofficial?igshid=YTQwZjQ0NmI0OA=='}}
+                  onClick={() => { window.location.href = 'https://instagram.com/csjewelsofficial?igshid=YTQwZjQ0NmI0OA==' }}
                 />
                 <YouTubeIcon
                   style={{
