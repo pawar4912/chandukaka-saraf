@@ -20,7 +20,6 @@ export const NavigationDropdown = ({metalData, setShowDropdown}) => {
                     variant="h5"
                     color="initial"
                     className="jewellwery-type mb-4"
-                    to={`/bullions?metal=${data.metal}`}
                     onClick={closeModal}
                   >
                     {data.metal}
