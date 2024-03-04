@@ -166,7 +166,7 @@ function Footer() {
           </div>
         </div>
         <div className="copyright">
-          <p>2023 © Chandukaka Saraf & Sons Pvt. Ltd . Powered by Listany</p>
+          <p>2023 © Chandukaka Saraf Jewels Pvt. Ltd . Powered by Listany</p>
         </div>
       </div>
       <hr className="footer-hr" />
