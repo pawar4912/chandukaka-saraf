@@ -127,54 +127,54 @@ export default function Sidebar() {
               </li>
               <div className="sidebar-menu">
                 <li className="w-100">
-                  <a href="#" className="menu-link">
+                  <Link to="/dashboard/myorder" className="menu-link">
                     <img
                       src={orderIcon}
                       alt="Logo"
                       className="image"
                     />
                     MY ORDERS
-                  </a>
+                  </Link>
                 </li>
                 <li className="w-100">
-                  <a href="#" className="menu-link">
+                  <Link to="/dashboard/personal-details" className="menu-link">
                     <img
                       src={personalDetailsIcon}
                       alt="Logo"
                       className="image"
                     />
                     PERSONAL DETAILS
-                  </a>
+                  </Link>
                 </li>
                 <li className="w-100">
-                  <a href="#" className="menu-link">
+                  <Link to="/dashboard/address-book" className="menu-link">
                     <img
                       src={addressBookIcon}
                       alt="Logo"
                       className="image"
                     />
                     ADDRESS BOOK
-                  </a>
+                  </Link>
                 </li>
                 <li className="w-100">
-                  <a href="/wishlist" className="menu-link">
+                  <Link to="/wishlist" className="menu-link">
                     <img
                       src={heartIcon}
                       alt="Logo"
                       className="image"
                     />
                     WISHLIST
-                  </a>
+                  </Link>
                 </li>
                 <li className="w-100">
-                  <a href="/contact-us" className="menu-link">
+                  <Link to="/contact-us" className="menu-link">
                     <img
                       src={helpIcon}
                       alt="Logo"
                       className="image"
                     />
                     SUPPORT
-                  </a>
+                  </Link>
                 </li>
               </div>
               <li className="w-100 sign-out">
