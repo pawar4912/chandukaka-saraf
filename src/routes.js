@@ -110,13 +110,6 @@ export const frontAppRoutes = [
     strict: false,
   },
   {
-    path: '/address-book',
-    name: 'Address Book',
-    element: <AddressBook />,
-    exact: true,
-    strict: false,
-  },
-  {
     path: '/wishlist',
     name: 'Wish List',
     element: <Wishlist />,
@@ -151,6 +144,13 @@ export const dashboardRoutes = [
     path: '/dashboard/myorder',
     name: 'My Order',
     element: <MyOrder />,
+    exact: true,
+    strict: false,
+  },
+  {
+    path: '/dashboard/address-book',
+    name: 'Address Book',
+    element: <AddressBook />,
     exact: true,
     strict: false,
   },

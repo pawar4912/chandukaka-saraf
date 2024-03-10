@@ -69,7 +69,7 @@ export default function Sidebar() {
                 </Link>
               </li>
               <li className="w-100">
-                <Link to="/address-book" className="menu-link">
+                <Link to="/dashboard/address-book" className="menu-link">
                   <img
                     src={addressBookIcon}
                     alt="Logo"
