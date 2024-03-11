@@ -127,7 +127,7 @@ export default function Sidebar() {
               </li>
               <div className="sidebar-menu">
                 <li className="w-100">
-                  <Link to="/dashboard/myorder" className="menu-link">
+                  <Link to="/dashboard/myorder" className="menu-link" onClick={closeDrawer}>
                     <img
                       src={orderIcon}
                       alt="Logo"
@@ -137,7 +137,7 @@ export default function Sidebar() {
                   </Link>
                 </li>
                 <li className="w-100">
-                  <Link to="/dashboard/personal-details" className="menu-link">
+                  <Link to="/dashboard/personal-details" className="menu-link" onClick={closeDrawer}>
                     <img
                       src={personalDetailsIcon}
                       alt="Logo"
@@ -147,7 +147,7 @@ export default function Sidebar() {
                   </Link>
                 </li>
                 <li className="w-100">
-                  <Link to="/dashboard/address-book" className="menu-link">
+                  <Link to="/dashboard/address-book" className="menu-link" onClick={closeDrawer}>
                     <img
                       src={addressBookIcon}
                       alt="Logo"
@@ -157,7 +157,7 @@ export default function Sidebar() {
                   </Link>
                 </li>
                 <li className="w-100">
-                  <Link to="/wishlist" className="menu-link">
+                  <Link to="/wishlist" className="menu-link" onClick={closeDrawer}>
                     <img
                       src={heartIcon}
                       alt="Logo"
@@ -167,7 +167,7 @@ export default function Sidebar() {
                   </Link>
                 </li>
                 <li className="w-100">
-                  <Link to="/contact-us" className="menu-link">
+                  <Link to="/contact-us" className="menu-link" onClick={closeDrawer}>
                     <img
                       src={helpIcon}
                       alt="Logo"

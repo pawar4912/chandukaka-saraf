@@ -6,7 +6,6 @@ import {
 } from "@mui/material";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import siteLogo from "./images/icons/logo.svg";
-import EastIcon from "@mui/icons-material/East";
 import { getCartItems } from "./services/FrontApp/index.service";
 
 import { ExpansionCartView } from "./ExpansionCartView";

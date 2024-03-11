@@ -8,7 +8,6 @@ const HomeLayout = () => {
     const [openDrawer, setOpenDrawer] = useState(false);
 
     const handleOpenDrawer = () => {
-        console.log("in handle");
         setOpenDrawer(!openDrawer);
     };
     return (
