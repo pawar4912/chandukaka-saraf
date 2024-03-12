@@ -7,13 +7,19 @@ import searchLogo from "../images/icons/search.svg";
 import shoppingBagLogo from "../images/icons/shopping-bag.svg";
 import menuOpen from "../images/icons/open-menu.svg";
 import closeMenu from "../images/icons/close.svg";
-import { getLiveRateForCSP, getMetals, getMetalItems } from "../services/FrontApp/index.service";
+import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
+import {
+  getLiveRateForCSP,
+  getMetals,
+  getMetalItems,
+} from "../services/FrontApp/index.service";
 import AuthModal from "./Screens/AuthModal";
 import { isLoggedIn } from "../services/auth.service";
 import LoginIcon from "@mui/icons-material/Login";
 import { NavigationDropdown } from "./Common/NavigationDropdown";
 import { SearchDropdown } from "./Common/SearchDropdown";
 import { List, ListItem, ListItemText } from "@mui/material";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
 function Header({ openDrawer, handleOpenDrawer }) {
   const $ = window.jQuery;
@@ -41,11 +47,11 @@ function Header({ openDrawer, handleOpenDrawer }) {
     ],
   };
 
-
   const [open, setOpen] = useState(false);
   // const [openDrawer, setOpenDrawer] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const [searchDropdown, setSearchDropdown] = useState(false);
+  const [showMainLinks, setShowMainLinks] = useState(true);
   const [selectedJewelleryType, setSelectedJewelleryType] = useState(null);
 
   const handleOpenDialog = () => {
@@ -54,6 +60,10 @@ function Header({ openDrawer, handleOpenDrawer }) {
 
   const handleCloseDialog = () => {
     setOpen(false);
+  };
+
+  const handlejewelleriesClick = () => {
+    setShowMainLinks(false);
   };
 
   const handleJewelleryTypeClick = (jewelleryType) => {
@@ -65,24 +75,24 @@ function Header({ openDrawer, handleOpenDrawer }) {
   const getMetalData = async () => {
     try {
       const metals = await getMetals();
-      const temp = []
+      const temp = [];
       for (let index = 0; index < metals.data.data.length; index++) {
         const data = metals.data.data[index];
         let itemData = [];
         try {
           var bodyFormData = new FormData();
-          bodyFormData.append('metal_type_master_id[0]', data.id);
+          bodyFormData.append("metal_type_master_id[0]", data.id);
           const items = await getMetalItems(bodyFormData);
           itemData = items.data.data;
-        } catch (error) { }
+        } catch (error) {}
         temp.push({
           id: data.id,
           metal: data.metal_type,
-          metal_items: itemData
-        })
+          metal_items: itemData,
+        });
       }
-      setMetalTypesData(temp)
-    } catch (error) { }
+      setMetalTypesData(temp);
+    } catch (error) {}
   };
 
   const getData = async () => {
@@ -111,10 +121,16 @@ function Header({ openDrawer, handleOpenDrawer }) {
   });
 
   window.onclick = (event) => {
-    if (!$(event.target).closest('#navigation-dropdown-wrapper').length && event.target.id != "jewellery-link") {
+    if (
+      !$(event.target).closest("#navigation-dropdown-wrapper").length &&
+      event.target.id != "jewellery-link"
+    ) {
       setShowDropdown(false);
     }
-    if (!$(event.target).closest('#search-dropdown-wrapper').length && event.target.id != "search-logo") {
+    if (
+      !$(event.target).closest("#search-dropdown-wrapper").length &&
+      event.target.id != "search-logo"
+    ) {
       setSearchDropdown(false);
     }
   };
@@ -215,6 +231,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                     <ul className="w-100">
                       <div className="header-searchbar-wrapper w-100">
                         <div className="col-10 search-wrapper">
+                          {!showMainLinks && <KeyboardBackspaceIcon />}
                           <input
                             type="text"
                             className="search-input col-9 col-md-9"
@@ -242,90 +259,101 @@ function Header({ openDrawer, handleOpenDrawer }) {
                               open={openDrawer}
                               handleDrawer={handleOpenDrawer}
                             /> */}
-                          </div>
                         </div>
-                        <h3 className="drawer-header">POPULAR SEARCHES</h3>
-                        <div className="d-lg-none">
-                          <List>
-                            {navigations.jewelleryTypes.map((jewelleryType) => (
-                              <div key={jewelleryType}>
-                                <ListItem
-                                  onClick={() => handleJewelleryTypeClick(jewelleryType)}
-                                  selected={selectedJewelleryType === jewelleryType}
-                                >
-                                  <ListItemText primary={jewelleryType} />
-                                </ListItem>
-                                {selectedJewelleryType === jewelleryType && (
-                                  <List>
-                                    {navigations.jwewlleries.map((jewellery) => (
-                                      <ListItem key={jewellery}>
-                                        <ListItemText primary={jewellery} />
-                                      </ListItem>
-                                    ))}
-                                  </List>
-                                )}
-                              </div>
-                            ))}
+                      </div>
+                      {/* <h3 className="drawer-header">POPULAR SEARCHES</h3> */}
+                      <div className="d-lg-none sidenav-links-container">
+                        {/* main sidenav items starts here */}
+                        {showMainLinks && (
+                          <List className="w-100 side-navigation">
+                            <ListItem className="nav-item">
+                              <Link to="#">JEWELLERY</Link>
+                              <ChevronRightIcon
+                                onClick={handlejewelleriesClick}
+                              />
+                            </ListItem>
+
+                            <ListItem>
+                              <Link to="#">OFFERS</Link>
+                            </ListItem>
+
+                            <ListItem>
+                              <Link to="#">ABOUT US</Link>
+                            </ListItem>
+
+                            <ListItem>
+                              <Link to="#">BULLION</Link>
+                            </ListItem>
+
+                            <ListItem>
+                              <Link to="#">E - GOLD</Link>
+                            </ListItem>
+
+                            <ListItem>
+                              <Link to="#">GIFTING</Link>
+                            </ListItem>
                           </List>
-                          <li className="w-100">
-                            <Link to="/" className="menu-link">
-                              Fancy Earrings
-                            </Link>
-                          </li>
-                          <li className="w-100">
-                            <Link to="/" className="menu-link">
-                              Gift under 10k
-                            </Link>
-                          </li>
-                          <li className="w-100">
-                            <Link to="/" className="menu-link">
-                              Every day Necklaces
-                            </Link>
-                          </li>
-                          <li className="w-100">
-                            <Link to="/" className="menu-link">
-                              Diamonds Mangalsutra
-                            </Link>
-                          </li>
-                          <li className="w-100">
-                            <Link to="/" className="menu-link">
-                              Office wear earrings
-                            </Link>
-                          </li>
-                        </div>
-                      </ul>
-                    </nav>
-                  </div>
+                        )}
+
+                        <List className="side-navigation">
+                          {navigations.jewelleryTypes.map((jewelleryType) => (
+                            <div key={jewelleryType}>
+                              <ListItem
+                                onClick={() =>
+                                  handleJewelleryTypeClick(jewelleryType)
+                                }
+                                selected={
+                                  selectedJewelleryType === jewelleryType
+                                }
+                              >
+                                <ListItemText primary={jewelleryType} />
+                              </ListItem>
+                              {selectedJewelleryType === jewelleryType && (
+                                <List className="side-navigation">
+                                  {navigations.jwewlleries.map((jewellery) => (
+                                    <ListItem key={jewellery}>
+                                      <ListItemText primary={jewellery} />
+                                    </ListItem>
+                                  ))}
+                                </List>
+                              )}
+                            </div>
+                          ))}
+                        </List>
+                      </div>
+                    </ul>
+                  </nav>
                 </div>
               </div>
             </div>
-            <div className="col-12 col-md-12 col-lg-12 order-1 order-md-1 d-none d-md-block ps-0">
-              <div className="col-12 col-md-12 col-lg-12">
-                <div className="row">
-                  <div className="col-12 col-sm-10 col-md-10 col-lg-10">
-                    <nav className="navbar">
-                      <ul className="w-100">
-                        <div className="menu-link-items">
-                          <li>
-                            <Link to="/">Home</Link>
-                          </li>
-                          <li>
-                            <Link
-                              id="jewellery-link"
-                              onClick={() => {
-                                setShowDropdown(true);
-                              }}
-                            >
-                              Jewellerys
-                            </Link>
-                          </li>
-                          <li>
-                            <Link to="/aboutus">About us</Link>
-                          </li>
-                          <li>
-                            <Link to="/bullions">Bullion</Link>
-                          </li>
-                          {/* <li>
+          </div>
+          <div className="col-12 col-md-12 col-lg-12 order-1 order-md-1 d-none d-md-block ps-0">
+            <div className="col-12 col-md-12 col-lg-12">
+              <div className="row">
+                <div className="col-12 col-sm-10 col-md-10 col-lg-10">
+                  <nav className="navbar">
+                    <ul className="w-100">
+                      <div className="menu-link-items">
+                        <li>
+                          <Link to="/">Home</Link>
+                        </li>
+                        <li>
+                          <Link
+                            id="jewellery-link"
+                            onClick={() => {
+                              setShowDropdown(true);
+                            }}
+                          >
+                            Jewellerys
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="/aboutus">About us</Link>
+                        </li>
+                        <li>
+                          <Link to="/bullions">Bullion</Link>
+                        </li>
+                        {/* <li>
                             <Link to="e-gold">E-gold</Link>
                           </li> */}
                         {/* <li>
@@ -371,11 +399,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                       {isLoggedIn() ? (
                         <li>
                           <Link to="/dashboard/myorder">
-                            <img
-                              src={userLogo}
-                              alt="Logo"
-                              className="image"
-                            />
+                            <img src={userLogo} alt="Logo" className="image" />
                           </Link>
                         </li>
                       ) : (
@@ -402,18 +426,15 @@ function Header({ openDrawer, handleOpenDrawer }) {
         </div>
       </header>
       {showDropdown && (
-        <div
-          id="navigation-dropdown-wrapper"
-          className="dropdown-wrapper"
-        >
-          <NavigationDropdown metalData={metalTypesData} setShowDropdown={setShowDropdown} />
+        <div id="navigation-dropdown-wrapper" className="dropdown-wrapper">
+          <NavigationDropdown
+            metalData={metalTypesData}
+            setShowDropdown={setShowDropdown}
+          />
         </div>
       )}
       {searchDropdown && (
-        <div
-          id="search-dropdown-wrapper"
-          className="dropdown-wrapper"
-        >
+        <div id="search-dropdown-wrapper" className="dropdown-wrapper">
           <SearchDropdown setSearchDropdown={setSearchDropdown} />
         </div>
       )}
