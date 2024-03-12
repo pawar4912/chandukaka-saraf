@@ -7,7 +7,7 @@ import searchLogo from "../images/icons/search.svg";
 import shoppingBagLogo from "../images/icons/shopping-bag.svg";
 import menuOpen from "../images/icons/open-menu.svg";
 import closeMenu from "../images/icons/close.svg";
-import { getLiveRateForCSPL } from "../services/FrontApp/index.service";
+import { getLiveRateForCSP, getMetals, getMetalItems } from "../services/FrontApp/index.service";
 import AuthModal from "./Screens/AuthModal";
 import { isLoggedIn } from "../services/auth.service";
 import LoginIcon from "@mui/icons-material/Login";
@@ -60,14 +60,34 @@ function Header({ openDrawer, handleOpenDrawer }) {
     setSelectedJewelleryType(jewelleryType);
   };
 
-  // const handleOpenDrawer = () => {
-  //   console.log("in handle");
-  //   setOpenDrawer(!openDrawer);
-  // };
+  const [metalTypesData, setMetalTypesData] = useState([]);
+
+  const getMetalData = async () => {
+    try {
+      const metals = await getMetals();
+      const temp = []
+      for (let index = 0; index < metals.data.data.length; index++) {
+        const data = metals.data.data[index];
+        let itemData = [];
+        try {
+          var bodyFormData = new FormData();
+          bodyFormData.append('metal_type_master_id[0]', data.id);
+          const items = await getMetalItems(bodyFormData);
+          itemData = items.data.data;
+        } catch (error) { }
+        temp.push({
+          id: data.id,
+          metal: data.metal_type,
+          metal_items: itemData
+        })
+      }
+      setMetalTypesData(temp)
+    } catch (error) { }
+  };
 
   const getData = async () => {
     try {
-      const result = await getLiveRateForCSPL();
+      const result = await getLiveRateForCSP();
       const { Platinum, Silver1, Silver2, ...gold } = result.data.data;
       setRates({ Platinum, Silver1, Silver2, gold });
     } catch (error) {
@@ -77,6 +97,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
 
   useEffect(() => {
     getData();
+    getMetalData();
   }, []);
 
   useEffect(() => {
@@ -100,125 +121,124 @@ function Header({ openDrawer, handleOpenDrawer }) {
 
   return (
     <>
-      <div>
-        <header className="page-header">
-          <hr className="header-hr d-none d-md-block " />
-          <div className="header-content">
-            <div className="col-12 col-md-12 col-lg-12 order-2 order-md-2">
-              <div className="row">
-                <div className="col-12 col-md-12 col-lg-12">
-                  <div className="brand-wrapper">
-                    <div className="d-md-none d-lg-none mobile-header-bar">
-                      <img
-                        src={menuOpen}
-                        alt="menu-open"
-                        className="menu-open open-nav-btn"
-                      />
-                      <div className="logo">
-                        <Link to="/home">
-                          <img src={logo} alt="Logo" className="image" />
-                        </Link>
-                      </div>
-                      <div className="header-icon-list">
-                        <ul>
-                          <li>
-                            <Link onClick={handleOpenDrawer}>
-                              <img
-                                src={shoppingBagLogo}
-                                alt="Logo"
-                                className="image"
-                              />
-                            </Link>
-                            {/* <ShoppingBag
+      <header className="page-header">
+        <hr className="header-hr d-none d-md-block " />
+        <div className="header-content">
+          <div className="col-12 col-md-12 col-lg-12 order-2 order-md-2">
+            <div className="row">
+              <div className="col-12 col-md-12 col-lg-12">
+                <div className="brand-wrapper">
+                  <div className="d-md-none d-lg-none mobile-header-bar">
+                    <img
+                      src={menuOpen}
+                      alt="menu-open"
+                      className="menu-open open-nav-btn"
+                    />
+                    <div className="logo">
+                      <Link to="/">
+                        <img src={logo} alt="Logo" className="image" />
+                      </Link>
+                    </div>
+                    <div className="header-icon-list">
+                      <ul>
+                        <li>
+                          <Link onClick={handleOpenDrawer}>
+                            <img
+                              src={shoppingBagLogo}
+                              alt="Logo"
+                              className="image"
+                            />
+                          </Link>
+                          {/* <ShoppingBag
                               open={openDrawer}
                               handleOpenDrawer={handleOpenDrawer}
                             /> */}
-                          </li>
-                          <li>
-                            <Link to="/wishlist">
-                              <img
-                                alt="Logo"
-                                src={heartLogo}
-                                className="image heart"
-                              />
-                            </Link>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div className="col-12 col-lg-12  d-none d-md-block">
-                      <div className="row position-relative">
-                        <div className="logo">
-                          <Link to="/">
-                            <img src={logo} alt="Logo" className="image" />
+                        </li>
+                        <li>
+                          <Link to="/wishlist">
+                            <img
+                              alt="Logo"
+                              src={heartLogo}
+                              className="image heart"
+                            />
                           </Link>
-                        </div>
-                        <div className="col-8 p-0 position-absolute end-0 h-100">
-                          <div className="quick-links-wrapper">
-                            <ul className="w-100">
-                              <div className="quick-link-items">
-                                <li>
-                                  <small>
-                                    GOLD - ₹
-                                    {rates.gold["24.00"]
-                                      ? rates.gold["24.00"]
-                                      : 0}
-                                  </small>
-                                </li>
-                                <li>
-                                  <small>SILVER - ₹{rates.Silver1}</small>
-                                </li>
-                                <li>
-                                  <Link to="/find-a-store">FIND A STORE</Link>
-                                </li>
-                                <li>
-                                  <Link to="/contact-us">SUPPORT</Link>
-                                </li>
-                              </div>
-                            </ul>
-                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="col-12 col-lg-12  d-none d-md-block">
+                    <div className="row position-relative">
+                      <div className="logo">
+                        <Link to="/">
+                          <img src={logo} alt="Logo" className="image" />
+                        </Link>
+                      </div>
+                      <div className="col-8 p-0 position-absolute end-0 h-100">
+                        <div className="quick-links-wrapper">
+                          <ul className="w-100">
+                            <div className="quick-link-items">
+                              <li>
+                                <small>
+                                  GOLD - ₹
+                                  {rates.gold["24.00"]
+                                    ? rates.gold["24.00"]
+                                    : 0}
+                                </small>
+                              </li>
+                              <li>
+                                <small>SILVER - ₹{rates.Silver1}</small>
+                              </li>
+                              <li>
+                                <Link to="/find-a-store">FIND A STORE</Link>
+                              </li>
+                              <li>
+                                <Link to="/contact-us">SUPPORT</Link>
+                              </li>
+                            </div>
+                          </ul>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="col-12 col-md-2 col-lg-7 p-0">
-                  <div className="mobile-menu-overlay">
-                    <div className="close-nav-btn d-lg-none">
-                      <img
-                        src={closeMenu}
-                        alt="close-menu-img"
-                        className="menu-close"
-                      />
-                    </div>
-                    <nav className="navbar">
-                      <ul className="w-100">
-                        <div className="header-searchbar-wrapper w-100">
-                          <div className="col-10 search-wrapper">
-                            <input
-                              type="text"
-                              className="search-input col-9 col-md-9"
-                              placeholder="Search for a product"
-                            />
+              </div>
+              <div className="col-12 col-md-2 col-lg-7 p-0">
+                <div className="mobile-menu-overlay">
+                  <div className="close-nav-btn d-lg-none">
+                    <img
+                      src={closeMenu}
+                      alt="close-menu-img"
+                      className="menu-close"
+                    />
+                  </div>
+                  <nav className="navbar">
+                    <ul className="w-100">
+                      <div className="header-searchbar-wrapper w-100">
+                        <div className="col-10 search-wrapper">
+                          <input
+                            type="text"
+                            className="search-input col-9 col-md-9"
+                            placeholder="Search for a product"
+                          />
+                          <img
+                            src={searchLogo}
+                            alt="Logo"
+                            className="search-logo"
+                          />
+                        </div>
+                        <div className="col-2">
+                          <Link
+                            to="#"
+                            className="shopping-logo"
+                            onClick={handleOpenDrawer}
+                          >
                             <img
-                              src={searchLogo}
+                              src={shoppingBagLogo}
                               alt="Logo"
-                              className="search-logo"
+                              className="image"
                             />
-                          </div>
-                          <div className="col-2">
-                            <Link
-                              to="#"
-                              className="shopping-logo"
-                              onClick={handleOpenDrawer}
-                            >
-                              <img
-                                src={shoppingBagLogo}
-                                alt="Logo"
-                                className="image"
-                              />
-                            </Link>
-                            {/* <ShoppingBag
+                          </Link>
+                          {/* <ShoppingBag
                               open={openDrawer}
                               handleDrawer={handleOpenDrawer}
                             /> */}
@@ -308,96 +328,95 @@ function Header({ openDrawer, handleOpenDrawer }) {
                           {/* <li>
                             <Link to="e-gold">E-gold</Link>
                           </li> */}
-                          {/* <li>
+                        {/* <li>
                             <Link to="gifting">Gifting</Link>
                         </li> */}
-                        </div>
-                      </ul>
-                    </nav>
-                  </div>
-                  <div className="col-12 col-sm-2 col-md-2 col-lg-2 p-0">
-                    <div className="header-icon-list">
-                      <ul className="w-100">
-                        <li>
-                          <Link onClick={() => setSearchDropdown(true)}>
-                            <img
-                              src={searchLogo}
-                              alt="Logo"
-                              className="image"
-                              id="search-logo"
-                            />
-                          </Link>
-                        </li>
-                        <li>
-                          <Link onClick={handleOpenDrawer}>
-                            <img
-                              src={shoppingBagLogo}
-                              alt="Logo"
-                              className="image"
-                            />
-                          </Link>
-                          {/* <ShoppingBag open={openDrawer} handleDrawer = {handleOpenDrawer} /> */}
-                        </li>
-                        <li>
-                          <Link to="/wishlist">
-                            <img
-                              src={heartLogo}
-                              alt="Logo"
-                              className="image heart"
-                            />
-                          </Link>
-                        </li>
+                      </div>
+                    </ul>
+                  </nav>
+                </div>
+                <div className="col-12 col-sm-2 col-md-2 col-lg-2 p-0">
+                  <div className="header-icon-list">
+                    <ul className="w-100">
+                      <li>
+                        <Link onClick={() => setSearchDropdown(true)}>
+                          <img
+                            src={searchLogo}
+                            alt="Logo"
+                            className="image"
+                            id="search-logo"
+                          />
+                        </Link>
+                      </li>
+                      <li>
+                        <Link onClick={handleOpenDrawer}>
+                          <img
+                            src={shoppingBagLogo}
+                            alt="Logo"
+                            className="image"
+                          />
+                        </Link>
+                        {/* <ShoppingBag open={openDrawer} handleDrawer = {handleOpenDrawer} /> */}
+                      </li>
+                      <li>
+                        <Link to="/wishlist">
+                          <img
+                            src={heartLogo}
+                            alt="Logo"
+                            className="image heart"
+                          />
+                        </Link>
+                      </li>
 
-                        {isLoggedIn() ? (
-                          <li>
-                            <Link to="/dashboard/myorder">
-                              <img
-                                src={userLogo}
-                                alt="Logo"
-                                className="image"
-                              />
-                            </Link>
-                          </li>
-                        ) : (
-                          <li className="/login-icon">
-                            <Link
-                              onClick={handleOpenDialog}
-                              classsName="image"
-                              style={{ color: "#A3A3A3" }}
-                            >
-                              <LoginIcon />
-                            </Link>
-                            <AuthModal
-                              open={open}
-                              handleClose={handleCloseDialog}
+                      {isLoggedIn() ? (
+                        <li>
+                          <Link to="/dashboard/myorder">
+                            <img
+                              src={userLogo}
+                              alt="Logo"
+                              className="image"
                             />
-                          </li>
-                        )}
-                      </ul>
-                    </div>
+                          </Link>
+                        </li>
+                      ) : (
+                        <li className="/login-icon">
+                          <Link
+                            onClick={handleOpenDialog}
+                            className="image"
+                            style={{ color: "#A3A3A3" }}
+                          >
+                            <LoginIcon />
+                          </Link>
+                          <AuthModal
+                            open={open}
+                            handleClose={handleCloseDialog}
+                          />
+                        </li>
+                      )}
+                    </ul>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </header>
-        {showDropdown && (
-          <div
-            id="navigation-dropdown-wrapper"
-            className="dropdown-wrapper"
-          >
-            <NavigationDropdown />
-          </div>
-        )}
-        {searchDropdown && (
-          <div
-            id="search-dropdown-wrapper"
-            className="dropdown-wrapper"
-          >
-            <SearchDropdown setSearchDropdown={setSearchDropdown} />
-          </div>
-        )}
-      </div>
+        </div>
+      </header>
+      {showDropdown && (
+        <div
+          id="navigation-dropdown-wrapper"
+          className="dropdown-wrapper"
+        >
+          <NavigationDropdown metalData={metalTypesData} setShowDropdown={setShowDropdown} />
+        </div>
+      )}
+      {searchDropdown && (
+        <div
+          id="search-dropdown-wrapper"
+          className="dropdown-wrapper"
+        >
+          <SearchDropdown setSearchDropdown={setSearchDropdown} />
+        </div>
+      )}
     </>
   );
 }
