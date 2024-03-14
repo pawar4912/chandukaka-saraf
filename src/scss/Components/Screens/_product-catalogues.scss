@@ -1,0 +1,35 @@
+.product-catalogues {
+  .product-catalogue-banner {
+    max-height: 350px;
+    overflow: hidden; // Todo : remove after attaching actual image
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .filter-chips {
+  }
+
+  .product-item-card {
+    width: 300px;
+    height: 250px;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .text {
+      position: relative;
+      padding-left: .4rem;
+      top: -80px;
+      color: #fff;
+
+      p {
+        margin: 0;
+        padding: 0;
+      }
+    }
+  }
+}

@@ -20,6 +20,7 @@ import { PaymentSuccess } from './Components/Screens/Checkout/PaymentSuccess';
 import { YourDetails } from './Components/Screens/Checkout/YourDetails';
 import { Delivery } from './Components/Screens/Checkout/Delivery';
 import { Navigate } from 'react-router-dom';
+import { ProductCatalogues } from './Components/Screens/Product-catalogue/ProductCatalogues';
 
 export const normalRouts = [
   {
@@ -130,6 +131,14 @@ export const frontAppRoutes = [
     exact: true,
     strict: false,
   },
+  {
+    path: '/product-catalogues',
+    name: 'Product Catalogues',
+    element: <ProductCatalogues />,
+    exact: true,
+    strict: false,
+  },
+  
 ];
 
 export const dashboardRoutes = [
