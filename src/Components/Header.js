@@ -231,8 +231,13 @@ function Header({ openDrawer, handleOpenDrawer }) {
                     <ul className="w-100">
                       <div className="header-searchbar-wrapper w-100">
                         <div className="col-10 search-wrapper">
-                          {!showMainLinks && <KeyboardBackspaceIcon />}
-                          <input
+                          {!showMainLinks && (
+                            <KeyboardBackspaceIcon
+                              onClick={() => setShowMainLinks(true)}
+                            />
+                          )}
+
+                          {/* <input
                             type="text"
                             className="search-input col-9 col-md-9"
                             placeholder="Search for a product"
@@ -241,7 +246,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                             src={searchLogo}
                             alt="Logo"
                             className="search-logo"
-                          />
+                          /> */}
                         </div>
                         <div className="col-2">
                           <Link
@@ -295,31 +300,35 @@ function Header({ openDrawer, handleOpenDrawer }) {
                           </List>
                         )}
 
-                        <List className="side-navigation">
-                          {navigations.jewelleryTypes.map((jewelleryType) => (
-                            <div key={jewelleryType}>
-                              <ListItem
-                                onClick={() =>
-                                  handleJewelleryTypeClick(jewelleryType)
-                                }
-                                selected={
-                                  selectedJewelleryType === jewelleryType
-                                }
-                              >
-                                <ListItemText primary={jewelleryType} />
-                              </ListItem>
-                              {selectedJewelleryType === jewelleryType && (
-                                <List className="side-navigation">
-                                  {navigations.jwewlleries.map((jewellery) => (
-                                    <ListItem key={jewellery}>
-                                      <ListItemText primary={jewellery} />
-                                    </ListItem>
-                                  ))}
-                                </List>
-                              )}
-                            </div>
-                          ))}
-                        </List>
+                        {showJewelleryLinks && (
+                          <List className="side-navigation">
+                            {navigations.jewelleryTypes.map((jewelleryType) => (
+                              <div key={jewelleryType}>
+                                <ListItem
+                                  onClick={() =>
+                                    handleJewelleryTypeClick(jewelleryType)
+                                  }
+                                  selected={
+                                    selectedJewelleryType === jewelleryType
+                                  }
+                                >
+                                  <ListItemText primary={jewelleryType} />
+                                </ListItem>
+                                {selectedJewelleryType === jewelleryType && (
+                                  <List className="side-navigation">
+                                    {navigations.jwewlleries.map(
+                                      (jewellery) => (
+                                        <ListItem key={jewellery}>
+                                          <ListItemText primary={jewellery} />
+                                        </ListItem>
+                                      )
+                                    )}
+                                  </List>
+                                )}
+                              </div>
+                            ))}
+                          </List>
+                        )}
                       </div>
                     </ul>
                   </nav>
