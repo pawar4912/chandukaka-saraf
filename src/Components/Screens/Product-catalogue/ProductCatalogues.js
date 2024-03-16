@@ -24,7 +24,7 @@ export const ProductCatalogues = () => {
             </div>
 
             <div className="container">
-                <div className="filter-chips">
+                <div className="filter-chips p-3">
                     <Stack direction="row" spacing={1}>
                         {chipData.map((chip) => (
                             <Chip
@@ -52,8 +52,32 @@ export const ProductCatalogues = () => {
                 </div>
 
                 <Box>
-                    <Grid container spacing={1}>
-                        <Grid item className="product-item-card">
+                    <Grid container spacing={1} className="p-3">
+                        <Grid item md={4} className="product-item-card">
+                            <img
+                                src={productImage}
+                                alt="product image"
+                                className="image"
+                            />
+                            <div className="text">
+                                <hr />
+                                <p>Product category name</p>
+                            </div>
+                        </Grid>
+
+                        <Grid item md={4} className="product-item-card">
+                            <img
+                                src={productImage}
+                                alt="product image"
+                                className="image"
+                            />
+                            <div className="text">
+                                <hr />
+                                <p>Product category name</p>
+                            </div>
+                        </Grid>
+
+                        <Grid item md={4} className="product-item-card">
                             <img
                                 src={productImage}
                                 alt="product image"
