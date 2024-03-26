@@ -24,12 +24,12 @@ const items = [
     imagepath: img2,
     mobileImagePath: imgMob2,
   },
-  {
-    name: 'Elegance Redefined:',
-    description: 'Discover exquisite jewellery that reflects your inner radiance',
-    imagepath: img3,
-    mobileImagePath: imgMob3,
-  },
+  // {
+  //   name: 'Elegance Redefined:',
+  //   description: 'Discover exquisite jewellery that reflects your inner radiance',
+  //   imagepath: img3,
+  //   mobileImagePath: imgMob3,
+  // },
 ];
 
 function CarouselHome() {
@@ -64,8 +64,8 @@ function CarouselHome() {
                 <div key={key} className="carouselPaper">
                   <img className="carousel-img" src={windoDimensions[0] <= 768 ? `${item.mobileImagePath}` : `${item.imagepath}`} />
                   <div className="service-slide-text-wrapper">
-                    <h2 className="service-slide-text">{item.name}</h2>
-                    <p className="service-slide-description">{item.description}</p>
+                    {/* <h2 className="service-slide-text">{item.name}</h2>
+                    <p className="service-slide-description">{item.description}</p> */}
                     {/* <button type="button" className="carousel-explore-now-btn">
                     EXPORE NOW
                     {' '}
