@@ -15,6 +15,12 @@ const items = [
   {
     name: 'Elegance Redefined:',
     description: 'Discover exquisite jewellery that reflects your inner radiance',
+    imagepath: img3,
+    mobileImagePath: imgMob3,
+  },
+  {
+    name: 'Elegance Redefined:',
+    description: 'Discover exquisite jewellery that reflects your inner radiance',
     imagepath: img1,
     mobileImagePath: imgMob1,
   },
@@ -23,12 +29,6 @@ const items = [
     description: 'Discover exquisite jewellery that reflects your inner radiance',
     imagepath: img2,
     mobileImagePath: imgMob2,
-  },
-  {
-    name: 'Elegance Redefined:',
-    description: 'Discover exquisite jewellery that reflects your inner radiance',
-    imagepath: img3,
-    mobileImagePath: imgMob3,
   },
 ];
 
