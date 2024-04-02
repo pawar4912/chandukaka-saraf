@@ -24,12 +24,12 @@ const items = [
     imagepath: img2,
     mobileImagePath: imgMob2,
   },
-  // {
-  //   name: 'Elegance Redefined:',
-  //   description: 'Discover exquisite jewellery that reflects your inner radiance',
-  //   imagepath: img3,
-  //   mobileImagePath: imgMob3,
-  // },
+  {
+    name: 'Elegance Redefined:',
+    description: 'Discover exquisite jewellery that reflects your inner radiance',
+    imagepath: img3,
+    mobileImagePath: imgMob3,
+  },
 ];
 
 function CarouselHome() {
