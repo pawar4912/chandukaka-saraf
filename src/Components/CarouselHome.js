@@ -7,9 +7,11 @@ import useWindowWidthAndHeight from '../utilities/CustomHooks';
 import img1 from '../images/banners/desktop/1.jpg';
 import img2 from '../images/banners/desktop/2.jpg';
 import img3 from '../images/banners/desktop/3.jpg';
+import img4 from '../images/banners/desktop/4.jpg';
 import imgMob1 from '../images/banners/mobile/1.jpg';
 import imgMob2 from '../images/banners/mobile/2.jpg';
 import imgMob3 from '../images/banners/mobile/3.jpg';
+import imgMob4 from '../images/banners/mobile/4.jpg';
 
 const items = [
   {
@@ -17,6 +19,12 @@ const items = [
     description: 'Discover exquisite jewellery that reflects your inner radiance',
     imagepath: img3,
     mobileImagePath: imgMob3,
+  },
+  {
+    name: 'Elegance Redefined:',
+    description: 'Discover exquisite jewellery that reflects your inner radiance',
+    imagepath: img4,
+    mobileImagePath: imgMob4,
   },
   {
     name: 'Elegance Redefined:',
