@@ -81,3 +81,7 @@ export const getProductCategory = async () => {
 export const getMetalItems = async (data) => {
   return await httpService.post(`items`, data)
 }
+
+export const getBanner = async () => {
+  return await httpService.get(`banner`)
+}
