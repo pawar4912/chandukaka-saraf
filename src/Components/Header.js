@@ -53,6 +53,8 @@ function Header({ openDrawer, handleOpenDrawer }) {
   const [searchDropdown, setSearchDropdown] = useState(false);
   const [showMainLinks, setShowMainLinks] = useState(true);
   const [showJewelleryLinks, setShowJewelleryLinks] = useState(false);
+  const [showJewelleries, setShowJewelleries] = useState(false);
+  const [navigationPage, setNavigationPage] = useState("main")
   const [selectedJewelleryType, setSelectedJewelleryType] = useState(null);
 
   const handleOpenDialog = () => {
@@ -64,6 +66,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
   };
 
   const handlejewelleriesClick = () => {
+    setNavigationPage("jewelleryLinks");
     setShowMainLinks(false);
     setShowJewelleryLinks(true);
   };
@@ -319,21 +322,26 @@ function Header({ openDrawer, handleOpenDrawer }) {
                                 >
                                   <ListItemText primary={jewelleryType} />
                                   <ChevronRightIcon
-                                    onClick={() => {setShowMainLinks(false); setShowJewelleryLinks(false);}}
+                                    onClick={() => {
+                                      setShowMainLinks(false);
+                                      setShowJewelleryLinks(false);
+                                      setShowJewelleries(true);
+                                      setSelectedJewelleryType(jewelleryType);
+                                      setNavigationPage("jewelleries");
+                                    }}
                                   />
                                 </ListItem>
-                                {selectedJewelleryType === jewelleryType && (
-                                  <List className="side-navigation">
-                                    {navigations.jwewlleries.map(
-                                      (jewellery) => (
-                                        <ListItem key={jewellery}>
-                                          <ListItemText primary={jewellery} />
-                                        </ListItem>
-                                      )
-                                    )}
-                                  </List>
-                                )}
                               </div>
+                            ))}
+                          </List>
+                        )}
+
+                        {showJewelleries && (
+                          <List className="side-navigation">
+                            {navigations.jwewlleries.map((jewellery) => (
+                              <ListItem key={jewellery}>
+                                <ListItemText primary={jewellery} />
+                              </ListItem>
                             ))}
                           </List>
                         )}
