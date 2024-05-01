@@ -52,6 +52,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
   const [showDropdown, setShowDropdown] = useState(false);
   const [searchDropdown, setSearchDropdown] = useState(false);
   const [showMainLinks, setShowMainLinks] = useState(true);
+  const [showJewelleryLinks, setShowJewelleryLinks] = useState(false);
   const [selectedJewelleryType, setSelectedJewelleryType] = useState(null);
 
   const handleOpenDialog = () => {
@@ -64,6 +65,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
 
   const handlejewelleriesClick = () => {
     setShowMainLinks(false);
+    setShowJewelleryLinks(true);
   };
 
   const handleJewelleryTypeClick = (jewelleryType) => {
@@ -233,7 +235,10 @@ function Header({ openDrawer, handleOpenDrawer }) {
                         <div className="col-10 search-wrapper">
                           {!showMainLinks && (
                             <KeyboardBackspaceIcon
-                              onClick={() => setShowMainLinks(true)}
+                              onClick={() => {
+                                setShowMainLinks(true);
+                                setShowJewelleryLinks(false);
+                              }}
                             />
                           )}
 
@@ -313,6 +318,9 @@ function Header({ openDrawer, handleOpenDrawer }) {
                                   }
                                 >
                                   <ListItemText primary={jewelleryType} />
+                                  <ChevronRightIcon
+                                    onClick={() => {setShowMainLinks(false); setShowJewelleryLinks(false);}}
+                                  />
                                 </ListItem>
                                 {selectedJewelleryType === jewelleryType && (
                                   <List className="side-navigation">
