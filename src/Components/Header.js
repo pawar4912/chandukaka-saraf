@@ -299,25 +299,25 @@ function Header({ openDrawer, handleOpenDrawer }) {
                               />
                             </ListItem>
 
-                            <ListItem>
+                            {/* <ListItem>
                               <Link to="#">OFFERS</Link>
+                            </ListItem> */}
+
+                            <ListItem>
+                              <Link to="/aboutus">ABOUT US</Link>
                             </ListItem>
 
                             <ListItem>
-                              <Link to="#">ABOUT US</Link>
+                              <Link to="/bullions">BULLION</Link>
                             </ListItem>
 
-                            <ListItem>
-                              <Link to="#">BULLION</Link>
-                            </ListItem>
-
-                            <ListItem>
+                            {/* <ListItem>
                               <Link to="#">E - GOLD</Link>
                             </ListItem>
 
                             <ListItem>
                               <Link to="#">GIFTING</Link>
-                            </ListItem>
+                            </ListItem> */}
                           </List>
                         )}
 
