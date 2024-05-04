@@ -10,7 +10,7 @@ import TermsAndCondition from './Components/Screens/TermsAndCondition';
 import CRSPolicy from './Components/Screens/CRSPolicy';
 import PrivacyPolicy from './Components/Screens/PrivacyPolicy';
 import ProductDetails from './Components/Screens/ProductDetails';
-import Bullions from './Components/Screens/Bullions';
+import Bullions from './Components/Screens/Bullions/Bullions';
 import Jewellerys from './Components/Screens/Jewellerys';
 import { PersonalDetails } from './Components/Screens/PersonalDetails';
 import { AddressBook } from './Components/Screens/Address-book/AddressBook';
@@ -20,6 +20,8 @@ import { PaymentSuccess } from './Components/Screens/Checkout/PaymentSuccess';
 import { YourDetails } from './Components/Screens/Checkout/YourDetails';
 import { Delivery } from './Components/Screens/Checkout/Delivery';
 import { Navigate } from 'react-router-dom';
+import { ProductCatalogues } from './Components/Screens/Product-catalogue/ProductCatalogues';
+import { ProductDetailsLatest } from './Components/Screens/Product-details/ProductDetailsLatest';
 
 export const normalRouts = [
   {
@@ -123,13 +125,28 @@ export const frontAppRoutes = [
     exact: true,
     strict: false,
   },
+  // {
+  //   path: '/product-details/:id',
+  //   name: 'Product Details',
+  //   element: <ProductDetails />,
+  //   exact: true,
+  //   strict: false,
+  // },
   {
     path: '/product-details/:id',
     name: 'Product Details',
-    element: <ProductDetails />,
+    element: <ProductDetailsLatest />,
     exact: true,
     strict: false,
   },
+  {
+    path: '/product-catalogues',
+    name: 'Product Catalogues',
+    element: <ProductCatalogues />,
+    exact: true,
+    strict: false,
+  },
+  
 ];
 
 export const dashboardRoutes = [

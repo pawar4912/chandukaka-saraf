@@ -34,8 +34,15 @@
 @import "./Components/Screens/yourDetails";
 @import "./Components/Screens/delivery";
 @import "./Components/Screens/payment";
+@import "./Components/Screens/productDetailsLatest";
+@import "./Components/Screens/enquiryModal";
+@import "./Components/Screens/bullions";
+@import "./Components/Screens/filterMenu";
+@import "./Components/Screens/bullionsFilter";
+@import "./Components/Screens/sortMenu";
 
 @import "./Components/Screens/wishlist";
+@import "./Components/Screens/product-catalogues";
 //common component
 
 @import "./Components/common/sidebar";
@@ -46,6 +53,7 @@
 
 .main-container{
     background-color: #F8F6F0 ;
+    height: 100vh;
 }
 .outlet-container {
     max-height: calc(100vh - 10px);
