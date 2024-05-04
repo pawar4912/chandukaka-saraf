@@ -75,6 +75,21 @@ function Header({ openDrawer, handleOpenDrawer }) {
     setSelectedJewelleryType(jewelleryType);
   };
 
+  const handleBackNavigation = () => {
+    if (navigationPage == "jewelleryLinks")
+    {
+      setShowMainLinks(true);
+      setShowJewelleryLinks(false);
+    }
+
+    if (navigationPage == "jewelleries") {
+      setShowJewelleries(false);
+      setShowJewelleryLinks(true);
+      setShowMainLinks(false);
+      setNavigationPage("jewelleryLinks")
+    }
+  };
+
   const [metalTypesData, setMetalTypesData] = useState([]);
 
   const getMetalData = async () => {
@@ -239,8 +254,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
                           {!showMainLinks && (
                             <KeyboardBackspaceIcon
                               onClick={() => {
-                                setShowMainLinks(true);
-                                setShowJewelleryLinks(false);
+                                handleBackNavigation();
                               }}
                             />
                           )}
