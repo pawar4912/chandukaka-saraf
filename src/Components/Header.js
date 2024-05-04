@@ -76,8 +76,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
   };
 
   const handleBackNavigation = () => {
-    if (navigationPage == "jewelleryLinks")
-    {
+    if (navigationPage == "jewelleryLinks") {
       setShowMainLinks(true);
       setShowJewelleryLinks(false);
     }
@@ -104,7 +103,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
           bodyFormData.append("metal_type_master_id[0]", data.id);
           const items = await getMetalItems(bodyFormData);
           itemData = items.data.data;
-        } catch (error) {}
+        } catch (error) { }
         temp.push({
           id: data.id,
           metal: data.metal_type,
@@ -112,7 +111,7 @@ function Header({ openDrawer, handleOpenDrawer }) {
         });
       }
       setMetalTypesData(temp);
-    } catch (error) {}
+    } catch (error) { }
   };
 
   const getData = async () => {
@@ -334,7 +333,9 @@ function Header({ openDrawer, handleOpenDrawer }) {
                                     selectedJewelleryType === jewelleryType
                                   }
                                 >
-                                  <ListItemText primary={jewelleryType} />
+                                  <Link to={`/bullions?metal=${jewelleryType}`}>
+                                    <ListItemText primary={jewelleryType} />
+                                  </Link>
                                   <ChevronRightIcon
                                     onClick={() => {
                                       setShowMainLinks(false);
@@ -354,7 +355,9 @@ function Header({ openDrawer, handleOpenDrawer }) {
                           <List className="side-navigation">
                             {navigations.jwewlleries.map((jewellery) => (
                               <ListItem key={jewellery}>
-                                <ListItemText primary={jewellery} />
+                                <Link className="jewellery-link" to={`/bullions?metal=${selectedJewelleryType}&item_type=${jewellery}`}>
+                                  <ListItemText primary={jewellery} />
+                                </Link>
                               </ListItem>
                             ))}
                           </List>
